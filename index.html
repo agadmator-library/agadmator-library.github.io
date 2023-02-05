@@ -1,0 +1,369 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>agadmator-database</title>
+    <meta name="description" content="List (library) of all agadmator videos.">
+    <meta name="author" content="SitePoint">
+
+    <meta property="og:title" content="agadmator-database">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://agadmator-library.github.io">
+    <meta property="og:description" content="List (library) of all agadmator videos.">
+    <meta property="og:image" content="image.png">
+
+    <link rel="icon" href="favicon.ico">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+          integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+</head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MX1CWFQ3KN"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-MX1CWFQ3KN');
+</script>
+
+<body>
+
+<div class="container">
+
+    <div class="card mt-2">
+        <div class="card-header">
+            Filters
+        </div>
+
+        <div class="card-body">
+            <form class="form-inline" action="" id="playerNamesFilterForm">
+                <label class="sr-only" for="playerWhiteInput">Player white</label>
+                <input type="text" class="form-control mb-2 mr-sm-2 basicAutoComplete" id="playerWhiteInput"
+                       placeholder="White"
+                       autocomplete="off">
+
+                <label class="sr-only" for="playerBlackInput">Player white</label>
+                <input type="text" class="form-control mb-2 mr-sm-2 basicAutoComplete" id="playerBlackInput"
+                       placeholder="Black">
+
+                <button type="submit" class="btn btn-primary mb-2" onclick="onAddPlayersFilter()">Add filter</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="card mt-2">
+        <div class="card-header">
+            Filters applied
+        </div>
+
+        <div class="card-body">
+            <div>
+                <div id="filtersContainer">
+                </div>
+                <button id="clearFilterButton" type="submit" class="btn btn-primary float-right"
+                        onclick="clearFilters()">Clear filters
+                </button>
+            </div>
+            <div>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive mt-5">
+        <table class="table table-sm table-hover table-striped">
+            <thead>
+            <tr>
+                <th class="d-none d-lg-block" scope="col">Published at</th>
+                <th scope="col">Title</th>
+                <th scope="col">White</th>
+                <th scope="col">Black</th>
+            </tr>
+            </thead>
+            <tbody id="tableBody"></tbody>
+        </table>
+    </div>
+    <nav>
+        <ul class="pagination justify-content-center" id="tablePagination">
+            <li class="page-item" onclick="onPageClick(1)">
+                <a class="page-link" href="#">First
+                </a>
+            </li>
+            <li class="page-item" onclick="onPreviousPageClick()">
+                <a class="page-link" href="#">
+                    <span aria-hidden="true">&laquo;</span>
+                    <span class="sr-only">Previous</span>
+                </a>
+            </li>
+            <li class="page-item" onclick="onNextPageClick()">
+                <a class="page-link" href="#">
+                    <span aria-hidden="true">&raquo;</span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </li>
+            <li class="page-item" onclick="onLastPageClick()">
+                <a class="page-link" href="#">Last
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+</div>
+
+
+<footer class="page-footer font-small blue">
+
+    <div class="footer-copyright text-center py-3">© 2020 Copyright:
+        <a href="/"> MDBootstrap.com</a>
+    </div>
+
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/gh/xcash/bootstrap-autocomplete@v2.3.7/dist/latest/bootstrap-autocomplete.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+<script>
+    let currentPageNumber = 1 // 1-based
+    let pageSize = 30
+    let db = []
+    let currentDb = []
+    let players = {}
+    let filters = {
+        white: [],
+        black: []
+    }
+
+    $("#playerNamesFilterForm").on('submit', function (event) {
+        event.preventDefault();
+    });
+
+
+    fetch("db.json")
+        .then(res => res.json())
+        .then(res => {
+            db = currentDb = _.orderBy(res, ["date"], ["desc"])
+            let tmpPlayerNames = {}
+            db.map(video => video.game)
+                .filter(game => game)
+                .forEach(game => {
+                    tmpPlayerNames[game.w] = tmpPlayerNames[game.w] ? tmpPlayerNames[game.w] + 1 : 1
+                    tmpPlayerNames[game.b] = tmpPlayerNames[game.b] ? tmpPlayerNames[game.b] + 1 : 1
+                })
+            players = _.orderBy(Object.keys(tmpPlayerNames).map(name => {
+                return {
+                    name: name,
+                    count: tmpPlayerNames[name]
+                }
+            }), ["count"], ["desc"])
+
+        })
+        .then(value => changePage(1))
+
+    function changePage(number) {
+        currentPageNumber = number
+        draw()
+    }
+
+    function onPreviousPageClick() {
+        if (currentPageNumber > 0) {
+            changePage(currentPageNumber - 1)
+        }
+    }
+
+    function onPageClick(number) {
+        changePage(number)
+    }
+
+    function onNextPageClick() {
+        if (currentPageNumber < currentDb.length / currentPageNumber) {
+            changePage(currentPageNumber + 1)
+        }
+    }
+
+    function onLastPageClick() {
+        changePage(parseInt(currentDb.length / pageSize) + 1)
+    }
+
+    function onAddPlayersFilter() {
+        const white = document.getElementById('playerWhiteInput').value
+        const black = document.getElementById('playerBlackInput').value
+        if (/^\s*$/g.test(white) && /^\s*$/.test(black)) {
+            // do nothing
+        } else {
+            if (white) {
+                filters.white.push(white)
+            }
+            if (black) {
+                filters.black.push(black)
+            }
+            applyFilters()
+        }
+
+        document.getElementById('playerWhiteInput').value = ""
+        document.getElementById('playerBlackInput').value = ""
+    }
+
+    function clearFilters() {
+        filters = {
+            white: [],
+            black: []
+        }
+        applyFilters()
+    }
+
+    function applyFilters() {
+        currentDb = db
+            .filter(video => {
+                if (filters.white.length === 0) {
+                    return true
+                } else {
+                    const gameW = (video.game ? (video.game.w ? video.game.w : "") : "").toLowerCase()
+                    return _.some(filters.white, nameFromFilter => gameW.indexOf(nameFromFilter.toLowerCase()) >= 0)
+                }
+            })
+            .filter(video => {
+                if (filters.black.length === 0) {
+                    return true
+                } else {
+                    const gameB = (video.game ? (video.game.b ? video.game.b : "") : "").toLowerCase()
+                    return _.some(filters.black, nameFromFilter => gameB.indexOf(nameFromFilter.toLowerCase()) >= 0)
+                }
+            })
+
+        changePage(1)
+        draw()
+    }
+
+    function draw() {
+        drawFilters()
+        drawTable();
+        drawTablePagination()
+    }
+
+    function removePlayerFilter(type, name) {
+        filters[type].splice(filters[type].indexOf(name), 1)
+        applyFilters()
+        draw()
+    }
+
+    function drawFilters() {
+        const filtersContainerElement = document.getElementById("filtersContainer");
+
+        const nodes = []
+        filters.white.forEach(playerName => {
+            let filterSpanElement = document.createElement("span");
+            filterSpanElement.className = 'badge badge-light ml-1 mr-1'
+            filterSpanElement.textContent = playerName
+            filterSpanElement.onclick = () => removePlayerFilter("white", playerName)
+            nodes.push(filterSpanElement)
+        })
+
+        filters.black.forEach(playerName => {
+            let filterSpanElement = document.createElement("span");
+            filterSpanElement.className = 'badge badge-dark ml-1 mr-1'
+            filterSpanElement.textContent = playerName
+            filterSpanElement.onclick = () => removePlayerFilter("black", playerName)
+            nodes.push(filterSpanElement)
+        })
+
+        filtersContainerElement.replaceChildren(...nodes)
+    }
+
+    function drawTable() {
+        let tableBodyElement = document.getElementById("tableBody");
+        let newNodes = currentDb.slice((currentPageNumber - 1) * pageSize, (currentPageNumber) * pageSize)
+            .map(video => {
+                let tableRow = document.createElement("tr");
+
+                let publishedAtCell = document.createElement("th");
+                publishedAtCell.textContent = video.date
+                publishedAtCell.className = 'd-none d-lg-block'
+                tableRow.appendChild(publishedAtCell)
+
+                let titleCell = document.createElement("td");
+                let titleHref = document.createElement("a");
+                titleHref.href = "https://www.youtube.com/watch?v=" + video.id
+                titleHref.target = "_blank"
+                titleHref.textContent = _.truncate(video.title, {
+                    'length': 45,
+                    'omission': '...'
+                })
+                titleCell.appendChild(titleHref)
+                tableRow.appendChild(titleCell)
+
+                let whitePlayerCell = document.createElement("td");
+                if (video.game?.w) {
+                    whitePlayerCell.textContent = _.truncate(video.game.w, {
+                        'length': 40,
+                        'omission': '...'
+                    })
+                }
+                tableRow.appendChild(whitePlayerCell)
+
+                let blackPlayerCell = document.createElement("td");
+                if (video.game?.b) {
+                    blackPlayerCell.textContent = _.truncate(video.game.b, {
+                        'length': 40,
+                        'omission': '...'
+                    })
+                }
+                tableRow.appendChild(blackPlayerCell)
+                return tableRow
+            });
+
+        tableBodyElement.replaceChildren(...newNodes)
+    }
+
+    function drawTablePagination() {
+        let tablePaginationElement = document.getElementById("tablePagination");
+        let paginationItems = tablePaginationElement.children
+        Array.from(paginationItems).forEach(paginationItem => {
+            if (paginationItem.className.indexOf("page-number-selector") > 0) {
+                paginationItem.remove()
+            }
+        })
+        // <li class="page-item page-number-selector"><a class="page-link" href="#">1</a></li>
+        let pageNumbers = _.range(Math.max(1, currentPageNumber - 10), Math.min(currentDb.length / pageSize + 1, currentPageNumber + 10));
+        let idxCurrent = pageNumbers.indexOf(currentPageNumber);
+        pageNumbers
+            .slice(Math.max(idxCurrent - 6, 0), Math.max(idxCurrent - 2, 0) + 9)
+            .forEach(nr => drawSinglePaginationPage(nr, nr === currentPageNumber))
+    }
+
+    function drawSinglePaginationPage(number, active) {
+        let tablePaginationElement = document.getElementById("tablePagination");
+        let liElement = document.createElement("li");
+        liElement.className = "page-item page-number-selector " + (active ? "active" : "")
+        let href = document.createElement("a");
+        href.textContent = number
+        href.className = "page-link"
+        href.href = "#"
+        href.onclick = ev => onPageClick(number)
+        liElement.appendChild(href)
+        tablePaginationElement.insertBefore(liElement, tablePaginationElement.childNodes.item(tablePaginationElement.childNodes.length - 4))
+    }
+
+    $('.basicAutoComplete').autoComplete({
+        resolver: 'custom',
+        minLength: 2,
+        events: {
+            search: function (qry, callback) {
+                let searchResult = players
+                    .filter(player => player.name.toLowerCase().indexOf(qry.toLowerCase()) >= 0)
+                    .map(player => player.name);
+                callback(searchResult)
+            }
+        }
+    })
+</script>
+</body>
+</html>
