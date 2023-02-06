@@ -5,11 +5,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>agadmator-database</title>
+    <title>agadmator-library</title>
     <meta name="description" content="List (library) of all agadmator videos.">
     <meta name="author" content="SitePoint">
 
-    <meta property="og:title" content="agadmator-database">
+    <meta property="og:title" content="agadmator-library">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://agadmator-library.github.io">
     <meta property="og:description" content="List (library) of all agadmator videos.">
@@ -20,11 +20,25 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
           integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link defer rel="stylesheet" href="css/chessboard-1.0.0.min.css">
 </head>
+<style>
+    .page-number-selector {
+        width: 3em
+    }
+
+    #openingInput {
+        width: 100%;
+    }
+</style>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-MX1CWFQ3KN"></script>
 <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
     gtag('js', new Date());
 
     gtag('config', 'G-MX1CWFQ3KN');
@@ -34,24 +48,48 @@
 
 <div class="container">
 
+
     <div class="card mt-2">
         <div class="card-header">
             Filters
         </div>
 
         <div class="card-body">
-            <form class="form-inline" action="" id="playerNamesFilterForm">
-                <label class="sr-only" for="playerWhiteInput">Player white</label>
-                <input type="text" class="form-control mb-2 mr-sm-2 basicAutoComplete" id="playerWhiteInput"
-                       placeholder="White"
+            <form class="form-inline " action="" id="playerNamesFilterForm">
+                <label class="sr-only" for="playerSideSelect">Select side</label>
+                <select class="form-control mb-2 mr-sm-2 " id="playerSideSelect">
+                    <option value="anySide">Any side</option>
+                    <option value="white">White</option>
+                    <option value="black">Black</option>
+                </select>
+
+
+                <label class="sr-only" for="playerInput">Player</label>
+                <input type="text" class="form-control mb-2 mr-sm-2 basicPlayerAutoComplete flex-fill" id="playerInput"
+                       placeholder="Player"
                        autocomplete="off">
 
-                <label class="sr-only" for="playerBlackInput">Player white</label>
-                <input type="text" class="form-control mb-2 mr-sm-2 basicAutoComplete" id="playerBlackInput"
-                       placeholder="Black">
-
-                <button type="submit" class="btn btn-primary mb-2" onclick="onAddPlayersFilter()">Add filter</button>
             </form>
+            <form class="form-inline" action="" id="openingFilterForm">
+                <label class="sr-only" for="openingInput">Opening</label>
+                <input type="text" class="form-control mb-2 mr-sm-2 openingAutoComplete" id="openingInput"
+                       placeholder="Opening"
+                       autocomplete="off">
+            </form>
+            <div>
+                <a class="btn btn-primary" data-toggle="collapse" href="#collapsibleBoardFilter" role="button"
+                   id="collapsibleBoardFilterButton" aria-expanded="false" aria-controls="collapsibleBoardFilter">
+                    Filter by playing moves
+                </a>
+                <div class="collapse mt-1 ml-4" id="collapsibleBoardFilter" style="width: 100%">
+                    <div id="boardFilter">
+                    </div>
+                    <a class="btn btn-primary mt-1" role="button" id="backOneStep">
+                        Back one step
+                    </a>
+                </div>
+
+            </div>
         </div>
     </div>
 
@@ -64,8 +102,7 @@
             <div>
                 <div id="filtersContainer">
                 </div>
-                <button id="clearFilterButton" type="submit" class="btn btn-primary float-right"
-                        onclick="clearFilters()">Clear filters
+                <button id="clearFilterButton" type="submit" class="btn btn-primary float-right">Clear filters
                 </button>
             </div>
             <div>
@@ -73,7 +110,21 @@
         </div>
     </div>
 
-    <div class="table-responsive mt-5">
+    <div class="card mt-2">
+        <div class="card-body">
+            <div class="btn-group btn-group-sm" role="group">
+                <button id="watchOnYoutubeButton" class="btn btn-primary float-right" data-container="body"
+                        data-toggle="tooltip"
+                        data-placement="top"
+                        title="Opens YouTube playlist with currently filtered videos (up to 50)."
+                        onclick="watchOnYouTube()">Watch all on YouTube
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="table-responsive mt-1">
         <table class="table table-sm table-hover table-striped">
             <thead>
             <tr>
@@ -88,23 +139,23 @@
     </div>
     <nav>
         <ul class="pagination justify-content-center" id="tablePagination">
-            <li class="page-item" onclick="onPageClick(1)">
+            <li id="firstPageLink" class="page-item">
                 <a class="page-link" href="#">First
                 </a>
             </li>
-            <li class="page-item" onclick="onPreviousPageClick()">
+            <li id="previousPageLink" class="page-item">
                 <a class="page-link" href="#">
                     <span aria-hidden="true">&laquo;</span>
                     <span class="sr-only">Previous</span>
                 </a>
             </li>
-            <li class="page-item" onclick="onNextPageClick()">
+            <li id="nextPageLink" class="page-item">
                 <a class="page-link" href="#">
                     <span aria-hidden="true">&raquo;</span>
                     <span class="sr-only">Next</span>
                 </a>
             </li>
-            <li class="page-item" onclick="onLastPageClick()">
+            <li id="lastPageLink" class="page-item">
                 <a class="page-link" href="#">Last
                 </a>
             </li>
@@ -114,38 +165,98 @@
 </div>
 
 
-<footer class="page-footer font-small blue">
+<footer class="page-footer font-small indigo">
 
-    <div class="footer-copyright text-center py-3">© 2020 Copyright:
-        <a href="/"> MDBootstrap.com</a>
+    <div class="footer-copyright text-center py-3">This is only a fun project and not everything is properly parsed. Do
+        not trust entirely.
     </div>
-
+    <div class="footer-copyright text-center py-3">Report missing/invalid data by creating an issue on <a
+            href="https://github.com/agadmator-library/agadmator-library.github.io/issues" target="_blank">GitHub</a> or
+        by writing <a href="https://twitter.com" target="_blank">Twitter</a> post with phrase 'agadmator-library'. Do
+        not forget to add YouTube url
+    </div>
 </footer>
 
 
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.min.js"
         crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
         crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/gh/xcash/bootstrap-autocomplete@v2.3.7/dist/latest/bootstrap-autocomplete.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
-<script>
+<script defer src="js/chessboard-1.0.0.min.js"></script>
+<script type="module">
     let currentPageNumber = 1 // 1-based
     let pageSize = 30
     let db = []
     let currentDb = []
     let players = {}
     let filters = {
+        anySide: [],
         white: [],
-        black: []
+        black: [],
+        opening: [],
+        pgnFilter: ""
     }
+    let openings = []
+    let videosPgns = {}
 
     $("#playerNamesFilterForm").on('submit', function (event) {
         event.preventDefault();
     });
+    $("#openingFilterForm").on('submit', function (event) {
+        event.preventDefault();
+    });
+    $(".page-link").on('click', function (event) {
+        event.preventDefault();
+    });
+    $("#firstPageLink").on('click', () => changePage(1))
+    $("#previousPageLink").on('click', () => {
+        if (currentPageNumber > 1) {
+            changePage(currentPageNumber - 1)
+        }
+    })
+    $('#nextPageLink').on('click', () => {
+        if (currentPageNumber < currentDb.length / pageSize) {
+            changePage(currentPageNumber + 1)
+        }
+    })
+    $("#lastPageLink").on('click', () => {
+        changePage(parseInt(currentDb.length / pageSize) + 1)
+    })
 
+    $("#playerInput").on('autocomplete.select ', function (event, item) {
+        const side = document.getElementById('playerSideSelect').value
+        filters[side].push(item)
+
+        applyFilters()
+
+        setTimeout(function () {
+            document.getElementById('playerSideSelect').value = "anySide"
+            document.getElementById('playerInput').value = ""
+        }, 1)
+
+    })
+
+    $("#openingInput").on('autocomplete.select ', function (event, item) {
+        filters.opening.push(item)
+
+        applyFilters()
+
+        setTimeout(function () {
+            document.getElementById('openingInput').value = ""
+        }, 1)
+    })
+
+    $("#clearFilterButton").on('click', clearFilters)
+
+    $("#backOneStep").on('click', function () {
+        game.undo()
+        board.position(game.fen())
+        filters.pgnFilter = game.pgn() ? game.pgn() : ""
+        applyFilters()
+    })
 
     fetch("db.json")
         .then(res => res.json())
@@ -166,62 +277,69 @@
             }), ["count"], ["desc"])
 
         })
-        .then(value => changePage(1))
+        .then(value => changePage(1, true))
 
-    function changePage(number) {
+    fetch("pgns.json")
+        .then(res => res.json())
+        .then(res => videosPgns = res)
+
+    fetch("openings-slim.json")
+        .then(res => res.json())
+        .then(res => openings = res)
+
+
+    function changePage(number, forbidScroll) {
         currentPageNumber = number
         draw()
-    }
 
-    function onPreviousPageClick() {
-        if (currentPageNumber > 0) {
-            changePage(currentPageNumber - 1)
+        if (!forbidScroll) {
+            setTimeout(function () {
+                document.getElementById("lastPageLink").scrollIntoView()
+            }, 10)
         }
     }
 
-    function onPageClick(number) {
-        changePage(number)
-    }
-
-    function onNextPageClick() {
-        if (currentPageNumber < currentDb.length / currentPageNumber) {
-            changePage(currentPageNumber + 1)
+    function watchOnYouTube() {
+        const ids = currentDb.slice(0, 50)
+            .map(video => video.id)
+            .join(",");
+        if (ids === "") {
+            return
         }
-    }
-
-    function onLastPageClick() {
-        changePage(parseInt(currentDb.length / pageSize) + 1)
-    }
-
-    function onAddPlayersFilter() {
-        const white = document.getElementById('playerWhiteInput').value
-        const black = document.getElementById('playerBlackInput').value
-        if (/^\s*$/g.test(white) && /^\s*$/.test(black)) {
-            // do nothing
-        } else {
-            if (white) {
-                filters.white.push(white)
-            }
-            if (black) {
-                filters.black.push(black)
-            }
-            applyFilters()
-        }
-
-        document.getElementById('playerWhiteInput').value = ""
-        document.getElementById('playerBlackInput').value = ""
+        console.log(ids)
+        const url = `https://www.youtube.com/watch_videos?video_ids=${ids}`
+        window.open(url, '_blank').focus();
     }
 
     function clearFilters() {
         filters = {
+            anySide: [],
             white: [],
-            black: []
+            black: [],
+            opening: [],
+            pgnFilter: ""
         }
+        board.position("start")
+        game.reset()
         applyFilters()
     }
 
     function applyFilters() {
+        const pgnPrefixes = openings
+            .filter(opening => _.some(filters.opening, filterOpening => opening.name === filterOpening))
+            .map(opening => opening.moves)
+
         currentDb = db
+            .filter(video => {
+                if (filters.anySide.length === 0) {
+                    return true
+                } else {
+                    const gameW = (video.game ? (video.game.w ? video.game.w : "") : "").toLowerCase()
+                    const gameB = (video.game ? (video.game.b ? video.game.b : "") : "").toLowerCase()
+                    return _.some(filters.anySide, nameFromFilter =>
+                        gameW.indexOf(nameFromFilter.toLowerCase()) >= 0 || gameB.indexOf(nameFromFilter.toLowerCase()) >= 0)
+                }
+            })
             .filter(video => {
                 if (filters.white.length === 0) {
                     return true
@@ -238,9 +356,39 @@
                     return _.some(filters.black, nameFromFilter => gameB.indexOf(nameFromFilter.toLowerCase()) >= 0)
                 }
             })
+            .filter(video => {
+                if (pgnPrefixes.length === 0) {
+                    return true
+                }
 
-        changePage(1)
-        draw()
+                const videoPgn = videosPgns[video.id]
+                if (!videoPgn) {
+                    return false
+                }
+
+                return _.some(pgnPrefixes, pgnPrefix => videoPgn.indexOf(pgnPrefix) === 0)
+            })
+            .filter(video => {
+                if (filters.pgnFilter === "") {
+                    return true
+                }
+
+                const videoPgn = videosPgns[video.id]
+                if (!videoPgn) {
+                    return false
+                }
+
+                return videoPgn.indexOf(filters.pgnFilter) === 0
+            })
+
+        let watchOnYoutubeButton = document.getElementById('watchOnYoutubeButton');
+        if (currentDb.length > 0) {
+            watchOnYoutubeButton.classList.remove('disabled')
+        } else if (!watchOnYoutubeButton.classList.contains('disabled')) {
+            watchOnYoutubeButton.classList.add('disabled')
+        }
+
+        changePage(1, true)
     }
 
     function draw() {
@@ -255,10 +403,24 @@
         draw()
     }
 
+    function removeOpeningFilter(openingName) {
+        filters.opening.splice(filters.opening.indexOf(openingName), 1)
+        applyFilters()
+        draw()
+    }
+
     function drawFilters() {
         const filtersContainerElement = document.getElementById("filtersContainer");
 
         const nodes = []
+        filters.anySide.forEach(playerName => {
+            let filterSpanElement = document.createElement("span");
+            filterSpanElement.className = 'badge badge-secondary ml-1 mr-1'
+            filterSpanElement.textContent = `Any side: ${playerName}`
+            filterSpanElement.onclick = () => removePlayerFilter("anySide", playerName)
+            nodes.push(filterSpanElement)
+        })
+
         filters.white.forEach(playerName => {
             let filterSpanElement = document.createElement("span");
             filterSpanElement.className = 'badge badge-light ml-1 mr-1'
@@ -274,6 +436,28 @@
             filterSpanElement.onclick = () => removePlayerFilter("black", playerName)
             nodes.push(filterSpanElement)
         })
+
+        filters.opening.forEach(openingName => {
+            let filterSpanElement = document.createElement("span");
+            filterSpanElement.className = 'badge badge-info ml-1 mr-1'
+            filterSpanElement.textContent = openingName
+            filterSpanElement.onclick = () => removeOpeningFilter(openingName)
+            nodes.push(filterSpanElement)
+        })
+
+        if (filters.pgnFilter !== "") {
+            console.log("hello")
+            let filterSpanElement = document.createElement("span");
+            filterSpanElement.className = 'badge badge-info ml-1 mr-1'
+            filterSpanElement.textContent = "PGN: " + filters.pgnFilter
+            filterSpanElement.onclick = () => {
+                filters.pgnFilter = ""
+                board.position("start")
+                game.reset()
+                applyFilters()
+            }
+            nodes.push(filterSpanElement)
+        }
 
         filtersContainerElement.replaceChildren(...nodes)
     }
@@ -336,6 +520,7 @@
         let idxCurrent = pageNumbers.indexOf(currentPageNumber);
         pageNumbers
             .slice(Math.max(idxCurrent - 6, 0), Math.max(idxCurrent - 2, 0) + 9)
+            .slice(0, 9)
             .forEach(nr => drawSinglePaginationPage(nr, nr === currentPageNumber))
     }
 
@@ -345,14 +530,14 @@
         liElement.className = "page-item page-number-selector " + (active ? "active" : "")
         let href = document.createElement("a");
         href.textContent = number
-        href.className = "page-link"
+        href.className = "page-link text-center"
         href.href = "#"
-        href.onclick = ev => onPageClick(number)
+        href.onclick = ev => changePage(number)
         liElement.appendChild(href)
         tablePaginationElement.insertBefore(liElement, tablePaginationElement.childNodes.item(tablePaginationElement.childNodes.length - 4))
     }
 
-    $('.basicAutoComplete').autoComplete({
+    $('.basicPlayerAutoComplete').autoComplete({
         resolver: 'custom',
         minLength: 2,
         events: {
@@ -364,6 +549,88 @@
             }
         }
     })
+
+    $('.openingAutoComplete').autoComplete({
+        resolver: 'custom',
+        minLength: 2,
+        events: {
+            search: function (qry, callback) {
+                let searchResult = openings
+                    .filter(opening => opening.name.toLowerCase().indexOf(qry.toLowerCase()) >= 0)
+                    .map(opening => opening.name)
+                callback(searchResult)
+            }
+        }
+    })
+
+    let game = null
+    let board = null
+
+    import {Chess} from 'https://cdn.jsdelivr.net/npm/chess.js@1.0.0-beta.3/+esm'
+
+    $('#collapsibleBoardFilterButton').on('click', function () {
+        console.log("hello")
+        if (board == null) {
+            loadBoard()
+        }
+    })
+
+    function loadBoard() {
+        game = new Chess()
+
+        function onDragStart(source, piece) {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop
+            let scrollLeft = window.pageXOffset || document.documentElement.scrollLeft
+
+            window.onscroll = function () {
+                window.scrollTo(scrollLeft, scrollTop);
+            };
+
+            setTimeout(function () {
+                window.onscroll = function () {}
+            }, 3000)
+
+            // do not pick up pieces if the game is over
+            if (game.isGameOver()) return false
+
+            // only pick up pieces for the side to move
+            if ((game.turn() === 'w' && piece.search(/^b/) !== -1) ||
+                (game.turn() === 'b' && piece.search(/^w/) !== -1)) {
+                return false
+            }
+        }
+
+        function onDrop(source, target) {
+            window.onscroll = function () {}
+
+            try {
+                // see if the move is legal
+                game.move({
+                    from: source,
+                    to: target,
+                    promotion: 'q' // NOTE: always promote to a queen for example simplicity
+                })
+
+                filters.pgnFilter = game.pgn()
+                applyFilters()
+            } catch (e) {
+                return 'snapback'
+            }
+        }
+
+        const config = {
+            draggable: true,
+            position: 'start',
+            dropOffBoard: 'snapback',
+            onDragStart: onDragStart,
+            onDrop: onDrop,
+            onSnapbackEnd: () => window.onscroll = function () {},
+            onMoveEnd: () => window.onscroll = function () {}
+        }
+
+        $('#boardFilter').width(Math.min($("#collapsibleBoardFilter").width(), 400))
+        board = Chessboard('boardFilter', config)
+    }
 </script>
 </body>
 </html>
