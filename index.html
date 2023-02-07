@@ -668,6 +668,10 @@
                 })
 
                 filters.pgnFilter = game.pgn()
+                setTimeout(function (){
+                    // hack for wrong display of white O-O
+                    board.position(game.fen())
+                }, 1)
                 applyFilters()
             } catch (e) {
                 return 'snapback'
