@@ -76,6 +76,20 @@
                        placeholder="Opening"
                        autocomplete="off">
             </form>
+            <form class="form-inline" action="" id="sortByForm">
+                <label class="my-1 mr-2" for="sortBySelect">Sort by</label>
+                <select class="form-control mb-2 mr-sm-2 " id="sortBySelect">
+                    <option value="date|desc">Published at - descending</option>
+                    <option value="date|asc">Published at - ascending</option>
+                    <option value="title|desc">Title - descending</option>
+                    <option value="title|asc">Title - ascending</option>
+                    <option value="w|desc">Player white - descending</option>
+                    <option value="w|asc">Player white - ascending</option>
+                    <option value="b|desc">Player black - descending</option>
+                    <option value="b|asc">Player black - ascending</option>
+                </select>
+
+            </form>
             <div>
                 <a class="btn btn-primary" data-toggle="collapse" href="#collapsibleBoardFilter" role="button"
                    id="collapsibleBoardFilterButton" aria-expanded="false" aria-controls="collapsibleBoardFilter">
@@ -201,6 +215,7 @@
     }
     let openings = []
     let videosPgns = {}
+    let sortBy = "date|desc"
 
     $("#playerNamesFilterForm").on('submit', function (event) {
         event.preventDefault();
@@ -255,6 +270,11 @@
         game.undo()
         board.position(game.fen())
         filters.pgnFilter = game.pgn() ? game.pgn() : ""
+        applyFilters()
+    })
+
+    $('#sortBySelect').change(function (event, item){
+        sortBy = $( this ).val()
         applyFilters()
     })
 
@@ -380,6 +400,23 @@
 
                 return videoPgn.indexOf(filters.pgnFilter) === 0
             })
+
+        currentDb = _.sortBy(currentDb, function(video) {
+            if (sortBy.startsWith("date")) {
+                return video.date
+            } else if (sortBy.startsWith("title")) {
+                return video.title
+            } else if (sortBy.startsWith("w")) {
+                return (video.game ? (video.game.w ? video.game.w : "") : "").toLowerCase()
+            } else if (sortBy.startsWith("b")) {
+                return (video.game ? (video.game.b ? video.game.b : "") : "").toLowerCase()
+            } else {
+                return ""
+            }
+        })
+        if (sortBy.endsWith("desc")) {
+            currentDb.reverse()
+        }
 
         let watchOnYoutubeButton = document.getElementById('watchOnYoutubeButton');
         if (currentDb.length > 0) {
