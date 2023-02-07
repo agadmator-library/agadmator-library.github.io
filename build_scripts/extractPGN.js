@@ -62,7 +62,12 @@ function extractGames(description, fileName) {
 function parseUsingKokopu(pgn) {
     try {
         const database = pgnRead(pgn)
-        const parsedPgn = pgnWrite(database.game(0)).replaceAll(/\[.+]|\n/g, "")
+        const parsedPgn = pgnWrite(database.game(0))
+            .replaceAll("\n", " ")
+            .replaceAll(/\s{2,}/g, " ")
+            .replaceAll(/\[.+]|\n/g, "")
+            .replaceAll(/^\s+/g, "")
+
         const fen = database.game(0).finalPosition().fen()
         return {
             pgn: parsedPgn,
