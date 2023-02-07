@@ -11,7 +11,8 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 function extractGames(description, fileName) {
-    const pgnRegex = /\n\s*11?\..+\n/
+    description = description.replaceAll("\n. e4 c6 2.", "\n1. e4 c6 2.")
+    const pgnRegex = /\n\s*11?\.(?!\.).+\n/
     let matchArray = pgnRegex.exec(description)
     const games = []
 
@@ -21,7 +22,10 @@ function extractGames(description, fileName) {
             .filter(pgn => pgn !== null)
             .forEach(pgn => {
                 const fixedPgn = cleanPgn(pgn)
-                const players = extractPlayers(fileName, description, pgn)
+                let players = extractPlayers(fileName, description, pgn)
+                if (!players) {
+                    players = extractPlayersFromDescription(fileName, description)
+                }
                 const game = parseUsingKokopu(fixedPgn)
 
                 const result = {}
@@ -42,16 +46,7 @@ function extractGames(description, fileName) {
     } else {
         let players = getPlayersForFileName(fileName)
         if (!players) {
-            // try to extract using [White "PLAYER"] [Black "PLAYER"] notation
-            players = extractPlayersFromDescription(description)
-        }
-        if (!players) {
-            // search lines above pgn Here link
-            let pgnHereRegex = /\s+[pP][gG][nN]\s+[hH][eE][rR][eE]\s+http/
-            let pgnMatch = description.match(pgnHereRegex)
-            if (pgnMatch) {
-                players = extractPlayers(fileName, description, pgnMatch[0])
-            }
+            players = extractPlayersFromDescription(fileName, description)
         }
 
         if (players) {

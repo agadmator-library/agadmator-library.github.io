@@ -187,6 +187,18 @@ const playersOverrides = {
         white: "Praggnanandhaa R",
         black: "Baskaran Adhiban"
     },
+    "MNyrbGiyY3E": {
+        white: "Veselin Aleksandrov Topalov",
+        black: "Alexei Shirov"
+    },
+    "2x9tA9S5JIY": {
+        white: "Praggnanandhaa R",
+        black: "Aryan Gholami"
+    },
+    "8G9YTkHLuPg": {
+        white: "Fabiano Caruana",
+        black: "Garry Kasparov"
+    },
     "": {
         white: "",
         black: ""

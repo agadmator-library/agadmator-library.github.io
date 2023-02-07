@@ -6,9 +6,30 @@ function isValidPlayerName(name) {
         && name !== "?"
 }
 
-export function extractPlayersFromDescription(description) {
-    const regex = /\[[wW]hite\s+"(?<playerWhite>.*)"]\s*\[[bB]lack\s+"(?<playerBlack>.*)"]/
+export function extractPlayersFromDescription(fileName, description) {
+    let players = extractFromWhiteAndBlackPgnNotes(description)
+    if (!players) {
+        // search lines above pgn Here link
+        const pgnHereRegex = /\s+[pP][gG][nN]\s+(.*article.*)?[hH][eE][rR][eE]\s+http|Click here for pgn/
+        const pgnMatch = description.match(pgnHereRegex)
+        if (pgnMatch) {
+            players = extractPlayers(fileName, description, pgnMatch[0])
+        }
+    }
+    if (!players) {
+        // search lines above [FEN "....
+        const fenRegex = /\s+\[FEN\s+".*"]/
+        const fenMatch = description.match(fenRegex)
+        if (fenMatch) {
+            players = extractPlayers(fileName, description, fenMatch[0])
+        }
+    }
 
+    return players
+}
+
+function extractFromWhiteAndBlackPgnNotes(description) {
+    const regex = /\[[wW]hite\s+"(?<playerWhite>.*)"]\s*\[[bB]lack\s+"(?<playerBlack>.*)"]/
     const match = description.match(regex)
 
     if (match && match.groups && isValidPlayerName(match.groups.playerWhite) && isValidPlayerName(match.groups.playerBlack)) {
@@ -22,8 +43,8 @@ export function extractPlayersFromDescription(description) {
 
 export function extractPlayers(fileName, description, pgn) {
     let players = getPlayersForFileName(fileName)
-    if (!players) {
-        players = extractPlayersFromDescription(description)
+    if (!players && !pgn) {
+        players = extractPlayersFromDescription(fileName, description)
     }
 
     if (!players) {
