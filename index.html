@@ -127,11 +127,17 @@
     <div class="card mt-2">
         <div class="card-body">
             <div class="btn-group btn-group-sm" role="group">
-                <button id="watchOnYoutubeButton" class="btn btn-primary float-right" data-container="body"
+                <button id="watchTopOnYoutubeButton" class="btn btn-primary mr-2" data-container="body"
                         data-toggle="tooltip"
                         data-placement="top"
-                        title="Opens YouTube playlist with currently filtered videos (up to 50)."
-                        onclick="watchOnYouTube()">Watch all on YouTube
+                        title="Opens YouTube playlist with top filtered videos (up to 50).">
+                    Watch top 50 on YouTube
+                </button>
+                <button id="watchOnYoutubeButton" class="btn btn-primary" data-container="body"
+                        data-toggle="tooltip"
+                        data-placement="top"
+                        title="Opens YouTube playlist with currently visible (page) videos.">
+                    Watch visible on YouTube
                 </button>
             </div>
         </div>
@@ -273,9 +279,32 @@
         applyFilters()
     })
 
-    $('#sortBySelect').change(function (event, item){
-        sortBy = $( this ).val()
+    $('#sortBySelect').change(function (event, item) {
+        sortBy = $(this).val()
         applyFilters()
+    })
+
+    function watchIdsOnYoutube(ids) {
+        if (ids === "") {
+            return
+        }
+        const url = `https://www.youtube.com/watch_videos?video_ids=${ids}`
+        window.open(url, '_blank').focus();
+    }
+
+    $('#watchTopOnYoutubeButton').on('click', function () {
+        const ids = currentDb.slice(0, 50)
+            .map(video => video.id)
+            .join(",");
+        watchIdsOnYoutube(ids);
+    })
+
+    $('#watchOnYoutubeButton').on('click', function () {
+        const ids = currentDb.slice((currentPageNumber - 1) * pageSize, (currentPageNumber) * pageSize)
+            .map(video => video.id)
+            .join(",");
+        console.log(ids)
+        watchIdsOnYoutube(ids)
     })
 
     fetch("db.json")
@@ -317,18 +346,6 @@
                 document.getElementById("lastPageLink").scrollIntoView()
             }, 10)
         }
-    }
-
-    function watchOnYouTube() {
-        const ids = currentDb.slice(0, 50)
-            .map(video => video.id)
-            .join(",");
-        if (ids === "") {
-            return
-        }
-        console.log(ids)
-        const url = `https://www.youtube.com/watch_videos?video_ids=${ids}`
-        window.open(url, '_blank').focus();
     }
 
     function clearFilters() {
@@ -401,7 +418,7 @@
                 return videoPgn.indexOf(filters.pgnFilter) === 0
             })
 
-        currentDb = _.sortBy(currentDb, function(video) {
+        currentDb = _.sortBy(currentDb, function (video) {
             if (sortBy.startsWith("date")) {
                 return video.date
             } else if (sortBy.startsWith("title")) {
@@ -624,7 +641,8 @@
             };
 
             setTimeout(function () {
-                window.onscroll = function () {}
+                window.onscroll = function () {
+                }
             }, 3000)
 
             // do not pick up pieces if the game is over
@@ -638,7 +656,8 @@
         }
 
         function onDrop(source, target) {
-            window.onscroll = function () {}
+            window.onscroll = function () {
+            }
 
             try {
                 // see if the move is legal
@@ -661,8 +680,10 @@
             dropOffBoard: 'snapback',
             onDragStart: onDragStart,
             onDrop: onDrop,
-            onSnapbackEnd: () => window.onscroll = function () {},
-            onMoveEnd: () => window.onscroll = function () {}
+            onSnapbackEnd: () => window.onscroll = function () {
+            },
+            onMoveEnd: () => window.onscroll = function () {
+            }
         }
 
         $('#boardFilter').width(Math.min($("#collapsibleBoardFilter").width(), 400))
