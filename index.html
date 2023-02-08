@@ -303,7 +303,6 @@
         const ids = currentDb.slice((currentPageNumber - 1) * pageSize, (currentPageNumber) * pageSize)
             .map(video => video.id)
             .join(",");
-        console.log(ids)
         watchIdsOnYoutube(ids)
     })
 
@@ -500,7 +499,6 @@
         })
 
         if (filters.pgnFilter !== "") {
-            console.log("hello")
             let filterSpanElement = document.createElement("span");
             filterSpanElement.className = 'badge badge-info ml-1 mr-1'
             filterSpanElement.textContent = "PGN: " + filters.pgnFilter
@@ -623,7 +621,6 @@
     import {Chess} from 'https://cdn.jsdelivr.net/npm/chess.js@1.0.0-beta.3/+esm'
 
     $('#collapsibleBoardFilterButton').on('click', function () {
-        console.log("hello")
         if (board == null) {
             loadBoard()
         }
