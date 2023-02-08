@@ -694,7 +694,6 @@
                 }
             }, 3000)
 
-            // do not pick up pieces if the game is over
             if (game.isGameOver()) return false
 
             // only pick up pieces for the side to move
@@ -709,11 +708,10 @@
             }
 
             try {
-                // see if the move is legal
                 game.move({
                     from: source,
                     to: target,
-                    promotion: 'q' // NOTE: always promote to a queen for example simplicity
+                    promotion: 'q'
                 })
 
                 filters.pgnFilter = game.pgn()
