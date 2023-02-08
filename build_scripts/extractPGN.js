@@ -26,6 +26,7 @@ function extractGames(description, fileName) {
                 if (!players) {
                     players = extractPlayersFromDescription(fileName, description)
                 }
+                console.log(fileName)
                 const game = parseUsingKokopu(fixedPgn)
 
                 const result = {}
@@ -75,6 +76,8 @@ function parseUsingKokopu(pgn) {
         }
     } catch (e) {
         if (pgn.endsWith("1/2-1/2")) {
+            console.log(pgn)
+            console.log(e)
             return null
         }
         let tmp = parseUsingKokopu(pgn + "1/2-1/2");

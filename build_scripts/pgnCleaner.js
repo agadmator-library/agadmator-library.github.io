@@ -141,5 +141,7 @@ export default function cleanPgn(pgn) {
         .replaceAll("The sacrifice of  Knight here is not advisableas  variation appended will prove : 4Nxe5 5 Nxe5 Qh4 6 g3 Qh4 7 qe2 Qxe4 8 d4 (Ng6 though apparently a good move is not so. for after taking  rook  knight could not easily be liberated) Be7 9 Nf3 d6 10 Be3 Bg4 11 Nbd2 and we prefer  game of  first player.", "") // w8zdWaWuVvA.json
         .replaceAll("It will be noticed that if White had instead played 11 dxe5Black would have answered Bxf2 and so obtained a decisive advantage. 11", "") // w8zdWaWuVvA.json
         .replaceAll("When Mr. Rhodes sacrificed  piecehe no doubt thought that after moving Kf8 he could bring his queen's rook with grat effect to e8 or he would hardly have dared to give up so much to so formidable an opponent.", "") //w8zdWaWuVvA.json
+        .replaceAll(/[hH]e's Mid with yasuo/g, "")
+        .replaceAll(/[^\p{L}\d\.\s=+-]/gu, "")
         .replaceAll("", "")
 }
