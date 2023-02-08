@@ -376,6 +376,7 @@
     fetch("pgns.json")
         .then(res => res.json())
         .then(res => videosPgns = res)
+        .then(() => drawFilterResultsContainer())
 
     fetch("openings-slim.json")
         .then(res => res.json())
