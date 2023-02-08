@@ -20,7 +20,7 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
           integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-    <link defer rel="stylesheet" href="css/chessboard-1.0.0.min.css">
+    <link rel="stylesheet" href="css/chessboard-1.0.0.min.css">
 </head>
 <style>
     .page-number-selector {
@@ -84,11 +84,11 @@
                     <option value="w">Player white</option>
                     <option value="b">Player black</option>
                 </select>
+                <label class="sr-only" for="sortDirectionSelect">Sorting direction</label>
                 <select class="form-control mb-2 mr-sm-2 " id="sortDirectionSelect">
                     <option value="desc">Descending</option>
                     <option value="asc">Ascending</option>
                 </select>
-
             </form>
             <div>
                 <a class="btn btn-primary" data-toggle="collapse" href="#collapsibleBoardFilter" role="button"
