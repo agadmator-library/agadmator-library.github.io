@@ -40,13 +40,13 @@ fs.readdirSync(__dirname + '/../db/video-snippet').forEach(fileName => {
 })
 fs.writeFileSync(__dirname + '/../pgns.json', JSON.stringify(pgns))
 
-const openings = JSON.parse(fs.readFileSync(__dirname + '/../openings.json', {encoding: 'utf8'}))
+let openings = JSON.parse(fs.readFileSync(__dirname + '/../openings.json', {encoding: 'utf8'}))
     .filter(opening => {
         return _.some(allPgns, videoPgn => _.startsWith(videoPgn, opening.moves))
     })
     .map(opening => {
         return {
-            name: opening.name,
+            name: `${opening.eco} - ${opening.name}`,
             moves: opening.moves
         }
     })
