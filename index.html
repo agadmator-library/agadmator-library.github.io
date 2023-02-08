@@ -79,14 +79,14 @@
             <form class="form-inline" action="" id="sortByForm">
                 <label class="my-1 mr-2" for="sortBySelect">Sort by</label>
                 <select class="form-control mb-2 mr-sm-2 " id="sortBySelect">
-                    <option value="date|desc">Published at - descending</option>
-                    <option value="date|asc">Published at - ascending</option>
-                    <option value="title|desc">Title - descending</option>
-                    <option value="title|asc">Title - ascending</option>
-                    <option value="w|desc">Player white - descending</option>
-                    <option value="w|asc">Player white - ascending</option>
-                    <option value="b|desc">Player black - descending</option>
-                    <option value="b|asc">Player black - ascending</option>
+                    <option value="date">Published at</option>
+                    <option value="title">Title</option>
+                    <option value="w">Player white</option>
+                    <option value="b">Player black</option>
+                </select>
+                <select class="form-control mb-2 mr-sm-2 " id="sortDirectionSelect">
+                    <option value="desc">Descending</option>
+                    <option value="asc">Ascending</option>
                 </select>
 
             </form>
@@ -221,7 +221,8 @@
     }
     let openings = []
     let videosPgns = {}
-    let sortBy = "date|desc"
+    let sortBy = "date"
+    let sortDirection = "desc"
 
     $("#playerNamesFilterForm").on('submit', function (event) {
         event.preventDefault();
@@ -279,8 +280,13 @@
         applyFilters()
     })
 
-    $('#sortBySelect').change(function (event, item) {
+    $('#sortBySelect').change(function () {
         sortBy = $(this).val()
+        applyFilters()
+    })
+
+    $('#sortDirectionSelect').change(function () {
+        sortDirection = $(this).val()
         applyFilters()
     })
 
@@ -355,8 +361,10 @@
             opening: [],
             pgnFilter: ""
         }
-        board.position("start")
-        game.reset()
+        if (board) {
+            board.position("start")
+            game.reset()
+        }
         applyFilters()
     }
 
@@ -418,19 +426,19 @@
             })
 
         currentDb = _.sortBy(currentDb, function (video) {
-            if (sortBy.startsWith("date")) {
+            if (sortBy === "date") {
                 return video.date
-            } else if (sortBy.startsWith("title")) {
+            } else if (sortBy === "title") {
                 return video.title
-            } else if (sortBy.startsWith("w")) {
+            } else if (sortBy === "w") {
                 return (video.game ? (video.game.w ? video.game.w : "") : "").toLowerCase()
-            } else if (sortBy.startsWith("b")) {
+            } else if (sortBy === "b") {
                 return (video.game ? (video.game.b ? video.game.b : "") : "").toLowerCase()
             } else {
                 return ""
             }
         })
-        if (sortBy.endsWith("desc")) {
+        if (sortDirection == "desc") {
             currentDb.reverse()
         }
 
@@ -665,7 +673,7 @@
                 })
 
                 filters.pgnFilter = game.pgn()
-                setTimeout(function (){
+                setTimeout(function () {
                     // hack for wrong display of white O-O
                     board.position(game.fen())
                 }, 1)
