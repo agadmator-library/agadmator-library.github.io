@@ -207,11 +207,47 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
 <script defer src="js/chessboard-1.0.0.min.js"></script>
 <script type="module">
+    class Game {
+        constructor(white, black) {
+            this.white = white
+            this.black = black
+        }
+    }
+
+    class Video {
+        constructor(id, date, title, game) {
+            this.id = id
+            this.title = title
+            this.date = date
+            this.game = game
+        }
+
+        getWhite() {
+            return this.game ? this.game.white : null
+        }
+
+        getBlack() {
+            return this.game ? this.game.black : null
+        }
+
+        getWhiteOrEmpty() {
+            return _.defaultTo(this.getWhite(), "")
+        }
+
+        getBlackOrEmpty() {
+            return _.defaultTo(this.getBlack(), "")
+        }
+    }
+
     let currentPageNumber = 1 // 1-based
     let pageSize = 30
-    let db = []
-    let currentDb = []
-    let players = {}
+    let videos = []
+    let filteredVideos = []
+    /**
+     * Stores all player names with number of occurences
+     * @type {*[]}
+     */
+    let players = []
     let filters = {
         anySide: [],
         white: [],
@@ -240,12 +276,12 @@
         }
     })
     $('#nextPageLink').on('click', () => {
-        if (currentPageNumber < currentDb.length / pageSize) {
+        if (currentPageNumber < filteredVideos.length / pageSize) {
             changePage(currentPageNumber + 1)
         }
     })
     $("#lastPageLink").on('click', () => {
-        changePage(parseInt(currentDb.length / pageSize) + 1)
+        changePage(parseInt(filteredVideos.length / pageSize) + 1)
     })
 
     $("#playerInput").on('autocomplete.select ', function (event, item) {
@@ -299,14 +335,14 @@
     }
 
     $('#watchTopOnYoutubeButton').on('click', function () {
-        const ids = currentDb.slice(0, 50)
+        const ids = filteredVideos.slice(0, 50)
             .map(video => video.id)
             .join(",");
         watchIdsOnYoutube(ids);
     })
 
     $('#watchOnYoutubeButton').on('click', function () {
-        const ids = currentDb.slice((currentPageNumber - 1) * pageSize, (currentPageNumber) * pageSize)
+        const ids = filteredVideos.slice((currentPageNumber - 1) * pageSize, (currentPageNumber) * pageSize)
             .map(video => video.id)
             .join(",");
         watchIdsOnYoutube(ids)
@@ -315,20 +351,25 @@
     fetch("db.json")
         .then(res => res.json())
         .then(res => {
-            db = currentDb = _.orderBy(res, ["date"], ["desc"])
+            const toTyped = res.map(dbVideo => {
+                return new Video(dbVideo.id, dbVideo.date, dbVideo.title, dbVideo.game ? new Game(dbVideo.game.w, dbVideo.game.b) : null)
+            })
+
+            videos = filteredVideos = _.orderBy(toTyped, ["date"], ["desc"])
+
             let tmpPlayerNames = {}
-            db.map(video => video.game)
-                .filter(game => game)
-                .forEach(game => {
-                    tmpPlayerNames[game.w] = tmpPlayerNames[game.w] ? tmpPlayerNames[game.w] + 1 : 1
-                    tmpPlayerNames[game.b] = tmpPlayerNames[game.b] ? tmpPlayerNames[game.b] + 1 : 1
+            videos.filter(video => video.game)
+                .forEach(video => {
+                    tmpPlayerNames[video.getWhite()] = tmpPlayerNames[video.getWhite()] ? tmpPlayerNames[video.getWhite()] + 1 : 1
+                    tmpPlayerNames[video.getBlack()] = tmpPlayerNames[video.getBlack()] ? tmpPlayerNames[video.getBlack()] + 1 : 1
                 })
-            players = _.orderBy(Object.keys(tmpPlayerNames).map(name => {
-                return {
-                    name: name,
-                    count: tmpPlayerNames[name]
-                }
-            }), ["count"], ["desc"])
+            players = _.orderBy(Object.keys(tmpPlayerNames)
+                .map(name => {
+                    return {
+                        name: name,
+                        count: tmpPlayerNames[name]
+                    }
+                }), ["count", "name"], ["desc", "asc"])
 
         })
         .then(value => changePage(1, true))
@@ -373,13 +414,13 @@
             .filter(opening => _.some(filters.opening, filterOpening => opening.name === filterOpening))
             .map(opening => opening.moves)
 
-        currentDb = db
+        filteredVideos = videos
             .filter(video => {
                 if (filters.anySide.length === 0) {
                     return true
                 } else {
-                    const gameW = (video.game ? (video.game.w ? video.game.w : "") : "").toLowerCase()
-                    const gameB = (video.game ? (video.game.b ? video.game.b : "") : "").toLowerCase()
+                    const gameW = video.getWhiteOrEmpty().toLowerCase()
+                    const gameB = video.getBlackOrEmpty().toLowerCase()
                     return _.some(filters.anySide, nameFromFilter =>
                         gameW.indexOf(nameFromFilter.toLowerCase()) >= 0 || gameB.indexOf(nameFromFilter.toLowerCase()) >= 0)
                 }
@@ -388,7 +429,7 @@
                 if (filters.white.length === 0) {
                     return true
                 } else {
-                    const gameW = (video.game ? (video.game.w ? video.game.w : "") : "").toLowerCase()
+                    const gameW = video.getWhiteOrEmpty().toLowerCase()
                     return _.some(filters.white, nameFromFilter => gameW.indexOf(nameFromFilter.toLowerCase()) >= 0)
                 }
             })
@@ -396,7 +437,7 @@
                 if (filters.black.length === 0) {
                     return true
                 } else {
-                    const gameB = (video.game ? (video.game.b ? video.game.b : "") : "").toLowerCase()
+                    const gameB = video.getBlackOrEmpty().toLowerCase()
                     return _.some(filters.black, nameFromFilter => gameB.indexOf(nameFromFilter.toLowerCase()) >= 0)
                 }
             })
@@ -425,25 +466,25 @@
                 return videoPgn.indexOf(filters.pgnFilter) === 0
             })
 
-        currentDb = _.sortBy(currentDb, function (video) {
+        filteredVideos = _.sortBy(filteredVideos, function (video) {
             if (sortBy === "date") {
                 return video.date
             } else if (sortBy === "title") {
                 return video.title
             } else if (sortBy === "w") {
-                return (video.game ? (video.game.w ? video.game.w : "") : "").toLowerCase()
+                return _.defaultTo(video.getWhite(), "").toLowerCase()
             } else if (sortBy === "b") {
-                return (video.game ? (video.game.b ? video.game.b : "") : "").toLowerCase()
+                return _.defaultTo(video.getBlack(), "").toLowerCase()
             } else {
                 return ""
             }
         })
         if (sortDirection == "desc") {
-            currentDb.reverse()
+            filteredVideos.reverse()
         }
 
         let watchOnYoutubeButton = document.getElementById('watchOnYoutubeButton');
-        if (currentDb.length > 0) {
+        if (filteredVideos.length > 0) {
             watchOnYoutubeButton.classList.remove('disabled')
         } else if (!watchOnYoutubeButton.classList.contains('disabled')) {
             watchOnYoutubeButton.classList.add('disabled')
@@ -524,7 +565,7 @@
 
     function drawTable() {
         let tableBodyElement = document.getElementById("tableBody");
-        let newNodes = currentDb.slice((currentPageNumber - 1) * pageSize, (currentPageNumber) * pageSize)
+        let newNodes = filteredVideos.slice((currentPageNumber - 1) * pageSize, (currentPageNumber) * pageSize)
             .map(video => {
                 let tableRow = document.createElement("tr");
 
@@ -545,8 +586,8 @@
                 tableRow.appendChild(titleCell)
 
                 let whitePlayerCell = document.createElement("td");
-                if (video.game?.w) {
-                    whitePlayerCell.textContent = _.truncate(video.game.w, {
+                if (video.getWhite()) {
+                    whitePlayerCell.textContent = _.truncate(video.getWhite(), {
                         'length': 40,
                         'omission': '...'
                     })
@@ -554,8 +595,8 @@
                 tableRow.appendChild(whitePlayerCell)
 
                 let blackPlayerCell = document.createElement("td");
-                if (video.game?.b) {
-                    blackPlayerCell.textContent = _.truncate(video.game.b, {
+                if (video.getBlack()) {
+                    blackPlayerCell.textContent = _.truncate(video.getBlack(), {
                         'length': 40,
                         'omission': '...'
                     })
@@ -576,7 +617,7 @@
             }
         })
         // <li class="page-item page-number-selector"><a class="page-link" href="#">1</a></li>
-        let pageNumbers = _.range(Math.max(1, currentPageNumber - 10), Math.min(currentDb.length / pageSize + 1, currentPageNumber + 10));
+        let pageNumbers = _.range(Math.max(1, currentPageNumber - 10), Math.min(filteredVideos.length / pageSize + 1, currentPageNumber + 10));
         let idxCurrent = pageNumbers.indexOf(currentPageNumber);
         pageNumbers
             .slice(Math.max(idxCurrent - 6, 0), Math.max(idxCurrent - 2, 0) + 9)
