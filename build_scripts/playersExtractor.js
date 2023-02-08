@@ -8,22 +8,20 @@ function isValidPlayerName(name) {
 
 export function extractPlayersFromDescription(fileName, description) {
     let players = extractFromWhiteAndBlackPgnNotes(description)
-    if (!players) {
-        // search lines above pgn Here link
-        const pgnHereRegex = /\s+[pP][gG][nN]\s+(.*article.*)?[hH][eE][rR][eE]\s+http|Click here for pgn/
-        const pgnMatch = description.match(pgnHereRegex)
-        if (pgnMatch) {
-            players = extractPlayers(fileName, description, pgnMatch[0])
+    const searchAboveRegExp = [
+        /\s+[pP][gG][nN]\s+(.*article.*)?[hH][eE][rR][eE]\s+http|Click here for pgn/,
+        /\s+\[FEN\s+".*"]/,
+        new RegExp("https://chess24\.com/en/watch/live-tournaments/"),
+        /GAME here /
+    ]
+    searchAboveRegExp.forEach(regExp => {
+        if (!players) {
+            const match = description.match(regExp)
+            if (match) {
+                players = extractPlayers(fileName, description, match[0])
+            }
         }
-    }
-    if (!players) {
-        // search lines above [FEN "....
-        const fenRegex = /\s+\[FEN\s+".*"]/
-        const fenMatch = description.match(fenRegex)
-        if (fenMatch) {
-            players = extractPlayers(fileName, description, fenMatch[0])
-        }
-    }
+    })
 
     return players
 }
