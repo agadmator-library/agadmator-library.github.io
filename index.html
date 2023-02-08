@@ -470,7 +470,7 @@
             if (sortBy === "date") {
                 return video.date
             } else if (sortBy === "title") {
-                return video.title
+                return video.title.replaceAll(/[^\p{L}\d -]/gu, "").toLowerCase()
             } else if (sortBy === "w") {
                 return _.defaultTo(video.getWhite(), "").toLowerCase()
             } else if (sortBy === "b") {
@@ -479,7 +479,7 @@
                 return ""
             }
         })
-        if (sortDirection == "desc") {
+        if (sortDirection === "desc") {
             filteredVideos.reverse()
         }
 
@@ -559,6 +559,9 @@
             }
             nodes.push(filterSpanElement)
         }
+
+        $('#sortBySelect').val(sortBy)
+        $('#sortDirectionSelect').val(sortDirection)
 
         filtersContainerElement.replaceChildren(...nodes)
     }
