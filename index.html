@@ -113,14 +113,13 @@
         </div>
 
         <div class="card-body">
-            <div>
-                <div id="filtersContainer">
-                </div>
-                <button id="clearFilterButton" type="submit" class="btn btn-primary float-right">Clear filters
-                </button>
+            <div id="filtersContainer">
             </div>
-            <div>
-            </div>
+            <button id="clearFilterButton" type="submit" class="btn btn-primary float-right">Clear filters
+            </button>
+
+        </div>
+        <div id="filterResultsContainer" class="card-footer text-muted pl-3 pt-1 pb-1">
         </div>
     </div>
 
@@ -495,6 +494,7 @@
 
     function draw() {
         drawFilters()
+        drawFilterResultsContainer()
         drawTable();
         drawTablePagination()
     }
@@ -564,6 +564,16 @@
         $('#sortDirectionSelect').val(sortDirection)
 
         filtersContainerElement.replaceChildren(...nodes)
+    }
+
+    function drawFilterResultsContainer() {
+        const total = filteredVideos.length
+        const withPlayers = filteredVideos.filter(video => video.getWhite()).length
+        document.getElementById("filterResultsContainer").textContent = `Videos: ${total}, with players: ${withPlayers}`;
+        if (Object.keys(videosPgns).length > 0) {
+            const withPgns = filteredVideos.filter(video => videosPgns[video.id]).length
+            document.getElementById("filterResultsContainer").textContent += `, with moves: ${withPgns}`;
+        }
     }
 
     function drawTable() {
