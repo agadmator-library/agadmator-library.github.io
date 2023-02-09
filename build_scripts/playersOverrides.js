@@ -199,6 +199,30 @@ const playersOverrides = {
         white: "Fabiano Caruana",
         black: "Garry Kasparov"
     },
+    "swS0g07gREI": {
+        white: "Fabiano Caruana",
+        black: "Wesley So"
+    },
+    "xbbtjcqk6AI": {
+        white: "Mikhail Tal",
+        black: "Robert James Fischer"
+    },
+    "nKHKzByHOIo": {
+        white: "Magnus Carlsen",
+        black: "Maxime Vachier-Lagrave"
+    },
+    "PQlP71qj4e4": {
+        white: "Wesley So",
+        black: "Levon Aronian"
+    },
+    "XJgmRYCweBc": {
+        white: "Mikhail Tal",
+        black: "Garry Kasparov"
+    },
+    "2Rme4o0Zo6k": {
+        white: "Tigran Vartanovich Petrosian",
+        black: "Hans Ree"
+    },
     "": {
         white: "",
         black: ""

@@ -12,7 +12,7 @@ const __dirname = path.dirname(__filename);
 
 function extractGames(description, fileName) {
     description = description.replaceAll("\n. e4 c6 2.", "\n1. e4 c6 2.")
-    const pgnRegex = /\n\s*11?\.(?!\.).+\n/
+    const pgnRegex = /\n\s*(PGN: )?11?\.(?!\.).+\n/
     let matchArray = pgnRegex.exec(description)
     const games = []
 
