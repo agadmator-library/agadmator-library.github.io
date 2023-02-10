@@ -223,6 +223,18 @@ const playersOverrides = {
         white: "Tigran Vartanovich Petrosian",
         black: "Hans Ree"
     },
+    "1sFcri8BSEs": {
+        white: "Levon Aronian",
+        black: "Anish Giri"
+    },
+    "CxzBKhVaRkU": {
+        white: "Robert James Fischer",
+        black: "Samuel Reshevsky"
+    },
+    "yLOWhDJxtpA": {
+        white: "Robert James Fischer",
+        black: "Paul Keres"
+    },
     "": {
         white: "",
         black: ""
