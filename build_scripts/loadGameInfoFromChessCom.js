@@ -1,27 +1,79 @@
-import * as fs from "fs";
-import path from 'path';
-import { fileURLToPath } from 'url';
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-fs.readdirSync(__dirname + '/../db/video-games').slice(0, 5).forEach(fileName => {
-    if (!fs.existsSync(__dirname + '/../db/chess-com-games/' + fileName)) {
-        const videoGames = JSON.parse(fs.readFileSync(__dirname + '/../db/video-games/' + fileName, {encoding: 'utf8'}));
-
-        videoGames.map(async game => {
-            console.log(game.fen)
-
-            let url = 'https://www.chess.com/games/search?fen=' + encodeURIComponent(game.fen)
-
-            let result = await fetch()
-            if (!result.ok) {
-                throw "failed to fetch"
-            }
-
-           let text = await result.text();
+import * as cheerio from 'cheerio';
+import {dbGetAllIds, dbRead, dbSave, NAMESPACE_CHESS_COM, NAMESPACE_VIDEO_GAME} from "./db.js";
 
 
-            setTimeout(1000)
-        })
+let first = true
+
+async function getGamesRows(url, id) {
+    let fetchedHtml = await fetch(url)
+    if (!fetchedHtml.ok) {
+        console.log(id + " failed to fetch")
+        throw "failed to fetch"
     }
-})
+
+    let text = await fetchedHtml.text()
+    let $ = cheerio.load(text)
+    return $('tbody tr.master-games-master-game')
+}
+
+for (const id of dbGetAllIds()) {
+    if (!dbRead(NAMESPACE_CHESS_COM, id)) {
+        const game = dbRead(NAMESPACE_VIDEO_GAME, id)
+
+        if (!game || !game.fen || !game.playerWhite || !game.playerBlack) {
+            continue;
+        }
+
+        if (!first) {
+            await new Promise(r => setTimeout(r, 5000)) // 12 requests per minute
+        }
+        first = false
+
+        let url = `https://www.chess.com/games/search?p1=${game.playerWhite}&p2=${game.playerBlack}&fen=${game.fen}`
+
+        let gamesRows = await getGamesRows(url, id)
+
+        let fromFen = false
+        if (gamesRows.length === 0) {
+            await new Promise(r => setTimeout(r, 5000)) // 12 requests per minute
+            console.log(`${id} Searching using only fen`)
+            url = `https://www.chess.com/games/search?fen=${game.fen}`
+            gamesRows = await getGamesRows(url, id);
+            fromFen = true
+        }
+
+        if (gamesRows.length === 0) {
+            console.log(`${id} Game not found`)
+            dbSave(NAMESPACE_CHESS_COM, id, {
+                reason: "NOT_FOUND",
+                retrievedAt: new Date().toISOString(),
+            })
+            continue;
+        } else if (gamesRows.length > 1) {
+            console.log(`${id} More than one game found`)
+            dbSave(NAMESPACE_CHESS_COM, id, {
+                reason: "AMBIGUOUS",
+                retrievedAt: new Date().toISOString(),
+            })
+            continue;
+        }
+
+        let firstGameRow = gamesRows.first();
+
+        const chessComEntry = {
+            retrievedAt: new Date().toISOString(),
+            href: firstGameRow.find("a").first().attr("href"),
+            playerWhite: firstGameRow.find(".master-games-username")[0].firstChild.data,
+            playerBlack: firstGameRow.find(".master-games-username")[1].firstChild.data,
+            result: firstGameRow.find("td:nth-of-type(2) a.master-games-text-middle").first().attr("title"),
+            movesCount: firstGameRow.find("td:nth-of-type(3) a.master-games-text-middle").first().attr("title"),
+            year: firstGameRow.find("td:nth-of-type(4) a.master-games-text-middle").first().attr("title")
+        }
+
+        if (fromFen) {
+            console.log(chessComEntry)
+        }
+
+        dbSave(NAMESPACE_CHESS_COM, id, chessComEntry)
+    }
+}

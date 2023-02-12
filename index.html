@@ -135,11 +135,17 @@
                         title="Opens YouTube playlist with top filtered videos (up to 50).">
                     Watch top 50 on YouTube
                 </button>
-                <button id="watchOnYoutubeButton" class="btn btn-primary" data-container="body"
+                <button id="watchOnYoutubeButton" class="btn btn-primary mr-2" data-container="body"
                         data-toggle="tooltip"
                         data-placement="top"
                         title="Opens YouTube playlist with currently visible (page) videos.">
                     Watch visible on YouTube
+                </button>
+                <button id="showResultButton" class="btn btn-primary mr-2" data-container="body">
+                    Show result column
+                </button>
+                <button id="hideResultButton" class="btn btn-primary mr-2" style="display: none" data-container="body">
+                    Hide result column
                 </button>
             </div>
         </div>
@@ -154,6 +160,7 @@
                 <th scope="col">Title</th>
                 <th scope="col">White</th>
                 <th scope="col">Black</th>
+                <th scope="col" id="resultColumnHeader" style="display: none">Result</th>
             </tr>
             </thead>
             <tbody id="tableBody"></tbody>
@@ -259,8 +266,10 @@
     }
     let openings = []
     let videosPgns = {}
+    let results = {}
     let sortBy = "date"
     let sortDirection = "desc"
+    let showResult = false
 
     $("#playerNamesFilterForm").on('submit', function (event) {
         event.preventDefault();
@@ -350,6 +359,22 @@
         watchIdsOnYoutube(ids)
     })
 
+    $('#showResultButton').on('click', function () {
+        showResult = true
+        $('#resultColumnHeader').css("display", "block");
+        $('#showResultButton').css("display", "none")
+        $('#hideResultButton').css("display", "block")
+        draw()
+    })
+
+    $('#hideResultButton').on('click', function () {
+        showResult = false
+        $('#resultColumnHeader').css("display", "none");
+        $('#showResultButton').css("display", "block")
+        $('#hideResultButton').css("display", "none")
+        draw()
+    })
+
     fetch("db.json")
         .then(res => res.json())
         .then(res => {
@@ -385,6 +410,10 @@
         .then(res => res.json())
         .then(res => openings = res)
 
+    fetch("results.json")
+        .then(res => res.json())
+        .then(res => results = res)
+        .then(() => drawFilterResultsContainer())
 
     function changePage(number, forbidScroll) {
         currentPageNumber = number
@@ -578,6 +607,10 @@
             const withPgns = filteredVideos.filter(video => videosPgns[video.id]).length
             document.getElementById("filterResultsContainer").textContent += `, with moves: ${withPgns}`;
         }
+        if (Object.keys(results).length > 0) {
+            const withResults = filteredVideos.filter(video => results[video.id]).length
+            document.getElementById("filterResultsContainer").textContent += `, with results: ${withResults}`;
+        }
     }
 
     function drawTable() {
@@ -619,6 +652,14 @@
                     })
                 }
                 tableRow.appendChild(blackPlayerCell)
+
+                if (showResult) {
+                    let resultCell = document.createElement("td");
+                    if (results[video.id]) {
+                        resultCell.textContent = results[video.id]
+                    }
+                    tableRow.appendChild(resultCell)
+                }
                 return tableRow
             });
 

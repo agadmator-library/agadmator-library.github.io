@@ -1,16 +1,11 @@
-import * as fs from "fs";
 import {pgnRead, pgnWrite} from 'kokopu'
-import path from 'path';
 import cleanPgn from "./pgnCleaner.js";
-import {fileURLToPath} from 'url';
 import {extractPlayers, extractPlayersFromDescription} from "./playersExtractor.js";
 import _ from "lodash";
-import getPlayersForFileName from "./playersOverrides.js";
+import getPlayersForId from "./playersOverrides.js";
+import {dbGetAllIds, dbRead, dbSave, NAMESPACE_VIDEO_GAME, NAMESPACE_VIDEO_SNIPPET} from "./db.js";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-function extractGames(description, fileName) {
+function extractGames(description, id) {
     description = description.replaceAll("\n. e4 c6 2.", "\n1. e4 c6 2.")
     const pgnRegex = /\n\s*(PGN: )?11?\.(?!\.).+\n/
     let matchArray = pgnRegex.exec(description)
@@ -22,9 +17,9 @@ function extractGames(description, fileName) {
             .filter(pgn => pgn !== null)
             .forEach(pgn => {
                 const fixedPgn = cleanPgn(pgn)
-                let players = extractPlayers(fileName, description, pgn)
+                let players = extractPlayers(id, description, pgn)
                 if (!players) {
-                    players = extractPlayersFromDescription(fileName, description)
+                    players = extractPlayersFromDescription(id, description)
                 }
                 const game = parseUsingKokopu(fixedPgn)
 
@@ -44,9 +39,9 @@ function extractGames(description, fileName) {
                 }
             })
     } else {
-        let players = getPlayersForFileName(fileName)
+        let players = getPlayersForId(id)
         if (!players) {
-            players = extractPlayersFromDescription(fileName, description)
+            players = extractPlayersFromDescription(id, description)
         }
 
         if (players) {
@@ -87,13 +82,12 @@ function parseUsingKokopu(pgn) {
     }
 }
 
-fs.readdirSync(__dirname + '/../db/video-snippet').forEach(fileName => {
-    //if (!fs.existsSync(__dirname + '/../db/video-games/' + fileName )) {
-    const videoSnippet = JSON.parse(fs.readFileSync(__dirname + '/../db/video-snippet/' + fileName, {encoding: 'utf8'}));
+dbGetAllIds().forEach(id => {
+    const videoSnippet = dbRead(NAMESPACE_VIDEO_SNIPPET, id)
+    if (!videoSnippet) {
+        return
+    }
 
-    let games = extractGames(videoSnippet.description, fileName);
-    fs.writeFileSync(__dirname + '/../db/video-games/' + fileName, JSON.stringify(games, null, 2))
-    //}
+    let games = extractGames(videoSnippet.description, id);
+    dbSave(NAMESPACE_VIDEO_GAME, id, games[0])
 })
-
-//fs.writeFileSync(__dirname + '/../allPlayers.json', JSON.stringify(_.uniq(allPlayers).sort(), null, 2))

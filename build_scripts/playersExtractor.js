@@ -1,12 +1,12 @@
 import cleanPlayerName from "./playerNameCleaner.js";
-import getPlayersForFileName from "./playersOverrides.js";
+import getPlayersForId from "./playersOverrides.js";
 
 function isValidPlayerName(name) {
     return name
         && name !== "?"
 }
 
-export function extractPlayersFromDescription(fileName, description) {
+export function extractPlayersFromDescription(id, description) {
     let players = extractFromWhiteAndBlackPgnNotes(description)
     const searchAboveRegExp = [
         /\s+[pP][gG][nN]\s+(.*article.*)?[hH][eE][rR][eE]\s+http|Click here for pgn/,
@@ -18,7 +18,7 @@ export function extractPlayersFromDescription(fileName, description) {
         if (!players) {
             const match = description.match(regExp)
             if (match) {
-                players = extractPlayers(fileName, description, match[0])
+                players = extractPlayers(id, description, match[0])
             }
         }
     })
@@ -39,10 +39,10 @@ function extractFromWhiteAndBlackPgnNotes(description) {
     return null
 }
 
-export function extractPlayers(fileName, description, pgn) {
-    let players = getPlayersForFileName(fileName)
+export function extractPlayers(id, description, pgn) {
+    let players = getPlayersForId(id)
     if (!players && !pgn) {
-        players = extractPlayersFromDescription(fileName, description)
+        players = extractPlayersFromDescription(id, description)
     }
 
     if (!players) {
@@ -99,7 +99,7 @@ export function extractPlayers(fileName, description, pgn) {
                 black: cleanPlayerName(splitted[1])
             }
         } else {
-            console.error(`Failed to extract player names for file ${fileName}`)
+            console.error(`Failed to extract player names for ${id}`)
             console.error(description.substring(0, description.indexOf(pgn)).split("\n")
                 .filter(value => value !== "")
                 .slice(-5))

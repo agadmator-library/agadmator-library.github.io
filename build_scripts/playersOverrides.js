@@ -241,6 +241,6 @@ const playersOverrides = {
     },
 }
 
-export default function getPlayersForFileName(fileName){
-    return playersOverrides[fileName.replaceAll(".json", "")]
+export default function getPlayersForId(id){
+    return playersOverrides[id]
 }

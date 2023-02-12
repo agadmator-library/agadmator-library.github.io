@@ -1,9 +1,5 @@
 import {google} from "googleapis";
-import * as fs from "fs";
-import path from 'path';
-import { fileURLToPath } from 'url';
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+import {dbRead, dbSave, NAMESPACE_VIDEO_SNIPPET} from "./db.js";
 
 console.log("Starting downloading new movies")
 
@@ -52,12 +48,12 @@ do {
                 thumbnail: playlistItem.snippet.thumbnails,
                 videoId: playlistItem.snippet.resourceId.videoId
             }
-            const filePath = __dirname + '/../db/video-snippet/' + toSave.videoId + '.json'
-            if (!fs.existsSync(filePath)) {
-                downloadedVideosIds.push(toSave.videoId)
-                fs.writeFileSync(filePath, JSON.stringify(toSave, null, 2))
-            } else {
+
+            if (dbRead(NAMESPACE_VIDEO_SNIPPET, toSave.videoId)) {
                 reachedExisting = true
+            } else {
+                dbSave(NAMESPACE_VIDEO_SNIPPET, toSave.videoId, toSave)
+                downloadedVideosIds.push(toSave.videoId)
             }
         })
     if (!reachedExisting) {
