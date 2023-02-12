@@ -122,6 +122,7 @@ export default function cleanPlayerName(raw) {
         .replaceAll(/^Vidit Gujrathi Santosh$/g, "Vidit Santosh Gujrathi")
         .replaceAll(/^Santosh Gujrathi Vidit$/g, "Vidit Santosh Gujrathi")
         .replaceAll(/^Santosh Gurjathi Vidit$/g, "Vidit Santosh Gujrathi")
+        .replaceAll(/^Keymer Vincent$/g, "Vincent Keymer")
         .replaceAll(/^Vishvanathan Anand$/g, "Viswanathan Anand")
         .replaceAll(/^Vishwanathan Anand$/g, "Viswanathan Anand")
         .replaceAll(/^Yuri Averbakh$/g, "Yuri L Averbakh")
