@@ -90,6 +90,16 @@
                     <option value="asc">Ascending</option>
                 </select>
             </form>
+            <form class="form-inline" action="" id="resultForm">
+                <label class="my-1 mr-2" for="resultSelect">Result</label>
+                <select class="form-control mb-2 mr-sm-2 " id="resultSelect">
+                    <option value="" selected disabled hidden>choose</option>
+                    <option value="w">White</option>
+                    <option value="b">Black</option>
+                    <option value="d">Draw</option>
+                    <option value="na">n/a</option>
+                </select>
+            </form>
             <div>
                 <a class="btn btn-primary" data-toggle="collapse" href="#collapsibleBoardFilter" role="button"
                    id="collapsibleBoardFilterButton" aria-expanded="false" aria-controls="collapsibleBoardFilter">
@@ -262,6 +272,7 @@
         white: [],
         black: [],
         opening: [],
+        results: [],
         pgnFilter: ""
     }
     let openings = []
@@ -335,6 +346,16 @@
     $('#sortDirectionSelect').change(function () {
         sortDirection = $(this).val()
         applyFilters()
+    })
+
+    $('#resultSelect').change(function () {
+        if (filters.results.indexOf($(this).val()) < 0) {
+            filters.results.push($(this).val())
+        }
+        applyFilters()
+        setTimeout(function () {
+            document.getElementById('resultSelect').value = ""
+        }, 1)
     })
 
     function watchIdsOnYoutube(ids) {
@@ -432,6 +453,7 @@
             white: [],
             black: [],
             opening: [],
+            results: [],
             pgnFilter: ""
         }
         if (board) {
@@ -496,6 +518,14 @@
                 }
 
                 return videoPgn.indexOf(filters.pgnFilter) === 0
+            })
+            .filter(video => {
+                if (filters.results.length === 0) {
+                    return true
+                } else {
+                    const videoResult = results[video.id]
+                    return filters.results.indexOf(videoResult) >= 0 || !videoResult && filters.results.indexOf("na") >= 0
+                }
             })
 
         filteredVideos = _.sortBy(filteredVideos, function (video) {
@@ -592,6 +622,33 @@
             }
             nodes.push(filterSpanElement)
         }
+
+        filters.results.forEach(result => {
+            let resultText = ""
+            switch (result) {
+                case "w":
+                    resultText = "white"
+                    break
+                case "b":
+                    resultText = "black"
+                    break
+                case "d":
+                    resultText = "draw"
+                    break
+                case "na":
+                    resultText = "n/a"
+                    break
+            }
+
+            let filterSpanElement = document.createElement("span");
+            filterSpanElement.className = 'badge badge-info ml-1 mr-1'
+            filterSpanElement.textContent = `Result: ${resultText}`
+            filterSpanElement.onclick = () => {
+                filters.results.splice(filters.results.indexOf(result), 1)
+                applyFilters()
+            }
+            nodes.push(filterSpanElement)
+        })
 
         $('#sortBySelect').val(sortBy)
         $('#sortDirectionSelect').val(sortDirection)
