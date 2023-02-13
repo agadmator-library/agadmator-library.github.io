@@ -142,12 +142,11 @@ export default function cleanPgn(pgn) {
         .replaceAll("It will be noticed that if White had instead played 11 dxe5Black would have answered Bxf2 and so obtained a decisive advantage. 11", "") // w8zdWaWuVvA.json
         .replaceAll("When Mr. Rhodes sacrificed  piecehe no doubt thought that after moving Kf8 he could bring his queen's rook with grat effect to e8 or he would hardly have dared to give up so much to so formidable an opponent.", "") //w8zdWaWuVvA.json
         .replaceAll(/[hH]e's Mid with yasuo/g, "")
-        .replaceAll(/[^\p{L}\d\.\s=+-]/gu, "")
+        .replaceAll(/[^\p{L}\d.\s=+-]/gu, "")
         .replaceAll("This game created a new world record when 9 year old awonder Liang defeated gM Larry Kaufman youngest person ever to defeat a gM. 1", "")
         .replaceAll("29. Nxe3 Nxe3 30. Rh2 30 Bh3 31.", "29. Nxe3 Nxe3 30. Rh2 Bh3 31.")
         .replaceAll(" a weak move. The or Knight ought to have taken. 8", "")
         .replaceAll("This tempting but unsound move led to all his subsequent troubles. 15", "")
         .replaceAll(" In chess language this is a clean mate and is considered one of  most beautiful ever produced in actual play.", "")
         .replaceAll("28.dxe44", "28.dxe4")
-        .replaceAll("", "")
 }
