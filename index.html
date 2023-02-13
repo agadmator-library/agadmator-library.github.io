@@ -76,6 +76,22 @@
                        placeholder="Opening"
                        autocomplete="off">
             </form>
+            <form class="form-inline" action="" id="resultForm">
+                <label class="my-1 mr-2" for="resultSelect">Result</label>
+                <select class="form-control mb-2 mr-sm-2 " id="resultSelect">
+                    <option value="" selected disabled hidden>choose</option>
+                    <option value="w">White</option>
+                    <option value="b">Black</option>
+                    <option value="d">Draw</option>
+                    <option value="na">n/a</option>
+                </select>
+                <div class="form-check mb-2 mr-sm-2">
+                    <label class="form-check-label" for="b4Check">
+                        White played b4!!!
+                    </label>
+                    <input class="form-check-input" type="checkbox" id="b4Check">
+                </div>
+            </form>
             <form class="form-inline" action="" id="sortByForm">
                 <label class="my-1 mr-2" for="sortBySelect">Sort by</label>
                 <select class="form-control mb-2 mr-sm-2 " id="sortBySelect">
@@ -89,22 +105,6 @@
                     <option value="desc">Descending</option>
                     <option value="asc">Ascending</option>
                 </select>
-                <label class="my-1 mr-2" for="resultSelect">Result</label>
-                <select class="form-control mb-2 mr-sm-2 " id="resultSelect">
-                    <option value="" selected disabled hidden>choose</option>
-                    <option value="w">White</option>
-                    <option value="b">Black</option>
-                    <option value="d">Draw</option>
-                    <option value="na">n/a</option>
-                </select>
-            </form>
-            <form class="form-inline" action="" id="b4Form">
-                <div class="form-check mb-2 mr-sm-2">
-                    <label class="form-check-label" for="b4Check">
-                        White played b4!!!
-                    </label>
-                    <input class="form-check-input" type="checkbox" id="b4Check">
-                </div>
             </form>
             <div>
                 <a class="btn btn-primary" data-toggle="collapse" href="#collapsibleBoardFilter" role="button"
