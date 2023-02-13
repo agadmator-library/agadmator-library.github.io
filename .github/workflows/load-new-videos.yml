@@ -26,5 +26,5 @@ jobs:
           git config user.name github-actions
           git config user.email github-actions@github.com
           git add .
-          git commit -m "`date +'%Y-%m-%d %H:%M:%S'`"
+          git commit -m "`date +'%Y-%m-%d %H:%M:%S'`" || echo "No changes to commit"
           git push
