@@ -11,11 +11,11 @@ async function checkForUpdates() {
         return 0
     }
 
-    newIds.forEach(id => {
+    for (const id of newIds) {
         extractPgnForId(id)
-        loadInfoFromChessComForId(id)
-        loadInfoFromChesstempoForId(id)
-    })
+        await loadInfoFromChessComForId(id)
+        await loadInfoFromChesstempoForId(id)
+    }
 
     combine()
 }
