@@ -3,20 +3,13 @@ import cleanPlayerName from "./playerNameCleaner.js";
 import _ from "lodash";
 import {dbGetAllIds, dbRead, dbSave, NAMESPACE_CHESSTEMPO_COM, NAMESPACE_VIDEO_GAME} from "./db.js";
 
-let first = true
-
-for (const id of dbGetAllIds()) {
+export async function loadInfoFromChesstempoForId(id) {
     if (!dbRead(NAMESPACE_CHESSTEMPO_COM, id)) {
         const game = dbRead(NAMESPACE_VIDEO_GAME, id)
 
         if (!game || !game.fen) {
-            continue;
+            return;
         }
-
-        if (!first) {
-            await new Promise(r => setTimeout(r, 6000)) // 10 requests per minute
-        }
-        first = false
 
         const requestBody = {
             startIndex: "0",
@@ -47,7 +40,7 @@ for (const id of dbGetAllIds()) {
                 reason: "NOT_FOUND",
                 retrievedAt: new Date().toISOString(),
             })
-            continue;
+            return;
         } else if (responseBody.result.total_games > 1) {
 
             let uniqueGames = _.uniqBy(responseBody.result.games, game => game.game_id);
@@ -68,7 +61,7 @@ for (const id of dbGetAllIds()) {
                         reason: "AMBIGUOUS",
                         retrievedAt: new Date().toISOString(),
                     })
-                    continue;
+                    return;
                 }
             }
         } else {
@@ -91,5 +84,16 @@ for (const id of dbGetAllIds()) {
         }
 
         dbSave(NAMESPACE_CHESSTEMPO_COM, id, chessTempoEntry)
+    }
+}
+
+export async function loadInfoFromChesstempoForAll() {
+    let first = true
+    for (const id of dbGetAllIds()) {
+        if (!first) {
+            await new Promise(r => setTimeout(r, 6000)) // 10 requests per minute
+        }
+        first = false
+        await loadInfoFromChesstempoForId(id);
     }
 }

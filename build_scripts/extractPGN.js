@@ -82,7 +82,7 @@ function parseUsingKokopu(pgn) {
     }
 }
 
-dbGetAllIds().forEach(id => {
+export function extractPgnForId(id) {
     const videoSnippet = dbRead(NAMESPACE_VIDEO_SNIPPET, id)
     if (!videoSnippet) {
         return
@@ -90,4 +90,10 @@ dbGetAllIds().forEach(id => {
 
     let games = extractGames(videoSnippet.description, id);
     dbSave(NAMESPACE_VIDEO_GAME, id, games[0])
-})
+}
+
+export function extractPgnForAll() {
+    dbGetAllIds().forEach(id => {
+        extractPgnForId(id);
+    })
+}

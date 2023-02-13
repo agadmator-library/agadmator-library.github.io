@@ -16,12 +16,12 @@ async function getGamesRows(url, id) {
     return $('tbody tr.master-games-master-game')
 }
 
-for (const id of dbGetAllIds()) {
+export async function loadInfoFromChessComForId(id) {
     if (!dbRead(NAMESPACE_CHESS_COM, id)) {
         const game = dbRead(NAMESPACE_VIDEO_GAME, id)
 
         if (!game || !game.fen || !game.playerWhite || !game.playerBlack) {
-            continue;
+            return;
         }
 
         if (!first) {
@@ -48,14 +48,14 @@ for (const id of dbGetAllIds()) {
                 reason: "NOT_FOUND",
                 retrievedAt: new Date().toISOString(),
             })
-            continue;
+            return;
         } else if (gamesRows.length > 1) {
             console.log(`${id} More than one game found`)
             dbSave(NAMESPACE_CHESS_COM, id, {
                 reason: "AMBIGUOUS",
                 retrievedAt: new Date().toISOString(),
             })
-            continue;
+            return;
         }
 
         let firstGameRow = gamesRows.first();
@@ -75,5 +75,11 @@ for (const id of dbGetAllIds()) {
         }
 
         dbSave(NAMESPACE_CHESS_COM, id, chessComEntry)
+    }
+}
+
+async function loadInfoFromChessComForAll() {
+    for (const id of dbGetAllIds()) {
+        await loadInfoFromChessComForId(id);
     }
 }
