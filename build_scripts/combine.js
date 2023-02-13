@@ -86,6 +86,20 @@ export function combine() {
         }
     })
     fs.writeFileSync(__dirname + '/../results.json', JSON.stringify(results))
+
+    const b4 = []
+    dbGetAllIds().forEach(id => {
+        const game = dbRead(NAMESPACE_VIDEO_GAME, id)
+        if (!game || !game.pgn) {
+            return
+        }
+
+        const b4Played = /\d\.\s+b4/.test(game.pgn)
+        if (b4Played) {
+            b4.push(id)
+        }
+    })
+    fs.writeFileSync(__dirname + '/../b4.json', JSON.stringify(b4))
 }
 
 combine();

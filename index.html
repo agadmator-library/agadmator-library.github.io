@@ -89,8 +89,6 @@
                     <option value="desc">Descending</option>
                     <option value="asc">Ascending</option>
                 </select>
-            </form>
-            <form class="form-inline" action="" id="resultForm">
                 <label class="my-1 mr-2" for="resultSelect">Result</label>
                 <select class="form-control mb-2 mr-sm-2 " id="resultSelect">
                     <option value="" selected disabled hidden>choose</option>
@@ -99,6 +97,14 @@
                     <option value="d">Draw</option>
                     <option value="na">n/a</option>
                 </select>
+            </form>
+            <form class="form-inline" action="" id="b4Form">
+                <div class="form-check mb-2 mr-sm-2">
+                    <label class="form-check-label" for="b4Check">
+                        White played b4!!!
+                    </label>
+                    <input class="form-check-input" type="checkbox" id="b4Check">
+                </div>
             </form>
             <div>
                 <a class="btn btn-primary" data-toggle="collapse" href="#collapsibleBoardFilter" role="button"
@@ -275,11 +281,13 @@
         black: [],
         opening: [],
         results: [],
-        pgnFilter: ""
+        pgnFilter: "",
+        b4Played: null
     }
     let openings = []
     let videosPgns = {}
     let results = {}
+    let b4 = []
     let sortBy = "date"
     let sortDirection = "desc"
     let showResult = false
@@ -360,6 +368,16 @@
         }, 1)
     })
 
+    $('#b4Check').change(function () {
+        if ($(this).prop("checked")) {
+            filters.b4Played = true
+        } else {
+            filters.b4Played = null
+        }
+        $(this).prop("checked", false)
+        applyFilters()
+    })
+
     function watchIdsOnYoutube(ids) {
         if (ids === "") {
             return
@@ -438,6 +456,11 @@
         .then(res => results = res)
         .then(() => drawFilterResultsContainer())
 
+    fetch("b4.json")
+        .then(res => res.json())
+        .then(res => b4 = res)
+        .then(() => drawFilterResultsContainer())
+
     function changePage(number, forbidScroll) {
         currentPageNumber = number
         draw()
@@ -456,7 +479,8 @@
             black: [],
             opening: [],
             results: [],
-            pgnFilter: ""
+            pgnFilter: "",
+            b4Played: null
         }
         if (board) {
             board.position("start")
@@ -528,6 +552,13 @@
                     const videoResult = results[video.id]
                     return filters.results.indexOf(videoResult) >= 0 || !videoResult && filters.results.indexOf("na") >= 0
                 }
+            })
+            .filter(video => {
+                if (!filters.b4Played) {
+                    return true
+                }
+
+                return b4.length === 0 || b4.indexOf(video.id) >= 0
             })
 
         filteredVideos = _.sortBy(filteredVideos, function (video) {
@@ -651,6 +682,17 @@
             }
             nodes.push(filterSpanElement)
         })
+
+        if (filters.b4Played) {
+            let filterSpanElement = document.createElement("span");
+            filterSpanElement.className = 'badge badge-info ml-1 mr-1'
+            filterSpanElement.textContent = "White played b4!!!"
+            filterSpanElement.onclick = () => {
+                filters.b4Played = null
+                applyFilters()
+            }
+            nodes.push(filterSpanElement)
+        }
 
         $('#sortBySelect').val(sortBy)
         $('#sortDirectionSelect').val(sortDirection)
