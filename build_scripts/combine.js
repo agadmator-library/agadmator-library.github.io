@@ -49,12 +49,12 @@ export function combine() {
 
     let openings = JSON.parse(fs.readFileSync(__dirname + '/../openings.json', {encoding: 'utf8'}))
         .filter(opening => {
-            return _.some(allPgns, videoPgn => _.startsWith(videoPgn, opening.moves))
+            return _.some(allPgns, videoPgn => _.startsWith(videoPgn, opening.pgn))
         })
         .map(opening => {
             return {
                 name: `${opening.eco} - ${opening.name}`,
-                moves: opening.moves
+                moves: opening.pgn
             }
         })
     fs.writeFileSync(__dirname + '/../openings-slim.json', JSON.stringify(openings))
