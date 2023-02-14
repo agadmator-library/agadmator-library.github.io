@@ -235,6 +235,10 @@ const playersOverrides = {
         white: "Robert James Fischer",
         black: "Paul Keres"
     },
+    "Tpequut05U0": {
+        white: "Magnus Carlsen",
+        black: "Daniil Dubov"
+    },
     "": {
         white: "",
         black: ""
