@@ -14,11 +14,16 @@ import {
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+const resultDir = `${__dirname}/../generated`
+
+function writeResultFile(fileName, object) {
+    fs.writeFileSync(`${resultDir}/${fileName}`, JSON.stringify(object))
+}
+
 export function combine() {
     const db = []
     const pgns = {}
     const allPgns = []
-
     dbGetAllIds().forEach(id => {
         const videoSnippet = dbRead(NAMESPACE_VIDEO_SNIPPET, id)
         if (!videoSnippet) {
@@ -43,9 +48,8 @@ export function combine() {
         }
 
     })
-
-    fs.writeFileSync(__dirname + '/../db.json', JSON.stringify(db))
-    fs.writeFileSync(__dirname + '/../pgns.json', JSON.stringify(pgns))
+    writeResultFile("db.json", db)
+    writeResultFile("pgns.json", pgns)
 
     let openings = JSON.parse(fs.readFileSync(__dirname + '/../openings.json', {encoding: 'utf8'}))
         .filter(opening => {
@@ -57,8 +61,7 @@ export function combine() {
                 moves: opening.pgn
             }
         })
-    fs.writeFileSync(__dirname + '/../openings-slim.json', JSON.stringify(openings))
-
+    writeResultFile("openings-slim.json", openings)
 
     const results = {}
     dbGetAllIds().forEach(id => {
@@ -85,7 +88,7 @@ export function combine() {
             results[id] = result
         }
     })
-    fs.writeFileSync(__dirname + '/../results.json', JSON.stringify(results))
+    writeResultFile("results.json", results)
 
     const b4 = []
     dbGetAllIds().forEach(id => {
@@ -99,7 +102,7 @@ export function combine() {
             b4.push(id)
         }
     })
-    fs.writeFileSync(__dirname + '/../b4.json', JSON.stringify(b4))
+    writeResultFile("b4.json", b4)
 }
 
 combine();

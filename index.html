@@ -416,7 +416,7 @@
         draw()
     })
 
-    fetch("db.json")
+    fetch("generated/db.json")
         .then(res => res.json())
         .then(res => {
             const toTyped = res.map(dbVideo => {
@@ -442,21 +442,21 @@
         })
         .then(value => changePage(1, true))
 
-    fetch("pgns.json")
+    fetch("generated/pgns.json")
         .then(res => res.json())
         .then(res => videosPgns = res)
         .then(() => drawFilterResultsContainer())
 
-    fetch("openings-slim.json")
+    fetch("generated/openings-slim.json")
         .then(res => res.json())
         .then(res => openings = res)
 
-    fetch("results.json")
+    fetch("generated/results.json")
         .then(res => res.json())
         .then(res => results = res)
         .then(() => drawFilterResultsContainer())
 
-    fetch("b4.json")
+    fetch("generated/b4.json")
         .then(res => res.json())
         .then(res => b4 = res)
         .then(() => drawFilterResultsContainer())
