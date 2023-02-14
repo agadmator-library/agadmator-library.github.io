@@ -502,7 +502,7 @@
                     const gameW = video.getWhiteOrEmpty().toLowerCase()
                     const gameB = video.getBlackOrEmpty().toLowerCase()
                     return _.some(filters.anySide, nameFromFilter =>
-                        gameW.indexOf(nameFromFilter.toLowerCase()) >= 0 || gameB.indexOf(nameFromFilter.toLowerCase()) >= 0)
+                        gameW === nameFromFilter.toLowerCase() || gameB === nameFromFilter.toLowerCase())
                 }
             })
             .filter(video => {
@@ -510,7 +510,7 @@
                     return true
                 } else {
                     const gameW = video.getWhiteOrEmpty().toLowerCase()
-                    return _.some(filters.white, nameFromFilter => gameW.indexOf(nameFromFilter.toLowerCase()) >= 0)
+                    return _.some(filters.white, nameFromFilter => gameW === nameFromFilter.toLowerCase())
                 }
             })
             .filter(video => {
@@ -518,7 +518,7 @@
                     return true
                 } else {
                     const gameB = video.getBlackOrEmpty().toLowerCase()
-                    return _.some(filters.black, nameFromFilter => gameB.indexOf(nameFromFilter.toLowerCase()) >= 0)
+                    return _.some(filters.black, nameFromFilter => gameB === nameFromFilter.toLowerCase())
                 }
             })
             .filter(video => {
