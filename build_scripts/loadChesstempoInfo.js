@@ -24,7 +24,10 @@ export async function loadChesstempoInfoForId(id) {
         }
 
         const responseBody = await axios.postForm('https://old.chesstempo.com/requests/gameslist.php', requestBody,
-            {headers: {'content-type': 'application/x-www-form-urlencoded'}})
+            {
+                timeout: 15000,
+                headers: {'content-type': 'application/x-www-form-urlencoded'}
+            })
             .then(res => {
                 if (res.status !== 200) {
                     throw "Fail " + res.status + " " + res.statusText

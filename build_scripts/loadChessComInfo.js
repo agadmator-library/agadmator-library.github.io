@@ -5,7 +5,7 @@ import {dbRead, dbSave, NAMESPACE_CHESS_COM, NAMESPACE_VIDEO_GAME} from "./db.js
 let first = true
 
 async function getGamesRows(url, id) {
-    let fetchedHtml = await fetch(url)
+    let fetchedHtml = await fetch(url, { signal: AbortSignal.timeout(15000) })
     if (!fetchedHtml.ok) {
         console.log(id + " failed to fetch")
         throw "failed to fetch"
