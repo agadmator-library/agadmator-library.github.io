@@ -20,6 +20,36 @@ function writeResultFile(fileName, object) {
     fs.writeFileSync(`${resultDir}/${fileName}`, JSON.stringify(object))
 }
 
+function getResult(id) {
+    const chessComResult = dbRead(NAMESPACE_CHESS_COM, id)
+    const chesstempoComResult = dbRead(NAMESPACE_CHESSTEMPO_COM, id)
+
+    function translateChessComResult(text) {
+        if (text === "1-0") {
+            return "w"
+        } else if (text === "0-1") {
+            return "b"
+        } else if (text === "½-½") {
+            return "d"
+        } else {
+            return null
+        }
+    }
+
+    return chessComResult && chessComResult.result
+        ? translateChessComResult(chessComResult.result)
+        : (chesstempoComResult ? chesstempoComResult.result : null)
+}
+
+function getYear(id) {
+    const chessComResult = dbRead(NAMESPACE_CHESS_COM, id)
+    const chesstempoComResult = dbRead(NAMESPACE_CHESSTEMPO_COM, id)
+
+    return chessComResult && chessComResult.year && chessComResult.year !== "0"
+        ? chessComResult.year
+        : (chesstempoComResult && chesstempoComResult.date ? chesstempoComResult.date.substring(0, 4) : null)
+}
+
 export function combine() {
     const db = []
     const pgns = {}
@@ -39,7 +69,7 @@ export function combine() {
             date: videoSnippet.publishedAt,
             title: videoSnippet.title,
             id: videoSnippet.videoId,
-            game: game ? {w: game.playerWhite, b: game.playerBlack} : null
+            game: game ? {w: game.playerWhite, b: game.playerBlack, result: getResult(id), year: getYear(id)} : null
         })
 
         if (game && game.pgn) {
@@ -62,33 +92,6 @@ export function combine() {
             }
         })
     writeResultFile("openings-slim.json", openings)
-
-    const results = {}
-    dbGetAllIds().forEach(id => {
-        const chessComResult = dbRead(NAMESPACE_CHESS_COM, id)
-        const chesstempoComResult = dbRead(NAMESPACE_CHESSTEMPO_COM, id)
-
-        function translateChessComResult(text) {
-            if (text === "1-0") {
-                return "w"
-            } else if (text === "0-1") {
-                return "b"
-            } else if (text === "½-½") {
-                return "d"
-            } else {
-                return null
-            }
-        }
-
-        const result = chessComResult && chessComResult.result
-            ? translateChessComResult(chessComResult.result)
-            : (chesstempoComResult ? chesstempoComResult.result : null)
-
-        if (result) {
-            results[id] = result
-        }
-    })
-    writeResultFile("results.json", results)
 
     const b4 = []
     dbGetAllIds().forEach(id => {

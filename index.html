@@ -52,7 +52,8 @@
     <div class="card mt-2">
         <div class="card-header">
             Filters
-            <button class="btn btn-light float-right p-0" type="button" data-toggle="collapse" data-target="#filtersCard" aria-expanded="false" aria-controls="collapseExample">
+            <button class="btn btn-light float-right p-0" type="button" data-toggle="collapse"
+                    data-target="#filtersCard" aria-expanded="false" aria-controls="collapseExample">
                 &#x21D5;
             </button>
         </div>
@@ -129,7 +130,8 @@
     <div class="card mt-2">
         <div class="card-header">
             Filters applied
-            <button class="btn btn-light float-right p-0" type="button" data-toggle="collapse" data-target="#filtersContainerBody" aria-expanded="false" aria-controls="filtersContainerBody">
+            <button class="btn btn-light float-right p-0" type="button" data-toggle="collapse"
+                    data-target="#filtersContainerBody" aria-expanded="false" aria-controls="filtersContainerBody">
                 &#x21D5;
             </button>
         </div>
@@ -182,6 +184,7 @@
                 <th scope="col">Title</th>
                 <th scope="col">White</th>
                 <th scope="col">Black</th>
+                <th class="d-none d-lg-block" scope="col">Year</th>
                 <th scope="col" id="resultColumnHeader" style="display: none">Result</th>
             </tr>
             </thead>
@@ -241,9 +244,11 @@
 <script defer src="js/chessboard-1.0.0.min.js"></script>
 <script type="module">
     class Game {
-        constructor(white, black) {
+        constructor(white, black, result, year) {
             this.white = white
             this.black = black
+            this.result = result
+            this.year = year
         }
     }
 
@@ -292,7 +297,6 @@
     }
     let openings = []
     let videosPgns = {}
-    let results = {}
     let b4 = []
     let sortBy = "date"
     let sortDirection = "desc"
@@ -426,7 +430,10 @@
         .then(res => res.json())
         .then(res => {
             const toTyped = res.map(dbVideo => {
-                return new Video(dbVideo.id, dbVideo.date, dbVideo.title, dbVideo.game ? new Game(dbVideo.game.w, dbVideo.game.b) : null)
+                let game = dbVideo.game
+                    ? new Game(dbVideo.game.w, dbVideo.game.b, dbVideo.game.result, dbVideo.game.year)
+                    : null;
+                return new Video(dbVideo.id, dbVideo.date, dbVideo.title, game)
             })
 
             videos = filteredVideos = _.orderBy(toTyped, ["date"], ["desc"])
@@ -456,11 +463,6 @@
     fetch("generated/openings-slim.json")
         .then(res => res.json())
         .then(res => openings = res)
-
-    fetch("generated/results.json")
-        .then(res => res.json())
-        .then(res => results = res)
-        .then(() => drawFilterResultsContainer())
 
     fetch("generated/b4.json")
         .then(res => res.json())
@@ -555,7 +557,7 @@
                 if (filters.results.length === 0) {
                     return true
                 } else {
-                    const videoResult = results[video.id]
+                    const videoResult = video.game ? video.game.result : null
                     return filters.results.indexOf(videoResult) >= 0 || !videoResult && filters.results.indexOf("na") >= 0
                 }
             })
@@ -714,10 +716,8 @@
             const withPgns = filteredVideos.filter(video => videosPgns[video.id]).length
             document.getElementById("filterResultsContainer").textContent += `, with moves: ${withPgns}`;
         }
-        if (Object.keys(results).length > 0) {
-            const withResults = filteredVideos.filter(video => results[video.id]).length
-            document.getElementById("filterResultsContainer").textContent += `, with results: ${withResults}`;
-        }
+        const withResults = filteredVideos.filter(video => video.game && video.game.result).length
+        document.getElementById("filterResultsContainer").textContent += `, with results: ${withResults}`;
     }
 
     function drawTable() {
@@ -760,10 +760,17 @@
                 }
                 tableRow.appendChild(blackPlayerCell)
 
+                let yearCell = document.createElement("td");
+                yearCell.className = 'd-none d-lg-block'
+                if (video.game && video.game.year) {
+                    yearCell.textContent = video.game.year
+                }
+                tableRow.appendChild(yearCell)
+
                 if (showResult) {
                     let resultCell = document.createElement("td");
-                    if (results[video.id]) {
-                        resultCell.textContent = results[video.id]
+                    if (video.game && video.game.result) {
+                        resultCell.textContent = video.game.result
                     }
                     tableRow.appendChild(resultCell)
                 }
