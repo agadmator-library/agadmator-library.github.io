@@ -1,12 +1,12 @@
-name: Load new videos
+name: Refresh video
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '10 * * * *'
-
-env:
-  YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+    inputs:
+      videoId:
+        description: Video id or video url
+        required: true
+        type: string
 
 jobs:
   load-new-videos:
@@ -23,7 +23,9 @@ jobs:
           cache: 'npm'
           cache-dependency-path: package-lock.json
       - run: npm ci
-      - run: npm run loadNewVideos
+      - run: npm run refreshVideo
+        env:
+          VIDEO_ID: ${{ inputs.videoId }}
       - run: git config user.name github-actions
       - run: git config user.email github-actions@github.com
       - run: git add .

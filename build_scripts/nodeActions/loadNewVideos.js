@@ -1,10 +1,10 @@
-import {loadNewMovies} from "./loadNewMovies.js";
-import {loadChessComInfoForId} from "./loadChessComInfo.js";
-import {loadChesstempoInfoForId} from "./loadChesstempoInfo.js";
-import {extractPgnForId} from "./extractPGN.js";
-import {combine} from "./combine.js";
+import {loadNewMovies} from "../loadNewMovies.js";
+import {loadChessComInfoForId} from "../loadChessComInfo.js";
+import {loadChesstempoInfoForId} from "../loadChesstempoInfo.js";
+import {extractPgnForId} from "../extractPGN.js";
+import {combine} from "../combine.js";
 
-async function checkForUpdates() {
+async function loadNewVideos() {
     const newIds = await loadNewMovies();
 
     if (newIds.length === 0) {
@@ -30,5 +30,5 @@ async function checkForUpdates() {
     combine()
 }
 
-await checkForUpdates();
+await loadNewVideos();
 

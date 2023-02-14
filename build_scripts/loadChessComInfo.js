@@ -16,8 +16,8 @@ async function getGamesRows(url, id) {
     return $('tbody tr.master-games-master-game')
 }
 
-export async function loadChessComInfoForId(id) {
-    if (!dbRead(NAMESPACE_CHESS_COM, id)) {
+export async function loadChessComInfoForId(id, force) {
+    if (!dbRead(NAMESPACE_CHESS_COM, id) || force) {
         const game = dbRead(NAMESPACE_VIDEO_GAME, id)
 
         if (!game || !game.fen || !game.playerWhite || !game.playerBlack) {

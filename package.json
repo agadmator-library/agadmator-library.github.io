@@ -5,7 +5,8 @@
   "main": "build_scripts/loadNewMovies.js",
   "type": "module",
   "scripts": {
-    "checkForUpdates": "node ./build_scripts/checkForUpdates.js",
+    "loadNewVideos": "node build_scripts/nodeActions/loadNewVideos.js",
+    "refreshVideo": "node build_scripts/nodeActions/refreshVideo.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

@@ -3,8 +3,8 @@ import cleanPlayerName from "./playerNameCleaner.js";
 import _ from "lodash";
 import {dbRead, dbSave, NAMESPACE_CHESSTEMPO_COM, NAMESPACE_VIDEO_GAME} from "./db.js";
 
-export async function loadChesstempoInfoForId(id) {
-    if (!dbRead(NAMESPACE_CHESSTEMPO_COM, id)) {
+export async function loadChesstempoInfoForId(id, force) {
+    if (!dbRead(NAMESPACE_CHESSTEMPO_COM, id) || force) {
         const game = dbRead(NAMESPACE_VIDEO_GAME, id)
 
         if (!game || !game.fen) {
