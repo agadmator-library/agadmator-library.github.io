@@ -1,5 +1,5 @@
 import * as cheerio from 'cheerio';
-import {dbGetAllIds, dbRead, dbSave, NAMESPACE_CHESS_COM, NAMESPACE_VIDEO_GAME} from "./db.js";
+import {dbRead, dbSave, NAMESPACE_CHESS_COM, NAMESPACE_VIDEO_GAME} from "./db.js";
 
 
 let first = true
@@ -16,7 +16,7 @@ async function getGamesRows(url, id) {
     return $('tbody tr.master-games-master-game')
 }
 
-export async function loadInfoFromChessComForId(id) {
+export async function loadChessComInfoForId(id) {
     if (!dbRead(NAMESPACE_CHESS_COM, id)) {
         const game = dbRead(NAMESPACE_VIDEO_GAME, id)
 
@@ -75,11 +75,5 @@ export async function loadInfoFromChessComForId(id) {
         }
 
         dbSave(NAMESPACE_CHESS_COM, id, chessComEntry)
-    }
-}
-
-async function loadInfoFromChessComForAll() {
-    for (const id of dbGetAllIds()) {
-        await loadInfoFromChessComForId(id);
     }
 }

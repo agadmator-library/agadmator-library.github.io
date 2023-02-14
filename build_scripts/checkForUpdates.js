@@ -1,6 +1,6 @@
 import {loadNewMovies} from "./loadNewMovies.js";
-import {loadInfoFromChessComForId} from "./loadGameInfoFromChessCom.js";
-import {loadInfoFromChesstempoForId} from "./loadGameInfoFromChessTempo.js";
+import {loadChessComInfoForId} from "./loadChessComInfo.js";
+import {loadChesstempoInfoForId} from "./loadChesstempoInfo.js";
 import {extractPgnForId} from "./extractPGN.js";
 import {combine} from "./combine.js";
 
@@ -13,8 +13,18 @@ async function checkForUpdates() {
 
     for (const id of newIds) {
         extractPgnForId(id)
-        await loadInfoFromChessComForId(id)
-        await loadInfoFromChesstempoForId(id)
+
+        try {
+            await loadChessComInfoForId(id)
+        } catch (e) {
+            console.error(`Error loading chess.com info: ${e}`)
+        }
+
+        try {
+            await loadChesstempoInfoForId(id)
+        } catch (e) {
+            console.error(`Error loading chesstempo.com info: ${e}`)
+        }
     }
 
     combine()

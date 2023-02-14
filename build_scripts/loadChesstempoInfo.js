@@ -1,9 +1,9 @@
 import axios from 'axios';
 import cleanPlayerName from "./playerNameCleaner.js";
 import _ from "lodash";
-import {dbGetAllIds, dbRead, dbSave, NAMESPACE_CHESSTEMPO_COM, NAMESPACE_VIDEO_GAME} from "./db.js";
+import {dbRead, dbSave, NAMESPACE_CHESSTEMPO_COM, NAMESPACE_VIDEO_GAME} from "./db.js";
 
-export async function loadInfoFromChesstempoForId(id) {
+export async function loadChesstempoInfoForId(id) {
     if (!dbRead(NAMESPACE_CHESSTEMPO_COM, id)) {
         const game = dbRead(NAMESPACE_VIDEO_GAME, id)
 
@@ -84,16 +84,5 @@ export async function loadInfoFromChesstempoForId(id) {
         }
 
         dbSave(NAMESPACE_CHESSTEMPO_COM, id, chessTempoEntry)
-    }
-}
-
-export async function loadInfoFromChesstempoForAll() {
-    let first = true
-    for (const id of dbGetAllIds()) {
-        if (!first) {
-            await new Promise(r => setTimeout(r, 6000)) // 10 requests per minute
-        }
-        first = false
-        await loadInfoFromChesstempoForId(id);
     }
 }
