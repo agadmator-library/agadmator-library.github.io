@@ -96,6 +96,7 @@ export default function cleanPlayerName(raw) {
         .replaceAll(/^Maxime Lagrave$/g, "Maxime Vachier-Lagrave")
         .replaceAll(/^Maxime Lagarde$/g, "Maxime Vachier-Lagrave")
         .replaceAll(/^Mr. Hoodie Guy$/g, "Mr Hoodie Guy")
+        .replaceAll(/^NN$/g, "Mr Hoodie Guy")
         .replaceAll(/^Nodirbek$/g, "Nodirbek Abdusattorov")
         .replaceAll(/^Paul\s+Charles\s+Morphy$/g, "Paul Morphy")
         .replaceAll(/^Parham$/g, "Parham Maghsoodloo")
