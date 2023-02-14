@@ -97,5 +97,3 @@ export function extractPgnForAll() {
         extractPgnForId(id);
     })
 }
-
-extractPgnForAll()
