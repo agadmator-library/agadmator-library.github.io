@@ -42,6 +42,10 @@ function getResult(id) {
 }
 
 function getYear(id) {
+    const game = dbRead(NAMESPACE_VIDEO_GAME, id)
+    if (!game.playerWhite) {
+        return null
+    }
     const chessComResult = dbRead(NAMESPACE_CHESS_COM, id)
     const chesstempoComResult = dbRead(NAMESPACE_CHESSTEMPO_COM, id)
 
