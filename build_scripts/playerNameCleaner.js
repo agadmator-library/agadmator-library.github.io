@@ -107,6 +107,7 @@ export default function cleanPlayerName(raw) {
         .replaceAll(/^Praggnanandhaa Rameshbabu$/g, "Praggnanandhaa R")
         .replaceAll(/^Praggnanandhaa Rameshbamu$/g, "Praggnanandhaa R")
         .replaceAll(/^Rameshbabu Praggnanandhaa$/g, "Praggnanandhaa R")
+        .replaceAll(/^R Praggnanandhaa$/g, "Praggnanandhaa R")
         .replaceAll(/^Rameshbabu$/g, "Praggnanandhaa R")
         .replaceAll(/^Radoslaw Wojtaszek$/g, "Radosław Wojtaszek")
         .replaceAll(/^Rashid Nezhmetdinov$/g, "Rashid Gibiatovich Nezhmetdinov")
