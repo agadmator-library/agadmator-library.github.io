@@ -52,9 +52,12 @@
     <div class="card mt-2">
         <div class="card-header">
             Filters
+            <button class="btn btn-light float-right p-0" type="button" data-toggle="collapse" data-target="#filtersCard" aria-expanded="false" aria-controls="collapseExample">
+                &#x21D5;
+            </button>
         </div>
 
-        <div class="card-body">
+        <div class="card-body collapse show" id="filtersCard">
             <form class="form-inline " action="" id="playerNamesFilterForm">
                 <label class="sr-only" for="playerSideSelect">Select side</label>
                 <select class="form-control mb-2 mr-sm-2 " id="playerSideSelect">
@@ -126,9 +129,12 @@
     <div class="card mt-2">
         <div class="card-header">
             Filters applied
+            <button class="btn btn-light float-right p-0" type="button" data-toggle="collapse" data-target="#filtersContainerBody" aria-expanded="false" aria-controls="filtersContainerBody">
+                &#x21D5;
+            </button>
         </div>
 
-        <div class="card-body">
+        <div class="card-body collapse show" id="filtersContainerBody">
             <div id="filtersContainer">
             </div>
             <button id="clearFilterButton" type="submit" class="btn btn-primary float-right">Clear filters
