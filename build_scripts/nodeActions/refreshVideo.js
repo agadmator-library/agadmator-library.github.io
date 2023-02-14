@@ -9,7 +9,7 @@ async function refreshVideo() {
 
     if (videoId && videoId.indexOf("/") >= 0) {
         const url = new URL(videoId);
-        videoId = url.searchParams.v
+        videoId = url.searchParams.get("v")
     }
 
     if (!videoId) {
