@@ -103,6 +103,7 @@
                     <option value="title">Title</option>
                     <option value="w">Player white</option>
                     <option value="b">Player black</option>
+                    <option value="year">Year</option>
                 </select>
                 <label class="sr-only" for="sortDirectionSelect">Sorting direction</label>
                 <select class="form-control mb-2 mr-sm-2 " id="sortDirectionSelect">
@@ -575,9 +576,11 @@
             } else if (sortBy === "title") {
                 return video.title.replaceAll(/[^\p{L}\d -]/gu, "").toLowerCase()
             } else if (sortBy === "w") {
-                return _.defaultTo(video.getWhite(), "").toLowerCase()
+                return video.getWhiteOrEmpty().toLowerCase()
             } else if (sortBy === "b") {
-                return _.defaultTo(video.getBlack(), "").toLowerCase()
+                return video.getBlackOrEmpty().toLowerCase()
+            } else if (sortBy === "year") {
+                return video.game && video.game.year ? video.game.year : ""
             } else {
                 return ""
             }
