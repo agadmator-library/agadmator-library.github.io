@@ -25,20 +25,34 @@ function getResult(id) {
     const chesstempoComResult = dbRead(NAMESPACE_CHESSTEMPO_COM, id)
 
     function translateChessComResult(text) {
-        if (text === "1-0") {
-            return "w"
-        } else if (text === "0-1") {
-            return "b"
-        } else if (text === "½-½") {
-            return "d"
-        } else {
-            return null
+        switch (text) {
+            case "1-0":
+                return 1
+            case "0-1":
+                return -1
+            case "½-½":
+                return 0
+            default:
+                return null
+        }
+    }
+
+    function translateChesstempoComResult(text) {
+        switch (text) {
+            case "w":
+                return 1
+            case "b":
+                return -1
+            case "d":
+                return 0
+            default:
+                return null
         }
     }
 
     return chessComResult && chessComResult.result
         ? translateChessComResult(chessComResult.result)
-        : (chesstempoComResult ? chesstempoComResult.result : null)
+        : (chesstempoComResult ? translateChesstempoComResult(chesstempoComResult.result) : null)
 }
 
 function getYear(id) {
@@ -50,12 +64,19 @@ function getYear(id) {
     const chesstempoComResult = dbRead(NAMESPACE_CHESSTEMPO_COM, id)
 
     return chessComResult && chessComResult.year && chessComResult.year !== "0"
-        ? chessComResult.year
-        : (chesstempoComResult && chesstempoComResult.date ? chesstempoComResult.date.substring(0, 4) : null)
+        ? parseInt(chessComResult.year)
+        : (chesstempoComResult && chesstempoComResult.date ? parseInt(chesstempoComResult.date.substring(0, 4)) : null)
+}
+
+function removeNulls(obj) {
+    return Object.fromEntries(Object.entries(obj).filter(([_, v]) => v != null));
 }
 
 export function combine() {
-    const db = []
+    const db = {
+        players: [],
+        videos: []
+    }
     const pgns = {}
     const allPgns = []
     dbGetAllIds().forEach(id => {
@@ -69,12 +90,21 @@ export function combine() {
             game = null
         }
 
-        db.push({
-            date: videoSnippet.publishedAt,
-            title: videoSnippet.title,
+        let wId = null
+        if (game && game.playerWhite) {
+            wId = db.players.includes(game.playerWhite) ? db.players.indexOf(game.playerWhite) : db.players.push(game.playerWhite)
+        }
+        let bId = null
+        if(game && game.playerBlack) {
+            bId = db.players.includes(game.playerBlack) ? db.players.indexOf(game.playerBlack) : db.players.push(game.playerBlack)
+        }
+
+        db.videos.push(removeNulls({
+            d: new Date(videoSnippet.publishedAt).getTime() / 1000,
+            t: videoSnippet.title,
             id: videoSnippet.videoId,
-            game: game ? {w: game.playerWhite, b: game.playerBlack, result: getResult(id), year: getYear(id)} : null
-        })
+            g: game ? removeNulls({w: wId, b: bId, r: getResult(id), y: getYear(id)}) : null
+        }))
 
         if (game && game.pgn) {
             pgns[videoSnippet.videoId] = game.pgn

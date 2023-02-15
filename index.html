@@ -430,11 +430,20 @@
     fetch("generated/db.json")
         .then(res => res.json())
         .then(res => {
-            const toTyped = res.map(dbVideo => {
-                let game = dbVideo.game
-                    ? new Game(dbVideo.game.w, dbVideo.game.b, dbVideo.game.result, dbVideo.game.year)
+            function decodeResult(result) {
+                switch (result) {
+                    case 1: return "w"
+                    case 0: return "d"
+                    case -1: return "b"
+                    default: return null
+                }
+            }
+
+            const toTyped = res.videos.map(dbVideo => {
+                let game = dbVideo.g
+                    ? new Game(res.players[dbVideo.g.w], res.players[dbVideo.g.b], decodeResult(dbVideo.g.r), dbVideo.g.y)
                     : null;
-                return new Video(dbVideo.id, dbVideo.date, dbVideo.title, game)
+                return new Video(dbVideo.id, new Date(dbVideo.d * 1000), dbVideo.t, game)
             })
 
             videos = filteredVideos = _.orderBy(toTyped, ["date"], ["desc"])
@@ -730,7 +739,7 @@
                 let tableRow = document.createElement("tr");
 
                 let publishedAtCell = document.createElement("th");
-                publishedAtCell.textContent = video.date
+                publishedAtCell.textContent = video.date.toISOString()
                 publishedAtCell.className = 'd-none d-lg-block'
                 tableRow.appendChild(publishedAtCell)
 
