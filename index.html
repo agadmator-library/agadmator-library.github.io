@@ -67,12 +67,18 @@
                     <option value="black">Black</option>
                 </select>
 
+                <label class="sr-only" for="playerResultSelect">Player result</label>
+                <select class="form-control mb-2 mr-sm-2 d-none d-lg-block" id="playerResultSelect">
+                    <option value="" selected>Any outcome</option>
+                    <option value="won">Won</option>
+                    <option value="lost">Lost</option>
+                    <option value="draw">Draw</option>
+                </select>
 
                 <label class="sr-only" for="playerInput">Player</label>
                 <input type="text" class="form-control mb-2 mr-sm-2 basicPlayerAutoComplete flex-fill" id="playerInput"
                        placeholder="Player"
                        autocomplete="off">
-
             </form>
             <form class="form-inline" action="" id="openingFilterForm">
                 <label class="sr-only" for="openingInput">Opening</label>
@@ -329,13 +335,34 @@
 
     $("#playerInput").on('autocomplete.select ', function (event, item) {
         const side = document.getElementById('playerSideSelect').value
-        filters[side].push(item)
+        const filter = {
+            playerName: item,
+            playerResult: document.getElementById('playerResultSelect').value,
+            testWhite: function (video) {
+                return video.getWhiteOrEmpty().toLowerCase() === this.playerName.toLowerCase()
+                    && (this.playerResult === "" || (video.game.result && (
+                        video.game.result === "w" && this.playerResult === "won"
+                        || video.game.result === "b" && this.playerResult === "lost"
+                        || video.game.result === "d" && this.playerResult === "draw"
+                    )))
+            },
+            testBlack: function (video) {
+                return video.getBlackOrEmpty().toLowerCase() === this.playerName.toLowerCase()
+                    && (this.playerResult === "" || (video.game.result && (
+                        video.game.result === "w" && this.playerResult === "lost"
+                        || video.game.result === "b" && this.playerResult === "won"
+                        || video.game.result === "d" && this.playerResult === "draw"
+                    )))
+            }
+        }
+        filters[side].push(filter)
 
         applyFilters()
 
         setTimeout(function () {
             document.getElementById('playerSideSelect').value = "anySide"
             document.getElementById('playerInput').value = ""
+            document.getElementById('playerResultSelect').value = ""
         }, 1)
 
     })
@@ -432,10 +459,14 @@
         .then(res => {
             function decodeResult(result) {
                 switch (result) {
-                    case 1: return "w"
-                    case 0: return "d"
-                    case -1: return "b"
-                    default: return null
+                    case 1:
+                        return "w"
+                    case 0:
+                        return "d"
+                    case -1:
+                        return "b"
+                    default:
+                        return null
                 }
             }
 
@@ -517,26 +548,21 @@
                 if (filters.anySide.length === 0) {
                     return true
                 } else {
-                    const gameW = video.getWhiteOrEmpty().toLowerCase()
-                    const gameB = video.getBlackOrEmpty().toLowerCase()
-                    return _.some(filters.anySide, nameFromFilter =>
-                        gameW === nameFromFilter.toLowerCase() || gameB === nameFromFilter.toLowerCase())
+                    return _.some(filters.anySide, filter => filter.testWhite(video) || filter.testBlack(video))
                 }
             })
             .filter(video => {
                 if (filters.white.length === 0) {
                     return true
                 } else {
-                    const gameW = video.getWhiteOrEmpty().toLowerCase()
-                    return _.some(filters.white, nameFromFilter => gameW === nameFromFilter.toLowerCase())
+                    return _.some(filters.white, filter => filter.testWhite(video))
                 }
             })
             .filter(video => {
                 if (filters.black.length === 0) {
                     return true
                 } else {
-                    const gameB = video.getBlackOrEmpty().toLowerCase()
-                    return _.some(filters.black, nameFromFilter => gameB === nameFromFilter.toLowerCase())
+                    return _.some(filters.black, filter => filter.testBlack(video))
                 }
             })
             .filter(video => {
@@ -631,27 +657,36 @@
         const filtersContainerElement = document.getElementById("filtersContainer");
 
         const nodes = []
-        filters.anySide.forEach(playerName => {
+        filters.anySide.forEach(filter => {
             let filterSpanElement = document.createElement("span");
             filterSpanElement.className = 'badge badge-secondary ml-1 mr-1'
-            filterSpanElement.textContent = `Any side: ${playerName}`
-            filterSpanElement.onclick = () => removePlayerFilter("anySide", playerName)
+            filterSpanElement.textContent = `Any side: ${filter.playerName}`
+            if (filter.playerResult) {
+                filterSpanElement.textContent += ` | ${filter.playerResult}`
+            }
+            filterSpanElement.onclick = () => removePlayerFilter("anySide", filter)
             nodes.push(filterSpanElement)
         })
 
-        filters.white.forEach(playerName => {
+        filters.white.forEach(filter => {
             let filterSpanElement = document.createElement("span");
             filterSpanElement.className = 'badge badge-light ml-1 mr-1'
-            filterSpanElement.textContent = playerName
-            filterSpanElement.onclick = () => removePlayerFilter("white", playerName)
+            filterSpanElement.textContent = filter.playerName
+            if (filter.playerResult) {
+                filterSpanElement.textContent += ` | ${filter.playerResult}`
+            }
+            filterSpanElement.onclick = () => removePlayerFilter("white", filter)
             nodes.push(filterSpanElement)
         })
 
-        filters.black.forEach(playerName => {
+        filters.black.forEach(filter => {
             let filterSpanElement = document.createElement("span");
             filterSpanElement.className = 'badge badge-dark ml-1 mr-1'
-            filterSpanElement.textContent = playerName
-            filterSpanElement.onclick = () => removePlayerFilter("black", playerName)
+            filterSpanElement.textContent = filter.playerName
+            if (filter.playerResult) {
+                filterSpanElement.textContent += ` | ${filter.playerResult}`
+            }
+            filterSpanElement.onclick = () => removePlayerFilter("black", filter)
             nodes.push(filterSpanElement)
         })
 
