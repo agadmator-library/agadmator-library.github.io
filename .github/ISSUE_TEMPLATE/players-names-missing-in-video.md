@@ -7,13 +7,13 @@ assignees: ''
 
 ---
 
-**Video id or youtube url**
+## Video id or youtube url
 
 
-**Player white**
+## Player white
 
 
-**Player black**
+## Player black
 
 
-** PGN (if available) **
+## PGN (if available)

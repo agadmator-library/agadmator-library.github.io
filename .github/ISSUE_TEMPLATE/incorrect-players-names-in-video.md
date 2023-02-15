@@ -7,17 +7,17 @@ assignees: ''
 
 ---
 
-** Video id or youtube url **
+## Video id or youtube url
 http:// or video id
 
-** Player white (current) **
+## Player white (current)
 ...
 
-** Player black (current) **
+## Player black (current)
 ...
 
-** Player white (correct) **
+## Player white (correct)
 ...
 
-** Player black (correct) **
+## Player black (correct)
 ...
