@@ -92,11 +92,11 @@ export function combine() {
 
         let wId = null
         if (game && game.playerWhite) {
-            wId = db.players.includes(game.playerWhite) ? db.players.indexOf(game.playerWhite) : db.players.push(game.playerWhite)
+            wId = db.players.indexOf(game.playerWhite) >= 0 ? db.players.indexOf(game.playerWhite) : db.players.push(game.playerWhite) - 1
         }
         let bId = null
         if(game && game.playerBlack) {
-            bId = db.players.includes(game.playerBlack) ? db.players.indexOf(game.playerBlack) : db.players.push(game.playerBlack)
+            bId = db.players.indexOf(game.playerBlack) >= 0 ? db.players.indexOf(game.playerBlack) : db.players.push(game.playerBlack) - 1
         }
 
         db.videos.push(removeNulls({
