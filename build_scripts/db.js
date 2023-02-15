@@ -32,6 +32,12 @@ function assertNamespace(namespace) {
     }
 }
 
+function assertRequired(obj) {
+    if (obj === null || obj === undefined) {
+        throw "null or undefined object is not allowed"
+    }
+}
+
 export function dbGetAllIds() {
     return fs.readdirSync(getDir())
         .map(fileName => fileName.replaceAll(".json", ""))
@@ -39,6 +45,7 @@ export function dbGetAllIds() {
 
 export function dbRead(namespace, id) {
     assertNamespace(namespace)
+    assertRequired(id)
 
     let filePath = getFilePath(id);
     if (!fs.existsSync(filePath)) {
@@ -51,6 +58,8 @@ export function dbRead(namespace, id) {
 
 export function dbSave(namespace, id, object) {
     assertNamespace(namespace)
+    assertRequired(id)
+    assertRequired(object)
 
     let filePath = getFilePath(id)
     let toSave = {
