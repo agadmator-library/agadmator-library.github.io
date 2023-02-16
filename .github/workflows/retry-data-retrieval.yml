@@ -1,9 +1,9 @@
-name: Load missing data
+name: Retry data retrieval
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: '17 9 * * *'
+    - cron: '43 9 * * *'
 
 jobs:
   refresh-video:
@@ -20,7 +20,7 @@ jobs:
           cache: 'npm'
           cache-dependency-path: package-lock.json
       - run: npm ci
-      - run: npm run loadMissingData
+      - run: npm run retryDataRetrieval
       - run: git config user.name github-actions
       - run: git config user.email github-actions@github.com
       - run: git add .

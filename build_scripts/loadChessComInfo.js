@@ -2,8 +2,6 @@ import * as cheerio from 'cheerio';
 import {dbRead, dbSave, NAMESPACE_CHESS_COM, NAMESPACE_VIDEO_GAME} from "./db.js";
 
 
-let first = true
-
 async function getGamesRows(url, id) {
     let fetchedHtml = await fetch(url, { signal: AbortSignal.timeout(15000) })
     if (!fetchedHtml.ok) {
@@ -24,18 +22,13 @@ export async function loadChessComInfoForId(id, force) {
             return;
         }
 
-        if (!first) {
-            await new Promise(r => setTimeout(r, 5000)) // 12 requests per minute
-        }
-        first = false
-
         let url = `https://www.chess.com/games/search?p1=${game.playerWhite}&p2=${game.playerBlack}&fen=${game.fen}`
 
         let gamesRows = await getGamesRows(url, id)
 
         let fromFen = false
         if (gamesRows.length === 0) {
-            await new Promise(r => setTimeout(r, 5000)) // 12 requests per minute
+            await new Promise(r => setTimeout(r, 2000))
             console.log(`${id} Searching using only fen`)
             url = `https://www.chess.com/games/search?fen=${game.fen}`
             gamesRows = await getGamesRows(url, id);
