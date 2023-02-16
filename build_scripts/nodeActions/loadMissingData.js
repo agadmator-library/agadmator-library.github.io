@@ -39,7 +39,6 @@ async function loadMissingChesstempoInfo() {
     }
 }
 
-await loadMissingChessComInfo()
-await loadMissingChesstempoInfo()
+await Promise.all([loadMissingChessComInfo(), loadMissingChesstempoInfo()])
 
 combine()
