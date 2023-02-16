@@ -86,6 +86,12 @@
                        placeholder="Opening"
                        autocomplete="off">
             </form>
+            <form class="form-inline" action="" id="titleFilterForm">
+                <label class="sr-only" for="openingInput">Title contains</label>
+                <input type="text" class="form-control mb-2 mr-sm-2 flex-fill" id="titleInput"
+                       placeholder="Title contains"
+                       autocomplete="off">
+            </form>
             <form class="form-inline" action="" id="resultForm">
                 <label class="sr-only" for="resultSelect">Result</label>
                 <select class="form-control mb-2 mr-sm-2 " id="resultSelect">
@@ -300,6 +306,7 @@
         opening: [],
         results: [],
         pgnFilter: "",
+        title: "",
         b4Played: null
     }
     let openings = []
@@ -375,6 +382,11 @@
         setTimeout(function () {
             document.getElementById('openingInput').value = ""
         }, 1)
+    })
+
+    document.getElementById('titleInput').addEventListener('input', event => {
+        filters.title = event.target.value
+        applyFilters()
     })
 
     $("#clearFilterButton").on('click', clearFilters)
@@ -529,6 +541,7 @@
             opening: [],
             results: [],
             pgnFilter: "",
+            title: "",
             b4Played: null
         }
         if (board) {
@@ -588,6 +601,13 @@
                 }
 
                 return videoPgn.indexOf(filters.pgnFilter) === 0
+            })
+            .filter(video => {
+                if (!filters.title) {
+                    return true
+                }
+
+                return video.title.toLowerCase().includes(filters.title.toLowerCase())
             })
             .filter(video => {
                 if (filters.results.length === 0) {
@@ -706,6 +726,18 @@
                 filters.pgnFilter = ""
                 board.position("start")
                 game.reset()
+                applyFilters()
+            }
+            nodes.push(filterSpanElement)
+        }
+
+        if (filters.title !== "") {
+            let filterSpanElement = document.createElement("span");
+            filterSpanElement.className = 'badge badge-info ml-1 mr-1'
+            filterSpanElement.textContent = "Title: " + filters.title
+            filterSpanElement.onclick = () => {
+                filters.title = ""
+                document.getElementById('titleInput').value = ""
                 applyFilters()
             }
             nodes.push(filterSpanElement)
