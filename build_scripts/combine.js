@@ -10,6 +10,7 @@ import {
     NAMESPACE_VIDEO_GAME,
     NAMESPACE_VIDEO_SNIPPET
 } from './db.js'
+import {pgnRead} from 'kokopu'
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -114,6 +115,27 @@ export function combine() {
     })
     writeResultFile("db.json", db)
     writeResultFile("pgns.json", pgns)
+
+    const positions = {
+        videos: []
+    }
+    Object.keys(pgns).forEach(videoId => {
+        const videoArrayId = positions.videos.push(videoId) - 1
+        const pgn = pgns[videoId]
+        pgnRead(pgn + " 1-0")
+            .game(0)
+            .mainVariation()
+            .nodes()
+            .slice(2, 14)
+            .forEach(node => {
+                const fen = node.position().fen().replaceAll(/ - \d+ \d+/g, "")
+                if (!positions[fen]) {
+                    positions[fen] = []
+                }
+                positions[fen].push(videoArrayId)
+            })
+    })
+    writeResultFile("positions.json", positions)
 
     let openings = JSON.parse(fs.readFileSync(__dirname + '/../openings.json', {encoding: 'utf8'}))
         .filter(opening => {

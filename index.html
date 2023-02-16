@@ -129,6 +129,14 @@
                     Filter by playing moves
                 </a>
                 <div class="collapse mt-1 ml-4" id="collapsibleBoardFilter" style="width: 100%">
+                    <form class="form-inline" action="" id="transpositionForm">
+                        <div class="form-check mb-2 mr-sm-2">
+                            <label class="form-check-label" for="transpositionCheck">
+                                Include transpositions
+                            </label>
+                            <input class="form-check-input ml-2" type="checkbox" id="transpositionCheck">
+                        </div>
+                    </form>
                     <div id="boardFilter">
                     </div>
                     <a class="btn btn-primary mt-1" role="button" id="backOneStep">
@@ -311,6 +319,7 @@
     }
     let openings = []
     let videosPgns = {}
+    let positions = {}
     let b4 = []
     let sortBy = "date"
     let sortDirection = "desc"
@@ -428,6 +437,12 @@
         applyFilters()
     })
 
+    $('#transpositionCheck').change(function () {
+        if (filters.pgnFilter) {
+            applyFilters()
+        }
+    })
+
     function watchIdsOnYoutube(ids) {
         if (ids === "") {
             return
@@ -513,6 +528,13 @@
         .then(res => videosPgns = res)
         .then(() => drawFilterResultsContainer())
 
+    fetch("generated/positions.json")
+        .then(res => res.json())
+        .then(res => {
+            positions = res
+            positions.videos.forEach((videoId, positionIndex) => videos.find(video => video.id === videoId).positionIndex = positionIndex)
+        })
+
     fetch("generated/openings-slim.json")
         .then(res => res.json())
         .then(res => openings = res)
@@ -555,7 +577,7 @@
         const pgnPrefixes = openings
             .filter(opening => _.some(filters.opening, filterOpening => opening.name === filterOpening))
             .map(opening => opening.moves)
-
+        const includeTranspositions = document.getElementById('transpositionCheck').checked
         filteredVideos = videos
             .filter(video => {
                 if (filters.anySide.length === 0) {
@@ -601,6 +623,7 @@
                 }
 
                 return videoPgn.indexOf(filters.pgnFilter) === 0
+                    || includeTranspositions && positions && positions[game.fen().replaceAll(/ - \d+ \d+/g, "")] && positions[game.fen().replaceAll(/ - \d+ \d+/g, "")].includes(video.positionIndex)
             })
             .filter(video => {
                 if (!filters.title) {
