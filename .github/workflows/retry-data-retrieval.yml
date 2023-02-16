@@ -24,5 +24,5 @@ jobs:
       - run: git config user.name github-actions
       - run: git config user.email github-actions@github.com
       - run: git add .
-      - run: git commit -m "`date +'%Y-%m-%d %H:%M:%S'`" || echo "No changes to commit"
+      - run: git commit -m "RDR `date +'%Y-%m-%d %H:%M:%S'`" || echo "No changes to commit"
       - run: git push || echo "Nothing to push"
