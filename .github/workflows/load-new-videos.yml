@@ -8,8 +8,6 @@ on:
 env:
   YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
 
-concurrency: modifying-action
-
 jobs:
   load-new-videos:
     runs-on: ubuntu-latest
