@@ -1,6 +1,6 @@
 import {pgnRead, pgnWrite} from 'kokopu'
 import cleanPgn from "./pgnCleaner.js";
-import {extractPlayers, extractPlayersFromDescription} from "./playersExtractor.js";
+import {extractPlayersFromDescription} from "./playersExtractor.js";
 import _ from "lodash";
 import getPlayersForId from "./playersOverrides.js";
 import {dbGetAllIds, dbRead, dbSave, NAMESPACE_VIDEO_GAME, NAMESPACE_VIDEO_SNIPPET} from "./db.js";
@@ -11,16 +11,17 @@ function extractGames(description, id) {
     let matchArray = pgnRegex.exec(description)
     const games = []
 
+    let players = getPlayersForId(id)
+    if (!players) {
+        players = extractPlayersFromDescription(id, description)
+    }
+
     if (matchArray != null) {
         matchArray
             .filter(pgn => pgn !== undefined)
             .filter(pgn => pgn !== null)
             .forEach(pgn => {
                 const fixedPgn = cleanPgn(pgn)
-                let players = extractPlayers(id, description, pgn)
-                if (!players) {
-                    players = extractPlayersFromDescription(id, description)
-                }
                 const game = parseUsingKokopu(fixedPgn)
 
                 const result = {}
@@ -38,18 +39,11 @@ function extractGames(description, id) {
                     games.push(result)
                 }
             })
-    } else {
-        let players = getPlayersForId(id)
-        if (!players) {
-            players = extractPlayersFromDescription(id, description)
-        }
-
-        if (players) {
-            games.push({
-                playerWhite: players.white,
-                playerBlack: players.black
-            })
-        }
+    } else if (players) {
+        games.push({
+            playerWhite: players.white,
+            playerBlack: players.black
+        })
     }
     return games
 }

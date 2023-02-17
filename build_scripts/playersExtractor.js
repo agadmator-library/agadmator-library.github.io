@@ -13,7 +13,7 @@ export function extractPlayersFromDescription(id, description) {
         /\s+\[FEN\s+".*"]/,
         new RegExp("https://chess24.com/en/watch/live-tournaments/"),
         /GAME here /,
-        /1\./
+        /\n\s*(PGN: )?11?\.(?!\.)(?! Ian).+\n/
     ]
     searchAboveRegExp.forEach(regExp => {
         if (!players) {
@@ -40,7 +40,7 @@ function extractFromWhiteAndBlackPgnNotes(description) {
     return null
 }
 
-export function extractPlayers(id, description, pgn) {
+function extractPlayers(id, description, pgn) {
     let players = getPlayersForId(id)
     if (!players && !pgn) {
         players = extractPlayersFromDescription(id, description)

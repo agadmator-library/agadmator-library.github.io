@@ -31,10 +31,6 @@ const playersOverrides = {
         white: "Levon Aronian",
         black: "Viswanathan Anand"
     },
-    "_wIBghy_G2Y": {
-        white: "Kramnik and Anand and Karpov",
-        black: "Dubov and Nepo and Karjakin"
-    },
     "bG-KPOvAy24": {
         white: "Mikhail Tal",
         black: "Dieter Keller"
