@@ -89,7 +89,9 @@ export function extractPgnForId(id) {
     }
 
     let games = extractGames(videoSnippet.description, id);
-    dbSave(NAMESPACE_VIDEO_GAME, id, games[0])
+    if (games.length > 0) {
+        dbSave(NAMESPACE_VIDEO_GAME, id, games[0])
+    }
 }
 
 export function extractPgnForAll() {
