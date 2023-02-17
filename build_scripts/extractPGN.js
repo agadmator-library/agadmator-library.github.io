@@ -7,7 +7,7 @@ import {dbGetAllIds, dbRead, dbSave, NAMESPACE_VIDEO_GAME, NAMESPACE_VIDEO_SNIPP
 
 function extractGames(description, id) {
     description = description.replaceAll("\n. e4 c6 2.", "\n1. e4 c6 2.")
-    const pgnRegex = /\n\s*(PGN: )?11?\.(?!\.).+\n/
+    const pgnRegex = /\n\s*(PGN: )?11?\.(?!\.)(?! Ian).+\n/
     let matchArray = pgnRegex.exec(description)
     const games = []
 
