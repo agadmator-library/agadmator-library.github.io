@@ -201,11 +201,11 @@
         <table class="table table-sm table-hover table-striped">
             <thead>
             <tr>
-                <th class="d-none d-lg-block" scope="col">Published at</th>
+                <th scope="col">Published at</th>
                 <th scope="col">Title</th>
                 <th scope="col">White</th>
                 <th scope="col">Black</th>
-                <th class="d-none d-lg-block" scope="col">Year</th>
+                <th scope="col">Year</th>
                 <th scope="col" id="resultColumnHeader" style="display: none">Result</th>
             </tr>
             </thead>
@@ -467,7 +467,7 @@
 
     $('#showResultButton').on('click', function () {
         showResult = true
-        $('#resultColumnHeader').css("display", "block");
+        $('#resultColumnHeader').css("display", "table-cell");
         $('#showResultButton').css("display", "none")
         $('#hideResultButton').css("display", "block")
         draw()
@@ -829,9 +829,8 @@
             .map(video => {
                 let tableRow = document.createElement("tr");
 
-                let publishedAtCell = document.createElement("th");
+                let publishedAtCell = document.createElement("td");
                 publishedAtCell.textContent = video.date.toISOString()
-                publishedAtCell.className = 'd-none d-lg-block'
                 tableRow.appendChild(publishedAtCell)
 
                 let titleCell = document.createElement("td");
@@ -864,7 +863,6 @@
                 tableRow.appendChild(blackPlayerCell)
 
                 let yearCell = document.createElement("td");
-                yearCell.className = 'd-none d-lg-block'
                 if (video.game && video.game.year) {
                     yearCell.textContent = video.game.year
                 }
