@@ -205,7 +205,7 @@
                 <th scope="col">Title</th>
                 <th scope="col">White</th>
                 <th scope="col">Black</th>
-                <th class="d-none d-lg-block" scope="col">Year</th>
+                <th class="d-none d-lg-table-cell" scope="col">Year</th>
                 <th scope="col" id="resultColumnHeader" style="display: none">Result</th>
             </tr>
             </thead>
@@ -467,7 +467,7 @@
 
     $('#showResultButton').on('click', function () {
         showResult = true
-        $('#resultColumnHeader').css("display", "block");
+        $('#resultColumnHeader').css("display", "table-cell");
         $('#showResultButton').css("display", "none")
         $('#hideResultButton').css("display", "block")
         draw()
