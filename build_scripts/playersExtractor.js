@@ -12,7 +12,8 @@ export function extractPlayersFromDescription(id, description) {
         /\s+[pP][gG][nN]\s+(.*article.*)?[hH][eE][rR][eE]\s+http|Click here for pgn/,
         /\s+\[FEN\s+".*"]/,
         new RegExp("https://chess24.com/en/watch/live-tournaments/"),
-        /GAME here /
+        /GAME here /,
+        /1\./
     ]
     searchAboveRegExp.forEach(regExp => {
         if (!players) {
