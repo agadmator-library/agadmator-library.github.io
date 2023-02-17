@@ -5,6 +5,8 @@ on:
   schedule:
     - cron: '43 9 * * *'
 
+concurrency: modifying-action
+
 jobs:
   refresh-video:
     runs-on: ubuntu-latest

@@ -8,6 +8,8 @@ on:
         required: true
         type: string
 
+concurrency: modifying-action
+
 jobs:
   refresh-video:
     runs-on: ubuntu-latest
