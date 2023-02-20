@@ -2,13 +2,7 @@ import fs from "fs";
 import path from 'path';
 import {fileURLToPath} from 'url';
 import _ from "lodash";
-import {
-    database,
-    NAMESPACE_CHESS_COM,
-    NAMESPACE_CHESSTEMPO_COM,
-    NAMESPACE_VIDEO_GAME,
-    NAMESPACE_VIDEO_SNIPPET
-} from './db.js'
+import {database, NAMESPACE_CHESS_COM, NAMESPACE_CHESSTEMPO_COM, NAMESPACE_VIDEO_SNIPPET} from './db.js'
 import {pgnRead} from 'kokopu'
 
 const __filename = fileURLToPath(import.meta.url);
@@ -56,8 +50,9 @@ function getResult(id: string) {
 }
 
 function getYear(id: string): number | null | undefined {
-    const game = database.read(NAMESPACE_VIDEO_GAME, id)
-    if (!game.playerWhite) {
+    const games = database.readVideoGames(id)
+    const game = games && games[0] ? games[0] : null
+    if (!game || !game.playerWhite) {
         return null
     }
     const chessComResult = database.read(NAMESPACE_CHESS_COM, id)
@@ -82,7 +77,7 @@ export function combine() {
         players: [],
         videos: []
     }
-    const pgns: any = {}
+    const pgnsInVideo: any = {}
     const allPgns: string[] = []
     database.getAllIds().forEach((id: string) => {
         const videoSnippet = database.read(NAMESPACE_VIDEO_SNIPPET, id)
@@ -90,54 +85,63 @@ export function combine() {
             return
         }
 
-        let game = database.read(NAMESPACE_VIDEO_GAME, id)
-        if (!game) {
-            game = null
-        }
-
-        let wId = null
-        if (game && game.playerWhite) {
-            wId = db.players.indexOf(game.playerWhite) >= 0 ? db.players.indexOf(game.playerWhite) : db.players.push(game.playerWhite) - 1
-        }
-        let bId = null
-        if (game && game.playerBlack) {
-            bId = db.players.indexOf(game.playerBlack) >= 0 ? db.players.indexOf(game.playerBlack) : db.players.push(game.playerBlack) - 1
-        }
+        const games = database.readVideoGames(id)
 
         db.videos.push(removeNulls({
             d: new Date(videoSnippet.publishedAt).getTime() / 1000,
             t: videoSnippet.title,
             id: videoSnippet.videoId,
-            g: game ? removeNulls({w: wId, b: bId, r: getResult(id), y: getYear(id)}) : null
+            g: games.map((game, idx) => {
+                let wId = null
+                if (game && game.playerWhite) {
+                    wId = db.players.indexOf(game.playerWhite) >= 0 ? db.players.indexOf(game.playerWhite) : db.players.push(game.playerWhite) - 1
+                }
+                let bId = null
+                if (game && game.playerBlack) {
+                    bId = db.players.indexOf(game.playerBlack) >= 0 ? db.players.indexOf(game.playerBlack) : db.players.push(game.playerBlack) - 1
+                }
+
+                if (game.pgn) {
+                    if (!pgnsInVideo[videoSnippet.videoId]) {
+                        pgnsInVideo[videoSnippet.videoId] = []
+                    }
+                    pgnsInVideo[videoSnippet.videoId].push(game.pgn)
+
+                    allPgns.push(game.pgn)
+                }
+
+                const result = idx === 0 ? getResult(id) : null
+                const year = idx === 0 ? getYear(id) : null
+
+                return removeNulls({w: wId, b: bId, r: result, y: year})
+            })
         }))
 
-        if (game && game.pgn) {
-            pgns[videoSnippet.videoId] = game.pgn
-            allPgns.push(game.pgn)
-        }
 
     })
     writeResultFile("db.json", db)
-    writeResultFile("pgns.json", pgns)
+    writeResultFile("pgns.json", pgnsInVideo)
 
     const positions: any = {
         videos: []
     }
-    Object.keys(pgns).forEach(videoId => {
+    Object.keys(pgnsInVideo).forEach(videoId => {
         const videoArrayId = positions.videos.push(videoId) - 1
-        const pgn = pgns[videoId]
-        pgnRead(pgn + " 1-0")
-            .game(0)
-            .mainVariation()
-            .nodes()
-            .slice(2, 14)
-            .forEach(node => {
-                const fen = node.position().fen().replaceAll(/ - \d+ \d+/g, "")
-                if (!positions[fen]) {
-                    positions[fen] = []
-                }
-                positions[fen].push(videoArrayId)
-            })
+        pgnsInVideo[videoId].forEach((pgn: string) => {
+            pgnRead(pgn + " 1-0")
+                .game(0)
+                .mainVariation()
+                .nodes()
+                .slice(2, 14)
+                .forEach(node => {
+                    const fen = node.position().fen().replaceAll(/ - \d+ \d+/g, "")
+                    if (!positions[fen]) {
+                        positions[fen] = []
+                    }
+                    positions[fen].push(videoArrayId)
+                })
+        })
+
     })
     writeResultFile("positions.json", positions)
 
@@ -155,15 +159,10 @@ export function combine() {
 
     const b4: string[] = []
     database.getAllIds().forEach((id: string) => {
-        const game = database.read(NAMESPACE_VIDEO_GAME, id)
-        if (!game || !game.pgn) {
-            return
-        }
-
-        const b4Played = /\d\.\s+b4/.test(game.pgn)
-        if (b4Played) {
-            b4.push(id)
-        }
+        database.readVideoGames(id)
+            .filter(game => game.pgn)
+            .filter(game => /\d\.\s+b4/.test(game.pgn ? game.pgn : ""))
+            .forEach(game => b4.push(id))
     })
     writeResultFile("b4.json", b4)
 }

@@ -1,4 +1,4 @@
-import {database, NAMESPACE_CHESS_COM, NAMESPACE_VIDEO_GAME} from "./db.js";
+import {database, NAMESPACE_CHESS_COM} from "./db.js";
 import {chessComClient} from "./ChessComClient.js";
 import _ from "lodash";
 import cleanPlayerName from "./playerNameCleaner.js";
@@ -8,7 +8,8 @@ import {levenshteinEditDistance} from "levenshtein-edit-distance";
 class ChessComService {
     public async loadChessComInfoForId(id: string, force: boolean = false) {
         if (!database.read(NAMESPACE_CHESS_COM, id) || force) {
-            const game = database.read(NAMESPACE_VIDEO_GAME, id)
+            const games = database.readVideoGames(id);
+            const game = games && games[0] ? games[0] : null
 
             if (!game || !game.fen || !game.playerWhite || !game.playerBlack) {
                 return;
@@ -21,13 +22,13 @@ class ChessComService {
             chessComGames = _.uniqBy(chessComGames, chessComGame => {
                 const playerWhite = cleanPlayerName(chessComGame.playerWhite)
                 const playerBlack = cleanPlayerName(chessComGame.playerBlack)
-                return `${playerWhite}|${playerBlack}|${game.movesCount}`
+                return `${playerWhite}|${playerBlack}|${chessComGame.movesCount}`
             })
             chessComGames = chessComGames.filter(chessComGame => {
                 const wArray = cleanPlayerName(chessComGame.playerWhite).split(" ").sort()
                 const bArray = cleanPlayerName(chessComGame.playerBlack).split(" ").sort()
-                const gameWArray = game.playerWhite.split(" ").sort()
-                const gameBArray = game.playerBlack.split(" ").sort()
+                const gameWArray = game.playerWhite ? game.playerWhite.split(" ").sort() : []
+                const gameBArray = game.playerBlack ? game.playerBlack.split(" ").sort() : []
                 const w = wArray.join(" ")
                 const b = bArray.join(" ")
                 const gameW = gameWArray.join(" ")

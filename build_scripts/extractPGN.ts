@@ -2,52 +2,114 @@ import {pgnRead, pgnWrite} from 'kokopu'
 import cleanPgn from "./pgnCleaner.js";
 import {extractPlayersFromDescription} from "./playersExtractor.js";
 import getPlayersForId from "./playersOverrides.js";
-import {database, NAMESPACE_VIDEO_GAME, NAMESPACE_VIDEO_SNIPPET} from "./db.js";
+import {database, NAMESPACE_VIDEO_SNIPPET} from "./db.js";
 import {pgnOverrides} from "./pgnOverrides.js";
 import _ from "lodash"
 
-function extractGame(description: string, id: string): any {
-    description = description.replaceAll("\n. e4 c6 2.", "\n1. e4 c6 2.")
-
-    let players = getPlayersForId(id)
-    if (!players) {
-        players = extractPlayersFromDescription(id, description)
-    }
-    let pgn = getPgn(id, description)
-
-    let game: any = {}
-
-    if (pgn) {
-        game.pgn = pgn.pgn
-        game.fen = pgn.fen
-    }
-    if (players) {
-        game.playerWhite = players.white
-        game.playerBlack = players.black
-    }
-
-    return game
+export type Game = {
+    pgn?: string,
+    fen?: string,
+    playerWhite?: string,
+    playerBlack?: string
 }
 
-function getPgn(id: string, description: string) {
-    if (pgnOverrides[id]) {
-        return parseUsingKokopu(pgnOverrides[id])
-    } else {
-        const pgnRegex = /\n\s*(PGN: )?11?\.(?!\.)(?! Ian).+\n/
-        let matchArray = pgnRegex.exec(description)
+function extractGames(description: string, id: string): Game[] {
+    description = description.replaceAll("\n. e4 c6 2.", "\n1. e4 c6 2.")
 
+    const pgns = getPgns(id, description)
+
+    let players = getPlayersForId(id)
+
+    if (players) {
+        return [{
+            pgn: pgns && pgns[0] ? pgns[0].pgn : undefined,
+            fen: pgns && pgns[0] ? pgns[0].fen : undefined,
+            playerWhite: players.white,
+            playerBlack: players.black
+        }]
+    }
+
+    if (pgns.length > 0) {
+        const descriptionLines = description.split("\n");
+        let previousPgnLineIdx = -1
+        return pgns.map(pgnExtractionResult => {
+            if (pgnExtractionResult.lineIdx) {
+                players = extractPlayersFromDescription(id, descriptionLines.slice(previousPgnLineIdx + 1, pgnExtractionResult.lineIdx + 1).join("\n") + "\n")
+                previousPgnLineIdx = pgnExtractionResult.lineIdx
+            } else {
+                players = extractPlayersFromDescription(id, description)
+            }
+
+            let game: any = {}
+            game.pgn = pgnExtractionResult.pgn
+            game.fen = pgnExtractionResult.fen
+            if (players) {
+                game.playerWhite = players.white
+                game.playerBlack = players.black
+            }
+            return game
+
+        })
+    } else {
+        players = extractPlayersFromDescription(id, description)
+        let game: any = {}
+
+        if (players) {
+            game.playerWhite = players.white
+            game.playerBlack = players.black
+        }
+
+        return [game]
+    }
+}
+
+enum PgnSource {
+    OVERRIDE,
+    LINE
+}
+
+type PgnExtraction = {
+    source?: PgnSource,
+    pgn?: string,
+    fen?: string,
+    lineIdx?: number
+}
+
+function getPgns(id: string, description: string): PgnExtraction[] {
+    if (pgnOverrides[id]) {
+        const kokopuParse = parseUsingKokopu(pgnOverrides[id]);
+        if (!kokopuParse) {
+            throw `${id} Failed to parse PGN from override`
+        }
+        return [
+            {
+                source: PgnSource.OVERRIDE,
+                pgn: kokopuParse.pgn,
+                fen: kokopuParse.fen
+            }
+        ]
+    } else {
+        const pgnRegex = /\n\s*(PGN: )?11?\.(?!\.)(?! Ian).+\n/mg
+        let matchArray = description.match(pgnRegex)
+
+        const resultArray: PgnExtraction[] = []
         if (matchArray != null) {
-            return matchArray
+            matchArray
                 .filter(pgn => pgn !== undefined)
                 .filter(pgn => pgn !== null)
-                .map(pgn => {
+                .forEach(pgn => {
                     const fixedPgn = cleanPgn(pgn)
                     let parsedGame = parseUsingKokopu(fixedPgn);
                     if (parsedGame) {
                         let descriptionLines = description.split("\n");
                         let line = descriptionLines.find(line => line.indexOf(_.trim(pgn)) >= 0);
+                        let initialLineIndex = undefined
                         if (line) {
-                            let lineIndex = descriptionLines.indexOf(line);
+                            initialLineIndex = descriptionLines.indexOf(line);
+                        }
+
+                        if (line && initialLineIndex) {
+                            let lineIndex = initialLineIndex
                             let previousPgn = pgn
                             if (lineIndex >= 0) {
                                 while (true) {
@@ -64,16 +126,25 @@ function getPgn(id: string, description: string) {
                                 }
                             }
                         }
+                        resultArray.push({
+                            source: PgnSource.LINE,
+                            pgn: parsedGame.pgn,
+                            fen: parsedGame.fen,
+                            lineIdx: initialLineIndex
+                        })
                     }
-                    return parsedGame
                 })
-                .find(it => true)
         }
+        return resultArray
     }
-    return undefined
 }
 
-function parseUsingKokopu(pgn: string): any | undefined {
+type KokopuParseResult = {
+    pgn: string,
+    fen: string
+}
+
+function parseUsingKokopu(pgn: string): KokopuParseResult | undefined {
     try {
         const database = pgnRead(pgn)
         const parsedPgn = pgnWrite(database.game(0))
@@ -89,7 +160,7 @@ function parseUsingKokopu(pgn: string): any | undefined {
         }
     } catch (e) {
         if (pgn.endsWith("1/2-1/2")) {
-            return null
+            return undefined
         }
         let tmp = parseUsingKokopu(pgn + "1/2-1/2");
         return tmp == null
@@ -107,9 +178,9 @@ export function extractPgnForId(id: string) {
         return
     }
 
-    let game = extractGame(videoSnippet.description, id);
-    if (game && Object.keys(game).length > 0) {
-        database.save(NAMESPACE_VIDEO_GAME, id, game)
+    let games = extractGames(videoSnippet.description, id);
+    if (games.length > 0) {
+        database.saveVideoGames(id, games)
     }
 }
 

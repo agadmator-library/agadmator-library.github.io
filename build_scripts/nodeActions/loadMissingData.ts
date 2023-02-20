@@ -1,4 +1,4 @@
-import {database, NAMESPACE_CHESS_COM, NAMESPACE_CHESSTEMPO_COM, NAMESPACE_VIDEO_GAME} from "../db.js";
+import {database, NAMESPACE_CHESS_COM, NAMESPACE_CHESSTEMPO_COM} from "../db.js";
 import {chessComService} from "../loadChessComInfo.js";
 import {loadChesstempoInfoForId} from "../loadChesstempoInfo.js";
 import {combine} from "../combine.js";
@@ -6,7 +6,8 @@ import {combine} from "../combine.js";
 async function loadMissingChessComInfo() {
     let videosWithMissingInfo = database.getAllIds()
         .filter(id => {
-            const game = database.read(NAMESPACE_VIDEO_GAME, id)
+            const games = database.readVideoGames(id)
+            const game = games && games[0] ? games[0] : null
             return game && game.fen && game.playerWhite && game.playerBlack && !database.read(NAMESPACE_CHESS_COM, id)
         })
         .slice(0, 10);
@@ -24,7 +25,8 @@ async function loadMissingChessComInfo() {
 async function loadMissingChesstempoInfo() {
     let videosWithMissingInfo = database.getAllIds()
         .filter(id => {
-            const game = database.read(NAMESPACE_VIDEO_GAME, id)
+            const games = database.readVideoGames(id)
+            const game = games && games[0] ? games[0] : null
             return game && game.fen && game.playerWhite && game.playerBlack && !database.read(NAMESPACE_CHESSTEMPO_COM, id)
         })
         .slice(0, 10);
