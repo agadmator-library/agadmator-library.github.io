@@ -3,8 +3,7 @@ import path from 'path';
 import {fileURLToPath} from 'url';
 import _ from "lodash";
 import {
-    dbGetAllIds,
-    dbRead,
+    database,
     NAMESPACE_CHESS_COM,
     NAMESPACE_CHESSTEMPO_COM,
     NAMESPACE_VIDEO_GAME,
@@ -17,15 +16,15 @@ const __dirname = path.dirname(__filename);
 
 const resultDir = `${__dirname}/../generated`
 
-function writeResultFile(fileName, object) {
+function writeResultFile(fileName: string, object: any) {
     fs.writeFileSync(`${resultDir}/${fileName}`, JSON.stringify(object))
 }
 
-function getResult(id) {
-    const chessComResult = dbRead(NAMESPACE_CHESS_COM, id)
-    const chesstempoComResult = dbRead(NAMESPACE_CHESSTEMPO_COM, id)
+function getResult(id: string) {
+    const chessComResult = database.read(NAMESPACE_CHESS_COM, id)
+    const chesstempoComResult = database.read(NAMESPACE_CHESSTEMPO_COM, id)
 
-    function translateChessComResult(text) {
+    function translateChessComResult(text: string | undefined | null) {
         switch (text) {
             case "1-0":
                 return 1
@@ -38,7 +37,7 @@ function getResult(id) {
         }
     }
 
-    function translateChesstempoComResult(text) {
+    function translateChesstempoComResult(text: string | undefined | null) {
         switch (text) {
             case "w":
                 return 1
@@ -56,37 +55,42 @@ function getResult(id) {
         : (chesstempoComResult ? translateChesstempoComResult(chesstempoComResult.result) : null)
 }
 
-function getYear(id) {
-    const game = dbRead(NAMESPACE_VIDEO_GAME, id)
+function getYear(id: string): number | null | undefined {
+    const game = database.read(NAMESPACE_VIDEO_GAME, id)
     if (!game.playerWhite) {
         return null
     }
-    const chessComResult = dbRead(NAMESPACE_CHESS_COM, id)
-    const chesstempoComResult = dbRead(NAMESPACE_CHESSTEMPO_COM, id)
+    const chessComResult = database.read(NAMESPACE_CHESS_COM, id)
+    const chesstempoComResult = database.read(NAMESPACE_CHESSTEMPO_COM, id)
 
     return chessComResult && chessComResult.year && chessComResult.year !== "0"
         ? parseInt(chessComResult.year)
         : (chesstempoComResult && chesstempoComResult.date ? parseInt(chesstempoComResult.date.substring(0, 4)) : null)
 }
 
-function removeNulls(obj) {
+function removeNulls(obj: any): any {
     return Object.fromEntries(Object.entries(obj).filter(([_, v]) => v != null));
 }
 
+type DB = {
+    players: string[],
+    videos: any[]
+}
+
 export function combine() {
-    const db = {
+    const db: DB = {
         players: [],
         videos: []
     }
-    const pgns = {}
-    const allPgns = []
-    dbGetAllIds().forEach(id => {
-        const videoSnippet = dbRead(NAMESPACE_VIDEO_SNIPPET, id)
+    const pgns: any = {}
+    const allPgns: string[] = []
+    database.getAllIds().forEach((id: string) => {
+        const videoSnippet = database.read(NAMESPACE_VIDEO_SNIPPET, id)
         if (!videoSnippet) {
             return
         }
 
-        let game = dbRead(NAMESPACE_VIDEO_GAME, id)
+        let game = database.read(NAMESPACE_VIDEO_GAME, id)
         if (!game) {
             game = null
         }
@@ -96,7 +100,7 @@ export function combine() {
             wId = db.players.indexOf(game.playerWhite) >= 0 ? db.players.indexOf(game.playerWhite) : db.players.push(game.playerWhite) - 1
         }
         let bId = null
-        if(game && game.playerBlack) {
+        if (game && game.playerBlack) {
             bId = db.players.indexOf(game.playerBlack) >= 0 ? db.players.indexOf(game.playerBlack) : db.players.push(game.playerBlack) - 1
         }
 
@@ -116,7 +120,7 @@ export function combine() {
     writeResultFile("db.json", db)
     writeResultFile("pgns.json", pgns)
 
-    const positions = {
+    const positions: any = {
         videos: []
     }
     Object.keys(pgns).forEach(videoId => {
@@ -138,10 +142,10 @@ export function combine() {
     writeResultFile("positions.json", positions)
 
     let openings = JSON.parse(fs.readFileSync(__dirname + '/../openings.json', {encoding: 'utf8'}))
-        .filter(opening => {
+        .filter((opening: any) => {
             return _.some(allPgns, videoPgn => _.startsWith(videoPgn, opening.pgn))
         })
-        .map(opening => {
+        .map((opening: any) => {
             return {
                 name: `${opening.eco} - ${opening.name}`,
                 moves: opening.pgn
@@ -149,9 +153,9 @@ export function combine() {
         })
     writeResultFile("openings-slim.json", openings)
 
-    const b4 = []
-    dbGetAllIds().forEach(id => {
-        const game = dbRead(NAMESPACE_VIDEO_GAME, id)
+    const b4: string[] = []
+    database.getAllIds().forEach((id: string) => {
+        const game = database.read(NAMESPACE_VIDEO_GAME, id)
         if (!game || !game.pgn) {
             return
         }

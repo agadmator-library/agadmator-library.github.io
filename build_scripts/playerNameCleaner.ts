@@ -1,6 +1,6 @@
 import _ from "lodash";
 
-export default function cleanPlayerName(raw) {
+export default function cleanPlayerName(raw: string): string {
     if ((raw.match(/,/g) || []).length === 1) {
         let splitOnComma = raw.split(",");
         raw = _.trim(splitOnComma[1]) + " " + _.trim(splitOnComma[0])
@@ -48,6 +48,7 @@ export default function cleanPlayerName(raw) {
         .replaceAll(/^Hikaru$/g, "Hikaru Nakamura")
         .replaceAll(/^Hikaru Nakmaura$/g, "Hikaru Nakamura")
         .replaceAll(/^Hikaru Nakmura$/g, "Hikaru Nakamura")
+        .replaceAll(/^Yifan$/g, "Hou Yifan")
         .replaceAll(/^Hrant$/g, "Hrant Melkumyan")
         .replaceAll(/^Ian Nepomnioachtchi$/g, "Ian Nepomniachtchi")
         .replaceAll(/^ian Nepomniachtchi$/g, "Ian Nepomniachtchi")
@@ -60,6 +61,7 @@ export default function cleanPlayerName(raw) {
         .replaceAll(/^Johan Sebastian Christiansen$/g, "Johan-Sebastian Christiansen")
         .replaceAll(/^Jonas Buhl Bjere$/g, "Jonas Buhl Bjerre")
         .replaceAll(/^Capablanca$/g, "Jose Raul Capablanca")
+        .replaceAll(/^K Rathnakaran$/g, "Kantholi Ratnakaran")
         .replaceAll(/^Kirill$/g, "Kirill Alekseenko")
         .replaceAll(/^Kiriil Alekseenko$/g, "Kirill Alekseenko")
         .replaceAll(/^Krishnan$/g, "Krishnan Sasikiran")
@@ -91,6 +93,7 @@ export default function cleanPlayerName(raw) {
         .replaceAll(/^Tal$/g, "Mikhail Tal")
         .replaceAll(/^Mr. Hoodie Guy$/g, "Mr Hoodie Guy")
         .replaceAll(/^NN$/g, "Mr Hoodie Guy")
+        .replaceAll(/^Amateur$/g, "Mr Hoodie Guy")
         .replaceAll(/^Nigel D Short$/g, "Nigel Short")
         .replaceAll(/^Nodirbek$/g, "Nodirbek Abdusattorov")
         .replaceAll(/^Paul\s+Charles\s+Morphy$/g, "Paul Morphy")
@@ -109,6 +112,7 @@ export default function cleanPlayerName(raw) {
         .replaceAll(/^Rauf$/g, "Rauf Mamedov")
         .replaceAll(/^Raunak$/g, "Raunak Sadhwani")
         .replaceAll(/^Fischer$/g, "Robert James Fischer")
+        .replaceAll(/^Bobby Fischer$/g, "Robert James Fischer")
         .replaceAll(/^Sergey Krjakin$/g, "Sergey Karjakin")
         .replaceAll(/^Shakhryar Mamedyarov$/g, "Shakhriyar Mamedyarov")
         .replaceAll(/^Shakryar Mamedyarov$/g, "Shakhriyar Mamedyarov")
@@ -120,6 +124,7 @@ export default function cleanPlayerName(raw) {
         .replaceAll(/^Santosh Gujrathi Vidit$/g, "Vidit Santosh Gujrathi")
         .replaceAll(/^Santosh Gurjathi Vidit$/g, "Vidit Santosh Gujrathi")
         .replaceAll(/^Keymer Vincent$/g, "Vincent Keymer")
+        .replaceAll(/^Anand Tata Steel$/g, "Viswanathan Anand")
         .replaceAll(/^Vishvanathan Anand$/g, "Viswanathan Anand")
         .replaceAll(/^Vishwanathan Anand$/g, "Viswanathan Anand")
         .replaceAll(/^Yuri Averbakh$/g, "Yuri L Averbakh")
