@@ -271,30 +271,22 @@
             this.result = result
             this.year = year
         }
-    }
-
-    class Video {
-        constructor(id, date, title, game) {
-            this.id = id
-            this.title = title
-            this.date = date
-            this.game = game
-        }
-
-        getWhite() {
-            return this.game ? this.game.white : null
-        }
-
-        getBlack() {
-            return this.game ? this.game.black : null
-        }
 
         getWhiteOrEmpty() {
-            return _.defaultTo(this.getWhite(), "")
+            return _.defaultTo(this.white, "")
         }
 
         getBlackOrEmpty() {
-            return _.defaultTo(this.getBlack(), "")
+            return _.defaultTo(this.black, "")
+        }
+    }
+
+    class Video {
+        constructor(id, date, title, games) {
+            this.id = id
+            this.title = title
+            this.date = date
+            this.games = games
         }
     }
 
@@ -355,20 +347,24 @@
             playerName: item,
             playerResult: document.getElementById('playerResultSelect').value,
             testWhite: function (video) {
-                return video.getWhiteOrEmpty().toLowerCase() === this.playerName.toLowerCase()
-                    && (this.playerResult === "" || (video.game.result && (
-                        video.game.result === "w" && this.playerResult === "won"
-                        || video.game.result === "b" && this.playerResult === "lost"
-                        || video.game.result === "d" && this.playerResult === "draw"
-                    )))
+                return video.games && _.some(video.games, game => {
+                    return game.getWhiteOrEmpty().toLowerCase() === this.playerName.toLowerCase()
+                        && (this.playerResult === "" || (game.result && (
+                            game.result === "w" && this.playerResult === "won"
+                            || game.result === "b" && this.playerResult === "lost"
+                            || game.result === "d" && this.playerResult === "draw"
+                        )))
+                })
             },
             testBlack: function (video) {
-                return video.getBlackOrEmpty().toLowerCase() === this.playerName.toLowerCase()
-                    && (this.playerResult === "" || (video.game.result && (
-                        video.game.result === "w" && this.playerResult === "lost"
-                        || video.game.result === "b" && this.playerResult === "won"
-                        || video.game.result === "d" && this.playerResult === "draw"
-                    )))
+                return video.games && _.some(video.games, game => {
+                    return game.getBlackOrEmpty().toLowerCase() === this.playerName.toLowerCase()
+                        && (this.playerResult === "" || (game.result && (
+                            game.result === "w" && this.playerResult === "lost"
+                            || game.result === "b" && this.playerResult === "won"
+                            || game.result === "d" && this.playerResult === "draw"
+                        )))
+                })
             }
         }
         filters[side].push(filter)
@@ -498,19 +494,21 @@
             }
 
             const toTyped = res.videos.map(dbVideo => {
-                let game = dbVideo.g
-                    ? new Game(res.players[dbVideo.g.w], res.players[dbVideo.g.b], decodeResult(dbVideo.g.r), dbVideo.g.y)
-                    : null;
-                return new Video(dbVideo.id, new Date(dbVideo.d * 1000), dbVideo.t, game)
+                let games = dbVideo.g
+                    ? dbVideo.g.map(g => new Game(res.players[g.w], res.players[g.b], decodeResult(g.r), g.y))
+                    : []
+                return new Video(dbVideo.id, new Date(dbVideo.d * 1000), dbVideo.t, games)
             })
 
             videos = filteredVideos = _.orderBy(toTyped, ["date"], ["desc"])
 
             let tmpPlayerNames = {}
-            videos.filter(video => video.game)
-                .forEach(video => {
-                    tmpPlayerNames[video.getWhite()] = tmpPlayerNames[video.getWhite()] ? tmpPlayerNames[video.getWhite()] + 1 : 1
-                    tmpPlayerNames[video.getBlack()] = tmpPlayerNames[video.getBlack()] ? tmpPlayerNames[video.getBlack()] + 1 : 1
+            videos.filter(video => video.games)
+                .flatMap(video => video.games)
+                .filter(game => game.white && game.black)
+                .forEach(game => {
+                    tmpPlayerNames[game.white] = tmpPlayerNames[game.white] ? tmpPlayerNames[game.white] + 1 : 1
+                    tmpPlayerNames[game.black] = tmpPlayerNames[game.black] ? tmpPlayerNames[game.black] + 1 : 1
                 })
             players = _.orderBy(Object.keys(tmpPlayerNames)
                 .map(name => {
@@ -606,25 +604,25 @@
                     return true
                 }
 
-                const videoPgn = videosPgns[video.id]
-                if (!videoPgn) {
+                const videoPgns = videosPgns[video.id]
+                if (!videoPgns) {
                     return false
                 }
 
-                return _.some(pgnPrefixes, pgnPrefix => videoPgn.indexOf(pgnPrefix) === 0)
+                return _.some(pgnPrefixes, pgnPrefix => _.some(videoPgns, videoPgn => videoPgn.indexOf(pgnPrefix) === 0))
             })
             .filter(video => {
                 if (filters.pgnFilter === "") {
                     return true
                 }
 
-                const videoPgn = videosPgns[video.id]
-                if (!videoPgn) {
+                const videoPgns = videosPgns[video.id]
+                if (!videoPgns) {
                     return false
                 }
 
-                return videoPgn.indexOf(filters.pgnFilter) === 0
-                    || includeTranspositions && positions && positions[game.fen().replaceAll(/ - \d+ \d+/g, "")] && positions[game.fen().replaceAll(/ - \d+ \d+/g, "")].includes(video.positionIndex)
+                return _.some(videoPgns, videoPgn => videoPgn.indexOf(filters.pgnFilter) === 0
+                    || includeTranspositions && positions && positions[game.fen().replaceAll(/ - \d+ \d+/g, "")] && positions[game.fen().replaceAll(/ - \d+ \d+/g, "")].includes(video.positionIndex))
             })
             .filter(video => {
                 if (!filters.title) {
@@ -637,7 +635,7 @@
                 if (filters.results.length === 0) {
                     return true
                 } else {
-                    const videoResult = video.game ? video.game.result : null
+                    const videoResult = video.games[0] ? video.games[0].result : null
                     return filters.results.indexOf(videoResult) >= 0 || !videoResult && filters.results.indexOf("na") >= 0
                 }
             })
@@ -655,9 +653,9 @@
             } else if (sortBy === "title") {
                 return video.title.replaceAll(/[^\p{L}\d -]/gu, "").toLowerCase()
             } else if (sortBy === "w") {
-                return video.getWhiteOrEmpty().toLowerCase()
+                return (video.games[0] ? video.games[0].getWhiteOrEmpty() : "").toLowerCase()
             } else if (sortBy === "b") {
-                return video.getBlackOrEmpty().toLowerCase()
+                return (video.games[0] ? video.games[0].getBlackOrEmpty() : "").toLowerCase()
             } else if (sortBy === "year") {
                 return video.game && video.game.year ? video.game.year : ""
             } else {
@@ -813,13 +811,13 @@
 
     function drawFilterResultsContainer() {
         const total = filteredVideos.length
-        const withPlayers = filteredVideos.filter(video => video.getWhite()).length
+        const withPlayers = filteredVideos.filter(video => video.games[0] && video.games[0].white).length
         document.getElementById("filterResultsContainer").textContent = `Videos: ${total}, with players: ${withPlayers}`;
         if (Object.keys(videosPgns).length > 0) {
             const withPgns = filteredVideos.filter(video => videosPgns[video.id]).length
             document.getElementById("filterResultsContainer").textContent += `, with moves: ${withPgns}`;
         }
-        const withResults = filteredVideos.filter(video => video.game && video.game.result).length
+        const withResults = filteredVideos.filter(video => video.games[0] && video.games[0].result).length
         document.getElementById("filterResultsContainer").textContent += `, with results: ${withResults}`;
     }
 
@@ -846,34 +844,42 @@
                 tableRow.appendChild(titleCell)
 
                 let whitePlayerCell = document.createElement("td");
-                if (video.getWhite()) {
-                    whitePlayerCell.textContent = _.truncate(video.getWhite(), {
-                        'length': 40,
-                        'omission': '...'
-                    })
-                }
+                video.games.forEach(game => {
+                    let nameCell = document.createElement("div");
+                    if (game.white) {
+                        nameCell.textContent = _.truncate(game.white, {
+                            'length': 40,
+                            'omission': '...'
+                        })
+                    }
+                    whitePlayerCell.appendChild(nameCell)
+                })
                 tableRow.appendChild(whitePlayerCell)
 
                 let blackPlayerCell = document.createElement("td");
-                if (video.getBlack()) {
-                    blackPlayerCell.textContent = _.truncate(video.getBlack(), {
-                        'length': 40,
-                        'omission': '...'
-                    })
-                }
+                video.games.forEach(game => {
+                    let nameCell = document.createElement("div");
+                    if (game.white) {
+                        nameCell.textContent = _.truncate(game.black, {
+                            'length': 40,
+                            'omission': '...'
+                        })
+                    }
+                    blackPlayerCell.appendChild(nameCell)
+                })
                 tableRow.appendChild(blackPlayerCell)
 
                 let yearCell = document.createElement("td");
                 yearCell.className = 'd-none d-lg-table-cell'
-                if (video.game && video.game.year) {
-                    yearCell.textContent = video.game.year
+                if (video.games && video.games[0] && video.games[0].year) {
+                    yearCell.textContent = video.games[0].year
                 }
                 tableRow.appendChild(yearCell)
 
                 if (showResult) {
                     let resultCell = document.createElement("td");
-                    if (video.game && video.game.result) {
-                        resultCell.textContent = video.game.result
+                    if (video.games && video.games[0] && video.games[0].result) {
+                        resultCell.textContent = video.games[0].result
                     }
                     tableRow.appendChild(resultCell)
                 }

@@ -1,13 +1,15 @@
 import * as fs from "fs";
 import path from 'path';
 import {fileURLToPath} from 'url';
+import {Game} from "./extractPGN";
 
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+const NAMESPACE_VIDEO_GAME = "videoGame"
+
 export const NAMESPACE_VIDEO_SNIPPET = "videoSnippet"
-export const NAMESPACE_VIDEO_GAME = "videoGame"
 export const NAMESPACE_CHESS_COM = "chessCom"
 export const NAMESPACE_CHESSTEMPO_COM = "chesstempoCom"
 
@@ -43,6 +45,15 @@ class Database {
         return fs.readdirSync(getDir())
             .map(fileName => fileName.replaceAll(".json", ""))
     }
+
+    public readVideoGames(id: string): Game[] {
+        return this.read(NAMESPACE_VIDEO_GAME, id) as Game[]
+    }
+
+    public saveVideoGames(id: string, games: Game[]) {
+        this.save(NAMESPACE_VIDEO_GAME, id, games)
+    }
+
 
     public read(namespace: string, id: string) {
         assertNamespace(namespace)

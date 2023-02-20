@@ -6,13 +6,7 @@ export const pgnOverrides: any = {
          "f6 28. Ra4 Nf4 29. Bd2 e5 30. Rb4 Ne6 31. Be3 h5 32. Rb6 Rc6 33. c5 Ba6 34. g3 " +
          "Rxb6 35. cxb6 Kf8 36. f4 1/2-1/2",
      "x3YtwUW6jyw": "1. e4 c5 2. Nf3 d6 3. d4 cxd4 4. Nxd4 Nf6 5. Nc3 a6 6. a4 g6 7. Be2 Bg7 8. O-O O-O 9. Be3 Nc6 10. Qd2 Bd7 11. Rfd1 Rc8 12. f3 Re8 13. Bf1 Ne5 14. b3 Qa5 15. Nce2 Qxd2 16. Bxd2 d5 17. exd5 Nxd5 18. c4 Nf6 19. a5 Nd3 20. Bc3 Nc5 21. b4 Na4 22. c5 Nd5 23. Bd2 Nb2 24. Rdb1 Nc4 25. Ra2 e5 26. Nb3 Bf5 27. Rd1 Nxd2 28. Raxd2 Nxb4 29. Ng3 Be6 30. Rb1 f5 31. Nc1 Bh6 32. Rd6 Be3+ 33. Kh1 Bxc5 34. Rxe6 Rxe6 35. Bc4 Kf7 36. Nce2 Be7 37. Bxe6+ Kxe6 38. h3 Rc2 39. Re1 Kf7 40. Nc1 Bh4 41. Nce2 f4 42. Rb1 Bxg3 0-1",
-     "x2nlO74Rx4s": "1. e4 c5 2. Nf3 Nc6 3. Bb5 e5 4. O-O Bd6 $5 5. c3 a6 6. Ba4 b5 7. " +
-         "Bc2 Nge7 8. d3 Ng6 9. Be3 O-O 10. Nbd2 Be7 11. Bb3 d6 12. Bd5 " +
-         "Qe8 13. d4 exd4 14. cxd4 Rb8 15. Rc1 Nb4 16. dxc5 dxc5 17. Bxc5 Nxd5 18. exd5 Bxc5 19. Rxc5 Bb7 20. Nb3 Qd7 " +
-         "21. Na5 Ba8 22. Nc6 $1 Rbe8 23. Nfd4 Qd6 24. b4 Re4 25. Qf3 Rfe8 " +
-         "26. Nf5 Qd7 27. g3 h6 28. h4 Kh8 29. Ne3 Kg8 30. Rfc1 Nf8 31. Nf5 Nh7 32. Kg2 " +
-         "Kh8f 33. Nb8 Qd8 34. Nc6 Qd7 35. Nb8 Qd8 36. Nxa6 Bxd5 37. Nc7 Bb7 38. Nxe8 Re7 " +
-         "39. Qxb7 Rxb7 40. Ned6 Nf8 1-0",
+     "x2nlO74Rx4s": "1. e4 c5 2. Nf3 Nc6 3. Bb5 e5 4. O-O Bd6 $5 5. c3 a6 6. Ba4 b5 7. Bc2 Nge7 8. d3 Ng6 9. Be3 O-O 10. Nbd2 Be7 11. Bb3 d6 12. Bd5 Qe8 13. d4 exd4 14. cxd4 Rb8 15. Rc1 Nb4 16. dxc5 dxc5 17. Bxc5 Nxd5 18. exd5 Bxc5 19. Rxc5 Bb7 20. Nb3 Qd7 21. Na5 Ba8 22. Nc6 $1 Rbe8 23. Nfd4 Qd6 24. b4 Re4 25. Qf3 Rfe8 26. Nf5 Qd7 27. g3 h6 28. h4 Kh8 29. Ne3 Kg8 30. Rfc1 Nf8 31. Nf5 Nh7 32. Kg2 Kf8 33. Nb8 Qd8 34. Nc6 Qd7 35. Nb8 Qd8 36. Nxa6 Bxd5 37. Nc7 Bb7 38. Nxe8 Re7 39. Qxb7 Rxb7 40. Ned6 1-0",
      "wXq8pm-fLWc": "1.e4 c5 2.Nf3 d6 3.d4 cxd4 4.Nxd4 Nf6 5.Nc3 a6 6.Bc4 e6 7.O-O Be7 8.Bb3 O-O 9.f4 Qc7 10.Qf3 Nc6 11.Be3 Nxd4 12.Bxd4 b5 13.e5 dxe5 14.fxe5 Bb7 15.exf6 Bxf3 16.fxe7 Qxe7 17.Rxf3 Rad8 18.Be3 Qb7 19.Raf1 Rfe8 20.Ne2 a5 21.c3 Qe4 22.Ng3 Qg6 23.Rxf7 a4 24.Bc2 Qxc2 25.Nh5 Rf8 26.Rxg7+ Kh8 0-1",
      "pJooF1ABmDo": "1. d4 Nf6 2. c4 e6 3. Nc3 Bb4 4. f3 c5 5. d5 b5 6. e4 d6 7. Bd2 Bxc3 8. Bxc3 b4 9. Bd2 O-O 10. Be3 exd5 11. cxd5 Nfd7 12. Ne2 f5 13. exf5 Rxf5 14. Ng3 Re5 15. Kf2 Qh4 16. Qd2 Nf6 17. Rc1 Ba6 18. b3 Nxd5 19. Rc4 Qe7 20. Re4 Qe6 21. Bf4 Nxf4 22. Qxf4 Bxf1 23. Rxe5 dxe5 24. Qe4 Nc6 25. Rxf1 c4 26. Nf5 cxb3 27. Qxc6 Qxc6 28. Ne7+ Kf8 29. Nxc6 bxa2 30. Nxb4 Rb8 31. Ra1 Rxb4 32. Rxa2 Rb7 33. Ke3 Ke7 34. Ra6 1/2-1/2",
      "jFOXR0uwFHc": "1. d4 d5 2. Nf3 Nf6 3. c4 c6 4. cxd5 cxd5 5. Nc3 Nc6 6. Bf4 a6 7. Rc1 Bf5 8. e3 e6 9. Be2 Qb6 10. O-O Qxb2 11. Na4 Qb4 12. a3 Qa5 13. Qb3 b5 14. Rxc6 Qxa4 15. Qc3 e5 16. Nxe5 b4 17. axb4 Ne4 18. Qa1 Qxa1 19. Rxa1 Bxb4 20. Rcxa6 Rxa6 21. Rxa6 O-O 22. Nc6 Rc8 23. g4 Nc3 24. Bf1 1-0",
