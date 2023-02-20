@@ -30,6 +30,38 @@
     #openingInput {
         width: 100%;
     }
+
+    .dropdown-menu, span.twitter-typeahead .tt-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        display: none;
+        float: left;
+        padding: 5px 0;
+        margin: 2px 0 0;
+        font-size: 1rem;
+        background-color: #fff;
+        border: 1px solid rgba(0, 0, 0, 0.15);
+        border-radius: 0.25rem;
+    }
+
+    span.twitter-typeahead .tt-suggestion {
+        display: block;
+        padding: 3px 15px;
+        clear: both;
+        line-height: 1.5;
+    }
+
+    span.twitter-typeahead .tt-suggestion:focus, .dropdown-item:hover, span.twitter-typeahead .tt-suggestion:hover {
+        color: #2b2d2f;
+        text-decoration: none;
+        background-color: #f5f5f5;
+    }
+
+    span.twitter-typeahead {
+        width: 100%;
+    }
+
 </style>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-MX1CWFQ3KN"></script>
 <script>
@@ -84,9 +116,7 @@
                                type="text"
                                class="form-control flex-fill"
                                placeholder="Player"
-                               autocomplete="off"
-                               list="playerInputDataList">
-                        <datalist id="playerInputDataList"></datalist>
+                               autocomplete="off">
                     </div>
                 </div>
                 <div class="row mb-2">
@@ -104,9 +134,7 @@
                                type="text"
                                class="form-control"
                                placeholder="Opening"
-                               autocomplete="off"
-                               list="openingInputDatalist">
-                        <datalist id="openingInputDatalist"></datalist>
+                               autocomplete="off">
                     </div>
                     <div class="col-auto">
                         <label class="visually-hidden" for="resultSelect">Result</label>
@@ -228,7 +256,8 @@
                 <th id="titleColHeader" scope="col">Title<span class="ms-1">&#x21D5;</span></th>
                 <th id="whiteColHeader" scope="col">White<span class="ms-1">&#x21D5;</span></th>
                 <th id="blackColHeader" scope="col">Black<span class="ms-1">&#x21D5;</span></th>
-                <th id="yearColHeader" class="d-none d-lg-table-cell" scope="col">Year<span class="ms-1">&#x21D5;</span></th>
+                <th id="yearColHeader" class="d-none d-lg-table-cell" scope="col">Year<span class="ms-1">&#x21D5;</span>
+                </th>
                 <th id="resultColHeader" scope="col" style="display: none">Result</th>
             </tr>
             </thead>
@@ -285,6 +314,7 @@
         integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ=="
         crossorigin="anonymous"></script>
 <script defer src="js/chessboard-1.0.0.min.js"></script>
+<script defer src="js/typeahead.jquery.js"></script>
 <script type="module">
     class Game {
         constructor(white, black, result, year) {
@@ -380,23 +410,6 @@
         })
     }
 
-    document.getElementById('playerInput').addEventListener('input', function (event) {
-        if (event.inputType === "insertReplacementText") {
-            const side = document.getElementById('playerSideSelect').value
-            const filter = {
-                playerName: event.data,
-                playerResult: document.getElementById('playerResultSelect').value
-            }
-            filters[side].push(filter)
-
-            applyFilters(true)
-
-            document.getElementById('playerSideSelect').value = "anySide"
-            document.getElementById('playerInput').value = ""
-            document.getElementById('playerResultSelect').value = ""
-        }
-    })
-
     document.getElementById('openingInput').addEventListener('input', function (event) {
         if (event.inputType === "insertReplacementText") {
             filters.opening.push(event.data)
@@ -405,16 +418,6 @@
 
             document.getElementById('openingInput').value = ""
         }
-    })
-
-    $("#openingInput").on('autocomplete.select ', function (event, item) {
-        filters.opening.push(item)
-
-        applyFilters(true)
-
-        setTimeout(function () {
-            document.getElementById('openingInput').value = ""
-        }, 1)
     })
 
     document.getElementById('titleInput').addEventListener('input', event => {
@@ -554,18 +557,48 @@
                     tmpPlayerNames[game.white] = tmpPlayerNames[game.white] ? tmpPlayerNames[game.white] + 1 : 1
                     tmpPlayerNames[game.black] = tmpPlayerNames[game.black] ? tmpPlayerNames[game.black] + 1 : 1
                 })
-            _.orderBy(Object.keys(tmpPlayerNames)
+            let players = _.orderBy(Object.keys(tmpPlayerNames)
                 .map(name => {
                     return {
                         name: name,
                         count: tmpPlayerNames[name]
                     }
                 }), ["count", "name"], ["desc", "asc"])
-                .forEach(player => {
-                    let playerInputDataList = document.getElementById('playerInputDataList');
-                    let optionNode = document.createElement("option");
-                    optionNode.setAttribute("value", player.name)
-                    playerInputDataList.appendChild(optionNode)
+                .map(player => player.name)
+
+            $('#playerInput').typeahead({
+                    minLength: 1,
+                    highlight: true
+                },
+                {
+                    name: 'players-dataset',
+                    limit: 15,
+                    source: function (query, syncResults) {
+                        syncResults(players.filter(name => name.toLowerCase().includes(query.toLowerCase())))
+                    }
+                })
+                .bind('typeahead:select', function (ev, suggestion) {
+                    const side = document.getElementById('playerSideSelect').value
+                    const filter = {
+                        playerName: suggestion,
+                        playerResult: document.getElementById('playerResultSelect').value
+                    }
+                    filters[side].push(filter)
+
+                    applyFilters(true)
+
+                    setTimeout(function () {
+                        document.getElementById('playerSideSelect').value = "anySide"
+                        document.getElementById('playerInput').value = ""
+                        document.getElementById('playerResultSelect').value = ""
+                    }, 1)
+                })
+                .bind('typeahead:change', function () {
+                    setTimeout(function () {
+                        document.getElementById('playerSideSelect').value = "anySide"
+                        document.getElementById('playerInput').value = ""
+                        document.getElementById('playerResultSelect').value = ""
+                    }, 1)
                 })
 
             const url = new URL(window.location);
@@ -603,13 +636,32 @@
         .then(responseJson => {
             openings = responseJson
 
-            const openingInputDataList = document.getElementById('openingInputDatalist')
+            $('#openingInput').typeahead({
+                    minLength: 1,
+                    highlight: true
+                },
+                {
+                    name: 'openings-dataset',
+                    limit: 15,
+                    source: function (query, syncResults) {
+                        syncResults(openings.map(opening => opening.name)
+                            .filter(name => name.toLowerCase().includes(query.toLowerCase()))
+                        )
+                    }
+                })
+                .bind('typeahead:select', function (ev, suggestion) {
+                    filters.opening.push(suggestion)
 
-            openings.forEach(opening => {
-                let optionNode = document.createElement("option");
-                optionNode.setAttribute("value", opening.name)
-                openingInputDataList.appendChild(optionNode)
-            })
+                    applyFilters(true)
+                    setTimeout(function () {
+                        document.getElementById('openingInput').value = ""
+                    }, 1)
+                })
+                .bind('typeahead:change', function (ev, suggestion) {
+                    setTimeout(function () {
+                        document.getElementById('openingInput').value = ""
+                    }, 1)
+                })
         })
 
     fetch("generated/b4.json")
