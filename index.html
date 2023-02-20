@@ -107,6 +107,12 @@
                     </label>
                     <input class="form-check-input ml-2" type="checkbox" id="b4Check">
                 </div>
+                <div class="form-check mb-2 mr-sm-2">
+                    <label class="form-check-label" for="multipleGamesCheck">
+                        Multiple games in video
+                    </label>
+                    <input class="form-check-input ml-2" type="checkbox" id="multipleGamesCheck">
+                </div>
             </form>
             <form class="form-inline" action="" id="sortByForm">
                 <label class="my-1 mr-2" for="sortBySelect">Sort by</label>
@@ -433,6 +439,16 @@
         applyFilters()
     })
 
+    $('#multipleGamesCheck').change(function () {
+        if ($(this).prop("checked")) {
+            filters.multipleGames = true
+        } else {
+            filters.multipleGames = null
+        }
+        $(this).prop("checked", false)
+        applyFilters()
+    })
+
     $('#transpositionCheck').change(function () {
         if (filters.pgnFilter) {
             applyFilters()
@@ -597,6 +613,13 @@
                     return true
                 } else {
                     return _.some(filters.black, filter => filter.testBlack(video))
+                }
+            })
+            .filter(video => {
+                if (!filters.multipleGames) {
+                    return true
+                } else {
+                    return videosPgns[video.id] && videosPgns[video.id].length > 1
                 }
             })
             .filter(video => {
@@ -798,6 +821,17 @@
             filterSpanElement.textContent = "White played b4!!!"
             filterSpanElement.onclick = () => {
                 filters.b4Played = null
+                applyFilters()
+            }
+            nodes.push(filterSpanElement)
+        }
+
+        if (filters.multipleGames) {
+            let filterSpanElement = document.createElement("span");
+            filterSpanElement.className = 'badge badge-info ml-1 mr-1'
+            filterSpanElement.textContent = "Multiple games in video"
+            filterSpanElement.onclick = () => {
+                filters.multipleGames = null
                 applyFilters()
             }
             nodes.push(filterSpanElement)
