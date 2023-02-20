@@ -48,7 +48,6 @@ function extractGames(description: string, id: string): Game[] {
                 game.playerBlack = players.black
             }
             return game
-
         })
     } else {
         players = extractPlayersFromDescription(id, description)
@@ -179,6 +178,9 @@ export function extractPgnForId(id: string) {
     }
 
     let games = extractGames(videoSnippet.description, id);
+    if (games.length > 1) {
+        games = games.filter(game => game.playerWhite)
+    }
     if (games.length > 0) {
         database.saveVideoGames(id, games)
     }
@@ -189,3 +191,5 @@ export function extractPgnForAll() {
         extractPgnForId(id);
     })
 }
+
+extractPgnForAll()
