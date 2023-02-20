@@ -61,8 +61,3 @@ class ChesstempoService {
 }
 
 export const chesstempoService = new ChesstempoService()
-
-for (const id of _.shuffle(database.getAllIds()).slice(0, 100)) {
-    await chesstempoService.loadInfoForId(id, true)
-}
-
