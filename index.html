@@ -539,7 +539,7 @@
             const url = new URL(window.location);
             const s = url.searchParams.get('s')
             if (s) {
-                let state = JSON.parse(atob(s));
+                let state = JSON.parse(decodeURIComponent(atob(s)))
                 filters = state.filters
                 sortBy = state.sortBy
                 sortDirection = state.sortDirection
@@ -611,7 +611,7 @@
     }
 
     onpopstate = (event) => {
-        const state = JSON.parse(atob(event.state))
+        const state = JSON.parse(decodeURIComponent(atob(event.state)))
         filters = state.filters ? state.filters : filters
         sortBy = state.sortBy ? state.sortBy : sortBy
         sortDirection = state.sortDirection ? state.sortDirection : sortDirection
@@ -624,7 +624,7 @@
             sortBy: sortBy,
             sortDirection: sortDirection
         }
-        let encodedState = btoa(JSON.stringify(state, null, ""));
+        let encodedState = btoa(encodeURIComponent(JSON.stringify(state, null, "")));
 
         const url = new URL(window.location);
         url.searchParams.set('s', encodedState)
