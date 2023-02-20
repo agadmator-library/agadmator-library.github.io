@@ -1,7 +1,7 @@
 import {database, NAMESPACE_CHESS_COM, NAMESPACE_CHESSTEMPO_COM} from "../db.js";
-import {chessComService} from "../loadChessComInfo.js";
-import {loadChesstempoInfoForId} from "../loadChesstempoInfo.js";
+import {chessComService} from "../chessCom/ChessComService.js";
 import {combine} from "../combine.js";
+import {chesstempoService} from "../chesstempo/ChesstempoService";
 
 async function loadMissingChessComInfo() {
     let videosWithMissingInfo = database.getAllIds()
@@ -15,7 +15,7 @@ async function loadMissingChessComInfo() {
     for (const id of videosWithMissingInfo) {
         console.log(id)
         try {
-            await chessComService.loadChessComInfoForId(id)
+            await chessComService.loadInfoForId(id)
         } catch (e) {
             console.error(`Failed to download chess.com info for video ${id}: ${e}`)
         }
@@ -34,7 +34,7 @@ async function loadMissingChesstempoInfo() {
     for (const id of videosWithMissingInfo) {
         console.log(id)
         try {
-            await loadChesstempoInfoForId(id)
+            await chesstempoService.loadInfoForId(id)
         } catch (e) {
             console.error(`Failed to download chesstempo.com info for video ${id}: ${e}`)
         }

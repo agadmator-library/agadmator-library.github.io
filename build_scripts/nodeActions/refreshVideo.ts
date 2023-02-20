@@ -1,5 +1,5 @@
-import {chessComService} from "../loadChessComInfo.js";
-import {loadChesstempoInfoForId} from "../loadChesstempoInfo.js";
+import {chessComService} from "../chessCom/ChessComService.js";
+import {chesstempoService} from "../chesstempo/ChesstempoService.js";
 import {extractPgnForId} from "../extractPGN.js";
 import {combine} from "../combine.js";
 import {database, NAMESPACE_VIDEO_SNIPPET} from "../db.js";
@@ -23,8 +23,8 @@ async function refreshVideo() {
     }
 
     extractPgnForId(videoId)
-    await chessComService.loadChessComInfoForId(videoId, true)
-    await loadChesstempoInfoForId(videoId, true)
+    await chessComService.loadInfoForId(videoId, true)
+    await chesstempoService.loadInfoForId(videoId, true)
 
     combine()
 }

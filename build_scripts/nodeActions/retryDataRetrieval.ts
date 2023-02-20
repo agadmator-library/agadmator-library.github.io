@@ -1,13 +1,8 @@
-import {
-    database,
-    NAMESPACE_CHESS_COM,
-    NAMESPACE_CHESSTEMPO_COM,
-    NAMESPACE_VIDEO_SNIPPET
-} from "../db.js";
-import {chessComService} from "../loadChessComInfo.js";
+import {database, NAMESPACE_CHESS_COM, NAMESPACE_CHESSTEMPO_COM, NAMESPACE_VIDEO_SNIPPET} from "../db.js";
+import {chessComService} from "../chessCom/ChessComService.js";
 import {combine} from "../combine.js";
 import _ from "lodash";
-import {loadChesstempoInfoForId} from "../loadChesstempoInfo.js";
+import {chesstempoService} from "../chesstempo/ChesstempoService.js";
 
 function inDays(diffInMillis: number): number {
     return diffInMillis / (1000 * 60 * 60 * 24)
@@ -44,8 +39,7 @@ async function retryChessCom() {
 
     for (const id of _.shuffle(eligible).slice(0, 10)) {
         try {
-            await new Promise(r => setTimeout(r, 2000))
-            await chessComService.loadChessComInfoForId(id, true)
+            await chessComService.loadInfoForId(id, true)
         } catch (e) {
             console.error(`Failed to download chess.com info for video ${id}: ${e}`)
         }
@@ -58,8 +52,7 @@ async function retryChesstempoCom() {
 
     for (const id of _.shuffle(eligible).slice(0, 10)) {
         try {
-            await new Promise(r => setTimeout(r, 2000))
-            await loadChesstempoInfoForId(id, true)
+            await chesstempoService.loadInfoForId(id, true)
         } catch (e) {
             console.error(`Failed to download chess.com info for video ${id}: ${e}`)
         }

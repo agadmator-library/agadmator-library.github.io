@@ -1,12 +1,12 @@
-import {database, NAMESPACE_CHESS_COM} from "./db.js";
+import {database, NAMESPACE_CHESS_COM} from "../db.js";
 import {chessComClient} from "./ChessComClient.js";
 import _ from "lodash";
-import cleanPlayerName from "./playerNameCleaner.js";
+import cleanPlayerName from "../players/playerNameCleaner.js";
 import {levenshteinEditDistance} from "levenshtein-edit-distance";
 
 
 class ChessComService {
-    public async loadChessComInfoForId(id: string, force: boolean = false) {
+    public async loadInfoForId(id: string, force: boolean = false) {
         if (!database.read(NAMESPACE_CHESS_COM, id) || force) {
             const games = database.readVideoGames(id);
             const game = games && games[0] ? games[0] : null
@@ -17,8 +17,6 @@ class ChessComService {
             console.log(`ChessComService: ${id} searching for games`)
 
             let chessComGames = await chessComClient.fetchGames(game.fen)
-            console.log(game)
-            console.log(chessComGames)
             chessComGames = _.uniqBy(chessComGames, chessComGame => {
                 const playerWhite = cleanPlayerName(chessComGame.playerWhite)
                 const playerBlack = cleanPlayerName(chessComGame.playerBlack)

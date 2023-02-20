@@ -1,7 +1,7 @@
 import {pgnRead, pgnWrite} from 'kokopu'
 import cleanPgn from "./pgnCleaner.js";
-import {extractPlayersFromDescription} from "./playersExtractor.js";
-import getPlayersForId from "./playersOverrides.js";
+import {extractPlayersFromDescription} from "./players/playersExtractor.js";
+import getPlayersForId from "./players/playersOverrides.js";
 import {database, NAMESPACE_VIDEO_SNIPPET} from "./db.js";
 import {pgnOverrides} from "./pgnOverrides.js";
 import _ from "lodash"

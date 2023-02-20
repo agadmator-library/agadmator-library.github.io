@@ -1,8 +1,7 @@
 import * as cheerio from "cheerio";
-import {RateLimiter} from "./RateLimiter.js";
+import {RateLimiter} from "../util/RateLimiter.js";
 
 class ChessComClient {
-
     private rateLimiter: RateLimiter = new RateLimiter(15_000)
 
     public async fetchGames(fen: string): Promise<ChessComGame[]> {
