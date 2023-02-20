@@ -1,5 +1,5 @@
 import {loadNewMovies} from "../loadNewMovies.js";
-import {loadChessComInfoForId} from "../loadChessComInfo.js";
+import {chessComService} from "../loadChessComInfo.js";
 import {loadChesstempoInfoForId} from "../loadChesstempoInfo.js";
 import {extractPgnForId} from "../extractPGN.js";
 import {combine} from "../combine.js";
@@ -15,7 +15,7 @@ async function loadNewVideos() {
         extractPgnForId(id)
 
         try {
-            await loadChessComInfoForId(id)
+            await chessComService.loadChessComInfoForId(id)
         } catch (e) {
             console.error(`Error loading chess.com info: ${e}`)
         }

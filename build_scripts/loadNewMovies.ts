@@ -1,7 +1,7 @@
 import {google} from "googleapis";
-import {dbRead, dbSave, NAMESPACE_VIDEO_SNIPPET} from "./db.js";
+import {database, NAMESPACE_VIDEO_SNIPPET} from "./db.js";
 
-export async function loadNewMovies() {
+export async function loadNewMovies(): Promise<string[]> {
     console.log("Starting downloading new movies")
 
     let youtube = google.youtube({
@@ -19,12 +19,16 @@ export async function loadNewMovies() {
     console.log("Downloaded channel contentDetails")
 
     const uploadPlaylistId = channelContentDetails
-        .data
-        .items
-        .find(value => value.contentDetails.relatedPlaylists.uploads != null)
-        .contentDetails
-        .relatedPlaylists
-        .uploads
+        ?.data
+        ?.items
+        ?.find(value => value?.contentDetails?.relatedPlaylists?.uploads)
+        ?.contentDetails
+        ?.relatedPlaylists
+        ?.uploads
+
+    if (!uploadPlaylistId) {
+        throw "uploadPlaylistId is missing"
+    }
 
     console.log("Downloading playlist items")
 
@@ -33,36 +37,49 @@ export async function loadNewMovies() {
         maxResults: 10,
         part: ['snippet']
     });
+
+    if (!playlistItemsResponse) {
+        throw "playlistItemsResponse is missing"
+    }
+
     let reachedExisting = false
-    const downloadedVideosIds = []
+    const downloadedVideosIds: string[] = []
     do {
         const now = new Date().toISOString()
-        playlistItemsResponse.data.items
-            .filter(playlistItem => playlistItem.snippet.resourceId.videoId != null)
+        playlistItemsResponse.data?.items
+            ?.filter(playlistItem => playlistItem?.snippet?.resourceId?.videoId)
             .forEach(playlistItem => {
+                if (!playlistItem.snippet?.resourceId?.videoId) {
+                    return
+                }
+
                 const toSave = {
                     schemaVersion: 1,
                     retrievedAt: now,
-                    publishedAt: playlistItem.snippet.publishedAt,
-                    title: playlistItem.snippet.title,
-                    description: playlistItem.snippet.description,
-                    thumbnail: playlistItem.snippet.thumbnails,
+                    publishedAt: playlistItem.snippet?.publishedAt,
+                    title: playlistItem.snippet?.title,
+                    description: playlistItem.snippet?.description,
+                    thumbnail: playlistItem.snippet?.thumbnails,
                     videoId: playlistItem.snippet.resourceId.videoId
                 }
 
-                if (dbRead(NAMESPACE_VIDEO_SNIPPET, toSave.videoId)) {
+                if (database.read(NAMESPACE_VIDEO_SNIPPET, toSave.videoId)) {
                     reachedExisting = true
                 } else {
-                    dbSave(NAMESPACE_VIDEO_SNIPPET, toSave.videoId, toSave)
+                    database.save(NAMESPACE_VIDEO_SNIPPET, toSave.videoId, toSave)
                     downloadedVideosIds.push(toSave.videoId)
                 }
             })
+        if (!playlistItemsResponse.data.nextPageToken) {
+            return []
+        }
+        const pageToken: string = playlistItemsResponse.data.nextPageToken
         if (!reachedExisting) {
             playlistItemsResponse = await youtube.playlistItems.list({
                 playlistId: uploadPlaylistId,
                 maxResults: 50,
                 part: ['snippet'],
-                pageToken: playlistItemsResponse.data.nextPageToken,
+                pageToken: pageToken,
             })
         }
     } while (!reachedExisting && playlistItemsResponse.data.nextPageToken != null)

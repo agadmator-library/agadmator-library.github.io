@@ -1,13 +1,12 @@
 import cleanPlayerName from "./playerNameCleaner.js";
 import getPlayersForId from "./playersOverrides.js";
 
-function isValidPlayerName(name) {
-    return name
-        && name !== "?"
+function isValidPlayerName(name: string | null | undefined): "" | null | undefined | boolean {
+    return name && name !== "?"
 }
 
-export function extractPlayersFromDescription(id, description) {
-    let players = extractFromWhiteAndBlackPgnNotes(description)
+export function extractPlayersFromDescription(id: string, description: string): any | undefined {
+    let players: any = extractFromWhiteAndBlackPgnNotes(description)
     const searchAboveRegExp = [
         /\s+[pP][gG][nN]\s+(.*article.*)?[hH][eE][rR][eE]\s+http|Click here for pgn/,
         /\s+\[FEN\s+".*"]/,
@@ -27,7 +26,7 @@ export function extractPlayersFromDescription(id, description) {
     return players
 }
 
-function extractFromWhiteAndBlackPgnNotes(description) {
+function extractFromWhiteAndBlackPgnNotes(description: string): any | undefined {
     const regex = /\[[wW]hite\s+"(?<playerWhite>.*)"]\s*\[[bB]lack\s+"(?<playerBlack>.*)"]/
     const match = description.match(regex)
 
@@ -40,13 +39,13 @@ function extractFromWhiteAndBlackPgnNotes(description) {
     return null
 }
 
-function extractPlayers(id, description, pgn) {
+function extractPlayers(id: string, description: string, pgn: string | undefined): any | undefined {
     let players = getPlayersForId(id)
     if (!players && !pgn) {
         players = extractPlayersFromDescription(id, description)
     }
 
-    if (!players) {
+    if (!players && pgn) {
         let linesBeforePgn = description.substring(0, description.indexOf(pgn)).split("\n")
             .slice(-5)
             .filter(value => value.indexOf("You are awesome") < 0)
@@ -102,7 +101,7 @@ function extractPlayers(id, description, pgn) {
         } else {
             console.error(`Failed to extract player names for ${id}`)
             console.error(description.substring(0, description.indexOf(pgn)).split("\n")
-                .filter(value => value !== "")
+                .filter((value: string) => value !== "")
                 .slice(-5))
         }
     }

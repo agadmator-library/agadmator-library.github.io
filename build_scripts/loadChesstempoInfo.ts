@@ -1,11 +1,11 @@
 import axios from 'axios';
 import cleanPlayerName from "./playerNameCleaner.js";
 import _ from "lodash";
-import {dbRead, dbSave, NAMESPACE_CHESSTEMPO_COM, NAMESPACE_VIDEO_GAME} from "./db.js";
+import {database, NAMESPACE_CHESSTEMPO_COM, NAMESPACE_VIDEO_GAME} from "./db.js";
 
-export async function loadChesstempoInfoForId(id, force) {
-    if (!dbRead(NAMESPACE_CHESSTEMPO_COM, id) || force) {
-        const game = dbRead(NAMESPACE_VIDEO_GAME, id)
+export async function loadChesstempoInfoForId(id: string, force: boolean = false) {
+    if (!database.read(NAMESPACE_CHESSTEMPO_COM, id) || force) {
+        const game: any = database.read(NAMESPACE_VIDEO_GAME, id)
 
         if (!game || !game.fen) {
             return;
@@ -39,20 +39,20 @@ export async function loadChesstempoInfoForId(id, force) {
 
         if (responseBody.result.total_games === 0) {
             console.log(`${id} Game not found`)
-            dbSave(NAMESPACE_CHESSTEMPO_COM, id, {
+            database.save(NAMESPACE_CHESSTEMPO_COM, id, {
                 reason: "NOT_FOUND",
                 retrievedAt: new Date().toISOString(),
             })
             return;
         } else if (responseBody.result.total_games > 1) {
 
-            let uniqueGames = _.uniqBy(responseBody.result.games, game => game.game_id);
+            let uniqueGames = _.uniqBy(responseBody.result.games, (game: any) => game.game_id);
 
             if (uniqueGames.length === 1 && responseBody.result.total_games < 50) {
                 foundGame = uniqueGames[0]
             } else {
                 let resultsForPlayers = uniqueGames
-                    .filter(gameFromResponse => {
+                    .filter((gameFromResponse: any) => {
                         return gameFromResponse.white && gameFromResponse.black && game.playerWhite === cleanPlayerName(gameFromResponse.white) && game.playerBlack === cleanPlayerName(gameFromResponse.black)
                     })
 
@@ -60,7 +60,7 @@ export async function loadChesstempoInfoForId(id, force) {
                     foundGame = resultsForPlayers[0]
                 } else {
                     console.log(`${id} More than one game found`)
-                    dbSave(NAMESPACE_CHESSTEMPO_COM, id, {
+                    database.save(NAMESPACE_CHESSTEMPO_COM, id, {
                         reason: "AMBIGUOUS",
                         retrievedAt: new Date().toISOString(),
                     })
@@ -86,6 +86,6 @@ export async function loadChesstempoInfoForId(id, force) {
             openingName: foundGame.opening_name
         }
 
-        dbSave(NAMESPACE_CHESSTEMPO_COM, id, chessTempoEntry)
+        database.save(NAMESPACE_CHESSTEMPO_COM, id, chessTempoEntry)
     }
 }

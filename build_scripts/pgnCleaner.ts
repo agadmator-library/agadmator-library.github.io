@@ -1,4 +1,4 @@
-export default function cleanPgn(pgn) {
+export default function cleanPgn(pgn: string) : string {
     return pgn
         .replaceAll(/000|OOO/g, 'O-O-O')
         .replaceAll(/OO|0-0|o-o|oO/g, 'O-O')
@@ -12,6 +12,7 @@ export default function cleanPgn(pgn) {
         .replaceAll("!!", "")
         .replaceAll(" - ", "")
         .replaceAll("–", "-")
+        .replaceAll(/-{2,}/g, "")
         .replaceAll("!.", "")
         .replaceAll("...g4 =", "")
         .replaceAll("book", "")
@@ -66,8 +67,8 @@ export default function cleanPgn(pgn) {
         .replaceAll("Mr. Bird and I played many games at this openingand many followed the same lines. 13 ", "") // GShlaa4KEGY.json
         .replaceAll("Stronger than Qxd4.", "") // GShlaa4KEGY.json
         .replaceAll(" followed by Bd7", "")
-        .replaceAll("The piece sacrifice is a positional onesince it has been used to erect an invisible barrier on the e-file. a number of squares on it  are controlled by white pawnsand a white rook will soon be moved to e1. -- Iakov damsky 17", "") // GTREDZ4qf4I.json
-        .replaceAll(" With this simple tactic 29 Bxd5 30. Re8 White keeps his two extra pawns. The finish is straightforward. -- damsky 29", "") // GTREDZ4qf4I.json
+        .replaceAll("The piece sacrifice is a positional onesince it has been used to erect an invisible barrier on the e-file. a number of squares on it  are controlled by white pawnsand a white rook will soon be moved to e1.  Iakov damsky 17", "") // GTREDZ4qf4I.json
+        .replaceAll(" With this simple tactic 29 Bxd5 30. Re8 White keeps his two extra pawns. The finish is straightforward.  damsky 29", "") // GTREDZ4qf4I.json
         .replaceAll("eee 8", "")
         .replaceAll(" a favorite defence with Kieseritsky. but one thataccording to Janischrenders the maintenance of the pawn an impossibility. ", "") // JoYiUXqI4_0.json
         .replaceAll(" This is a deviation from the ordinary line of defencewhich is as follows: 8Qg5 9 Qf3 Bg3 10 Nc3 Nf6 11 Bd2 Nf6  12 Bb5 Bd7 13 Bxc6 bxc6 14 O-O-O and the game is even on  11Bd7 12 d5 Ng4 13 Qxg3 fxg3 14 Bxg5 gxf2 15 Kd2 f6 16 Be3 O-O 17 Be2 Nxe3 18 Kxe3 f5.", "") // JoYiUXqI4_0.json
@@ -86,9 +87,9 @@ export default function cleanPgn(pgn) {
         .replaceAll("again  simplest. Kf7 would not yet have been disastrous because of Rd8etc. - alekhine 42", "") // VRR-cSnJ0SU.json
         .replaceAll(" after exchanging rooksWhite would win still more easily. - alekhine", "") // VRR-cSnJ0SU.json
         .replaceAll("Tal isn't interested in a .", "") // X06Z9rskUwc.json
-        .replaceAll("Very nice tempo move. --fischer 14", "") // aFWFFMs8pVc.json
-        .replaceAll(" Now Petrosian is preparing for a very beautiful finish.--fischer 18", "") // aFWFFMs8pVc.json
-        .replaceAll("This is a real problem move. --fischer", "") // aFWFFMs8pVc.json
+        .replaceAll("Very nice tempo move. fischer 14", "") // aFWFFMs8pVc.json
+        .replaceAll(" Now Petrosian is preparing for a very beautiful finish.fischer 18", "") // aFWFFMs8pVc.json
+        .replaceAll("This is a real problem move. fischer", "") // aFWFFMs8pVc.json
         .replaceAll(" .", ".")
         .replaceAll(" Notes by Roberto grau 1", "") // jz2oKkQcWxI.json
         .replaceAll("Right nowcaldas Vianna finds a notable moveof problemwhich creates many difficulties for Silvestre. study  positionbefore continuing with  readingto see if you find  idea of  master. white pieces must take advantage of  defective position of  black King.  first check can be fatal for  black pieces. and this allows caldas Vianna do  following beautiful move", "") // jz2oKkQcWxI.json
