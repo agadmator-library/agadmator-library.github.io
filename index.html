@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <title>agadmator-library</title>
     <meta name="description" content="List (library) of all agadmator videos.">
@@ -18,8 +18,8 @@
     <link rel="icon" href="favicon.ico">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+          integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <link rel="stylesheet" href="css/chessboard-1.0.0.min.css">
 </head>
 <style>
@@ -52,92 +52,85 @@
     <div class="card mt-2">
         <div class="card-header">
             Filters
-            <button class="btn btn-light float-end" type="button" data-bs-toggle="collapse"
-                    href="#filtersCard" aria-expanded="false" aria-controls="filtersCard">
+            <button class="btn btn-light float-right p-0" type="button" data-toggle="collapse"
+                    data-target="#filtersCard" aria-expanded="false" aria-controls="collapseExample">
                 &#x21D5;
             </button>
         </div>
 
         <div class="card-body collapse show" id="filtersCard">
-            <form class="row align-items-center " action="" id="playerNamesFilterForm">
-                <div class="row mb-2">
-                    <div class="col-auto">
-                        <label class="visually-hidden" for="playerSideSelect">Select side</label>
-                        <select class="form-control" id="playerSideSelect">
-                            <option value="anySide">Any side</option>
-                            <option value="white">White</option>
-                            <option value="black">Black</option>
-                        </select>
-                    </div>
-                    <div class="col-auto">
-                        <label class="visually-hidden" for="playerResultSelect">Player result</label>
-                        <select class="form-control" id="playerResultSelect">
-                            <option value="" selected>Any outcome</option>
-                            <option value="won">Won</option>
-                            <option value="lost">Lost</option>
-                            <option value="draw">Draw</option>
-                        </select>
-                    </div>
-                    <div class="col">
-                        <label class="visually-hidden" for="playerInput">Player</label>
-                        <input id="playerInput"
-                               type="text"
-                               class="form-control flex-fill"
-                               placeholder="Player"
-                               autocomplete="off"
-                               list="playerInputDataList">
-                        <datalist id="playerInputDataList"></datalist>
-                    </div>
+            <form class="form-inline " action="" id="playerNamesFilterForm">
+                <label class="sr-only" for="playerSideSelect">Select side</label>
+                <select class="form-control mb-2 mr-sm-2 " id="playerSideSelect">
+                    <option value="anySide">Any side</option>
+                    <option value="white">White</option>
+                    <option value="black">Black</option>
+                </select>
+
+                <label class="sr-only" for="playerResultSelect">Player result</label>
+                <select class="form-control mb-2 mr-sm-2 d-none d-lg-block" id="playerResultSelect">
+                    <option value="" selected>Any outcome</option>
+                    <option value="won">Won</option>
+                    <option value="lost">Lost</option>
+                    <option value="draw">Draw</option>
+                </select>
+
+                <label class="sr-only" for="playerInput">Player</label>
+                <input type="text" class="form-control mb-2 mr-sm-2 basicPlayerAutoComplete flex-fill" id="playerInput"
+                       placeholder="Player"
+                       autocomplete="off">
+            </form>
+            <form class="form-inline" action="" id="openingFilterForm">
+                <label class="sr-only" for="openingInput">Opening</label>
+                <input type="text" class="form-control mb-2 mr-sm-2 openingAutoComplete" id="openingInput"
+                       placeholder="Opening"
+                       autocomplete="off">
+            </form>
+            <form class="form-inline" action="" id="titleFilterForm">
+                <label class="sr-only" for="openingInput">Title contains</label>
+                <input type="text" class="form-control mb-2 mr-sm-2 flex-fill" id="titleInput"
+                       placeholder="Title contains"
+                       autocomplete="off">
+            </form>
+            <form class="form-inline" action="" id="resultForm">
+                <label class="sr-only" for="resultSelect">Result</label>
+                <select class="form-control mb-2 mr-sm-2 " id="resultSelect">
+                    <option value="" selected disabled hidden>Result</option>
+                    <option value="w">White won</option>
+                    <option value="b">Black won</option>
+                    <option value="d">Draw</option>
+                    <option value="na">n/a</option>
+                </select>
+                <div class="form-check mb-2 mr-sm-2">
+                    <label class="form-check-label" for="b4Check">
+                        White played b4!!!
+                    </label>
+                    <input class="form-check-input ml-2" type="checkbox" id="b4Check">
                 </div>
-                <div class="row mb-2">
-                    <div class="col">
-                        <label class="visually-hidden" for="titleInput">Title contains</label>
-                        <input type="text" class="form-control" id="titleInput"
-                               placeholder="Title contains"
-                               autocomplete="off">
-                    </div>
-                </div>
-                <div class="row mb-2">
-                    <div class="col-auto">
-                        <label class="visually-hidden" for="openingInput">Opening</label>
-                        <input id="openingInput"
-                               type="text"
-                               class="form-control"
-                               placeholder="Opening"
-                               autocomplete="off"
-                               list="openingInputDatalist">
-                        <datalist id="openingInputDatalist"></datalist>
-                    </div>
-                    <div class="col-auto">
-                        <label class="visually-hidden" for="resultSelect">Result</label>
-                        <select class="form-control mb-2 mr-sm-2 " id="resultSelect">
-                            <option value="" selected disabled hidden>Result</option>
-                            <option value="w">White won</option>
-                            <option value="b">Black won</option>
-                            <option value="d">Draw</option>
-                            <option value="na">n/a</option>
-                        </select>
-                    </div>
-                    <div class="col-auto ">
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="b4Check">
-                            <label class="form-check-label" for="b4Check">
-                                White played b4!!!
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col-auto ">
-                        <div class="form-check">
-                            <label class="form-check-label" for="multipleGamesCheck">
-                                Multiple games in video
-                            </label>
-                            <input class="form-check-input" type="checkbox" id="multipleGamesCheck">
-                        </div>
-                    </div>
+                <div class="form-check mb-2 mr-sm-2">
+                    <label class="form-check-label" for="multipleGamesCheck">
+                        Multiple games in video
+                    </label>
+                    <input class="form-check-input ml-2" type="checkbox" id="multipleGamesCheck">
                 </div>
             </form>
+            <form class="form-inline" action="" id="sortByForm">
+                <label class="my-1 mr-2" for="sortBySelect">Sort by</label>
+                <select class="form-control mb-2 mr-sm-2 " id="sortBySelect">
+                    <option value="date">Published at</option>
+                    <option value="title">Title</option>
+                    <option value="w">Player white</option>
+                    <option value="b">Player black</option>
+                    <option value="year">Year</option>
+                </select>
+                <label class="sr-only" for="sortDirectionSelect">Sorting direction</label>
+                <select class="form-control mb-2 mr-sm-2 " id="sortDirectionSelect">
+                    <option value="desc">Descending</option>
+                    <option value="asc">Ascending</option>
+                </select>
+            </form>
             <div>
-                <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapsibleBoardFilter" role="button"
+                <a class="btn btn-primary" data-toggle="collapse" href="#collapsibleBoardFilter" role="button"
                    id="collapsibleBoardFilterButton" aria-expanded="false" aria-controls="collapsibleBoardFilter">
                     Filter by playing moves
                 </a>
@@ -164,8 +157,8 @@
     <div class="card mt-2">
         <div class="card-header">
             Filters applied
-            <button class="btn btn-light float-end" type="button" data-bs-toggle="collapse"
-                    href="#filtersContainerBody" aria-expanded="false" aria-controls="filtersContainerBody">
+            <button class="btn btn-light float-right p-0" type="button" data-toggle="collapse"
+                    data-target="#filtersContainerBody" aria-expanded="false" aria-controls="filtersContainerBody">
                 &#x21D5;
             </button>
         </div>
@@ -173,11 +166,11 @@
         <div class="card-body collapse show" id="filtersContainerBody">
             <div id="filtersContainer">
             </div>
-            <button id="clearFilterButton" type="submit" class="btn btn-primary float-end">Clear filters
+            <button id="clearFilterButton" type="submit" class="btn btn-primary float-right">Clear filters
             </button>
 
         </div>
-        <div id="filterResultsContainer" class="card-footer text-muted"
+        <div id="filterResultsContainer" class="card-footer text-muted pl-3 pt-1 pb-1"
              data-toggle="tooltip"
              data-placement="top"
              title="'with players' are videos with players names present. 'with moves' are videos eligible for opening and PGN filter.">
@@ -187,31 +180,22 @@
     <div class="card mt-2">
         <div class="card-body">
             <div class="btn-group btn-group-sm" role="group">
-                <button id="watchTopOnYoutubeButton"
-                        class="btn btn-primary m-2"
-                        data-container="body"
+                <button id="watchTopOnYoutubeButton" class="btn btn-primary mr-2" data-container="body"
                         data-toggle="tooltip"
                         data-placement="top"
                         title="Opens YouTube playlist with top filtered videos (up to 50).">
                     Watch top 50 on YouTube
                 </button>
-                <button id="watchOnYoutubeButton"
-                        class="btn btn-primary m-2"
-                        data-container="body"
+                <button id="watchOnYoutubeButton" class="btn btn-primary mr-2" data-container="body"
                         data-toggle="tooltip"
                         data-placement="top"
                         title="Opens YouTube playlist with currently visible (page) videos.">
                     Watch visible on YouTube
                 </button>
-                <button id="showResultButton"
-                        class="btn btn-primary m-2"
-                        data-container="body">
+                <button id="showResultButton" class="btn btn-primary mr-2" data-container="body">
                     Show result column
                 </button>
-                <button id="hideResultButton"
-                        class="btn btn-primary m-2"
-                        style="display: none"
-                        data-container="body">
+                <button id="hideResultButton" class="btn btn-primary mr-2" style="display: none" data-container="body">
                     Hide result column
                 </button>
             </div>
@@ -223,13 +207,12 @@
         <table class="table table-sm table-hover table-striped">
             <thead>
             <tr>
-                <th id="dateColHeader" class="d-none d-lg-block" scope="col">
-                    Published at<span class="ms-1">&#x21D5;</span></th>
-                <th id="titleColHeader" scope="col">Title<span class="ms-1">&#x21D5;</span></th>
-                <th id="whiteColHeader" scope="col">White<span class="ms-1">&#x21D5;</span></th>
-                <th id="blackColHeader" scope="col">Black<span class="ms-1">&#x21D5;</span></th>
-                <th id="yearColHeader" class="d-none d-lg-table-cell" scope="col">Year<span class="ms-1">&#x21D5;</span></th>
-                <th id="resultColHeader" scope="col" style="display: none">Result</th>
+                <th class="d-none d-lg-block" scope="col">Published at</th>
+                <th scope="col">Title</th>
+                <th scope="col">White</th>
+                <th scope="col">Black</th>
+                <th class="d-none d-lg-table-cell" scope="col">Year</th>
+                <th scope="col" id="resultColumnHeader" style="display: none">Result</th>
             </tr>
             </thead>
             <tbody id="tableBody"></tbody>
@@ -238,23 +221,23 @@
     <nav>
         <ul class="pagination justify-content-center" id="tablePagination">
             <li id="firstPageLink" class="page-item">
-                <span class="visually-hidden">First</span>
+                <span class="sr-only">First</span>
                 <span class="page-link">&laquo;</span>
             </li>
             <li id="previousPageLink" class="page-item">
                 <a class="page-link" href="#">
                     <span aria-hidden="true">‹</span>
-                    <span class="visually-hidden">Previous</span>
+                    <span class="sr-only">Previous</span>
                 </a>
             </li>
             <li id="nextPageLink" class="page-item">
                 <a class="page-link" href="#">
                     <span aria-hidden="true">›</span>
-                    <span class="visually-hidden">Next</span>
+                    <span class="sr-only">Next</span>
                 </a>
             </li>
             <li id="lastPageLink" class="page-item">
-                <span class="visually-hidden">Last</span>
+                <span class="sr-only">Last</span>
                 <span class="page-link">&raquo;</span>
             </li>
         </ul>
@@ -278,9 +261,10 @@
 
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.min.js"
         crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
         crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/gh/xcash/bootstrap-autocomplete@v2.3.7/dist/latest/bootstrap-autocomplete.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"
         integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ=="
         crossorigin="anonymous"></script>
@@ -316,6 +300,11 @@
     let pageSize = 30
     let videos = []
     let filteredVideos = []
+    /**
+     * Stores all player names with number of occurences
+     * @type {*[]}
+     */
+    let players = []
     let filters = {
         anySide: [],
         white: [],
@@ -380,31 +369,22 @@
         })
     }
 
-    document.getElementById('playerInput').addEventListener('input', function (event) {
-        if (event.inputType === "insertReplacementText") {
-            const side = document.getElementById('playerSideSelect').value
-            const filter = {
-                playerName: event.data,
-                playerResult: document.getElementById('playerResultSelect').value
-            }
-            filters[side].push(filter)
+    $("#playerInput").on('autocomplete.select ', function (event, item) {
+        const side = document.getElementById('playerSideSelect').value
+        const filter = {
+            playerName: item,
+            playerResult: document.getElementById('playerResultSelect').value
+        }
+        filters[side].push(filter)
 
-            applyFilters(true)
+        applyFilters(true)
 
+        setTimeout(function () {
             document.getElementById('playerSideSelect').value = "anySide"
             document.getElementById('playerInput').value = ""
             document.getElementById('playerResultSelect').value = ""
-        }
-    })
+        }, 1)
 
-    document.getElementById('openingInput').addEventListener('input', function (event) {
-        if (event.inputType === "insertReplacementText") {
-            filters.opening.push(event.data)
-
-            applyFilters(true)
-
-            document.getElementById('openingInput').value = ""
-        }
     })
 
     $("#openingInput").on('autocomplete.select ', function (event, item) {
@@ -428,6 +408,16 @@
         game.undo()
         board.position(game.fen())
         filters.pgnFilter = game.pgn() ? game.pgn() : ""
+        applyFilters(true)
+    })
+
+    $('#sortBySelect').change(function () {
+        sortBy = $(this).val()
+        applyFilters(true)
+    })
+
+    $('#sortDirectionSelect').change(function () {
+        sortDirection = $(this).val()
         applyFilters(true)
     })
 
@@ -467,22 +457,6 @@
         }
     })
 
-    function onSortClick(field) {
-        if (sortBy === field) {
-            sortDirection = sortDirection === "asc" ? "desc" : "asc"
-        } else {
-            sortBy = field
-            sortDirection = ["w", "b", "title"].includes(field) ? "asc" : "desc"
-        }
-        applyFilters(true)
-    }
-
-    document.getElementById('dateColHeader').addEventListener('click', () => onSortClick('date'))
-    document.getElementById('titleColHeader').addEventListener('click', () => onSortClick('title'))
-    document.getElementById('whiteColHeader').addEventListener('click', () => onSortClick('w'))
-    document.getElementById('blackColHeader').addEventListener('click', () => onSortClick('b'))
-    document.getElementById('yearColHeader').addEventListener('click', () => onSortClick('year'))
-
     function watchIdsOnYoutube(ids) {
         if (ids === "") {
             return
@@ -507,7 +481,7 @@
 
     $('#showResultButton').on('click', function () {
         showResult = true
-        $('#resultColHeader').css("display", "table-cell");
+        $('#resultColumnHeader').css("display", "table-cell");
         $('#showResultButton').css("display", "none")
         $('#hideResultButton').css("display", "block")
         draw()
@@ -515,7 +489,7 @@
 
     $('#hideResultButton').on('click', function () {
         showResult = false
-        $('#resultColHeader').css("display", "none");
+        $('#resultColumnHeader').css("display", "none");
         $('#showResultButton').css("display", "block")
         $('#hideResultButton').css("display", "none")
         draw()
@@ -554,19 +528,13 @@
                     tmpPlayerNames[game.white] = tmpPlayerNames[game.white] ? tmpPlayerNames[game.white] + 1 : 1
                     tmpPlayerNames[game.black] = tmpPlayerNames[game.black] ? tmpPlayerNames[game.black] + 1 : 1
                 })
-            _.orderBy(Object.keys(tmpPlayerNames)
+            players = _.orderBy(Object.keys(tmpPlayerNames)
                 .map(name => {
                     return {
                         name: name,
                         count: tmpPlayerNames[name]
                     }
                 }), ["count", "name"], ["desc", "asc"])
-                .forEach(player => {
-                    let playerInputDataList = document.getElementById('playerInputDataList');
-                    let optionNode = document.createElement("option");
-                    optionNode.setAttribute("value", player.name)
-                    playerInputDataList.appendChild(optionNode)
-                })
 
             const url = new URL(window.location);
             const s = url.searchParams.get('s')
@@ -592,25 +560,15 @@
         })
 
     fetch("generated/positions.json")
-        .then(response => response.json())
-        .then(responseJson => {
-            positions = responseJson
+        .then(res => res.json())
+        .then(res => {
+            positions = res
             positions.videos.forEach((videoId, positionIndex) => videos.find(video => video.id === videoId).positionIndex = positionIndex)
         })
 
     fetch("generated/openings-slim.json")
-        .then(response => response.json())
-        .then(responseJson => {
-            openings = responseJson
-
-            const openingInputDataList = document.getElementById('openingInputDatalist')
-
-            openings.forEach(opening => {
-                let optionNode = document.createElement("option");
-                optionNode.setAttribute("value", opening.name)
-                openingInputDataList.appendChild(optionNode)
-            })
-        })
+        .then(res => res.json())
+        .then(res => openings = res)
 
     fetch("generated/b4.json")
         .then(res => res.json())
@@ -671,6 +629,8 @@
         const url = new URL(window.location);
         url.searchParams.set('s', encodedState)
 
+        console.log("pushing state")
+        console.log(state)
         history.pushState(encodedState, 'agadmator-library', url);
     }
 
@@ -722,6 +682,7 @@
                 return _.some(pgnPrefixes, pgnPrefix => _.some(videoPgns, videoPgn => videoPgn.indexOf(pgnPrefix) === 0))
             })
             .filter(video => {
+
                 if (filters.pgnFilter === "") {
                     return true
                 }
@@ -731,8 +692,8 @@
                     return false
                 }
 
-                return _.some(videoPgns, videoPgn => videoPgn.indexOf(filters.pgnFilter) === 0)
-                    || includeTranspositions && positions && positions[game.fen().replaceAll(/ - \d+ \d+/g, "")] && positions[game.fen().replaceAll(/ - \d+ \d+/g, "")].includes(video.positionIndex)
+                return _.some(videoPgns, videoPgn => videoPgn.indexOf(filters.pgnFilter) === 0
+                    || includeTranspositions && positions && positions[game.fen().replaceAll(/ - \d+ \d+/g, "")] && positions[game.fen().replaceAll(/ - \d+ \d+/g, "")].includes(video.positionIndex))
             })
             .filter(video => {
                 if (!filters.title) {
@@ -767,7 +728,7 @@
             } else if (sortBy === "b") {
                 return (video.games[0] ? video.games[0].getBlackOrEmpty() : "").toLowerCase()
             } else if (sortBy === "year") {
-                return video.games[0] && video.games[0].year ? video.games[0].year : ""
+                return video.game && video.game.year ? video.game.year : ""
             } else {
                 return ""
             }
@@ -811,7 +772,7 @@
         const nodes = []
         filters.anySide.forEach(filter => {
             let filterSpanElement = document.createElement("span");
-            filterSpanElement.className = 'badge text-bg-secondary m-1'
+            filterSpanElement.className = 'badge badge-secondary ml-1 mr-1'
             filterSpanElement.textContent = `Any side: ${filter.playerName}`
             if (filter.playerResult) {
                 filterSpanElement.textContent += ` | ${filter.playerResult}`
@@ -822,7 +783,7 @@
 
         filters.white.forEach(filter => {
             let filterSpanElement = document.createElement("span");
-            filterSpanElement.className = 'badge text-bg-light m-1'
+            filterSpanElement.className = 'badge badge-light ml-1 mr-1'
             filterSpanElement.textContent = filter.playerName
             if (filter.playerResult) {
                 filterSpanElement.textContent += ` | ${filter.playerResult}`
@@ -833,7 +794,7 @@
 
         filters.black.forEach(filter => {
             let filterSpanElement = document.createElement("span");
-            filterSpanElement.className = 'badge text-bg-dark m-1'
+            filterSpanElement.className = 'badge badge-dark ml-1 mr-1'
             filterSpanElement.textContent = filter.playerName
             if (filter.playerResult) {
                 filterSpanElement.textContent += ` | ${filter.playerResult}`
@@ -844,7 +805,7 @@
 
         filters.opening.forEach(openingName => {
             let filterSpanElement = document.createElement("span");
-            filterSpanElement.className = 'badge text-bg-info m-1'
+            filterSpanElement.className = 'badge badge-info ml-1 mr-1'
             filterSpanElement.textContent = openingName
             filterSpanElement.onclick = () => removeOpeningFilter(openingName)
             nodes.push(filterSpanElement)
@@ -852,16 +813,12 @@
 
         if (filters.pgnFilter !== "") {
             let filterSpanElement = document.createElement("span");
-            filterSpanElement.className = 'badge text-bg-info m-1'
+            filterSpanElement.className = 'badge badge-info ml-1 mr-1'
             filterSpanElement.textContent = "PGN: " + filters.pgnFilter
             filterSpanElement.onclick = () => {
                 filters.pgnFilter = ""
-                if (board) {
-                    board.position("start")
-                }
-                if (game) {
-                    game.reset()
-                }
+                board.position("start")
+                game.reset()
                 applyFilters(true)
             }
             nodes.push(filterSpanElement)
@@ -869,7 +826,7 @@
 
         if (filters.title !== "") {
             let filterSpanElement = document.createElement("span");
-            filterSpanElement.className = 'badge text-bg-info m-1'
+            filterSpanElement.className = 'badge badge-info ml-1 mr-1'
             filterSpanElement.textContent = "Title: " + filters.title
             filterSpanElement.onclick = () => {
                 filters.title = ""
@@ -897,7 +854,7 @@
             }
 
             let filterSpanElement = document.createElement("span");
-            filterSpanElement.className = 'badge text-bg-info m-1'
+            filterSpanElement.className = 'badge badge-info ml-1 mr-1'
             filterSpanElement.textContent = `Result: ${resultText}`
             filterSpanElement.onclick = () => {
                 filters.results.splice(filters.results.indexOf(result), 1)
@@ -908,7 +865,7 @@
 
         if (filters.b4Played) {
             let filterSpanElement = document.createElement("span");
-            filterSpanElement.className = 'badge text-bg-info m-1'
+            filterSpanElement.className = 'badge badge-info ml-1 mr-1'
             filterSpanElement.textContent = "White played b4!!!"
             filterSpanElement.onclick = () => {
                 filters.b4Played = null
@@ -919,7 +876,7 @@
 
         if (filters.multipleGames) {
             let filterSpanElement = document.createElement("span");
-            filterSpanElement.className = 'badge text-bg-info m-1'
+            filterSpanElement.className = 'badge badge-info ml-1 mr-1'
             filterSpanElement.textContent = "Multiple games in video"
             filterSpanElement.onclick = () => {
                 filters.multipleGames = null
@@ -1044,6 +1001,32 @@
         tablePaginationElement.insertBefore(liElement, tablePaginationElement.childNodes.item(tablePaginationElement.childNodes.length - 4))
     }
 
+    $('.basicPlayerAutoComplete').autoComplete({
+        resolver: 'custom',
+        minLength: 2,
+        events: {
+            search: function (qry, callback) {
+                let searchResult = players
+                    .filter(player => player.name.toLowerCase().indexOf(qry.toLowerCase()) >= 0)
+                    .map(player => player.name);
+                callback(searchResult)
+            }
+        }
+    })
+
+    $('.openingAutoComplete').autoComplete({
+        resolver: 'custom',
+        minLength: 2,
+        events: {
+            search: function (qry, callback) {
+                let searchResult = openings
+                    .filter(opening => opening.name.toLowerCase().indexOf(qry.toLowerCase()) >= 0)
+                    .map(opening => opening.name)
+                callback(searchResult)
+            }
+        }
+    })
+
     let game = null
     let board = null
 
@@ -1116,11 +1099,6 @@
 
         $('#boardFilter').width(Math.min($("#collapsibleBoardFilter").width(), 400))
         board = Chessboard('boardFilter', config)
-
-        if (filters.pgnFilter) {
-            game.loadPgn(filters.pgnFilter)
-            board.position(game.fen())
-        }
     }
 </script>
 </body>
