@@ -347,35 +347,37 @@
         changePage(parseInt(filteredVideos.length / pageSize) + 1)
     })
 
+    function testWhite(filter, video) {
+        return video.games && _.some(video.games, game => {
+            return game.getWhiteOrEmpty().toLowerCase() === filter.playerName.toLowerCase()
+                && (filter.playerResult === "" || (game.result && (
+                    game.result === "w" && filter.playerResult === "won"
+                    || game.result === "b" && filter.playerResult === "lost"
+                    || game.result === "d" && filter.playerResult === "draw"
+                )))
+        })
+    }
+
+    function testBlack(filter, video) {
+        return video.games && _.some(video.games, game => {
+            return game.getBlackOrEmpty().toLowerCase() === filter.playerName.toLowerCase()
+                && (filter.playerResult === "" || (game.result && (
+                    game.result === "w" && filter.playerResult === "lost"
+                    || game.result === "b" && filter.playerResult === "won"
+                    || game.result === "d" && filter.playerResult === "draw"
+                )))
+        })
+    }
+
     $("#playerInput").on('autocomplete.select ', function (event, item) {
         const side = document.getElementById('playerSideSelect').value
         const filter = {
             playerName: item,
-            playerResult: document.getElementById('playerResultSelect').value,
-            testWhite: function (video) {
-                return video.games && _.some(video.games, game => {
-                    return game.getWhiteOrEmpty().toLowerCase() === this.playerName.toLowerCase()
-                        && (this.playerResult === "" || (game.result && (
-                            game.result === "w" && this.playerResult === "won"
-                            || game.result === "b" && this.playerResult === "lost"
-                            || game.result === "d" && this.playerResult === "draw"
-                        )))
-                })
-            },
-            testBlack: function (video) {
-                return video.games && _.some(video.games, game => {
-                    return game.getBlackOrEmpty().toLowerCase() === this.playerName.toLowerCase()
-                        && (this.playerResult === "" || (game.result && (
-                            game.result === "w" && this.playerResult === "lost"
-                            || game.result === "b" && this.playerResult === "won"
-                            || game.result === "d" && this.playerResult === "draw"
-                        )))
-                })
-            }
+            playerResult: document.getElementById('playerResultSelect').value
         }
         filters[side].push(filter)
 
-        applyFilters()
+        applyFilters(true)
 
         setTimeout(function () {
             document.getElementById('playerSideSelect').value = "anySide"
@@ -388,7 +390,7 @@
     $("#openingInput").on('autocomplete.select ', function (event, item) {
         filters.opening.push(item)
 
-        applyFilters()
+        applyFilters(true)
 
         setTimeout(function () {
             document.getElementById('openingInput').value = ""
@@ -397,7 +399,7 @@
 
     document.getElementById('titleInput').addEventListener('input', event => {
         filters.title = event.target.value
-        applyFilters()
+        applyFilters(true)
     })
 
     $("#clearFilterButton").on('click', clearFilters)
@@ -406,24 +408,24 @@
         game.undo()
         board.position(game.fen())
         filters.pgnFilter = game.pgn() ? game.pgn() : ""
-        applyFilters()
+        applyFilters(true)
     })
 
     $('#sortBySelect').change(function () {
         sortBy = $(this).val()
-        applyFilters()
+        applyFilters(true)
     })
 
     $('#sortDirectionSelect').change(function () {
         sortDirection = $(this).val()
-        applyFilters()
+        applyFilters(true)
     })
 
     $('#resultSelect').change(function () {
         if (filters.results.indexOf($(this).val()) < 0) {
             filters.results.push($(this).val())
         }
-        applyFilters()
+        applyFilters(true)
         setTimeout(function () {
             document.getElementById('resultSelect').value = ""
         }, 1)
@@ -436,7 +438,7 @@
             filters.b4Played = null
         }
         $(this).prop("checked", false)
-        applyFilters()
+        applyFilters(true)
     })
 
     $('#multipleGamesCheck').change(function () {
@@ -446,12 +448,12 @@
             filters.multipleGames = null
         }
         $(this).prop("checked", false)
-        applyFilters()
+        applyFilters(true)
     })
 
     $('#transpositionCheck').change(function () {
         if (filters.pgnFilter) {
-            applyFilters()
+            applyFilters(false)
         }
     })
 
@@ -516,7 +518,7 @@
                 return new Video(dbVideo.id, new Date(dbVideo.d * 1000), dbVideo.t, games)
             })
 
-            videos = filteredVideos = _.orderBy(toTyped, ["date"], ["desc"])
+            videos = filteredVideos = _.orderBy(toTyped, [sortBy], [sortDirection])
 
             let tmpPlayerNames = {}
             videos.filter(video => video.games)
@@ -534,13 +536,28 @@
                     }
                 }), ["count", "name"], ["desc", "asc"])
 
+            const url = new URL(window.location);
+            const s = url.searchParams.get('s')
+            if (s) {
+                let state = JSON.parse(decodeURIComponent(s));
+                filters = state.filters
+                sortBy = state.sortBy
+                sortDirection = state.sortDirection
+            }
+            pushHistory();
+
+            applyFilters(false)
         })
-        .then(value => changePage(1, true))
 
     fetch("generated/pgns.json")
         .then(res => res.json())
         .then(res => videosPgns = res)
-        .then(() => drawFilterResultsContainer())
+        .then(() => {
+            drawFilterResultsContainer()
+            if (filters.pgnFilter) {
+                applyFilters(false)
+            }
+        })
 
     fetch("generated/positions.json")
         .then(res => res.json())
@@ -556,7 +573,12 @@
     fetch("generated/b4.json")
         .then(res => res.json())
         .then(res => b4 = res)
-        .then(() => drawFilterResultsContainer())
+        .then(() => {
+            drawFilterResultsContainer()
+            if (filters.b4Played) {
+                applyFilters(false)
+            }
+        })
 
     function changePage(number, forbidScroll) {
         currentPageNumber = number
@@ -585,10 +607,38 @@
             game.reset()
         }
         document.getElementById('titleInput').value = ""
-        applyFilters()
+        applyFilters(true)
     }
 
-    function applyFilters() {
+    onpopstate = (event) => {
+        const state = JSON.parse(decodeURIComponent(event.state))
+        filters = state.filters ? state.filters : filters
+        sortBy = state.sortBy ? state.sortBy : sortBy
+        sortDirection = state.sortDirection ? state.sortDirection : sortDirection
+        applyFilters(false)
+    };
+
+    function pushHistory() {
+        let state = {
+            filters: filters,
+            sortBy: sortBy,
+            sortDirection: sortDirection
+        }
+        let encodedState = encodeURIComponent(JSON.stringify(state, null, ""));
+
+        const url = new URL(window.location);
+        url.searchParams.set('s', encodedState)
+
+        console.log("pushing state")
+        console.log(state)
+        history.pushState(encodedState, 'agadmator-library', url);
+    }
+
+    function applyFilters(shouldPushHistory) {
+        if (shouldPushHistory) {
+            pushHistory();
+        }
+
         const pgnPrefixes = openings
             .filter(opening => _.some(filters.opening, filterOpening => opening.name === filterOpening))
             .map(opening => opening.moves)
@@ -598,29 +648,26 @@
                 if (filters.anySide.length === 0) {
                     return true
                 } else {
-                    return _.some(filters.anySide, filter => filter.testWhite(video) || filter.testBlack(video))
+                    return _.some(filters.anySide, filter => testWhite(filter, video) || testBlack(filter, video))
                 }
             })
             .filter(video => {
                 if (filters.white.length === 0) {
                     return true
                 } else {
-                    return _.some(filters.white, filter => filter.testWhite(video))
+                    return _.some(filters.white, filter => testWhite(filter, video))
                 }
             })
             .filter(video => {
+
                 if (filters.black.length === 0) {
                     return true
                 } else {
-                    return _.some(filters.black, filter => filter.testBlack(video))
+                    return _.some(filters.black, filter => testBlack(filter, video))
                 }
             })
             .filter(video => {
-                if (!filters.multipleGames) {
-                    return true
-                } else {
-                    return videosPgns[video.id] && videosPgns[video.id].length > 1
-                }
+                return !filters.multipleGames || video.games.length > 1
             })
             .filter(video => {
                 if (pgnPrefixes.length === 0) {
@@ -635,6 +682,7 @@
                 return _.some(pgnPrefixes, pgnPrefix => _.some(videoPgns, videoPgn => videoPgn.indexOf(pgnPrefix) === 0))
             })
             .filter(video => {
+
                 if (filters.pgnFilter === "") {
                     return true
                 }
@@ -708,13 +756,13 @@
 
     function removePlayerFilter(type, name) {
         filters[type].splice(filters[type].indexOf(name), 1)
-        applyFilters()
+        applyFilters(true)
         draw()
     }
 
     function removeOpeningFilter(openingName) {
         filters.opening.splice(filters.opening.indexOf(openingName), 1)
-        applyFilters()
+        applyFilters(true)
         draw()
     }
 
@@ -771,7 +819,7 @@
                 filters.pgnFilter = ""
                 board.position("start")
                 game.reset()
-                applyFilters()
+                applyFilters(true)
             }
             nodes.push(filterSpanElement)
         }
@@ -783,7 +831,7 @@
             filterSpanElement.onclick = () => {
                 filters.title = ""
                 document.getElementById('titleInput').value = ""
-                applyFilters()
+                applyFilters(true)
             }
             nodes.push(filterSpanElement)
         }
@@ -810,7 +858,7 @@
             filterSpanElement.textContent = `Result: ${resultText}`
             filterSpanElement.onclick = () => {
                 filters.results.splice(filters.results.indexOf(result), 1)
-                applyFilters()
+                applyFilters(true)
             }
             nodes.push(filterSpanElement)
         })
@@ -821,7 +869,7 @@
             filterSpanElement.textContent = "White played b4!!!"
             filterSpanElement.onclick = () => {
                 filters.b4Played = null
-                applyFilters()
+                applyFilters(true)
             }
             nodes.push(filterSpanElement)
         }
@@ -832,7 +880,7 @@
             filterSpanElement.textContent = "Multiple games in video"
             filterSpanElement.onclick = () => {
                 filters.multipleGames = null
-                applyFilters()
+                applyFilters(true)
             }
             nodes.push(filterSpanElement)
         }
@@ -1031,7 +1079,7 @@
                     // hack for wrong display of white O-O
                     board.position(game.fen())
                 }, 1)
-                applyFilters()
+                applyFilters(true)
             } catch (e) {
                 return 'snapback'
             }
