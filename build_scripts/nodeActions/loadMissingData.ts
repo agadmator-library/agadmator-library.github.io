@@ -1,7 +1,7 @@
 import {database, NAMESPACE_CHESS_COM, NAMESPACE_CHESSTEMPO_COM} from "../db.js";
 import {chessComService} from "../chessCom/ChessComService.js";
 import {combine} from "../combine.js";
-import {chesstempoService} from "../chesstempo/ChesstempoService";
+import {chesstempoService} from "../chesstempo/ChesstempoService.js";
 
 async function loadMissingChessComInfo() {
     let videosWithMissingInfo = database.getAllIds()
@@ -13,7 +13,6 @@ async function loadMissingChessComInfo() {
         .slice(0, 10);
 
     for (const id of videosWithMissingInfo) {
-        console.log(id)
         try {
             await chessComService.loadInfoForId(id)
         } catch (e) {
@@ -32,7 +31,6 @@ async function loadMissingChesstempoInfo() {
         .slice(0, 10);
 
     for (const id of videosWithMissingInfo) {
-        console.log(id)
         try {
             await chesstempoService.loadInfoForId(id)
         } catch (e) {
