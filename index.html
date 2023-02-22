@@ -140,20 +140,37 @@
                 </div>
                 <div class="card-body collapse" id="videoFiltersCard">
                     <form class="row align-items-center " action="" id="videoFiltersForm">
-                        <div class="col px-1">
-                            <label class="visually-hidden" for="titleInput">Title contains</label>
-                            <input type="text" class="form-control" id="titleInput"
-                                   placeholder="Title contains"
-                                   autocomplete="off">
+                        <div class="row">
+                            <div class="col px-1">
+                                <label class="visually-hidden" for="titleInput">Title contains</label>
+                                <input type="text" class="form-control" id="titleInput"
+                                       placeholder="Title contains"
+                                       autocomplete="off">
+                            </div>
+
                         </div>
-                        <div class="col-auto px-1">
-                            <div class="form-check">
-                                <label class="form-check-label" for="multipleGamesCheck">
-                                    Multiple games in video
-                                </label>
-                                <input class="form-check-input" type="checkbox" id="multipleGamesCheck">
+                        <div class="row mt-1">
+                            <div class="col">
+                                <label for="publishedFrom">Published from</label>
+                                <input id="publishedFrom" class="form-control" type="date"/>
+                            </div>
+                            <div class="col">
+                                <label for="publishedTo">Published to</label>
+                                <input id="publishedTo" class="form-control" type="date"/>
                             </div>
                         </div>
+
+                        <div class="row mt-1">
+                            <div class="col-auto px-1">
+                                <div class="form-check">
+                                    <label class="form-check-label" for="multipleGamesCheck">
+                                        Multiple games in video
+                                    </label>
+                                    <input class="form-check-input" type="checkbox" id="multipleGamesCheck">
+                                </div>
+                            </div>
+                        </div>
+
                     </form>
                 </div>
             </div>
@@ -508,6 +525,12 @@
             applyFilters(false)
         }
     })
+    $('#publishedFrom').change(function() {
+        applyFilters(false)
+    })
+    $('#publishedTo').change(function() {
+        applyFilters(false)
+    })
 
     function onSortClick(field) {
         if (sortBy === field) {
@@ -747,6 +770,8 @@
             game.reset()
         }
         document.getElementById('titleInput').value = ""
+        document.getElementById('publishedFrom').value = ""
+        document.getElementById('publishedTo').value = ""
         applyFilters(true)
     }
 
@@ -781,6 +806,9 @@
             .filter(opening => _.some(filters.opening, filterOpening => opening.name === filterOpening))
             .map(opening => opening.moves)
         const includeTranspositions = document.getElementById('transpositionCheck').checked
+        const publishedFrom = document.getElementById('publishedFrom').value
+        const publishedTo = document.getElementById('publishedTo').value
+
         filteredVideos = videos
             .filter(video => {
                 if (filters.anySide.length === 0) {
@@ -817,6 +845,12 @@
                 }
             })
             .filter(video => !filters.b4Played || _.some(video.games, game => game.b4Played))
+            .filter(video => {
+                return !publishedFrom || video.date > new Date(publishedFrom)
+            })
+            .filter(video => {
+                return !publishedTo || video.date < new Date(publishedTo).setHours(23, 59, 59)
+            })
 
         filteredVideos = _.sortBy(filteredVideos, function (video) {
             if (sortBy === "date") {
@@ -985,6 +1019,30 @@
             filterSpanElement.onclick = () => {
                 filters.multipleGames = null
                 applyFilters(true)
+            }
+            nodes.push(filterSpanElement)
+        }
+
+        let publishedFromValue = document.getElementById('publishedFrom').value
+        if (publishedFromValue) {
+            let filterSpanElement = document.createElement("span");
+            filterSpanElement.className = 'badge text-bg-info m-1'
+            filterSpanElement.textContent = `Published >= ${publishedFromValue}`
+            filterSpanElement.onclick = () => {
+                document.getElementById('publishedFrom').value = ""
+                applyFilters(false)
+            }
+            nodes.push(filterSpanElement)
+        }
+
+        let publishedToValue = document.getElementById('publishedTo').value
+        if (publishedToValue) {
+            let filterSpanElement = document.createElement("span");
+            filterSpanElement.className = 'badge text-bg-info m-1'
+            filterSpanElement.textContent = `Published >= ${publishedToValue}`
+            filterSpanElement.onclick = () => {
+                document.getElementById('publishedTo').value = ""
+                applyFilters(false)
             }
             nodes.push(filterSpanElement)
         }
