@@ -50,9 +50,3 @@ class LichessMastersService {
 }
 
 export const lichessMastersService = new LichessMastersService()
-
-for (const id of database.getAllIds()) {
-    if (database.read(NAMESPACE_CHESSTEMPO_COM, id)?.reason && database.read(NAMESPACE_CHESS_COM, id)?.reason && database.read(NAMESPACE_CHESS365, id).reason) {
-        await lichessMastersService.loadInfoForId(id)
-    }
-}
