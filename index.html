@@ -84,116 +84,150 @@
     <div class="card mt-2">
         <div class="card-header">
             Filters
-            <button class="btn btn-light float-end" type="button" data-bs-toggle="collapse"
+            <button class="btn btn-light float-end p-0" type="button" data-bs-toggle="collapse"
                     href="#filtersCard" aria-expanded="false" aria-controls="filtersCard">
                 &#x21D5;
             </button>
         </div>
 
         <div class="card-body collapse show" id="filtersCard">
-            <form class="row align-items-center " action="" id="playerNamesFilterForm">
-                <div class="row mb-2">
-                    <div class="col-auto">
-                        <label class="visually-hidden" for="playerSideSelect">Select side</label>
-                        <select class="form-control" id="playerSideSelect">
-                            <option value="anySide">Any side</option>
-                            <option value="white">White</option>
-                            <option value="black">Black</option>
-                        </select>
-                    </div>
-                    <div class="col-auto">
-                        <label class="visually-hidden" for="playerResultSelect">Player result</label>
-                        <select class="form-control" id="playerResultSelect">
-                            <option value="" selected>Any outcome</option>
-                            <option value="won">Won</option>
-                            <option value="lost">Lost</option>
-                            <option value="draw">Draw</option>
-                        </select>
-                    </div>
-                    <div class="col">
-                        <label class="visually-hidden" for="playerInput">Player</label>
-                        <input id="playerInput"
-                               type="text"
-                               class="form-control flex-fill"
-                               placeholder="Player"
-                               autocomplete="off">
-                    </div>
+            <div class="card">
+                <div class="card-header" data-bs-toggle="collapse"
+                     href="#playerFiltersCard" aria-expanded="false" aria-controls="playerFiltersCard">
+                    Player filters
+                    <button class="btn btn-light float-end p-0" type="button">
+                        &#x21D5;
+                    </button>
                 </div>
-                <div class="row mb-2">
-                    <div class="col">
-                        <label class="visually-hidden" for="titleInput">Title contains</label>
-                        <input type="text" class="form-control" id="titleInput"
-                               placeholder="Title contains"
-                               autocomplete="off">
-                    </div>
-                </div>
-                <div class="row mb-2">
-                    <div class="col-auto">
-                        <label class="visually-hidden" for="openingInput">Opening</label>
-                        <input id="openingInput"
-                               type="text"
-                               class="form-control"
-                               placeholder="Opening"
-                               autocomplete="off">
-                    </div>
-                    <div class="col-auto">
-                        <label class="visually-hidden" for="resultSelect">Result</label>
-                        <select class="form-control mb-2 mr-sm-2 " id="resultSelect">
-                            <option value="" selected disabled hidden>Result</option>
-                            <option value="w">White won</option>
-                            <option value="b">Black won</option>
-                            <option value="d">Draw</option>
-                            <option value="na">n/a</option>
-                        </select>
-                    </div>
-                    <div class="col-auto ">
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="b4Check">
-                            <label class="form-check-label" for="b4Check">
-                                White played b4!!!
-                            </label>
+                <div class="card-body collapse show" id="playerFiltersCard">
+                    <form class="row align-items-center " action="" id="playerFilterForm">
+                        <div class="col-auto px-1">
+                            <label class="visually-hidden" for="playerSideSelect">Select side</label>
+                            <select class="form-control" id="playerSideSelect">
+                                <option value="anySide">Any side</option>
+                                <option value="white">White</option>
+                                <option value="black">Black</option>
+                            </select>
                         </div>
-                    </div>
-                    <div class="col-auto ">
-                        <div class="form-check">
-                            <label class="form-check-label" for="multipleGamesCheck">
-                                Multiple games in video
-                            </label>
-                            <input class="form-check-input" type="checkbox" id="multipleGamesCheck">
+                        <div class="col-auto px-1">
+                            <label class="visually-hidden" for="playerResultSelect">Player result</label>
+                            <select class="form-control" id="playerResultSelect">
+                                <option value="" selected>Any outcome</option>
+                                <option value="won">Won</option>
+                                <option value="lost">Lost</option>
+                                <option value="draw">Draw</option>
+                            </select>
                         </div>
-                    </div>
-                </div>
-            </form>
-            <div>
-                <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapsibleBoardFilter" role="button"
-                   id="collapsibleBoardFilterButton" aria-expanded="false" aria-controls="collapsibleBoardFilter">
-                    Filter by playing moves
-                </a>
-                <div class="collapse mt-1 ml-4" id="collapsibleBoardFilter" style="width: 100%">
-                    <form class="form-inline" action="" id="transpositionForm">
-                        <div class="form-check mb-2 mr-sm-2">
-                            <label class="form-check-label" for="transpositionCheck">
-                                Include transpositions
-                            </label>
-                            <input class="form-check-input ml-2" type="checkbox" id="transpositionCheck">
+                        <div class="col px-1">
+                            <label class="visually-hidden" for="playerInput">Player</label>
+                            <input id="playerInput"
+                                   type="text"
+                                   class="form-control flex-fill"
+                                   placeholder="Player"
+                                   autocomplete="off">
                         </div>
                     </form>
-                    <div id="boardFilter">
-                    </div>
-                    <a class="btn btn-primary mt-1" role="button" id="backOneStep">
-                        Back one step
-                    </a>
-                </div>
 
+                </div>
+            </div>
+            <div class="card mt-2">
+                <div class="card-header" data-bs-toggle="collapse"
+                     href="#videoFiltersCard" aria-expanded="false" aria-controls="videoFiltersCard">
+                    Video filters
+                    <button class="btn btn-light float-end p-0" type="button">
+                        &#x21D5;
+                    </button>
+                </div>
+                <div class="card-body collapse" id="videoFiltersCard">
+                    <form class="row align-items-center " action="" id="videoFiltersForm">
+                        <div class="col px-1">
+                            <label class="visually-hidden" for="titleInput">Title contains</label>
+                            <input type="text" class="form-control" id="titleInput"
+                                   placeholder="Title contains"
+                                   autocomplete="off">
+                        </div>
+                        <div class="col-auto px-1">
+                            <div class="form-check">
+                                <label class="form-check-label" for="multipleGamesCheck">
+                                    Multiple games in video
+                                </label>
+                                <input class="form-check-input" type="checkbox" id="multipleGamesCheck">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="card mt-2">
+                <div class="card-header" data-bs-toggle="collapse"
+                     href="#gameFiltersCard" aria-expanded="false" aria-controls="gameFiltersCard">
+                    Game filters
+                    <button class="btn btn-light float-end p-0" type="button">
+                        &#x21D5;
+                    </button>
+                </div>
+                <div class="card-body collapse" id="gameFiltersCard">
+                    <form class="row align-items-center mb-2" action="" id="playerNamesFilterForm">
+                        <div class="col-auto px-1">
+                            <label class="visually-hidden" for="openingInput">Opening</label>
+                            <input id="openingInput"
+                                   type="text"
+                                   class="form-control"
+                                   placeholder="Opening"
+                                   autocomplete="off">
+                        </div>
+                        <div class="col-auto px-1">
+                            <label class="visually-hidden" for="resultSelect">Result</label>
+                            <select class="form-control " id="resultSelect">
+                                <option value="" selected disabled hidden>Result</option>
+                                <option value="w">White won</option>
+                                <option value="b">Black won</option>
+                                <option value="d">Draw</option>
+                                <option value="na">n/a</option>
+                            </select>
+                        </div>
+                        <div class="col-auto px-1">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="b4Check">
+                                <label class="form-check-label" for="b4Check">
+                                    White played b4!!!
+                                </label>
+                            </div>
+                        </div>
+                    </form>
+                    <div>
+                        <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapsibleBoardFilter"
+                           role="button"
+                           id="collapsibleBoardFilterButton" aria-expanded="false"
+                           aria-controls="collapsibleBoardFilter">
+                            Filter by playing moves
+                        </a>
+                        <div class="collapse mt-1 ml-4" id="collapsibleBoardFilter" style="width: 100%">
+                            <form class="form-inline" action="" id="transpositionForm">
+                                <div class="form-check mb-2 mr-sm-2">
+                                    <label class="form-check-label" for="transpositionCheck">
+                                        Include transpositions
+                                    </label>
+                                    <input class="form-check-input ml-2" type="checkbox" id="transpositionCheck">
+                                </div>
+                            </form>
+                            <div id="boardFilter">
+                            </div>
+                            <a class="btn btn-primary mt-1" role="button" id="backOneStep">
+                                Back one step
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
     <div class="card mt-2">
-        <div class="card-header">
+        <div class="card-header" data-bs-toggle="collapse"
+             href="#filtersContainerBody" aria-expanded="false" aria-controls="filtersContainerBody">
             Filters applied
-            <button class="btn btn-light float-end" type="button" data-bs-toggle="collapse"
-                    href="#filtersContainerBody" aria-expanded="false" aria-controls="filtersContainerBody">
+            <button class="btn btn-light float-end p-0" type="button" >
                 &#x21D5;
             </button>
         </div>
@@ -256,7 +290,8 @@
                 <th id="titleColHeader" scope="col">Title<span class="ms-1">&#x21D5;</span></th>
                 <th id="whiteColHeader" scope="col">White<span class="ms-1">&#x21D5;</span></th>
                 <th id="blackColHeader" scope="col">Black<span class="ms-1">&#x21D5;</span></th>
-                <th id="yearColHeader" class="d-none d-lg-table-cell" scope="col">Year<span class="ms-1">&#x21D5;</span>
+                <th id="yearColHeader" class="d-none d-lg-table-cell" scope="col">Year<span
+                        class="ms-1">&#x21D5;</span>
                 </th>
                 <th id="resultColHeader" scope="col" style="display: none">Result</th>
             </tr>
@@ -294,12 +329,15 @@
 
 <footer class="page-footer font-small indigo">
 
-    <div class="footer-copyright text-center py-3">This is only a fun project and not everything is properly parsed. Do
+    <div class="footer-copyright text-center py-3">This is only a fun project and not everything is properly parsed.
+        Do
         not trust entirely.
     </div>
     <div class="footer-copyright text-center py-3">Report missing/invalid data by creating an issue on <a
-            href="https://github.com/agadmator-library/agadmator-library.github.io/issues" target="_blank">GitHub</a> or
-        by writing <a href="https://twitter.com" target="_blank">Twitter</a> post with phrase 'agadmator-library'. Do
+            href="https://github.com/agadmator-library/agadmator-library.github.io/issues"
+            target="_blank">GitHub</a> or
+        by writing <a href="https://twitter.com" target="_blank">Twitter</a> post with phrase 'agadmator-library'.
+        Do
         not forget to add YouTube url
     </div>
 </footer>
