@@ -12,7 +12,7 @@ export default function cleanPlayerName(raw: string): string {
         .replaceAll("\r", "")
         .replaceAll("*", "")
         .replaceAll("[A42]", "")
-        .replaceAll(/\((?!Computer)[A-Z]*[a-z]*\s*\)/g, "")
+        .replaceAll(/\([A-Z]*[a-z]*\s*\)/g, "")
         .replaceAll(/\s+\./g, "")
         .replaceAll(/^\.\s+/g, "")
         .replaceAll(/\s{2,}/g, " ")
@@ -129,5 +129,5 @@ export default function cleanPlayerName(raw: string): string {
         .replaceAll(/^Vishwanathan Anand$/g, "Viswanathan Anand")
         .replaceAll(/^Yuri Averbakh$/g, "Yuri L Averbakh")
 
-    return raw
+    return _.trim(raw)
 }

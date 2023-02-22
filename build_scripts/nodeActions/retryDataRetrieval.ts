@@ -1,8 +1,17 @@
-import {database, NAMESPACE_CHESS_COM, NAMESPACE_CHESSTEMPO_COM, NAMESPACE_VIDEO_SNIPPET} from "../db.js";
+import {
+    database,
+    NAMESPACE_CHESS365,
+    NAMESPACE_CHESS_COM,
+    NAMESPACE_CHESSTEMPO_COM,
+    NAMESPACE_LICHESS_MASTERS,
+    NAMESPACE_VIDEO_SNIPPET
+} from "../db.js";
 import {chessComService} from "../chessCom/ChessComService.js";
 import {combine} from "../combine.js";
 import _ from "lodash";
 import {chesstempoService} from "../chesstempo/ChesstempoService.js";
+import {chess365Service} from "../chess365/Chess365Service.js";
+import {lichessMastersService} from "../lichessMasters/LichessMastersService.js";
 
 function inDays(diffInMillis: number): number {
     return diffInMillis / (1000 * 60 * 60 * 24)
@@ -59,6 +68,32 @@ async function retryChesstempoCom() {
     }
 }
 
-await Promise.all([retryChessCom(), retryChesstempoCom()])
+async function retryChess365Com() {
+    let eligible = database.getAllIds()
+        .filter(id => isEligible(NAMESPACE_CHESS365, id))
+
+    for (const id of _.shuffle(eligible).slice(0, 10)) {
+        try {
+            await chess365Service.loadInfoForId(id, true)
+        } catch (e) {
+            console.error(`Failed to download 365chess.com info for video ${id}: ${e}`)
+        }
+    }
+}
+
+async function retryLichessMasters() {
+    let eligible = database.getAllIds()
+        .filter(id => isEligible(NAMESPACE_LICHESS_MASTERS, id))
+
+    for (const id of _.shuffle(eligible).slice(0, 10)) {
+        try {
+            await lichessMastersService.loadInfoForId(id, true)
+        } catch (e) {
+            console.error(`Failed to download lichess masters info for video ${id}: ${e}`)
+        }
+    }
+}
+
+await Promise.all([retryChessCom(), retryChesstempoCom(), retryChess365Com()])
 
 combine()

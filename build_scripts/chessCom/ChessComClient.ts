@@ -1,5 +1,6 @@
 import * as cheerio from "cheerio";
 import {RateLimiter} from "../util/RateLimiter.js";
+import {BaseGame} from "../BaseGame.js"
 
 class ChessComClient {
     private rateLimiter: RateLimiter = new RateLimiter(15_000)
@@ -52,11 +53,8 @@ class ChessComClient {
     }
 }
 
-type ChessComGame = {
-    retrievedAt: Date,
+type ChessComGame = BaseGame & {
     href: string,
-    playerWhite: string,
-    playerBlack: string,
     result: string,
     movesCount: number,
     year?: number

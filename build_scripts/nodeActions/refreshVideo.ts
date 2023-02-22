@@ -3,6 +3,8 @@ import {chesstempoService} from "../chesstempo/ChesstempoService.js";
 import {extractPgnForId} from "../extractPGN.js";
 import {combine} from "../combine.js";
 import {database, NAMESPACE_VIDEO_SNIPPET} from "../db.js";
+import {chess365Service} from "../chess365/Chess365Service.js";
+import {lichessMastersService} from "../lichessMasters/LichessMastersService.js";
 
 async function refreshVideo() {
     let videoId: string | null | undefined = process.env.VIDEO_ID
@@ -25,6 +27,8 @@ async function refreshVideo() {
     extractPgnForId(videoId)
     await chessComService.loadInfoForId(videoId, true)
     await chesstempoService.loadInfoForId(videoId, true)
+    await chess365Service.loadInfoForId(videoId, true)
+    await lichessMastersService.loadInfoForId(videoId, true)
 
     combine()
 }

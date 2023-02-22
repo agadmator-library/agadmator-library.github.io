@@ -2,7 +2,14 @@ import fs from "fs";
 import path from 'path';
 import {fileURLToPath} from 'url';
 import _ from "lodash";
-import {database, NAMESPACE_CHESS_COM, NAMESPACE_CHESSTEMPO_COM, NAMESPACE_VIDEO_SNIPPET} from './db.js'
+import {
+    database,
+    NAMESPACE_CHESS365,
+    NAMESPACE_CHESS_COM,
+    NAMESPACE_CHESSTEMPO_COM,
+    NAMESPACE_LICHESS_MASTERS,
+    NAMESPACE_VIDEO_SNIPPET
+} from './db.js'
 import {pgnRead} from 'kokopu'
 
 const __filename = fileURLToPath(import.meta.url);
@@ -15,10 +22,7 @@ function writeResultFile(fileName: string, object: any) {
 }
 
 function getResult(id: string) {
-    const chessComResult = database.read(NAMESPACE_CHESS_COM, id)
-    const chesstempoComResult = database.read(NAMESPACE_CHESSTEMPO_COM, id)
-
-    function translateChessComResult(text: string | undefined | null) {
+    function translateChessComOrChess365Result(text: string | undefined | null) {
         switch (text) {
             case "1-0":
                 return 1
@@ -44,9 +48,38 @@ function getResult(id: string) {
         }
     }
 
-    return chessComResult && chessComResult.result
-        ? translateChessComResult(chessComResult.result)
-        : (chesstempoComResult ? translateChesstempoComResult(chesstempoComResult.result) : null)
+    function translateLichessMastersResult(text: string | undefined | null) {
+        switch (text) {
+            case "white":
+                return 1
+            case "black":
+                return -1
+            default:
+                return "d"
+        }
+    }
+
+    const chessComEntry = database.read(NAMESPACE_CHESS_COM, id)
+    if (chessComEntry?.result) {
+        return translateChessComOrChess365Result(chessComEntry.result)
+    }
+
+    const chesstempoEntry = database.read(NAMESPACE_CHESSTEMPO_COM, id)
+    if (chesstempoEntry?.result) {
+        return translateChesstempoComResult(chesstempoEntry.result)
+    }
+
+    const chess365Entry = database.read(NAMESPACE_CHESS365, id)
+    if (chess365Entry?.result) {
+        return translateChessComOrChess365Result(chess365Entry.result)
+    }
+
+    const lichessMastersEntry = database.read(NAMESPACE_LICHESS_MASTERS, id)
+    if (lichessMastersEntry?.id) {
+        return translateLichessMastersResult(lichessMastersEntry.winner)
+    }
+
+    return null
 }
 
 function getYear(id: string): number | null | undefined {
@@ -55,12 +88,24 @@ function getYear(id: string): number | null | undefined {
     if (!game || !game.playerWhite) {
         return null
     }
-    const chessComResult = database.read(NAMESPACE_CHESS_COM, id)
-    const chesstempoComResult = database.read(NAMESPACE_CHESSTEMPO_COM, id)
 
-    return chessComResult && chessComResult.year && chessComResult.year !== "0"
-        ? parseInt(chessComResult.year)
-        : (chesstempoComResult && chesstempoComResult.date ? parseInt(chesstempoComResult.date.substring(0, 4)) : null)
+    const chessComEntry = database.read(NAMESPACE_CHESS_COM, id)
+    if (chessComEntry?.year) {
+        return parseInt(chessComEntry.year)
+    }
+
+    const chesstempoEntry = database.read(NAMESPACE_CHESSTEMPO_COM, id)
+    if (chesstempoEntry && chesstempoEntry.date) {
+        return parseInt(chesstempoEntry.date.substring(0, 4))
+    }
+
+    const chess365Entry = database.read(NAMESPACE_CHESS365, id)
+    if (chess365Entry?.year) {
+        return chess365Entry?.year
+    }
+
+    const lichessMastersEntry = database.read(NAMESPACE_LICHESS_MASTERS, id)
+    return lichessMastersEntry?.year
 }
 
 function removeNulls(obj: any): any {
@@ -168,4 +213,3 @@ export function combine() {
 }
 
 combine();
-

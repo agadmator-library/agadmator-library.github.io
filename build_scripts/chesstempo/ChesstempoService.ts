@@ -1,8 +1,7 @@
-import cleanPlayerName from "../players/playerNameCleaner.js";
 import _ from "lodash";
 import {database, NAMESPACE_CHESSTEMPO_COM} from "../db.js";
 import {chesstempoClient} from "./ChesstempoClient.js";
-import {levenshteinEditDistance} from "levenshtein-edit-distance";
+import {testIfSamePlayers, testIfSimilarPlayers} from "../BaseGame.js";
 
 class ChesstempoService {
     public async loadInfoForId(id: string, force: boolean = false) {
@@ -17,28 +16,10 @@ class ChesstempoService {
             const chesstempoResponse = await chesstempoClient.fetch(game);
 
             let chesstempoGames = _.uniqBy(chesstempoResponse.games, (game: any) => game.game_id);
-            chesstempoGames = chesstempoGames.filter(chesstempoGame => {
-                const wArray = cleanPlayerName(chesstempoGame.playerWhite).split(" ").sort()
-                const bArray = cleanPlayerName(chesstempoGame.playerBlack).split(" ").sort()
-                const gameWArray = game.playerWhite ? game.playerWhite.split(" ").sort() : []
-                const gameBArray = game.playerBlack ? game.playerBlack.split(" ").sort() : []
-                const w = wArray.join(" ")
-                const b = bArray.join(" ")
-                const gameW = gameWArray.join(" ")
-                const gameB = gameBArray.join(" ")
-
-                const matchWhite = _.intersection(wArray, gameWArray).length === Math.min(wArray.length, gameWArray.length)
-                    || levenshteinEditDistance(gameW, w) < Math.max(w.length, gameW.length) * 0.3
-                const matchBlack = _.intersection(bArray, gameBArray).length === Math.min(bArray.length, gameBArray.length)
-                    || levenshteinEditDistance(gameB, b) < Math.max(b.length, gameB.length) * 0.3
-                return matchWhite || matchBlack
-            })
+            chesstempoGames = chesstempoGames.filter(chesstempoGame => testIfSimilarPlayers(chesstempoGame, game))
 
             if (chesstempoGames.length > 1) {
-                chesstempoGames = chesstempoGames.filter(chesstempoGame =>
-                    cleanPlayerName(chesstempoGame.playerWhite) === game.playerWhite
-                    && cleanPlayerName(chesstempoGame.playerBlack) === game.playerBlack
-                )
+                chesstempoGames = chesstempoGames.filter(chesstempoGame => testIfSamePlayers(chesstempoGame, game))
             }
 
             if (chesstempoGames.length === 0) {

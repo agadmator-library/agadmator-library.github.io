@@ -1,6 +1,7 @@
 import axios from "axios";
 import {Game} from "../extractPGN.js";
 import {RateLimiter} from "../util/RateLimiter.js";
+import {BaseGame} from "../BaseGame.js"
 
 class ChesstempoClient {
 
@@ -60,11 +61,8 @@ class ChesstempoClient {
     }
 }
 
-type ChesstempoGame = {
-    retrievedAt: Date,
+type ChesstempoGame = BaseGame & {
     id: number,
-    playerWhite: string,
-    playerBlack: string,
     result: string,
     movesCount: number,
     date?: string,
