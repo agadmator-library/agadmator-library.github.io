@@ -1,5 +1,20 @@
 import {google} from "googleapis";
-import {database, NAMESPACE_VIDEO_SNIPPET} from "./db.js";
+import {database, NAMESPACE_VIDEO_CONTENT_DETAILS, NAMESPACE_VIDEO_SNIPPET} from "./db.js";
+import _ from "lodash";
+
+async function downloadContentDetails(youtube: any, ids: string[]) {
+    const videoData = await youtube.videos.list({
+        id: ids,
+        part: ['contentDetails']
+    })
+    videoData.data?.items?.forEach((item: any) => {
+        if (item.id) {
+            database.save(NAMESPACE_VIDEO_CONTENT_DETAILS, item.id, {
+                duration: item.contentDetails?.duration
+            })
+        }
+    })
+}
 
 export async function loadNewMovies(): Promise<string[]> {
     console.log("Starting downloading new movies")
@@ -71,7 +86,7 @@ export async function loadNewMovies(): Promise<string[]> {
                 }
             })
         if (!playlistItemsResponse.data.nextPageToken) {
-            return []
+            break
         }
         const pageToken: string = playlistItemsResponse.data.nextPageToken
         if (!reachedExisting) {
@@ -83,6 +98,10 @@ export async function loadNewMovies(): Promise<string[]> {
             })
         }
     } while (!reachedExisting && playlistItemsResponse.data.nextPageToken != null)
+
+    if (downloadedVideosIds.length > 0) {
+        await downloadContentDetails(youtube, downloadedVideosIds)
+    }
 
     console.log('Downloaded ' + downloadedVideosIds.length + ' videos')
     console.log('Downloaded videos ids are: ' + JSON.stringify(downloadedVideosIds))

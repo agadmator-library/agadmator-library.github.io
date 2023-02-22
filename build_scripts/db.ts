@@ -10,6 +10,7 @@ const __dirname = path.dirname(__filename);
 const NAMESPACE_VIDEO_GAME = "videoGame"
 
 export const NAMESPACE_VIDEO_SNIPPET = "videoSnippet"
+export const NAMESPACE_VIDEO_CONTENT_DETAILS = "videoContentDetails"
 export const NAMESPACE_CHESS_COM = "chessCom"
 export const NAMESPACE_CHESS365 = "chess365"
 export const NAMESPACE_CHESSTEMPO_COM = "chesstempoCom"
@@ -17,6 +18,7 @@ export const NAMESPACE_LICHESS_MASTERS = "lichessMasters"
 
 const ALLOWED_NAMESPACES = [
     NAMESPACE_VIDEO_SNIPPET,
+    NAMESPACE_VIDEO_CONTENT_DETAILS,
     NAMESPACE_VIDEO_GAME,
     NAMESPACE_CHESS_COM,
     NAMESPACE_CHESSTEMPO_COM,
