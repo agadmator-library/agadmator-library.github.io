@@ -201,15 +201,6 @@ export function combine() {
             }
         })
     writeResultFile("openings-slim.json", openings)
-
-    const b4: string[] = []
-    database.getAllIds().forEach((id: string) => {
-        database.readVideoGames(id)
-            .filter(game => game.pgn)
-            .filter(game => /\d\.\s+b4/.test(game.pgn ? game.pgn : ""))
-            .forEach(game => b4.push(id))
-    })
-    writeResultFile("b4.json", b4)
 }
 
 combine();

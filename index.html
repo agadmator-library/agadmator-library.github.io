@@ -227,7 +227,7 @@
         <div class="card-header" data-bs-toggle="collapse"
              href="#filtersContainerBody" aria-expanded="false" aria-controls="filtersContainerBody">
             Filters applied
-            <button class="btn btn-light float-end p-0" type="button" >
+            <button class="btn btn-light float-end p-0" type="button">
                 &#x21D5;
             </button>
         </div>
@@ -290,7 +290,7 @@
                 <th id="titleColHeader" scope="col">Title<span class="ms-1">&#x21D5;</span></th>
                 <th id="whiteColHeader" scope="col">White<span class="ms-1">&#x21D5;</span></th>
                 <th id="blackColHeader" scope="col">Black<span class="ms-1">&#x21D5;</span></th>
-                <th id="yearColHeader" class="d-none d-lg-table-cell" scope="col">Year<span
+                <th id="yearColHeader" class="table-cell" scope="col">Year<span
                         class="ms-1">&#x21D5;</span>
                 </th>
                 <th id="resultColHeader" scope="col" style="display: none">Result</th>
@@ -355,6 +355,9 @@
 <script defer src="js/typeahead.jquery.js"></script>
 <script type="module">
     class Game {
+        pgn = undefined
+        b4Played = undefined
+
         constructor(white, black, result, year) {
             this.white = white
             this.black = black
@@ -395,9 +398,7 @@
         b4Played: null
     }
     let openings = []
-    let videosPgns = {}
     let positions = {}
-    let b4 = []
     let sortBy = "date"
     let sortDirection = "desc"
     let showResult = false
@@ -562,6 +563,8 @@
         draw()
     })
 
+    let videosLoadedPromiseResolve;
+    const videosLoadedPromise = new Promise((resolve, reject) => videosLoadedPromiseResolve = resolve)
     fetch("generated/db.json")
         .then(res => res.json())
         .then(res => {
@@ -649,17 +652,32 @@
             }
             pushHistory();
 
+            videosLoadedPromiseResolve()
+
             applyFilters(false)
         })
 
     fetch("generated/pgns.json")
         .then(res => res.json())
-        .then(res => videosPgns = res)
-        .then(() => {
-            drawFilterResultsContainer()
-            if (filters.pgnFilter) {
-                applyFilters(false)
-            }
+        .then(res => {
+            videosLoadedPromise.then(_ => {
+
+                videos.forEach(video => {
+                    const videoPgns = res[video.id]
+                    if (videoPgns) {
+                        videoPgns.forEach((pgn, idx) => {
+                            video.games[idx].pgn = pgn
+                            video.games[idx].b4Played = /\d\.\s+b4/.test(pgn)
+                        })
+                    }
+                })
+
+                drawFilterResultsContainer()
+
+                if (filters.pgnFilter || filters.opening.length > 0 || filters.b4Played) {
+                    applyFilters(false)
+                }
+            })
         })
 
     fetch("generated/positions.json")
@@ -700,16 +718,6 @@
                         document.getElementById('openingInput').value = ""
                     }, 1)
                 })
-        })
-
-    fetch("generated/b4.json")
-        .then(res => res.json())
-        .then(res => b4 = res)
-        .then(() => {
-            drawFilterResultsContainer()
-            if (filters.b4Played) {
-                applyFilters(false)
-            }
         })
 
     function changePage(number, forbidScroll) {
@@ -781,56 +789,25 @@
                     return _.some(filters.anySide, filter => testWhite(filter, video) || testBlack(filter, video))
                 }
             })
-            .filter(video => {
-                if (filters.white.length === 0) {
-                    return true
-                } else {
-                    return _.some(filters.white, filter => testWhite(filter, video))
-                }
-            })
-            .filter(video => {
-
-                if (filters.black.length === 0) {
-                    return true
-                } else {
-                    return _.some(filters.black, filter => testBlack(filter, video))
-                }
-            })
-            .filter(video => {
-                return !filters.multipleGames || video.games.length > 1
-            })
+            .filter(video => filters.white.length === 0 || _.some(filters.white, filter => testWhite(filter, video)))
+            .filter(video => filters.black.length === 0 || _.some(filters.black, filter => testBlack(filter, video)))
+            .filter(video => !filters.multipleGames || video.games.length > 1)
             .filter(video => {
                 if (pgnPrefixes.length === 0) {
                     return true
                 }
 
-                const videoPgns = videosPgns[video.id]
-                if (!videoPgns) {
-                    return false
-                }
-
-                return _.some(pgnPrefixes, pgnPrefix => _.some(videoPgns, videoPgn => videoPgn.indexOf(pgnPrefix) === 0))
+                return _.some(pgnPrefixes, pgnPrefix => _.some(video.games, game => game.pgn && game.pgn.indexOf(pgnPrefix) === 0))
             })
             .filter(video => {
                 if (filters.pgnFilter === "") {
                     return true
                 }
 
-                const videoPgns = videosPgns[video.id]
-                if (!videoPgns) {
-                    return false
-                }
-
-                return _.some(videoPgns, videoPgn => videoPgn.indexOf(filters.pgnFilter) === 0)
+                return _.some(video.games, game => game.pgn && game.pgn.indexOf(filters.pgnFilter) === 0)
                     || includeTranspositions && positions && positions[game.fen().replaceAll(/ - \d+ \d+/g, "")] && positions[game.fen().replaceAll(/ - \d+ \d+/g, "")].includes(video.positionIndex)
             })
-            .filter(video => {
-                if (!filters.title) {
-                    return true
-                }
-
-                return video.title.toLowerCase().includes(filters.title.toLowerCase())
-            })
+            .filter(video => !filters.title || video.title.toLowerCase().includes(filters.title.toLowerCase()))
             .filter(video => {
                 if (filters.results.length === 0) {
                     return true
@@ -839,13 +816,7 @@
                     return filters.results.indexOf(videoResult) >= 0 || !videoResult && filters.results.indexOf("na") >= 0
                 }
             })
-            .filter(video => {
-                if (!filters.b4Played) {
-                    return true
-                }
-
-                return b4.length === 0 || b4.indexOf(video.id) >= 0
-            })
+            .filter(video => !filters.b4Played || _.some(video.games, game => game.b4Played))
 
         filteredVideos = _.sortBy(filteredVideos, function (video) {
             if (sortBy === "date") {
@@ -1028,10 +999,8 @@
         const total = filteredVideos.length
         const withPlayers = filteredVideos.filter(video => video.games[0] && video.games[0].white).length
         document.getElementById("filterResultsContainer").textContent = `Videos: ${total}, with players: ${withPlayers}`;
-        if (Object.keys(videosPgns).length > 0) {
-            const withPgns = filteredVideos.filter(video => videosPgns[video.id]).length
-            document.getElementById("filterResultsContainer").textContent += `, with moves: ${withPgns}`;
-        }
+        const withPgns = filteredVideos.filter(video => _.some(video.games, game => game.pgn)).length
+        document.getElementById("filterResultsContainer").textContent += `, with moves: ${withPgns}`;
         const withResults = filteredVideos.filter(video => video.games[0] && video.games[0].result).length
         document.getElementById("filterResultsContainer").textContent += `, with results: ${withResults}`;
     }
@@ -1048,6 +1017,9 @@
                 tableRow.appendChild(publishedAtCell)
 
                 let titleCell = document.createElement("td");
+                titleCell.setAttribute("data-toggle", "tooltip")
+                titleCell.setAttribute("data-placement", "top")
+                titleCell.setAttribute("title", video.title)
                 let titleHref = document.createElement("a");
                 titleHref.href = "https://www.youtube.com/watch?v=" + video.id
                 titleHref.target = "_blank"
@@ -1085,7 +1057,7 @@
                 tableRow.appendChild(blackPlayerCell)
 
                 let yearCell = document.createElement("td");
-                yearCell.className = 'd-none d-lg-table-cell'
+                yearCell.className = 'table-cell'
                 if (video.games && video.games[0] && video.games[0].year) {
                     yearCell.textContent = video.games[0].year
                 }
