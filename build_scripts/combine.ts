@@ -12,6 +12,7 @@ import {
 } from './db.js'
 import {pgnRead} from 'kokopu'
 import {parse} from 'tinyduration'
+import objectHash from 'object-hash'
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -147,34 +148,32 @@ export function combine() {
             g: games
                 .filter(game => Object.keys(game).length > 0)
                 .map((game, idx) => {
-                let wId = null
-                if (game && game.playerWhite) {
-                    wId = db.players.indexOf(game.playerWhite) >= 0 ? db.players.indexOf(game.playerWhite) : db.players.push(game.playerWhite) - 1
-                }
-                let bId = null
-                if (game && game.playerBlack) {
-                    bId = db.players.indexOf(game.playerBlack) >= 0 ? db.players.indexOf(game.playerBlack) : db.players.push(game.playerBlack) - 1
-                }
-
-                if (game.pgn) {
-                    if (!pgnsInVideo[videoSnippet.videoId]) {
-                        pgnsInVideo[videoSnippet.videoId] = []
+                    let wId = null
+                    if (game && game.playerWhite) {
+                        wId = db.players.indexOf(game.playerWhite) >= 0 ? db.players.indexOf(game.playerWhite) : db.players.push(game.playerWhite) - 1
                     }
-                    pgnsInVideo[videoSnippet.videoId].push(game.pgn)
+                    let bId = null
+                    if (game && game.playerBlack) {
+                        bId = db.players.indexOf(game.playerBlack) >= 0 ? db.players.indexOf(game.playerBlack) : db.players.push(game.playerBlack) - 1
+                    }
 
-                    allPgns.push(game.pgn)
-                }
+                    if (game.pgn) {
+                        if (!pgnsInVideo[videoSnippet.videoId]) {
+                            pgnsInVideo[videoSnippet.videoId] = []
+                        }
+                        pgnsInVideo[videoSnippet.videoId].push(game.pgn)
 
-                const result = idx === 0 ? getResult(id) : null
-                const year = idx === 0 ? getYear(id) : null
+                        allPgns.push(game.pgn)
+                    }
 
-                return removeNulls({w: wId, b: bId, r: result, y: year})
-            })
+                    const result = idx === 0 ? getResult(id) : null
+                    const year = idx === 0 ? getYear(id) : null
+
+                    return removeNulls({w: wId, b: bId, r: result, y: year})
+                })
         }))
     })
-    writeResultFile("db.json", db)
-    writeResultFile("pgns.json", pgnsInVideo)
-    writeResultFile("videoLength.json", videoLength)
+
 
     const positions: any = {
         videos: []
@@ -197,7 +196,7 @@ export function combine() {
         })
 
     })
-    writeResultFile("positions.json", positions)
+
 
     let openings = JSON.parse(fs.readFileSync(__dirname + '/../openings.json', {encoding: 'utf8'}))
         .filter((opening: any) => {
@@ -209,7 +208,32 @@ export function combine() {
                 moves: opening.pgn
             }
         })
-    writeResultFile("openings-slim.json", openings)
+
+    fs.readdirSync(resultDir).forEach(name => {
+        if (name.endsWith(".json")) {
+            fs.unlinkSync(`${resultDir}/${name}`)
+        }
+    })
+
+    let dbFileName = `db-${objectHash(db)}.json`;
+    writeResultFile(dbFileName, db)
+    let pgnsFileName = `pgns-${objectHash(pgnsInVideo)}.json`;
+    writeResultFile(pgnsFileName, pgnsInVideo)
+    let videoLengthFileName = `videoLength-${objectHash(videoLength)}.json`;
+    writeResultFile(videoLengthFileName, videoLength)
+    let positionsFileName = `positions-${objectHash(positions)}.json`;
+    writeResultFile(positionsFileName, positions)
+    let openingsSlimFileName = `openings-slim-${objectHash(openings)}.json`;
+    writeResultFile(openingsSlimFileName, openings)
+
+    const references = {
+        db: dbFileName,
+        pgns: pgnsFileName,
+        videoLength: videoLengthFileName,
+        positions: positionsFileName,
+        openingsSlim: openingsSlimFileName
+    }
+    fs.writeFileSync(`${resultDir}/js/references.js`, `var references=${JSON.stringify(references, null, 2)}`)
 }
 
 combine();

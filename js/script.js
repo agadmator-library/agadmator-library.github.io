@@ -262,7 +262,7 @@ $('#hideResultButton').on('click', function () {
 
 let videosLoadedPromiseResolve;
 const videosLoadedPromise = new Promise((resolve, reject) => videosLoadedPromiseResolve = resolve)
-fetch("generated/db.json")
+fetch(`generated/${references.db}`)
     .then(res => res.json())
     .then(res => {
         function decodeResult(result) {
@@ -355,7 +355,7 @@ fetch("generated/db.json")
         applyFilters(false)
     })
 
-fetch("generated/pgns.json")
+fetch(`generated/${references.pgns}`)
     .then(res => res.json())
     .then(res => {
         videosLoadedPromise.then(_ => {
@@ -381,7 +381,7 @@ fetch("generated/pgns.json")
         })
     })
 
-fetch("generated/videoLength.json")
+fetch(`generated/${references.videoLength}`)
     .then(res => res.json())
     .then(res => {
         videosLoadedPromise.then(_ => {
@@ -394,14 +394,14 @@ fetch("generated/videoLength.json")
         })
     })
 
-fetch("generated/positions.json")
+fetch(`generated/${references.positions}`)
     .then(response => response.json())
     .then(responseJson => {
         positions = responseJson
         positions.videos.forEach((videoId, positionIndex) => videos.find(video => video.id === videoId).positionIndex = positionIndex)
     })
 
-fetch("generated/openings-slim.json")
+fetch(`generated/${references.openingsSlim}`)
     .then(response => response.json())
     .then(responseJson => {
         openings = responseJson
