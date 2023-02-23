@@ -901,7 +901,7 @@ function drawTable() {
 
             let publishedAtCell = document.createElement("th");
             publishedAtCell.textContent = video.date.toISOString()
-            publishedAtCell.className = 'd-none d-lg-block'
+            publishedAtCell.className = 'd-none d-lg-table-cell'
             tableRow.appendChild(publishedAtCell)
 
             let titleCell = document.createElement("td");
@@ -946,9 +946,13 @@ function drawTable() {
 
             let yearCell = document.createElement("td");
             yearCell.className = 'table-cell'
-            if (video.games && video.games[0] && video.games[0].year) {
-                yearCell.textContent = video.games[0].year
-            }
+            video.games.forEach(game => {
+                let yearDiv = document.createElement("div")
+                if (game.year) {
+                    yearDiv.textContent = game.year
+                }
+                yearCell.appendChild(yearDiv)
+            })
             tableRow.appendChild(yearCell)
 
             if (showResult) {
