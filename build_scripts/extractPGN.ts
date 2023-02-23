@@ -15,6 +15,12 @@ export type Game = {
 }
 
 function extractDateFromDescription(id: string, linesAbove: string): string | undefined {
+    const pgnNotesRegex = /\[Date\s+"(\d+[-.]\d+[-.]\d+)"]/g
+    let pgnNotesMatchResult = linesAbove.match(pgnNotesRegex)
+    if (pgnNotesMatchResult) {
+        linesAbove = pgnNotesMatchResult[0].replaceAll('"', " ")
+    }
+
     const yyyyMMddRegex = /\s((1[4-9]\d\d)|(20\d\d))[.-](\d|0\d|1[0-2])[.-]([0-2]\d|3[01]|\d)/g
     let year = (linesAbove.match(yyyyMMddRegex) || [])
         .map(matched => _.trim(matched))
@@ -61,10 +67,11 @@ function extractGames(description: string, id: string): Game[] {
             if (pgnExtractionResult.lineIdx) {
                 const linesAbove = descriptionLines.slice(previousPgnLineIdx + 1, pgnExtractionResult.lineIdx + 1).join("\n") + "\n";
                 players = extractPlayersFromDescription(id, linesAbove)
-                previousPgnLineIdx = pgnExtractionResult.lineIdx
                 date = extractDateFromDescription(id, linesAbove)
+                previousPgnLineIdx = pgnExtractionResult.lineIdx
             } else {
                 players = extractPlayersFromDescription(id, description)
+                date = extractDateFromDescription(id, description)
             }
 
             let game: any = {}
@@ -81,11 +88,15 @@ function extractGames(description: string, id: string): Game[] {
         })
     } else {
         players = extractPlayersFromDescription(id, description)
+        date = extractDateFromDescription(id, description)
         let game: any = {}
 
         if (players) {
             game.playerWhite = players.white
             game.playerBlack = players.black
+        }
+        if (date) {
+            game.date = date
         }
 
         return [game]
