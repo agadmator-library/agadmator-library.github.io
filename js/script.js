@@ -62,6 +62,7 @@ let jQ = {
     clearFilterButton: $("#clearFilterButton"),
     backOneStepButton: $("#backOneStep"),
     resultSelect: $('#resultSelect'),
+    queenCntSelect: $('#queenCntSelect'),
     b4Check: $('#b4Check'),
     atLeastOneGameCheck: $('#atLeastOneGameCheck'),
     multipleGamesCheck: $('#multipleGamesCheck'),
@@ -140,6 +141,9 @@ jQ.resultSelect.change(function () {
     setTimeout(function () {
         document.getElementById('resultSelect').value = ""
     }, 1)
+})
+jQ.queenCntSelect.change(function() {
+    applyFilters(false)
 })
 
 jQ.b4Check.change(function () {
@@ -346,6 +350,7 @@ fetch("generated/pgns.json")
                     videoPgns.forEach((pgn, idx) => {
                         video.games[idx].pgn = pgn
                         video.games[idx].b4Played = /\d\.\s+b4/.test(pgn)
+                        video.games[idx].queenCnt = 2 + (pgn.match(/=Q/g) || []).length
                     })
                 }
             })
@@ -441,6 +446,7 @@ function clearFilters() {
     jQ.publishedTo.val('')
     jQ.videoLengthFromInput.val('')
     jQ.videoLengthToInput.val('')
+    jQ.queenCntSelect.val('')
     applyFilters(true)
 }
 
@@ -495,8 +501,8 @@ function applyFilters(shouldPushHistory) {
     const publishedTo = jQ.publishedTo.val()
     const videoLengthFrom = getVideoLengthFrom()
     const videoLengthTo = getVideoLengthTo()
+    const queenCnt = jQ.queenCntSelect.val() ? parseInt(jQ.queenCntSelect.val()) : undefined
 
-    console.log(filters)
     filteredVideos = videos
         .filter(video => {
             if (filters.anySide.length === 0) {
@@ -536,6 +542,7 @@ function applyFilters(shouldPushHistory) {
             }
         })
         .filter(video => !filters.b4Played || _.some(video.games, game => game.b4Played))
+        .filter(video => !queenCnt || _.some(video.games, game => game.queenCnt >= queenCnt))
         .filter(video => {
             return !publishedFrom || video.date > new Date(publishedFrom)
         })
@@ -765,6 +772,17 @@ function drawFilters() {
             textContent: `Video length <= ${getVideoLengthTo()}`,
             onclick: () => {
                 jQ.videoLengthToInput.val('')
+                applyFilters(false)
+            }
+        }))
+    }
+
+    if (jQ.queenCntSelect.val()) {
+        nodes.push(createFilterSpan({
+            cssClass: 'text-bg-info',
+            textContent: `Queen count >= ${jQ.queenCntSelect.val()}`,
+            onclick: () => {
+                jQ.queenCntSelect.val('')
                 applyFilters(false)
             }
         }))
