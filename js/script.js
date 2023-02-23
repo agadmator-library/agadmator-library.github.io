@@ -357,7 +357,7 @@ fetch("generated/pgns.json")
 
             drawFilterResultsContainer()
 
-            if (filters.pgnFilter || filters.opening.length > 0 || filters.b4Played) {
+            if (filters.pgnFilter || filters.opening.length > 0 || filters.b4Played || jQ.queenCntSelect.val()) {
                 applyFilters(false)
             }
         })
