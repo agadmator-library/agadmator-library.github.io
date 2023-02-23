@@ -15,10 +15,27 @@ export type Game = {
 }
 
 function extractDateFromDescription(id: string, linesAbove: string): string | undefined {
-    const regex = /\s((1[4-9]\d\d)|(20\d\d))[.-](0\d|1[0-2])[.-]([0-2]\d|3[01])[\s]/g
-    return (linesAbove.match(regex) || [])
+    const yyyyMMddRegex = /\s((1[4-9]\d\d)|(20\d\d))[.-](\d|0\d|1[0-2])[.-](\d|[0-2]\d|3[01])\s/g
+    let year = (linesAbove.match(yyyyMMddRegex) || [])
         .map(matched => _.trim(matched))
-        .map(matched => matched.replaceAll(".", "-"))[0]
+        .map(matched => matched.replaceAll(".", "-"))
+        .map(matched => {
+            let split = matched.split("-");
+            return `${split[0]}-${_.padStart(split[1], 2, '0')}-${_.padStart(split[2], 2, '0')}`
+        })[0]
+
+    if (!year) {
+        const ddMMyyyyRegex = /\s(\d|[0-2]\d|3[01])[.-](\d|0\d|1[0-2])[.-]((1[4-9]\d\d)|(20\d\d))\s/g
+        year = (linesAbove.match(ddMMyyyyRegex) || [])
+            .map(matched => _.trim(matched))
+            .map(matched => matched.replaceAll(".", "-"))
+            .map(matched => {
+                let split = matched.split("-");
+                return `${split[2]}-${_.padStart(split[1], 2, '0')}-${_.padStart(split[0], 2, '0')}`
+            })[0]
+    }
+
+    return year
 }
 
 function extractGames(description: string, id: string): Game[] {
