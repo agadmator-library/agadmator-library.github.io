@@ -149,7 +149,7 @@
                             </div>
 
                         </div>
-                        <div class="row mt-1">
+                        <div class="row mt-2">
                             <div class="col">
                                 <label for="publishedFrom">Published from</label>
                                 <input id="publishedFrom" class="form-control" type="date"/>
@@ -159,8 +159,22 @@
                                 <input id="publishedTo" class="form-control" type="date"/>
                             </div>
                         </div>
-
-                        <div class="row mt-1">
+                        <div class="row mt-2">
+                            <div class="col-auto px-1">
+                                <div class="input-group">
+                                    <span class="input-group-text">Length</span>
+                                    <input id="videoLengthFromInput" type="number" class="form-control" placeholder="from"
+                                           pattern="\d+"
+                                           aria-label="from">
+                                    <span class="input-group-text">-</span>
+                                    <input id="videoLengthToInput" type="number" class="form-control" placeholder="to"
+                                           pattern="\d+"
+                                           aria-label="to">
+                                    <span class="input-group-text">min</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
                             <div class="col-auto px-1">
                                 <div class="form-check">
                                     <label class="form-check-label" for="atLeastOneGameCheck">

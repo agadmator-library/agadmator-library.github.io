@@ -7,10 +7,11 @@ import {
     NAMESPACE_CHESS365,
     NAMESPACE_CHESS_COM,
     NAMESPACE_CHESSTEMPO_COM,
-    NAMESPACE_LICHESS_MASTERS,
+    NAMESPACE_LICHESS_MASTERS, NAMESPACE_VIDEO_CONTENT_DETAILS,
     NAMESPACE_VIDEO_SNIPPET
 } from './db.js'
 import {pgnRead} from 'kokopu'
+import {parse} from 'tinyduration'
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -123,11 +124,18 @@ export function combine() {
         videos: []
     }
     const pgnsInVideo: any = {}
+    const videoLength: any = {}
     const allPgns: string[] = []
     database.getAllIds().forEach((id: string) => {
         const videoSnippet = database.read(NAMESPACE_VIDEO_SNIPPET, id)
         if (!videoSnippet) {
             return
+        }
+
+        let videoContentDetails = database.read(NAMESPACE_VIDEO_CONTENT_DETAILS, id)
+        if (videoContentDetails?.duration) {
+            const duration = parse(videoContentDetails.duration);
+            videoLength[id] = (duration.hours ? duration.hours * 60 : 0) + (duration.minutes ? duration.minutes : 0)
         }
 
         const games = database.readVideoGames(id)
@@ -163,11 +171,10 @@ export function combine() {
                 return removeNulls({w: wId, b: bId, r: result, y: year})
             })
         }))
-
-
     })
     writeResultFile("db.json", db)
     writeResultFile("pgns.json", pgnsInVideo)
+    writeResultFile("videoLength.json", videoLength)
 
     const positions: any = {
         videos: []
