@@ -15,7 +15,7 @@ export type Game = {
 }
 
 function extractDateFromDescription(id: string, linesAbove: string): string | undefined {
-    const yyyyMMddRegex = /\s((1[4-9]\d\d)|(20\d\d))[.-](\d|0\d|1[0-2])[.-](\d|[0-2]\d|3[01])\s/g
+    const yyyyMMddRegex = /\s((1[4-9]\d\d)|(20\d\d))[.-](\d|0\d|1[0-2])[.-]([0-2]\d|3[01]|\d)/g
     let year = (linesAbove.match(yyyyMMddRegex) || [])
         .map(matched => _.trim(matched))
         .map(matched => matched.replaceAll(".", "-"))
@@ -25,7 +25,7 @@ function extractDateFromDescription(id: string, linesAbove: string): string | un
         })[0]
 
     if (!year) {
-        const ddMMyyyyRegex = /\s(\d|[0-2]\d|3[01])[.-](\d|0\d|1[0-2])[.-]((1[4-9]\d\d)|(20\d\d))\s/g
+        const ddMMyyyyRegex = /\s(\d|[0-2]\d|3[01])[.-](\d|0\d|1[0-2])[.-]((1[4-9]\d\d)|(20\d\d))/g
         year = (linesAbove.match(ddMMyyyyRegex) || [])
             .map(matched => _.trim(matched))
             .map(matched => matched.replaceAll(".", "-"))
