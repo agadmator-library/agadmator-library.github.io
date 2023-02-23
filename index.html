@@ -205,51 +205,68 @@
                     </button>
                 </div>
                 <div class="card-body collapse" id="gameFiltersCard">
-                    <form class="row align-items-center mb-2" action="" id="playerNamesFilterForm">
-                        <div class="col-auto px-1">
-                            <label class="visually-hidden" for="openingInput">Opening</label>
-                            <input id="openingInput"
-                                   type="text"
-                                   class="form-control"
-                                   placeholder="Opening"
-                                   autocomplete="off">
-                        </div>
-                        <div class="col-auto px-1">
-                            <label class="visually-hidden" for="resultSelect">Result</label>
-                            <select class="form-control " id="resultSelect">
-                                <option value="" selected disabled hidden>Result</option>
-                                <option value="w">White won</option>
-                                <option value="b">Black won</option>
-                                <option value="d">Draw</option>
-                                <option value="na">n/a</option>
-                            </select>
-                        </div>
-                        <div class="col-auto px-1">
-                            <label class="visually-hidden" for="queenCntSelect">Queen count</label>
-                            <select class="form-control " id="queenCntSelect">
-                                <option value="" selected disabled hidden>Queen count</option>
-                                <option value="3">>= 3</option>
-                                <option value="4">>= 4</option>
-                                <option value="5">>= 5</option>
-                                <option value="6">>= 6</option>
-                            </select>
-                        </div>
-                        <div class="col-auto px-1">
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="b4Check">
-                                <label class="form-check-label" for="b4Check">
-                                    White played b4!!!
-                                </label>
+                    <form class="align-items-center mb-2" action="" id="playerNamesFilterForm">
+                        <div class="row">
+                            <div class="col-auto px-1">
+                                <label class="visually-hidden" for="openingInput">Opening</label>
+                                <input id="openingInput"
+                                       type="text"
+                                       class="form-control"
+                                       placeholder="Opening"
+                                       autocomplete="off">
+                            </div>
+                            <div class="col-auto px-1">
+                                <label class="visually-hidden" for="resultSelect">Result</label>
+                                <select class="form-control " id="resultSelect">
+                                    <option value="" selected disabled hidden>Result</option>
+                                    <option value="w">White won</option>
+                                    <option value="b">Black won</option>
+                                    <option value="d">Draw</option>
+                                    <option value="na">n/a</option>
+                                </select>
+                            </div>
+                            <div class="col-auto px-1">
+                                <label class="visually-hidden" for="queenCntSelect">Queen count</label>
+                                <select class="form-control " id="queenCntSelect">
+                                    <option value="" selected disabled hidden>Queen count</option>
+                                    <option value="3">>= 3</option>
+                                    <option value="4">>= 4</option>
+                                    <option value="5">>= 5</option>
+                                    <option value="6">>= 6</option>
+                                </select>
+                            </div>
+                            <div class="col-auto px-1">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="b4Check">
+                                    <label class="form-check-label" for="b4Check">
+                                        White played b4!!!
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-auto px-1">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="underpromotionCheck">
+                                    <label class="form-check-label" for="underpromotionCheck">
+                                        Underpromotion
+                                    </label>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-auto px-1">
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="underpromotionCheck">
-                                <label class="form-check-label" for="underpromotionCheck">
-                                    Underpromotion
-                                </label>
+                        <div class="row mt-2">
+                            <div class="col-auto px-1">
+                                <div class="input-group">
+                                    <span class="input-group-text">Moves count</span>
+                                    <input id="movesCountFromInput" type="number" class="form-control" placeholder="from"
+                                           pattern="\d+"
+                                           aria-label="from">
+                                    <span class="input-group-text">-</span>
+                                    <input id="movesCountToInput" type="number" class="form-control" placeholder="to"
+                                           pattern="\d+"
+                                           aria-label="to">
+                                </div>
                             </div>
                         </div>
+
                     </form>
                     <div>
                         <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapsibleBoardFilter"

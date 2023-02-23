@@ -71,7 +71,9 @@ let jQ = {
     publishedFrom: $('#publishedFrom'),
     publishedTo: $('#publishedTo'),
     videoLengthFromInput: $('#videoLengthFromInput'),
-    videoLengthToInput: $('#videoLengthToInput')
+    videoLengthToInput: $('#videoLengthToInput'),
+    movesCountFromInput: $('#movesCountFromInput'),
+    movesCountToInput: $('#movesCountToInput')
 }
 
 jQ.playerNamesFilterForm.on('submit', function (event) {
@@ -143,7 +145,7 @@ jQ.resultSelect.change(function () {
         document.getElementById('resultSelect').value = ""
     }, 1)
 })
-jQ.queenCntSelect.change(function() {
+jQ.queenCntSelect.change(function () {
     applyFilters(false)
 })
 
@@ -201,6 +203,9 @@ jQ.publishedTo.change(function () {
 })
 jQ.videoLengthFromInput.change(() => applyFilters(false))
 jQ.videoLengthToInput.change(() => applyFilters(false))
+jQ.movesCountFromInput.change(() => applyFilters(false))
+jQ.movesCountToInput.change(() => applyFilters(false))
+
 function onSortClick(field) {
     if (sortBy === field) {
         sortDirection = sortDirection === "asc" ? "desc" : "asc"
@@ -363,6 +368,7 @@ fetch("generated/pgns.json")
                         video.games[idx].b4Played = /\d\.\s+b4/.test(pgn)
                         video.games[idx].queenCnt = 2 + (pgn.match(/=Q/g) || []).length
                         video.games[idx].underpromotion = (pgn.match(/=[^Q]/g) || []).length > 0
+                        video.games[idx].movesCount = (pgn.match(/\d+\.\s/g || []).slice(-1)).map(n => parseInt(n))[0]
                     })
                 }
             })
@@ -382,7 +388,7 @@ fetch("generated/videoLength.json")
             videos.forEach(video => {
                 video.length = res[video.id]
             })
-            if (getVideoLengthFrom() || getVideoLengthTo()) {
+            if (getIntValue(jQ.videoLengthFromInput) || getIntValue(jQ.videoLengthToInput)) {
                 applyFilters(false)
             }
         })
@@ -460,20 +466,14 @@ function clearFilters() {
     jQ.videoLengthFromInput.val('')
     jQ.videoLengthToInput.val('')
     jQ.queenCntSelect.val('')
+    jQ.movesCountFromInput.val('')
+    jQ.movesCountToInput.val('')
     applyFilters(true)
 }
 
-function getVideoLengthFrom() {
+function getIntValue(jQSelector) {
     try {
-        return parseInt(jQ.videoLengthFromInput.val())
-    } catch (e) {
-        return undefined
-    }
-}
-
-function getVideoLengthTo() {
-    try {
-        return parseInt(jQ.videoLengthToInput.val())
+        return parseInt(jQSelector.val())
     } catch (e) {
         return undefined
     }
@@ -512,8 +512,10 @@ function applyFilters(shouldPushHistory) {
     const includeTranspositions = jQ.transpositionCheck.is(":checked")
     const publishedFrom = jQ.publishedFrom.val()
     const publishedTo = jQ.publishedTo.val()
-    const videoLengthFrom = getVideoLengthFrom()
-    const videoLengthTo = getVideoLengthTo()
+    const videoLengthFrom = getIntValue(jQ.videoLengthFromInput)
+    const videoLengthTo = getIntValue(jQ.videoLengthToInput)
+    const movesCountFrom = getIntValue(jQ.movesCountFromInput)
+    const movesCountTo = getIntValue(jQ.movesCountToInput)
     const queenCnt = jQ.queenCntSelect.val() ? parseInt(jQ.queenCntSelect.val()) : undefined
 
     filteredVideos = videos
@@ -556,6 +558,8 @@ function applyFilters(shouldPushHistory) {
         })
         .filter(video => !filters.b4Played || _.some(video.games, game => game.b4Played))
         .filter(video => !filters.underpromotion || _.some(video.games, game => game.underpromotion))
+        .filter(video => !movesCountFrom || _.some(video.games, game => game.movesCount >= movesCountFrom))
+        .filter(video => !movesCountTo || _.some(video.games, game => game.movesCount <= movesCountTo))
         .filter(video => !queenCnt || _.some(video.games, game => game.queenCnt >= queenCnt))
         .filter(video => {
             return !publishedFrom || video.date > new Date(publishedFrom)
@@ -780,10 +784,35 @@ function drawFilters() {
         }))
     }
 
-    if (getVideoLengthFrom()) {
+    const movesCountFromValue = jQ.movesCountFromInput.val()
+    if (movesCountFromValue) {
         nodes.push(createFilterSpan({
             cssClass: 'text-bg-info',
-            textContent: `Video length >= ${getVideoLengthFrom()}`,
+            textContent: `Moves >= ${movesCountFromValue}`,
+            onclick: () => {
+                jQ.movesCountFromInput.val('')
+                applyFilters(false)
+            }
+        }))
+    }
+
+    const movesCountToValue = jQ.movesCountToInput.val()
+    if (movesCountToValue) {
+        nodes.push(createFilterSpan({
+            cssClass: 'text-bg-info',
+            textContent: `Moves <= ${movesCountToValue}`,
+            onclick: () => {
+                jQ.movesCountToInput.val('')
+                applyFilters(false)
+            }
+        }))
+    }
+
+
+    if (getIntValue(jQ.videoLengthFromInput)) {
+        nodes.push(createFilterSpan({
+            cssClass: 'text-bg-info',
+            textContent: `Video length >= ${(getIntValue(jQ.videoLengthFromInput))}`,
             onclick: () => {
                 jQ.videoLengthFromInput.val('')
                 applyFilters(false)
@@ -791,10 +820,10 @@ function drawFilters() {
         }))
     }
 
-    if (getVideoLengthTo()) {
+    if (getIntValue(jQ.videoLengthToInput)) {
         nodes.push(createFilterSpan({
             cssClass: 'text-bg-info',
-            textContent: `Video length <= ${getVideoLengthTo()}`,
+            textContent: `Video length <= ${(getIntValue(jQ.videoLengthToInput))}`,
             onclick: () => {
                 jQ.videoLengthToInput.val('')
                 applyFilters(false)
