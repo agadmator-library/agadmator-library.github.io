@@ -64,6 +64,7 @@ let jQ = {
     resultSelect: $('#resultSelect'),
     queenCntSelect: $('#queenCntSelect'),
     b4Check: $('#b4Check'),
+    underpromotionCheck: $('#underpromotionCheck'),
     atLeastOneGameCheck: $('#atLeastOneGameCheck'),
     multipleGamesCheck: $('#multipleGamesCheck'),
     transpositionCheck: $('#transpositionCheck'),
@@ -151,6 +152,16 @@ jQ.b4Check.change(function () {
         filters.b4Played = true
     } else {
         filters.b4Played = null
+    }
+    $(this).prop("checked", false)
+    applyFilters(true)
+})
+
+jQ.underpromotionCheck.change(function () {
+    if ($(this).prop("checked")) {
+        filters.underpromotion = true
+    } else {
+        filters.underpromotion = null
     }
     $(this).prop("checked", false)
     applyFilters(true)
@@ -351,13 +362,14 @@ fetch("generated/pgns.json")
                         video.games[idx].pgn = pgn
                         video.games[idx].b4Played = /\d\.\s+b4/.test(pgn)
                         video.games[idx].queenCnt = 2 + (pgn.match(/=Q/g) || []).length
+                        video.games[idx].underpromotion = (pgn.match(/=[^Q]/g) || []).length > 0
                     })
                 }
             })
 
             drawFilterResultsContainer()
 
-            if (filters.pgnFilter || filters.opening.length > 0 || filters.b4Played || jQ.queenCntSelect.val()) {
+            if (filters.pgnFilter || filters.opening.length > 0 || filters.b4Played || jQ.queenCntSelect.val() || filters.underpromotion) {
                 applyFilters(false)
             }
         })
@@ -435,7 +447,8 @@ function clearFilters() {
         results: [],
         pgnFilter: "",
         title: "",
-        b4Played: null
+        b4Played: null,
+        underpromotion: null
     }
     if (board) {
         board.position("start")
@@ -542,6 +555,7 @@ function applyFilters(shouldPushHistory) {
             }
         })
         .filter(video => !filters.b4Played || _.some(video.games, game => game.b4Played))
+        .filter(video => !filters.underpromotion || _.some(video.games, game => game.underpromotion))
         .filter(video => !queenCnt || _.some(video.games, game => game.queenCnt >= queenCnt))
         .filter(video => {
             return !publishedFrom || video.date > new Date(publishedFrom)
@@ -704,6 +718,17 @@ function drawFilters() {
             textContent: "White played b4!!!",
             onclick: () => {
                 filters.b4Played = null
+                applyFilters(true)
+            }
+        }))
+    }
+
+    if (filters.underpromotion) {
+        nodes.push(createFilterSpan({
+            cssClass: 'text-bg-info',
+            textContent: "Underpromotion",
+            onclick: () => {
+                filters.underpromotion = null
                 applyFilters(true)
             }
         }))
