@@ -236,6 +236,38 @@
                                     <option value="6">>= 6</option>
                                 </select>
                             </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-auto px-1">
+                                <div class="input-group">
+                                    <span class="input-group-text">Moves count</span>
+                                    <input id="movesCountFromInput" type="number" class="form-control"
+                                           placeholder="from"
+                                           pattern="\d+"
+                                           aria-label="from">
+                                    <span class="input-group-text">-</span>
+                                    <input id="movesCountToInput" type="number" class="form-control" placeholder="to"
+                                           pattern="\d+"
+                                           aria-label="to">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-auto px-1">
+                                <div class="input-group">
+                                    <span class="input-group-text">Year</span>
+                                    <input id="yearFromInput" type="number" class="form-control"
+                                           placeholder="from"
+                                           pattern="\d+"
+                                           aria-label="from">
+                                    <span class="input-group-text">-</span>
+                                    <input id="yearToInput" type="number" class="form-control" placeholder="to"
+                                           pattern="\d+"
+                                           aria-label="to">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
                             <div class="col-auto px-1">
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="checkbox" id="b4Check">
@@ -253,22 +285,6 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row mt-2">
-                            <div class="col-auto px-1">
-                                <div class="input-group">
-                                    <span class="input-group-text">Moves count</span>
-                                    <input id="movesCountFromInput" type="number" class="form-control"
-                                           placeholder="from"
-                                           pattern="\d+"
-                                           aria-label="from">
-                                    <span class="input-group-text">-</span>
-                                    <input id="movesCountToInput" type="number" class="form-control" placeholder="to"
-                                           pattern="\d+"
-                                           aria-label="to">
-                                </div>
-                            </div>
-                        </div>
-
                     </form>
                     <div>
                         <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapsibleBoardFilter"

@@ -73,7 +73,9 @@ let jQ = {
     videoLengthFromInput: $('#videoLengthFromInput'),
     videoLengthToInput: $('#videoLengthToInput'),
     movesCountFromInput: $('#movesCountFromInput'),
-    movesCountToInput: $('#movesCountToInput')
+    movesCountToInput: $('#movesCountToInput'),
+    yearFromInput: $('#yearFromInput'),
+    yearToInput: $('#yearToInput')
 }
 
 jQ.playerNamesFilterForm.on('submit', function (event) {
@@ -205,6 +207,8 @@ jQ.videoLengthFromInput.change(() => applyFilters(false))
 jQ.videoLengthToInput.change(() => applyFilters(false))
 jQ.movesCountFromInput.change(() => applyFilters(false))
 jQ.movesCountToInput.change(() => applyFilters(false))
+jQ.yearFromInput.change(() => applyFilters(false))
+jQ.yearToInput.change(() => applyFilters(false))
 
 function onSortClick(field) {
     if (sortBy === field) {
@@ -470,6 +474,8 @@ function clearFilters() {
     jQ.queenCntSelect.val('')
     jQ.movesCountFromInput.val('')
     jQ.movesCountToInput.val('')
+    jQ.yearFromInput.val('')
+    jQ.yearToInput.val('')
     applyFilters(true)
 }
 
@@ -518,6 +524,8 @@ function applyFilters(shouldPushHistory) {
     const videoLengthTo = getIntValue(jQ.videoLengthToInput)
     const movesCountFrom = getIntValue(jQ.movesCountFromInput)
     const movesCountTo = getIntValue(jQ.movesCountToInput)
+    const yearFrom = getIntValue(jQ.yearFromInput)
+    const yearTo = getIntValue(jQ.yearToInput)
     const queenCnt = jQ.queenCntSelect.val() ? parseInt(jQ.queenCntSelect.val()) : undefined
 
     filteredVideos = videos
@@ -562,6 +570,8 @@ function applyFilters(shouldPushHistory) {
         .filter(video => !filters.underpromotion || _.some(video.games, game => game.underpromotion))
         .filter(video => !movesCountFrom || _.some(video.games, game => game.movesCount >= movesCountFrom))
         .filter(video => !movesCountTo || _.some(video.games, game => game.movesCount <= movesCountTo))
+        .filter(video => !yearFrom || _.some(video.games, game => game.year >= yearFrom))
+        .filter(video => !yearTo || _.some(video.games, game => game.year <= yearTo))
         .filter(video => !queenCnt || _.some(video.games, game => game.queenCnt >= queenCnt))
         .filter(video => {
             return !publishedFrom || video.date > new Date(publishedFrom)
@@ -810,6 +820,29 @@ function drawFilters() {
         }))
     }
 
+    const yearFromValue = jQ.yearFromInput.val()
+    if (yearFromValue) {
+        nodes.push(createFilterSpan({
+            cssClass: 'text-bg-info',
+            textContent: `Year >= ${yearFromValue}`,
+            onclick: () => {
+                jQ.yearFromInput.val('')
+                applyFilters(false)
+            }
+        }))
+    }
+
+    const yearToValue = jQ.yearToInput.val()
+    if (yearToValue) {
+        nodes.push(createFilterSpan({
+            cssClass: 'text-bg-info',
+            textContent: `Year <= ${yearToValue}`,
+            onclick: () => {
+                jQ.yearToInput.val('')
+                applyFilters(false)
+            }
+        }))
+    }
 
     if (getIntValue(jQ.videoLengthFromInput)) {
         nodes.push(createFilterSpan({
