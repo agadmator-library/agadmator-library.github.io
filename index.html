@@ -1039,7 +1039,7 @@
         if (publishedToValue) {
             let filterSpanElement = document.createElement("span");
             filterSpanElement.className = 'badge text-bg-info m-1'
-            filterSpanElement.textContent = `Published >= ${publishedToValue}`
+            filterSpanElement.textContent = `Published <= ${publishedToValue}`
             filterSpanElement.onclick = () => {
                 document.getElementById('publishedTo').value = ""
                 applyFilters(false)
