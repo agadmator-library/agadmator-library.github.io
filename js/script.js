@@ -47,27 +47,47 @@ let sortBy = "date"
 let sortDirection = "desc"
 let showResult = false
 
-$("#playerNamesFilterForm").on('submit', function (event) {
+let jQ = {
+    playerNamesFilterForm: $("#playerNamesFilterForm"),
+    openingFilterForm: $("#openingFilterForm"),
+    pageLinkClass: $(".page-link"),
+    firstPageLink: $("#firstPageLink"),
+    previousPageLink: $("#previousPageLink"),
+    nextPageLink: $('#nextPageLink'),
+    lastPageLink: $("#lastPageLink"),
+    openingInput: $('#openingInput'),
+    titleInput: $('#titleInput'),
+    clearFilterButton: $("#clearFilterButton"),
+    backOneStepButton: $("#backOneStep"),
+    resultSelect: $('#resultSelect'),
+    b4Check: $('#b4Check'),
+    multipleGamesCheck: $('#multipleGamesCheck'),
+    transpositionCheck: $('#transpositionCheck'),
+    publishedFrom: $('#publishedFrom'),
+    publishedTo: $('#publishedTo')
+}
+
+jQ.playerNamesFilterForm.on('submit', function (event) {
     event.preventDefault();
-});
-$("#openingFilterForm").on('submit', function (event) {
+})
+jQ.openingFilterForm.on('submit', function (event) {
     event.preventDefault();
-});
-$(".page-link").on('click', function (event) {
+})
+jQ.pageLinkClass.on('click', function (event) {
     event.preventDefault();
-});
-$("#firstPageLink").on('click', () => changePage(1))
-$("#previousPageLink").on('click', () => {
+})
+jQ.firstPageLink.on('click', () => changePage(1))
+jQ.previousPageLink.on('click', () => {
     if (currentPageNumber > 1) {
         changePage(currentPageNumber - 1)
     }
 })
-$('#nextPageLink').on('click', () => {
+jQ.nextPageLink.on('click', () => {
     if (currentPageNumber < filteredVideos.length / pageSize) {
         changePage(currentPageNumber + 1)
     }
 })
-$("#lastPageLink").on('click', () => {
+jQ.lastPageLink.on('click', () => {
     changePage(parseInt(filteredVideos.length / pageSize) + 1)
 })
 
@@ -93,31 +113,21 @@ function testBlack(filter, video) {
     })
 }
 
-document.getElementById('openingInput').addEventListener('input', function (event) {
-    if (event.inputType === "insertReplacementText") {
-        filters.opening.push(event.data)
-
-        applyFilters(true)
-
-        document.getElementById('openingInput').value = ""
-    }
-})
-
-document.getElementById('titleInput').addEventListener('input', event => {
-    filters.title = event.target.value
+jQ.titleInput.bind('input', _ => {
+    filters.title = jQ.titleInput.val()
     applyFilters(true)
 })
 
-$("#clearFilterButton").on('click', clearFilters)
+jQ.clearFilterButton.on('click', clearFilters)
 
-$("#backOneStep").on('click', function () {
+jQ.backOneStepButton.on('click', function () {
     game.undo()
     board.position(game.fen())
     filters.pgnFilter = game.pgn() ? game.pgn() : ""
     applyFilters(true)
 })
 
-$('#resultSelect').change(function () {
+jQ.resultSelect.change(function () {
     if (filters.results.indexOf($(this).val()) < 0) {
         filters.results.push($(this).val())
     }
@@ -127,7 +137,7 @@ $('#resultSelect').change(function () {
     }, 1)
 })
 
-$('#b4Check').change(function () {
+jQ.b4Check.change(function () {
     if ($(this).prop("checked")) {
         filters.b4Played = true
     } else {
@@ -137,7 +147,7 @@ $('#b4Check').change(function () {
     applyFilters(true)
 })
 
-$('#multipleGamesCheck').change(function () {
+jQ.multipleGamesCheck.change(function () {
     if ($(this).prop("checked")) {
         filters.multipleGames = true
     } else {
@@ -147,15 +157,15 @@ $('#multipleGamesCheck').change(function () {
     applyFilters(true)
 })
 
-$('#transpositionCheck').change(function () {
+jQ.transpositionCheck.change(function () {
     if (filters.pgnFilter) {
         applyFilters(false)
     }
 })
-$('#publishedFrom').change(function () {
+jQ.publishedFrom.change(function () {
     applyFilters(false)
 })
-$('#publishedTo').change(function () {
+jQ.publishedTo.change(function () {
     applyFilters(false)
 })
 
@@ -343,7 +353,7 @@ fetch("generated/openings-slim.json")
     .then(responseJson => {
         openings = responseJson
 
-        $('#openingInput').typeahead({
+        jQ.openingInput.typeahead({
                 minLength: 1,
                 highlight: true
             },
@@ -360,14 +370,13 @@ fetch("generated/openings-slim.json")
                 filters.opening.push(suggestion)
 
                 applyFilters(true)
-                setTimeout(function () {
-                    document.getElementById('openingInput').value = ""
-                }, 1)
+                jQ.openingInput.typeahead('val', '')
             })
-            .bind('typeahead:change', function (ev, suggestion) {
-                setTimeout(function () {
-                    document.getElementById('openingInput').value = ""
-                }, 1)
+            .bind('typeahead:change', function () {
+                jQ.openingInput.typeahead('val', '')
+            })
+            .bind('change', function () {
+                jQ.openingInput.typeahead('val', '')
             })
     })
 
@@ -397,9 +406,9 @@ function clearFilters() {
         board.position("start")
         game.reset()
     }
-    document.getElementById('titleInput').value = ""
-    document.getElementById('publishedFrom').value = ""
-    document.getElementById('publishedTo').value = ""
+    jQ.titleInput.val('')
+    jQ.publishedFrom.val('')
+    jQ.publishedTo.val('')
     applyFilters(true)
 }
 
@@ -412,12 +421,12 @@ onpopstate = (event) => {
 };
 
 function pushHistory() {
-    let state = {
+    const state = {
         filters: filters,
         sortBy: sortBy,
         sortDirection: sortDirection
     }
-    let encodedState = btoa(encodeURIComponent(JSON.stringify(state, null, "")));
+    const encodedState = btoa(encodeURIComponent(JSON.stringify(state, null, "")));
 
     const url = new URL(window.location);
     url.searchParams.set('s', encodedState)
@@ -433,9 +442,9 @@ function applyFilters(shouldPushHistory) {
     const pgnPrefixes = openings
         .filter(opening => _.some(filters.opening, filterOpening => opening.name === filterOpening))
         .map(opening => opening.moves)
-    const includeTranspositions = document.getElementById('transpositionCheck').checked
-    const publishedFrom = document.getElementById('publishedFrom').value
-    const publishedTo = document.getElementById('publishedTo').value
+    const includeTranspositions = jQ.transpositionCheck.is(":checked")
+    const publishedFrom = jQ.publishedFrom.val()
+    const publishedTo = jQ.publishedTo.val()
 
     filteredVideos = videos
         .filter(video => {
@@ -469,7 +478,7 @@ function applyFilters(shouldPushHistory) {
                 return true
             } else {
                 const videoResult = video.games[0] ? video.games[0].result : null
-                return filters.results.indexOf(videoResult) >= 0 || !videoResult && filters.results.indexOf("na") >= 0
+                return filters.results.includes(videoResult) || !videoResult && filters.results.includes("na")
             }
         })
         .filter(video => !filters.b4Played || _.some(video.games, game => game.b4Played))
@@ -650,25 +659,25 @@ function drawFilters() {
         }))
     }
 
-    let publishedFromValue = document.getElementById('publishedFrom').value
+    const publishedFromValue = jQ.publishedFrom.val()
     if (publishedFromValue) {
         nodes.push(createFilterSpan({
             cssClass: 'text-bg-info',
             textContent: `Published >= ${publishedFromValue}`,
             onclick: () => {
-                document.getElementById('publishedFrom').value = ""
+                jQ.publishedFrom.val('')
                 applyFilters(false)
             }
         }))
     }
 
-    let publishedToValue = document.getElementById('publishedTo').value
+    const publishedToValue = jQ.publishedTo.val()
     if (publishedToValue) {
         nodes.push(createFilterSpan({
             cssClass: 'text-bg-info',
             textContent: `Published <= ${publishedToValue}`,
             onclick: () => {
-                document.getElementById('publishedTo').value = ""
+                jQ.publishedTo.val('')
                 applyFilters(false)
             }
         }))
