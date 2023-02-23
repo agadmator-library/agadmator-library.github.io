@@ -163,7 +163,8 @@
                             <div class="col-auto px-1">
                                 <div class="input-group">
                                     <span class="input-group-text">Length</span>
-                                    <input id="videoLengthFromInput" type="number" class="form-control" placeholder="from"
+                                    <input id="videoLengthFromInput" type="number" class="form-control"
+                                           placeholder="from"
                                            pattern="\d+"
                                            aria-label="from">
                                     <span class="input-group-text">-</span>
@@ -256,7 +257,8 @@
                             <div class="col-auto px-1">
                                 <div class="input-group">
                                     <span class="input-group-text">Moves count</span>
-                                    <input id="movesCountFromInput" type="number" class="form-control" placeholder="from"
+                                    <input id="movesCountFromInput" type="number" class="form-control"
+                                           placeholder="from"
                                            pattern="\d+"
                                            aria-label="from">
                                     <span class="input-group-text">-</span>
@@ -400,6 +402,17 @@
 
 </div>
 
+<div class="toast-container position-fixed bottom-0 end-0 p-3 d-none d-lg-block">
+    <div id="youtubeToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="15000">
+        <div class="toast-header">
+            <strong class="me-auto">Try this filters based on previous video:</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div id="youtubeToastBody" class="toast-body">
+            <span>Click to add filter</span><br>
+        </div>
+    </div>
+</div>
 
 <footer class="page-footer font-small indigo">
 
