@@ -15,7 +15,7 @@ export type Game = {
 }
 
 function extractDateFromDescription(id: string, linesAbove: string): string | undefined {
-    const pgnNotesRegex = /\[Date\s+"(\d+[-.]\d+[-.]\d+)"]/g
+    const pgnNotesRegex = /\[Date\s+"(\d+[.-]\d+[.-]\d+)"]/g
     let pgnNotesMatchResult = linesAbove.match(pgnNotesRegex)
     if (pgnNotesMatchResult) {
         linesAbove = pgnNotesMatchResult[0].replaceAll('"', " ")
