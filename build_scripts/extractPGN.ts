@@ -10,7 +10,15 @@ export type Game = {
     pgn?: string,
     fen?: string,
     playerWhite?: string,
-    playerBlack?: string
+    playerBlack?: string,
+    date?: string
+}
+
+function extractDateFromDescription(id: string, linesAbove: string): string | undefined {
+    const regex = /\s((1[4-9]\d\d)|(20\d\d))[.-](0\d|1[0-2])[.-]([0-2]\d|3[01])[\s]/g
+    return (linesAbove.match(regex) || [])
+        .map(matched => _.trim(matched))
+        .map(matched => matched.replaceAll(".", "-"))[0]
 }
 
 function extractGames(description: string, id: string): Game[] {
@@ -19,7 +27,7 @@ function extractGames(description: string, id: string): Game[] {
     const pgns = getPgns(id, description)
 
     let players = getPlayersForId(id)
-
+    let date: string | undefined = undefined
     if (players) {
         return [{
             pgn: pgns && pgns[0] ? pgns[0].pgn : undefined,
@@ -34,8 +42,10 @@ function extractGames(description: string, id: string): Game[] {
         let previousPgnLineIdx = -1
         return pgns.map(pgnExtractionResult => {
             if (pgnExtractionResult.lineIdx) {
-                players = extractPlayersFromDescription(id, descriptionLines.slice(previousPgnLineIdx + 1, pgnExtractionResult.lineIdx + 1).join("\n") + "\n")
+                const linesAbove = descriptionLines.slice(previousPgnLineIdx + 1, pgnExtractionResult.lineIdx + 1).join("\n") + "\n";
+                players = extractPlayersFromDescription(id, linesAbove)
                 previousPgnLineIdx = pgnExtractionResult.lineIdx
+                date = extractDateFromDescription(id, linesAbove)
             } else {
                 players = extractPlayersFromDescription(id, description)
             }
@@ -46,6 +56,9 @@ function extractGames(description: string, id: string): Game[] {
             if (players) {
                 game.playerWhite = players.white
                 game.playerBlack = players.black
+            }
+            if (date) {
+                game.date = date
             }
             return game
         })

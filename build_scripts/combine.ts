@@ -107,7 +107,14 @@ function getYear(id: string): number | null | undefined {
     }
 
     const lichessMastersEntry = database.read(NAMESPACE_LICHESS_MASTERS, id)
-    return lichessMastersEntry?.year
+    if (lichessMastersEntry?.year) {
+        return lichessMastersEntry.year
+    }
+
+    if (game.date) {
+        return parseInt(game.date.substring(0, 4))
+    }
+    return undefined
 }
 
 function removeNulls(obj: any): any {
