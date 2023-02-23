@@ -41,6 +41,31 @@ function extractDateFromDescription(id: string, linesAbove: string): string | un
             })[0]
     }
 
+    if (!year) {
+        const monthddyyyyRegex = /\s(Jan|Feb|Mar|Apr|Jul|Aug|Sept|Oct|Nov|Dec)[.-](\d|0\d|1[0-2])[.-]((1[4-9]\d\d)|(20\d\d))/g
+        year = (linesAbove.match(monthddyyyyRegex) || [])
+            .map(matched => _.trim(matched))
+            .map(matched => matched
+                .replaceAll("Jan", "1")
+                .replaceAll("Feb", "2")
+                .replaceAll("Mar", "3")
+                .replaceAll("Apr", "4")
+                .replaceAll("May", "5")
+                .replaceAll("Jun", "5")
+                .replaceAll("Jul", "6")
+                .replaceAll("Aug", "7")
+                .replaceAll("Sept", "9")
+                .replaceAll("Oct", "10")
+                .replaceAll("Nov", "11")
+                .replaceAll("Dec", "12")
+            )
+            .map(matched => matched.replaceAll(".", "-"))
+            .map(matched => {
+                let split = matched.split("-");
+                return `${split[2]}-${_.padStart(split[0], 2, '0')}-${_.padStart(split[1], 2, '0')}`
+            })[0]
+    }
+
     return year
 }
 
