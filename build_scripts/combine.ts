@@ -136,7 +136,9 @@ export function combine() {
             d: new Date(videoSnippet.publishedAt).getTime() / 1000,
             t: videoSnippet.title,
             id: videoSnippet.videoId,
-            g: games.map((game, idx) => {
+            g: games
+                .filter(game => Object.keys(game).length > 0)
+                .map((game, idx) => {
                 let wId = null
                 if (game && game.playerWhite) {
                     wId = db.players.indexOf(game.playerWhite) >= 0 ? db.players.indexOf(game.playerWhite) : db.players.push(game.playerWhite) - 1

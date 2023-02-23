@@ -61,6 +61,7 @@ let jQ = {
     backOneStepButton: $("#backOneStep"),
     resultSelect: $('#resultSelect'),
     b4Check: $('#b4Check'),
+    atLeastOneGameCheck: $('#atLeastOneGameCheck'),
     multipleGamesCheck: $('#multipleGamesCheck'),
     transpositionCheck: $('#transpositionCheck'),
     publishedFrom: $('#publishedFrom'),
@@ -147,6 +148,16 @@ jQ.b4Check.change(function () {
     applyFilters(true)
 })
 
+jQ.atLeastOneGameCheck.change(function () {
+    if ($(this).prop("checked")) {
+        filters.atLeastOneGame = true
+    } else {
+        filters.atLeastOneGame = null
+    }
+    $(this).prop("checked", false)
+    applyFilters(true)
+})
+
 jQ.multipleGamesCheck.change(function () {
     if ($(this).prop("checked")) {
         filters.multipleGames = true
@@ -156,6 +167,7 @@ jQ.multipleGamesCheck.change(function () {
     $(this).prop("checked", false)
     applyFilters(true)
 })
+
 
 jQ.transpositionCheck.change(function () {
     if (filters.pgnFilter) {
@@ -446,6 +458,7 @@ function applyFilters(shouldPushHistory) {
     const publishedFrom = jQ.publishedFrom.val()
     const publishedTo = jQ.publishedTo.val()
 
+    console.log(filters)
     filteredVideos = videos
         .filter(video => {
             if (filters.anySide.length === 0) {
@@ -456,6 +469,7 @@ function applyFilters(shouldPushHistory) {
         })
         .filter(video => filters.white.length === 0 || _.some(filters.white, filter => testWhite(filter, video)))
         .filter(video => filters.black.length === 0 || _.some(filters.black, filter => testBlack(filter, video)))
+        .filter(video => !filters.atLeastOneGame || video.games.length > 0)
         .filter(video => !filters.multipleGames || video.games.length > 1)
         .filter(video => {
             if (pgnPrefixes.length === 0) {
@@ -643,6 +657,17 @@ function drawFilters() {
             textContent: "White played b4!!!",
             onclick: () => {
                 filters.b4Played = null
+                applyFilters(true)
+            }
+        }))
+    }
+
+    if (filters.atLeastOneGame) {
+        nodes.push(createFilterSpan({
+            cssClass: 'text-bg-info',
+            textContent: "At least one game",
+            onclick: () => {
+                filters.atLeastOneGame = null
                 applyFilters(true)
             }
         }))
