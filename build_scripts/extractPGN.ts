@@ -81,7 +81,8 @@ function extractGames(description: string, id: string): Game[] {
             pgn: pgns && pgns[0] ? pgns[0].pgn : undefined,
             fen: pgns && pgns[0] ? pgns[0].fen : undefined,
             playerWhite: players.white,
-            playerBlack: players.black
+            playerBlack: players.black,
+            date: extractDateFromDescription(id, description)
         }]
     }
 
