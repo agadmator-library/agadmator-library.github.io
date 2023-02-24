@@ -46,7 +46,7 @@ let filters = {
 }
 let openings = []
 let positions = {}
-let sortBy = "date"
+let sortBy = "published"
 let sortDirection = "desc"
 let showResult = false
 let showYear = true
