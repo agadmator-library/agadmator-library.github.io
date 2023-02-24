@@ -121,7 +121,7 @@ jQ.exactDatesButton.on('click', () => {
         jQ.dateColHeader.addClass("d-none")
     }
     drawTable()
-    jQ.exactDatesButton.textContent = showYear ? "Show exact dates" : "Show year only"
+    jQ.exactDatesButton.text(showYear ? "Show exact dates" : "Show year only")
 })
 function testWhite(filter, video) {
     return video.games && _.some(video.games, game => {
