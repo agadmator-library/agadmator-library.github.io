@@ -117,6 +117,44 @@ function getYear(id: string): number | null | undefined {
     return undefined
 }
 
+function getDate(id: string): string | null | undefined {
+    const games = database.readVideoGames(id)
+    const game = games && games[0] ? games[0] : null
+    if (!game || !game.playerWhite) {
+        return null
+    }
+
+    const chesstempoEntry = database.read(NAMESPACE_CHESSTEMPO_COM, id)
+    if (chesstempoEntry && chesstempoEntry.date) {
+        const split = chesstempoEntry.date.replaceAll(".", "-").split("-");
+        return `${split[0]}-${_.padStart(split[1], 2, '0')}-${_.padStart(split[2], 2, '0')}`
+    }
+
+    if (game.date) {
+        return game.date
+    }
+
+    const lichessMastersEntry = database.read(NAMESPACE_LICHESS_MASTERS, id)
+    if (lichessMastersEntry?.month) {
+        return `${lichessMastersEntry.month}-??`
+    }
+    if (lichessMastersEntry?.year) {
+        return `${lichessMastersEntry.year}-??-??`
+    }
+
+    const chess365Entry = database.read(NAMESPACE_CHESS365, id)
+    if (chess365Entry?.year) {
+        return `${chess365Entry.year}-??-??`
+    }
+
+    const chessComEntry = database.read(NAMESPACE_CHESS_COM, id)
+    if (chessComEntry?.year && chessComEntry.year !== "0") {
+        return `${chessComEntry.year}-??-??`
+    }
+
+    return undefined
+}
+
 function removeNulls(obj: any): any {
     return Object.fromEntries(Object.entries(obj).filter(([_, v]) => v != null));
 }
@@ -175,8 +213,9 @@ export function combine() {
 
                     const result = idx === 0 ? getResult(id) : null
                     const year = idx === 0 ? getYear(id) : null
+                    const date = idx === 0 ? getDate(id) : null
 
-                    return removeNulls({w: wId, b: bId, r: result, y: year})
+                    return removeNulls({w: wId, b: bId, r: result, y: year, d: date})
                 })
         }))
     })

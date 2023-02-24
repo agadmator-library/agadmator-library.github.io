@@ -40,8 +40,12 @@ function translateMonth(month: string) {
     }
     return _.padStart(`${months.get(month)}`, 2, '0')
 }
-
+extractPgnForAll()
 function extractDateFromDescription(id: string, linesAbove: string): string | undefined {
+    linesAbove = linesAbove.split('\n')
+        .filter(line => !line.match(/game\s+of\s+the\s+day/))
+        .join('\n')
+
     const pgnNotesRegex = /\[Date\s+"(\d+[.-]\d+[.-]\d+)"]/g
     let pgnNotesMatchResult = linesAbove.match(pgnNotesRegex)
     if (pgnNotesMatchResult) {

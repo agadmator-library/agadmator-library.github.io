@@ -2,11 +2,12 @@ class Game {
     pgn = undefined
     b4Played = undefined
 
-    constructor(white, black, result, year) {
+    constructor(white, black, result, year, date) {
         this.white = white
         this.black = black
         this.result = result
         this.year = year
+        this.date = date
     }
 
     getWhiteOrEmpty() {
@@ -48,6 +49,8 @@ let positions = {}
 let sortBy = "date"
 let sortDirection = "desc"
 let showResult = false
+let showYear = true
+let showDate = false
 
 let jQ = {
     playerNamesFilterForm: $("#playerNamesFilterForm"),
@@ -75,7 +78,10 @@ let jQ = {
     movesCountFromInput: $('#movesCountFromInput'),
     movesCountToInput: $('#movesCountToInput'),
     yearFromInput: $('#yearFromInput'),
-    yearToInput: $('#yearToInput')
+    yearToInput: $('#yearToInput'),
+    exactDatesButton: $('#exactDatesButton'),
+    yearColHeader: $('#yearColHeader'),
+    dateColHeader: $('#dateColHeader')
 }
 
 jQ.playerNamesFilterForm.on('submit', function (event) {
@@ -101,7 +107,22 @@ jQ.nextPageLink.on('click', () => {
 jQ.lastPageLink.on('click', () => {
     changePage(parseInt(filteredVideos.length / pageSize) + 1)
 })
-
+jQ.exactDatesButton.on('click', () => {
+    showYear = !showYear
+    showDate = !showDate
+    if (showYear) {
+        jQ.yearColHeader.removeClass("d-none")
+    } else {
+        jQ.yearColHeader.addClass("d-none")
+    }
+    if (showDate) {
+        jQ.dateColHeader.removeClass("d-none")
+    } else {
+        jQ.dateColHeader.addClass("d-none")
+    }
+    drawTable()
+    jQ.exactDatesButton.textContent = showYear ? "Show exact dates" : "Show year only"
+})
 function testWhite(filter, video) {
     return video.games && _.some(video.games, game => {
         return game.getWhiteOrEmpty().toLowerCase() === filter.playerName.toLowerCase()
@@ -220,11 +241,12 @@ function onSortClick(field) {
     applyFilters(true)
 }
 
-document.getElementById('dateColHeader').addEventListener('click', () => onSortClick('date'))
+document.getElementById('publishedColHeader').addEventListener('click', () => onSortClick('published'))
 document.getElementById('titleColHeader').addEventListener('click', () => onSortClick('title'))
 document.getElementById('whiteColHeader').addEventListener('click', () => onSortClick('w'))
 document.getElementById('blackColHeader').addEventListener('click', () => onSortClick('b'))
 document.getElementById('yearColHeader').addEventListener('click', () => onSortClick('year'))
+document.getElementById('dateColHeader').addEventListener('click', () => onSortClick('date'))
 
 function watchIdsOnYoutube(ids) {
     if (ids === "") {
@@ -284,7 +306,7 @@ fetch(`generated/${references.db}`)
 
         const toTyped = res.videos.map(dbVideo => {
             let games = dbVideo.g
-                ? dbVideo.g.map(g => new Game(res.players[g.w], res.players[g.b], decodeResult(g.r), g.y))
+                ? dbVideo.g.map(g => new Game(res.players[g.w], res.players[g.b], decodeResult(g.r), g.y, g.d))
                 : []
             return new Video(dbVideo.id, new Date(dbVideo.d * 1000), dbVideo.t, games)
         })
@@ -581,7 +603,7 @@ function applyFilters(shouldPushHistory) {
         })
 
     filteredVideos = _.sortBy(filteredVideos, function (video) {
-        if (sortBy === "date") {
+        if (sortBy === "published") {
             return video.date
         } else if (sortBy === "title") {
             return video.title.replaceAll(/[^\p{L}\d -]/gu, "").toLowerCase()
@@ -591,6 +613,8 @@ function applyFilters(shouldPushHistory) {
             return (video.games[0] ? video.games[0].getBlackOrEmpty() : "").toLowerCase()
         } else if (sortBy === "year") {
             return video.games[0] && video.games[0].year ? video.games[0].year : ""
+        } else if (sortBy === "date") {
+            return video.games[0] && video.games[0].date ? video.games[0].date : ""
         } else {
             return ""
         }
@@ -944,16 +968,31 @@ function drawTable() {
             })
             tableRow.appendChild(blackPlayerCell)
 
-            let yearCell = document.createElement("td");
-            yearCell.className = 'table-cell'
-            video.games.forEach(game => {
-                let yearDiv = document.createElement("div")
-                if (game.year) {
-                    yearDiv.textContent = game.year
-                }
-                yearCell.appendChild(yearDiv)
-            })
-            tableRow.appendChild(yearCell)
+            if (showYear) {
+                let yearCell = document.createElement("td");
+                yearCell.className = 'table-cell'
+                video.games.forEach(game => {
+                    let yearDiv = document.createElement("div")
+                    if (game.year) {
+                        yearDiv.textContent = game.year
+                    }
+                    yearCell.appendChild(yearDiv)
+                })
+                tableRow.appendChild(yearCell)
+            }
+
+            if (showDate) {
+                let dateCell = document.createElement("td");
+                dateCell.className = 'table-cell'
+                video.games.forEach(game => {
+                    let dateDiv = document.createElement("div")
+                    if (game.date) {
+                        dateDiv.textContent = game.date
+                    }
+                    dateCell.appendChild(dateDiv)
+                })
+                tableRow.appendChild(dateCell)
+            }
 
             if (showResult) {
                 let resultCell = document.createElement("td");

@@ -368,6 +368,12 @@
                         data-container="body">
                     Hide result column
                 </button>
+                <button
+                        id="exactDatesButton"
+                        class="btn btn-primary m-2"
+                        data-container="body">
+                    Show exact dates
+                </button>
             </div>
         </div>
     </div>
@@ -377,12 +383,15 @@
         <table class="table table-sm table-hover table-striped">
             <thead>
             <tr>
-                <th id="dateColHeader" class="d-none d-lg-block" scope="col">
+                <th id="publishedColHeader" class="d-none d-lg-block" scope="col">
                     Published at<span class="ms-1">&#x21D5;</span></th>
                 <th id="titleColHeader" scope="col">Title<span class="ms-1">&#x21D5;</span></th>
                 <th id="whiteColHeader" scope="col">White<span class="ms-1">&#x21D5;</span></th>
                 <th id="blackColHeader" scope="col">Black<span class="ms-1">&#x21D5;</span></th>
                 <th id="yearColHeader" class="table-cell" scope="col">Year<span
+                        class="ms-1">&#x21D5;</span>
+                </th>
+                <th id="dateColHeader" class="table-cell d-none" scope="col">Date<span
                         class="ms-1">&#x21D5;</span>
                 </th>
                 <th id="resultColHeader" scope="col" style="display: none">Result</th>
