@@ -92,7 +92,7 @@ function getYear(id: string): number | null | undefined {
     }
 
     const chessComEntry = database.read(NAMESPACE_CHESS_COM, id)
-    if (chessComEntry?.year) {
+    if (chessComEntry?.year && chessComEntry.year !== "0") {
         return parseInt(chessComEntry.year)
     }
 

@@ -4,7 +4,7 @@ import {extractPlayersFromDescription} from "./players/playersExtractor.js";
 import getPlayersForId from "./players/playersOverrides.js";
 import {database, NAMESPACE_VIDEO_SNIPPET} from "./db.js";
 import {pgnOverrides} from "./pgnOverrides.js";
-import _ from "lodash"
+import _, {indexOf, replace} from "lodash"
 
 export type Game = {
     pgn?: string,
@@ -12,6 +12,33 @@ export type Game = {
     playerWhite?: string,
     playerBlack?: string,
     date?: string
+}
+
+enum PgnSource {
+    OVERRIDE = 0,
+    LINE = 1
+}
+
+function translateMonth(month: string) {
+    const months = new Map<string, number>([
+        ["Jan", 1],
+        ["Feb", 2],
+        ["Mar", 3],
+        ["Apr", 4],
+        ["May", 5],
+        ["Jun", 6],
+        ["Jul", 7],
+        ["Aug", 8],
+        ["Sept", 9],
+        ["Sep", 9],
+        ["Oct", 10],
+        ["Nov", 11],
+        ["Dec", 12]
+    ])
+    if (!months.has(month)) {
+        throw `Invalid month: ${month}`
+    }
+    return _.padStart(`${months.get(month)}`, 2, '0')
 }
 
 function extractDateFromDescription(id: string, linesAbove: string): string | undefined {
@@ -42,28 +69,25 @@ function extractDateFromDescription(id: string, linesAbove: string): string | un
     }
 
     if (!year) {
-        const monthddyyyyRegex = /\s(Jan|Feb|Mar|Apr|Jul|Aug|Sept|Oct|Nov|Dec)[.-](\d|0\d|1[0-2])[.-]((1[4-9]\d\d)|(20\d\d))/g
+        const monthddyyyyRegex = /\s(Jan|Feb|Mar|Apr|Jul|Aug|Sept|Sep|Oct|Nov|Dec)[.-](\d|0\d|1[0-2])[.-]((1[4-9]\d\d)|(20\d\d))/g
         year = (linesAbove.match(monthddyyyyRegex) || [])
             .map(matched => _.trim(matched))
             .map(matched => matched
-                .replaceAll("Jan", "1")
-                .replaceAll("Feb", "2")
-                .replaceAll("Mar", "3")
-                .replaceAll("Apr", "4")
-                .replaceAll("May", "5")
-                .replaceAll("Jun", "5")
-                .replaceAll("Jul", "6")
-                .replaceAll("Aug", "7")
-                .replaceAll("Sept", "9")
-                .replaceAll("Oct", "10")
-                .replaceAll("Nov", "11")
-                .replaceAll("Dec", "12")
+                .replaceAll(/(Jan|Feb|Mar|Apr|Jul|Aug|Sept|Sep|Oct|Nov|Dec)/g, month => translateMonth(month))
             )
             .map(matched => matched.replaceAll(".", "-"))
             .map(matched => {
                 let split = matched.split("-");
                 return `${split[2]}-${_.padStart(split[0], 2, '0')}-${_.padStart(split[1], 2, '0')}`
             })[0]
+    }
+
+    if (!year) {
+        const lineRegex = /.*\((1[4-9]\d\d|20\d\d)\).*(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sept|Sep|Oct|Nov|Dec)-(\d{1,2}|\?\?)\s*\n/
+        let lineRegexMatch = linesAbove.match(lineRegex);
+        if (lineRegexMatch) {
+            return `${lineRegexMatch[1]}-${translateMonth(lineRegexMatch[2])}-${lineRegexMatch[3]}`
+        }
     }
 
     return year
@@ -127,11 +151,6 @@ function extractGames(description: string, id: string): Game[] {
 
         return [game]
     }
-}
-
-enum PgnSource {
-    OVERRIDE,
-    LINE
 }
 
 type PgnExtraction = {
