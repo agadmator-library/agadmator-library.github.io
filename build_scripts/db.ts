@@ -90,6 +90,10 @@ class Database {
 
         fs.writeFileSync(filePath, JSON.stringify(toSave, null, 2))
     }
+
+    public delete(id: string) {
+        fs.unlinkSync(getFilePath(id))
+    }
 }
 
 export const database = new Database()
