@@ -260,6 +260,12 @@ export function combine() {
             fs.unlinkSync(`${resultDir}/${name}`)
         }
     })
+    fs.readdirSync(resultDir + "/js").forEach(name => {
+        if (name.endsWith(".js")) {
+            fs.unlinkSync(`${resultDir}/js/${name}`)
+
+        }
+    })
 
     let dbFileName = `db-${objectHash(db)}.json`;
     writeResultFile(dbFileName, db)
@@ -279,7 +285,10 @@ export function combine() {
         positions: positionsFileName,
         openingsSlim: openingsSlimFileName
     }
-    fs.writeFileSync(`${resultDir}/js/references.js`, `var references=${JSON.stringify(references, null, 2)}`)
-}
 
-combine();
+    fs.writeFileSync(`${resultDir}/js/references-${objectHash(references)}.js`, `var references=${JSON.stringify(references, null, 2)}`)
+
+    let indexContent = fs.readFileSync(`${resultDir}/../index.html`, {encoding: 'utf8'});
+    indexContent = indexContent.replaceAll(/src="generated\/js\/references-[a-z0-9]+.js"/g, `src=\"generated/js/references-${objectHash(references)}.js\"`)
+    fs.writeFileSync(`${resultDir}/../index.html`, indexContent)
+}
