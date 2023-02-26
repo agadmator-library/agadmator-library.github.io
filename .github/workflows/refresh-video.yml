@@ -2,6 +2,11 @@ name: Refresh video
 
 on:
   workflow_dispatch:
+    inputs:
+      videoId:
+        description: Video id or video url
+        required: true
+        type: string
 
 jobs:
   refresh-video:
