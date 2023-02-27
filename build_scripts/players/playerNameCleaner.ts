@@ -19,6 +19,7 @@ export default function cleanPlayerName(raw: string): string {
         .replaceAll(/^\s+/g, "")
         .replaceAll(/\s+$/g, "")
         .replaceAll(/\s+Chapter\s+\d+/g, "")
+        .replaceAll(/^Salem Saleh$/g, "A.R. Saleh Salem")
         .replaceAll(/^Abhijeet$/g, "Abhijeet Gupta")
         .replaceAll(/^Adham$/g, "Adham Fawzy")
         .replaceAll(/^Alexandr Hilario Takeda dos Santos Fier$/g, "Alexandr Hilário Takeda Sakai dos Santos Fier")
