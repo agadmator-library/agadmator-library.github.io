@@ -81,16 +81,22 @@ function getResult(id: string) {
         return translateLichessMastersResult(lichessMastersEntry.winner)
     }
 
-    let games = database.readVideoGames(id)[0]
-    if (games && games.pgn) {
-        if (games.pgn.endsWith("1-0")) {
+    let game = database.readVideoGames(id)[0]
+    if (game && game.pgn) {
+        if (game.pgn.endsWith("1-0")) {
             return 1
         }
-        if (games.pgn.endsWith("0-1")) {
+        if (game.pgn.endsWith("0-1")) {
             return -1
         }
-        if (games.pgn.endsWith("1/2-1/2")) {
+        if (game.pgn.endsWith("1/2-1/2")) {
             return 0
+        }
+        if (/^.*\d+\.\s[QNRB]?\d?x?[a-h]\d[#+]$/.test(game.pgn)) {
+            return 1
+        }
+        if (/^.*\d+\.\s.{2,5}\s[QNRB]?\d?x?[a-h]\d[#+]$/.test(game.pgn)) {
+            return -1
         }
     }
     return null
