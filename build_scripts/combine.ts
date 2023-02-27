@@ -87,6 +87,9 @@ function getResult(id: string) {
             return 1
         }
         if (games.pgn.endsWith("0-1")) {
+            return -1
+        }
+        if (games.pgn.endsWith("1/2-1/2")) {
             return 0
         }
     }
