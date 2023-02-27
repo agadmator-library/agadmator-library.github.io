@@ -119,6 +119,7 @@ export default function cleanPlayerName(raw: string): string {
         .replaceAll(/^Sergey Krjakin$/g, "Sergey Karjakin")
         .replaceAll(/^Shakhryar Mamedyarov$/g, "Shakhriyar Mamedyarov")
         .replaceAll(/^Shakryar Mamedyarov$/g, "Shakhriyar Mamedyarov")
+        .replaceAll(/^Samuel Shankland$/g, "Sam Shankland")
         .replaceAll(/^Sethuraman P Sethuraman$/g, "S.P. Sethuraman")
         .replaceAll(/^Sethuraman$/g, "S.P. Sethuraman")
         .replaceAll(/^Teimour$/g, "Teimour Radjabov")
