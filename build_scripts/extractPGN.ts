@@ -52,7 +52,7 @@ function extractDateFromDescription(id: string, linesAbove: string): string | un
     }
 
     const yyyyMMddRegex = /\s((1[4-9]\d\d)|(20\d\d))[.-](\d|0\d|1[0-2])[.-]([0-2]\d|3[01]|\d)/g
-    let year = (linesAbove.match(yyyyMMddRegex) || [])
+    let date = (linesAbove.match(yyyyMMddRegex) || [])
         .map(matched => _.trim(matched))
         .map(matched => matched.replaceAll(".", "-"))
         .map(matched => {
@@ -60,9 +60,9 @@ function extractDateFromDescription(id: string, linesAbove: string): string | un
             return `${split[0]}-${_.padStart(split[1], 2, '0')}-${_.padStart(split[2], 2, '0')}`
         })[0]
 
-    if (!year) {
+    if (!date) {
         const ddMMyyyyRegex = /\s(\d|[0-2]\d|3[01])[.-](\d|0\d|1[0-2])[.-]((1[4-9]\d\d)|(20\d\d))/g
-        year = (linesAbove.match(ddMMyyyyRegex) || [])
+        date = (linesAbove.match(ddMMyyyyRegex) || [])
             .map(matched => _.trim(matched))
             .map(matched => matched.replaceAll(".", "-"))
             .map(matched => {
@@ -71,9 +71,9 @@ function extractDateFromDescription(id: string, linesAbove: string): string | un
             })[0]
     }
 
-    if (!year) {
+    if (!date) {
         const monthddyyyyRegex = /\s(Jan|Feb|Mar|Apr|Jul|Aug|Sept|Sep|Oct|Nov|Dec)[.-](\d|0\d|1[0-2])[.-]((1[4-9]\d\d)|(20\d\d))/g
-        year = (linesAbove.match(monthddyyyyRegex) || [])
+        date = (linesAbove.match(monthddyyyyRegex) || [])
             .map(matched => _.trim(matched))
             .map(matched => matched
                 .replaceAll(/(Jan|Feb|Mar|Apr|Jul|Aug|Sept|Sep|Oct|Nov|Dec)/g, month => translateMonth(month))
@@ -85,7 +85,7 @@ function extractDateFromDescription(id: string, linesAbove: string): string | un
             })[0]
     }
 
-    if (!year) {
+    if (!date) {
         const lineRegex = /.*\((1[4-9]\d\d|20\d\d)\).*(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sept|Sep|Oct|Nov|Dec)-(\d{1,2}|\?\?)\s*\n/
         let lineRegexMatch = linesAbove.match(lineRegex);
         if (lineRegexMatch) {
@@ -93,7 +93,15 @@ function extractDateFromDescription(id: string, linesAbove: string): string | un
         }
     }
 
-    return year
+    if (!date) {
+        const lineRegex = /\n\D*\((1[4-9]\d\d|20\d\d)\)\D*\n/
+        let lineRegexMatch = linesAbove.match(lineRegex);
+        if (lineRegexMatch) {
+            return `${lineRegexMatch[1]}-??-??`
+        }
+    }
+
+    return date
 }
 
 function extractGames(description: string, id: string): Game[] {
