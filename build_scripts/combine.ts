@@ -81,6 +81,15 @@ function getResult(id: string) {
         return translateLichessMastersResult(lichessMastersEntry.winner)
     }
 
+    let games = database.readVideoGames(id)[0]
+    if (games && games.pgn) {
+        if (games.pgn.endsWith("1-0")) {
+            return 1
+        }
+        if (games.pgn.endsWith("0-1")) {
+            return 0
+        }
+    }
     return null
 }
 

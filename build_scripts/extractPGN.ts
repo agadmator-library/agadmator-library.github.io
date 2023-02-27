@@ -260,7 +260,7 @@ function parseUsingKokopu(pgn: string): KokopuParseResult | undefined {
 
         const fen = database.game(0).finalPosition().fen()
         return {
-            pgn: parsedPgn,
+            pgn: _.trim(parsedPgn),
             fen: fen
         }
     } catch (e) {
@@ -271,7 +271,7 @@ function parseUsingKokopu(pgn: string): KokopuParseResult | undefined {
         return tmp == null
             ? undefined
             : {
-                pgn: tmp.pgn.replaceAll("1/2-1/2", ""),
+                pgn: _.trim(tmp.pgn.replaceAll("1/2-1/2", "")),
                 fen: tmp.fen
             }
     }
