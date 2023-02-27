@@ -94,6 +94,15 @@ function extractDateFromDescription(id: string, linesAbove: string): string | un
     }
 
     if (!date) {
+        const lineRegex = /.*(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sept|Sep|Oct|Nov|Dec)-(\d{1,2}|\?\?)\s+\((1[4-9]\d\d|20\d\d)\).*\n/
+        let lineRegexMatch = linesAbove.match(lineRegex);
+        if (lineRegexMatch) {
+            return `${lineRegexMatch[3]}-${translateMonth(lineRegexMatch[1])}-${lineRegexMatch[2]}`
+        }
+    }
+
+
+    if (!date) {
         const lineRegex = /\n\D*\((1[4-9]\d\d|20\d\d)\)\D*\n/
         let lineRegexMatch = linesAbove.match(lineRegex);
         if (lineRegexMatch) {
