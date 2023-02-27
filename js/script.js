@@ -123,6 +123,7 @@ jQ.exactDatesButton.on('click', () => {
     drawTable()
     jQ.exactDatesButton.text(showYear ? "Show exact dates" : "Show year only")
 })
+
 function testWhite(filter, video) {
     return video.games && _.some(video.games, game => {
         return game.getWhiteOrEmpty().toLowerCase() === filter.playerName.toLowerCase()
@@ -330,7 +331,7 @@ fetch(`generated/${references.db}`)
             }), ["count", "name"], ["desc", "asc"])
             .map(player => player.name)
 
-        $('#playerInput').typeahead({
+        $('.playerInput').typeahead({
                 minLength: 1,
                 highlight: false
             },
@@ -338,22 +339,63 @@ fetch(`generated/${references.db}`)
                 name: 'players-dataset',
                 limit: 15,
                 source: function (query, syncResults) {
-                    const realQuery = document.getElementById('playerInput').value.toLowerCase()
-                    syncResults(players.filter(name => name.toLowerCase().includes(realQuery)))
+                    syncResults(players.filter(name => name.toLowerCase().includes(query.toLowerCase())))
                 }
             })
             .bind('typeahead:select', function (ev, suggestion) {
-                const side = document.getElementById('playerSideSelect').value
-                const filter = {
-                    playerName: suggestion,
-                    playerResult: document.getElementById('playerResultSelect').value
-                }
-                filters[side].push(filter)
+                if (ev.target.id === 'playerInput') {
+                    const side = document.getElementById('playerSideSelect').value
+                    const filter = {
+                        playerName: suggestion,
+                        playerResult: document.getElementById('playerResultSelect').value
+                    }
+                    filters[side].push(filter)
 
-                applyFilters(true)
-                document.getElementById('playerSideSelect').value = "anySide"
-                $('#playerInput').typeahead('val', "");
-                document.getElementById('playerResultSelect').value = ""
+                    applyFilters(true)
+                    document.getElementById('playerSideSelect').value = "anySide"
+                    $('.playerInput').typeahead('val', "");
+                    document.getElementById('playerResultSelect').value = ""
+                } else if (ev.target.id === 'playerOneInput' || ev.target.id === 'playerTwoInput') {
+                    let playerOne = document.getElementById('playerOneInput').value
+                    let playerTwo = document.getElementById('playerTwoInput').value
+                    if (ev.target.id === 'playerOneInput') {
+                        playerOne = suggestion
+                    } else {
+                        playerTwo = suggestion
+                    }
+                    if (playerOne && playerTwo) {
+                        if (!players.includes(playerOne)) {
+                            $('#playerOneInput').typeahead('val', "")
+                            return
+                        }
+                        if (!players.includes(playerTwo)) {
+                            $('#playerTwoInput').typeahead('val', "")
+                            return
+                        }
+
+                        filters.white = []
+                        filters.black = []
+                        filters.anySide = []
+                        filters.white.push({
+                            playerName: playerOne,
+                            playerResult: ""
+                        })
+                        filters.white.push({
+                            playerName: playerTwo,
+                            playerResult: ""
+                        })
+                        filters.black.push({
+                            playerName: playerOne,
+                            playerResult: ""
+                        })
+                        filters.black.push({
+                            playerName: playerTwo,
+                            playerResult: ""
+                        })
+                        applyFilters(true)
+                        $('.playerInput').typeahead('val', "");
+                    }
+                }
             })
             .bind('typeahead:change', function (e) {
                 document.getElementById('playerSideSelect').value = "anySide"

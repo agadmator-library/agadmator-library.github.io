@@ -100,33 +100,63 @@
                     </button>
                 </div>
                 <div class="card-body collapse show" id="playerFiltersCard">
-                    <form class="row align-items-center " action="" id="playerFilterForm">
-                        <div class="col-auto px-1">
-                            <label class="visually-hidden" for="playerSideSelect">Select side</label>
-                            <select class="form-control" id="playerSideSelect">
-                                <option value="anySide">Any side</option>
-                                <option value="white">White</option>
-                                <option value="black">Black</option>
-                            </select>
+                    <nav>
+                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                            <button class="nav-link active" id="nav-single-player-tab" data-bs-toggle="tab" data-bs-target="#nav-single-player" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Single</button>
+                            <button class="nav-link" id="nav-match-tab" data-bs-toggle="tab" data-bs-target="#nav-match" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Match</button>
                         </div>
-                        <div class="col-auto px-1">
-                            <label class="visually-hidden" for="playerResultSelect">Player result</label>
-                            <select class="form-control" id="playerResultSelect">
-                                <option value="" selected>Any result</option>
-                                <option value="won">Won</option>
-                                <option value="lost">Lost</option>
-                                <option value="draw">Draw</option>
-                            </select>
+                    </nav>
+                    <div class="tab-content ms-2 mt-1" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="nav-single-player" role="tabpanel" aria-labelledby="nav-single-player-tab">
+                            <form class="row align-items-center " action="" id="playerFilterForm">
+                                <div class="col-auto px-1">
+                                    <label class="visually-hidden" for="playerSideSelect">Select side</label>
+                                    <select class="form-control" id="playerSideSelect">
+                                        <option value="anySide">Any side</option>
+                                        <option value="white">White</option>
+                                        <option value="black">Black</option>
+                                    </select>
+                                </div>
+                                <div class="col-auto px-1">
+                                    <label class="visually-hidden" for="playerResultSelect">Player result</label>
+                                    <select class="form-control" id="playerResultSelect">
+                                        <option value="" selected>Any result</option>
+                                        <option value="won">Won</option>
+                                        <option value="lost">Lost</option>
+                                        <option value="draw">Draw</option>
+                                    </select>
+                                </div>
+                                <div class="col px-1">
+                                    <label class="visually-hidden" for="playerInput">Player</label>
+                                    <input id="playerInput"
+                                           type="text"
+                                           class="form-control flex-fill playerInput"
+                                           placeholder="Player"
+                                           autocomplete="off">
+                                </div>
+                            </form>
                         </div>
-                        <div class="col px-1">
-                            <label class="visually-hidden" for="playerInput">Player</label>
-                            <input id="playerInput"
-                                   type="text"
-                                   class="form-control flex-fill"
-                                   placeholder="Player"
-                                   autocomplete="off">
+                        <div class="tab-pane fade" id="nav-match" role="tabpanel" aria-labelledby="nav-match-tab">
+                            <form class="row align-items-center " action="" id="matchFilterForm">
+                                <div class="col px-1">
+                                    <div class="input-group">
+                                        <input id="playerOneInput"
+                                               type="text"
+                                               class="form-control flex-fill playerInput"
+                                               placeholder="Player one"
+                                               autocomplete="off">
+                                        <span class="input-group-text">vs</span>
+                                        <input id="playerTwoInput"
+                                               type="text"
+                                               class="form-control flex-fill playerInput"
+                                               placeholder="Player two"
+                                               autocomplete="off">
+                                    </div>
+                                </div>
+                            </form>
                         </div>
-                    </form>
+                    </div>
+
 
                 </div>
             </div>
