@@ -12,7 +12,7 @@ import {lichessMasterClient} from "./LichessMastersClient.js";
 class LichessMastersService {
     public async loadInfoForId(id: string, force: boolean = false) {
         if (!database.read(NAMESPACE_LICHESS_MASTERS, id) || force) {
-            const games = database.readVideoGames(id);
+            const games = database.readDescriptionGames(id);
             const game = games && games[0] ? games[0] : null
 
             if (!game || !game.fen) {

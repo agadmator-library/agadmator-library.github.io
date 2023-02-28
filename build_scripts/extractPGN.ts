@@ -4,9 +4,9 @@ import {extractPlayersFromDescription} from "./players/playersExtractor.js";
 import getPlayersForId from "./players/playersOverrides.js";
 import {database, NAMESPACE_VIDEO_SNIPPET} from "./db.js";
 import {pgnOverrides} from "./pgnOverrides.js";
-import _, {indexOf, replace} from "lodash"
+import _ from "lodash"
 
-export type Game = {
+export type DescriptionGame = {
     pgn?: string,
     fen?: string,
     playerWhite?: string,
@@ -113,7 +113,7 @@ function extractDateFromDescription(id: string, linesAbove: string): string | un
     return date
 }
 
-function extractGames(description: string, id: string): Game[] {
+function extractGames(description: string, id: string): DescriptionGame[] {
     description = description.replaceAll("\n. e4 c6 2.", "\n1. e4 c6 2.")
 
     const pgns = getPgns(id, description)
@@ -288,7 +288,7 @@ export function extractPgnForId(id: string) {
         games = games.filter(game => game.playerWhite)
     }
     if (games.length > 0) {
-        database.saveVideoGames(id, games)
+        database.saveDescriptionGames(id, games)
     }
 }
 

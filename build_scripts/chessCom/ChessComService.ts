@@ -8,7 +8,7 @@ import {testIfSamePlayers, testIfSimilarPlayers} from "../BaseGame.js";
 class ChessComService {
     public async loadInfoForId(id: string, force: boolean = false) {
         if (!database.read(NAMESPACE_CHESS_COM, id) || force) {
-            const games = database.readVideoGames(id);
+            const games = database.readDescriptionGames(id);
             const game = games && games[0] ? games[0] : null
 
             if (!game || !game.fen || !game.playerWhite || !game.playerBlack) {

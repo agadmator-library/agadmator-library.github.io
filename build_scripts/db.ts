@@ -1,7 +1,7 @@
 import * as fs from "fs";
 import path from 'path';
 import {fileURLToPath} from 'url';
-import {Game} from "./extractPGN";
+import {DescriptionGame} from "./extractPGN";
 
 
 const __filename = fileURLToPath(import.meta.url);
@@ -52,14 +52,13 @@ class Database {
             .map(fileName => fileName.replaceAll(".json", ""))
     }
 
-    public readVideoGames(id: string): Game[] {
-        return this.read(NAMESPACE_VIDEO_GAME, id) as Game[]
+    public readDescriptionGames(id: string): DescriptionGame[] {
+        return this.read(NAMESPACE_VIDEO_GAME, id) as DescriptionGame[]
     }
 
-    public saveVideoGames(id: string, games: Game[]) {
+    public saveDescriptionGames(id: string, games: DescriptionGame[]) {
         this.save(NAMESPACE_VIDEO_GAME, id, games)
     }
-
 
     public read(namespace: string, id: string) {
         assertNamespace(namespace)

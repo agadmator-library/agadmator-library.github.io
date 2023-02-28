@@ -1,4 +1,4 @@
-import {Game} from "./extractPGN.js";
+import {DescriptionGame} from "./extractPGN.js";
 import cleanPlayerName from "./players/playerNameCleaner.js";
 import _ from "lodash";
 import {levenshteinEditDistance} from "levenshtein-edit-distance";
@@ -9,7 +9,7 @@ export type BaseGame = {
     playerBlack: string
 }
 
-export function testIfSimilarPlayers(baseGame: BaseGame, game: Game): boolean {
+export function testIfSimilarPlayers(baseGame: BaseGame, game: DescriptionGame): boolean {
     const wArray = cleanPlayerName(baseGame.playerWhite).split(" ").sort()
     const bArray = cleanPlayerName(baseGame.playerBlack).split(" ").sort()
     const gameWArray = game.playerWhite ? game.playerWhite.split(" ").sort() : []
@@ -26,7 +26,7 @@ export function testIfSimilarPlayers(baseGame: BaseGame, game: Game): boolean {
     return matchWhite || matchBlack
 }
 
-export function testIfSamePlayers(baseGame: BaseGame, game: Game): boolean {
+export function testIfSamePlayers(baseGame: BaseGame, game: DescriptionGame): boolean {
     return cleanPlayerName(baseGame.playerWhite) === game.playerWhite
         && cleanPlayerName(baseGame.playerBlack) === game.playerBlack
 }

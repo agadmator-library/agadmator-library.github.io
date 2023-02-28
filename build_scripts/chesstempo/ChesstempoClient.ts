@@ -1,5 +1,5 @@
 import axios from "axios";
-import {Game} from "../extractPGN.js";
+import {DescriptionGame} from "../extractPGN.js";
 import {RateLimiter} from "../util/RateLimiter.js";
 import {BaseGame} from "../BaseGame.js"
 
@@ -7,7 +7,7 @@ class ChesstempoClient {
 
     private rateLimiter: RateLimiter = new RateLimiter(10_000)
 
-    public async fetch(game: Game): Promise<ChesstempoResponse> {
+    public async fetch(game: DescriptionGame): Promise<ChesstempoResponse> {
         await this.rateLimiter.assertDelay()
 
         const requestBody = {

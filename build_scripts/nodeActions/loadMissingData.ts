@@ -14,7 +14,7 @@ import {lichessMastersService} from "../lichessMasters/LichessMastersService.js"
 async function loadMissingChessComInfo() {
     let videosWithMissingInfo = database.getAllIds()
         .filter(id => {
-            const games = database.readVideoGames(id)
+            const games = database.readDescriptionGames(id)
             const game = games && games[0] ? games[0] : null
             return game && game.fen && game.playerWhite && game.playerBlack && !database.read(NAMESPACE_CHESS_COM, id)
         })
@@ -32,7 +32,7 @@ async function loadMissingChessComInfo() {
 async function loadMissingChesstempoInfo() {
     let videosWithMissingInfo = database.getAllIds()
         .filter(id => {
-            const games = database.readVideoGames(id)
+            const games = database.readDescriptionGames(id)
             const game = games && games[0] ? games[0] : null
             return game && game.fen && game.playerWhite && game.playerBlack && !database.read(NAMESPACE_CHESSTEMPO_COM, id)
         })
@@ -50,7 +50,7 @@ async function loadMissingChesstempoInfo() {
 async function loadMissingChess365Info() {
     let videosWithMissingInfo = database.getAllIds()
         .filter(id => {
-            const games = database.readVideoGames(id)
+            const games = database.readDescriptionGames(id)
             const game = games && games[0] ? games[0] : null
             return game && game.fen && game.playerWhite && game.playerBlack && !database.read(NAMESPACE_CHESS365, id)
         })
@@ -68,7 +68,7 @@ async function loadMissingChess365Info() {
 async function loadMissingLichessMastersInfo() {
     let videosWithMissingInfo = database.getAllIds()
         .filter(id => {
-            const games = database.readVideoGames(id)
+            const games = database.readDescriptionGames(id)
             const game = games && games[0] ? games[0] : null
             return game && game.fen && game.playerWhite && game.playerBlack && !database.read(NAMESPACE_LICHESS_MASTERS, id)
         })

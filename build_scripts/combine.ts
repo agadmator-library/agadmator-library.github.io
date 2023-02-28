@@ -82,7 +82,7 @@ function getResult(id: string) {
         return translateLichessMastersResult(lichessMastersEntry.winner)
     }
 
-    let game = database.readVideoGames(id)[0]
+    let game = database.readDescriptionGames(id)[0]
     if (game && game.pgn) {
         if (game.pgn.endsWith("1-0")) {
             return 1
@@ -104,7 +104,7 @@ function getResult(id: string) {
 }
 
 function getYear(id: string): number | null | undefined {
-    const games = database.readVideoGames(id)
+    const games = database.readDescriptionGames(id)
     const game = games && games[0] ? games[0] : null
     if (!game || !game.playerWhite) {
         return null
@@ -137,7 +137,7 @@ function getYear(id: string): number | null | undefined {
 }
 
 function getDate(id: string): string | null | undefined {
-    const games = database.readVideoGames(id)
+    const games = database.readDescriptionGames(id)
     const game = games && games[0] ? games[0] : null
     if (!game || !game.playerWhite) {
         return null
@@ -203,7 +203,7 @@ export function combine() {
             videoLength[id] = (duration.hours ? duration.hours * 60 : 0) + (duration.minutes ? duration.minutes : 0)
         }
 
-        const games = database.readVideoGames(id)
+        const games = database.readDescriptionGames(id)
 
         db.videos.push(removeNulls({
             d: new Date(videoSnippet.publishedAt).getTime() / 1000,
