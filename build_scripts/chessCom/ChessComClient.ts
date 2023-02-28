@@ -1,6 +1,6 @@
 import * as cheerio from "cheerio";
 import {RateLimiter} from "../util/RateLimiter.js";
-import {BaseGame} from "../BaseGame.js"
+import {BaseGame, Result} from "../BaseGame.js"
 
 class ChessComClient {
     private rateLimiter: RateLimiter = new RateLimiter(15_000)
@@ -37,15 +37,15 @@ class ChessComClient {
                 const movesCount = parseInt(movesCountText)
                 const year = yearText && yearText !== "0" ? parseInt(yearText) : undefined
 
-                resultArray.push({
-                        retrievedAt: new Date(),
-                        href: href,
-                        playerWhite: playerWhite,
-                        playerBlack: playerBlack,
-                        result: result,
-                        movesCount: movesCount,
-                        year: year
-                    }
+                resultArray.push(new ChessComGame(
+                        new Date(),
+                        playerWhite,
+                        playerBlack,
+                        href,
+                        result,
+                        movesCount,
+                        year,
+                    )
                 )
             })
 
@@ -53,11 +53,45 @@ class ChessComClient {
     }
 }
 
-type ChessComGame = BaseGame & {
-    href: string,
-    result: string,
-    movesCount: number,
+class ChessComGame implements BaseGame {
+    retrievedAt: Date
+    playerWhite: string
+    playerBlack: string
+    href: string
+    result: string
+    movesCount: number
     year?: number
+
+    constructor(
+        retrievedAt: Date,
+        playerWhite: string,
+        playerBlack: string,
+        href: string,
+        result: string,
+        movesCount: number,
+        year?: number
+    ) {
+        this.retrievedAt = retrievedAt
+        this.playerWhite = playerWhite
+        this.playerBlack = playerBlack
+        this.href = href
+        this.result = result
+        this.movesCount = movesCount
+        this.year = year
+    }
+
+    getResult(): Result | undefined {
+        switch (this.result) {
+            case "1-0":
+                return Result.WHITE
+            case "0-1":
+                return Result.BLACK
+            case "½-½":
+                return Result.DRAW
+            default:
+                return undefined
+        }
+    }
 }
 
 export const chessComClient = new ChessComClient()

@@ -1,7 +1,7 @@
 import axios from "axios";
 import {DescriptionGame} from "../extractPGN.js";
 import {RateLimiter} from "../util/RateLimiter.js";
-import {BaseGame} from "../BaseGame.js"
+import {BaseGame, Result} from "../BaseGame.js"
 
 class ChesstempoClient {
 
@@ -38,20 +38,20 @@ class ChesstempoClient {
         const chesstempoGames: ChesstempoGame[] = responseBody.result
             .games
             .map((game: any) => {
-                return {
-                    retrievedAt: new Date(),
-                    id: game.game_id,
-                    playerWhite: game.white,
-                    playerBlack: game.black,
-                    result: game.result,
-                    movesCount: game.num_moves,
-                    date: game.date,
-                    site: game.site,
-                    event: game.event,
-                    round: game.round,
-                    eco: game.eco,
-                    openingName: game.opening_name
-                }
+                return new ChesstempoGame(
+                    new Date(),
+                    game.white,
+                    game.black,
+                    game.game_id,
+                    game.result,
+                    game.num_moves,
+                    game.date,
+                    game.site,
+                    game.event,
+                    game.round,
+                    game.eco,
+                    game.opening_name
+                )
             })
 
         return {
@@ -61,17 +61,51 @@ class ChesstempoClient {
     }
 }
 
-type ChesstempoGame = BaseGame & {
-    id: number,
-    result: string,
-    movesCount: number,
-    date?: string,
-    site?: string,
-    event?: string,
-    round?: string,
-    eco?: string,
+class ChesstempoGame implements BaseGame {
+    retrievedAt: Date
+    playerWhite: string
+    playerBlack: string
+    id: number
+    result: string
+    movesCount: number
+    date?: string
+    site?: string
+    event?: string
+    round?: string
+    eco?: string
     openingName?: string
 
+    constructor(
+        retrievedAt: Date,
+        playerWhite: string,
+        playerBlack: string,
+        id: number,
+        result: string,
+        movesCount: number,
+        date?: string,
+        site?: string,
+        event?: string,
+        round?: string,
+        eco?: string,
+        openingName?: string
+    ) {
+        this.retrievedAt = retrievedAt
+        this.playerWhite = playerWhite
+        this.playerBlack = playerBlack
+        this.id = id
+        this.result = result
+        this.movesCount = movesCount
+        this.date = date
+        this.site = site
+        this.event = event
+        this.round = round
+        this.eco = eco
+        this.openingName = openingName
+    }
+
+    getResult(): Result | undefined {
+        return undefined;
+    }
 }
 
 type ChesstempoResponse = {

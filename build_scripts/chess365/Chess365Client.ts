@@ -2,7 +2,7 @@ import {RateLimiter} from "../util/RateLimiter.js";
 import axios from "axios"
 import * as cheerio from "cheerio";
 import _ from "lodash";
-import {BaseGame} from "../BaseGame.js"
+import {BaseGame, Result} from "../BaseGame.js"
 
 class Chess365Client {
     private rateLimiter: RateLimiter = new RateLimiter(3_000)
@@ -64,18 +64,17 @@ class Chess365Client {
                 const movesCount = parseInt(movesCountText)
                 const year = yearText ? parseInt(yearText) : undefined
 
-                resultArray.push({
-                        retrievedAt: new Date(),
-                        href: href,
-                        playerWhite: playerWhite,
-                        playerBlack: playerBlack,
-                        result: result,
-                        movesCount: movesCount,
-                        year: year,
-                        eco: eco,
-                        tournament: tournament
-                    }
-                )
+                resultArray.push(new Chess365Game(
+                    new Date(),
+                    playerWhite,
+                    playerBlack,
+                    href,
+                    result,
+                    movesCount,
+                    year,
+                    eco,
+                    tournament
+                ))
             })
 
         return resultArray
@@ -84,11 +83,48 @@ class Chess365Client {
 
 export const chess365Client = new Chess365Client()
 
-type Chess365Game = BaseGame & {
-    href: string,
-    result: string,
-    movesCount: number,
-    year?: number,
-    eco?: string,
+class Chess365Game
+    implements BaseGame {
+    retrievedAt: Date
+    playerWhite: string
+    playerBlack: string
+    href: string
+    result: string
+    movesCount: number
+    year?: number
+    eco?: string
     tournament?: string
+
+    constructor(retrievedAt: Date,
+                playerWhite: string,
+                playerBlack: string,
+                href: string,
+                result: string,
+                movesCount: number,
+                year?: number,
+                eco?: string,
+                tournament?: string) {
+        this.retrievedAt = retrievedAt
+        this.playerWhite = playerWhite
+        this.playerBlack = playerBlack
+        this.href = href
+        this.result = result
+        this.movesCount = movesCount
+        this.year = year
+        this.eco = eco
+        this.tournament = tournament
+    }
+
+    getResult(): Result | undefined {
+        switch (this.result) {
+            case "1-0":
+                return Result.WHITE
+            case "0-1":
+                return Result.BLACK
+            case "½-½":
+                return Result.DRAW
+            default:
+                return undefined
+        }
+    }
 }

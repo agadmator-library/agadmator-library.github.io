@@ -3,10 +3,17 @@ import cleanPlayerName from "./players/playerNameCleaner.js";
 import _ from "lodash";
 import {levenshteinEditDistance} from "levenshtein-edit-distance";
 
-export type BaseGame = {
-    retrievedAt: Date,
-    playerWhite: string,
+export enum Result {
+    WHITE = 1,
+    DRAW = 0,
+    BLACK = -1
+}
+
+export interface BaseGame {
+    retrievedAt: Date
+    playerWhite: string
     playerBlack: string
+    getResult(): Result | undefined
 }
 
 export function testIfSimilarPlayers(baseGame: BaseGame, game: DescriptionGame): boolean {
