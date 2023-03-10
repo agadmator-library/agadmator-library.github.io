@@ -249,6 +249,10 @@ document.getElementById('blackColHeader').addEventListener('click', () => onSort
 document.getElementById('yearColHeader').addEventListener('click', () => onSortClick('year'))
 document.getElementById('dateColHeader').addEventListener('click', () => onSortClick('date'))
 
+function normalizeText(text) {
+    return text.normalize("NFD").replace(/\p{Diacritic}/gu, "").toLowerCase()
+}
+
 function watchIdsOnYoutube(ids) {
     if (ids === "") {
         return
@@ -339,7 +343,8 @@ fetch(`generated/${references.db}`)
                 name: 'players-dataset',
                 limit: 15,
                 source: function (query, syncResults) {
-                    syncResults(players.filter(name => name.toLowerCase().includes(query.toLowerCase())))
+                    const normalizedQuery = normalizeText(query)
+                    syncResults(players.filter(name => normalizeText(name).includes(normalizedQuery)))
                 }
             })
             .bind('typeahead:select', function (ev, suggestion) {
@@ -484,8 +489,9 @@ fetch(`generated/${references.openingsSlim}`)
                 name: 'openings-dataset',
                 limit: 15,
                 source: function (query, syncResults) {
+                    const normalizedQuery = normalizeText(query)
                     syncResults(openings.map(opening => opening.name)
-                        .filter(name => name.toLowerCase().includes(query.toLowerCase()))
+                        .filter(name => normalizeText(name).includes(normalizedQuery))
                     )
                 }
             })
