@@ -960,21 +960,35 @@ function drawFilterResultsContainer() {
 }
 
 function drawTable() {
-    let tableBodyElement = document.getElementById("tableBody");
-    let newNodes = filteredVideos.slice((currentPageNumber - 1) * pageSize, (currentPageNumber) * pageSize)
-        .map(video => {
-            let tableRow = document.createElement("tr");
+    let timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone
+    if (!timeZone) {
+        timeZone = "UTC"
+    }
+    const dateTimeFormat = new Intl.DateTimeFormat('sv-SE', {
+        timeZone: timeZone,
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+    })
 
-            let publishedAtCell = document.createElement("th");
-            publishedAtCell.textContent = video.date.toISOString()
+    const tableBodyElement = document.getElementById("tableBody");
+    const newNodes = filteredVideos.slice((currentPageNumber - 1) * pageSize, (currentPageNumber) * pageSize)
+        .map(video => {
+            const tableRow = document.createElement("tr");
+
+            const publishedAtCell = document.createElement("th");
+            publishedAtCell.textContent = dateTimeFormat.format(video.date)
             publishedAtCell.className = 'd-none d-lg-table-cell'
             tableRow.appendChild(publishedAtCell)
 
-            let titleCell = document.createElement("td");
+            const titleCell = document.createElement("td");
             titleCell.setAttribute("data-toggle", "tooltip")
             titleCell.setAttribute("data-placement", "top")
             titleCell.setAttribute("title", video.title)
-            let titleHref = document.createElement("a");
+            const titleHref = document.createElement("a");
             titleHref.href = "https://www.youtube.com/watch?v=" + video.id
             titleHref.target = "_blank"
             titleHref.textContent = _.truncate(video.title, {
@@ -984,9 +998,9 @@ function drawTable() {
             titleCell.appendChild(titleHref)
             tableRow.appendChild(titleCell)
 
-            let whitePlayerCell = document.createElement("td");
+            const whitePlayerCell = document.createElement("td");
             video.games.forEach(game => {
-                let nameCell = document.createElement("div");
+                const nameCell = document.createElement("div");
                 if (game.white) {
                     nameCell.textContent = _.truncate(game.white, {
                         'length': 40,
@@ -997,9 +1011,9 @@ function drawTable() {
             })
             tableRow.appendChild(whitePlayerCell)
 
-            let blackPlayerCell = document.createElement("td");
+            const blackPlayerCell = document.createElement("td");
             video.games.forEach(game => {
-                let nameCell = document.createElement("div");
+                const nameCell = document.createElement("div");
                 if (game.white) {
                     nameCell.textContent = _.truncate(game.black, {
                         'length': 40,
@@ -1011,10 +1025,10 @@ function drawTable() {
             tableRow.appendChild(blackPlayerCell)
 
             if (showYear) {
-                let yearCell = document.createElement("td");
+                const yearCell = document.createElement("td");
                 yearCell.className = 'table-cell'
                 video.games.forEach(game => {
-                    let yearDiv = document.createElement("div")
+                    const yearDiv = document.createElement("div")
                     if (game.year) {
                         yearDiv.textContent = game.year
                     }
@@ -1024,10 +1038,10 @@ function drawTable() {
             }
 
             if (showDate) {
-                let dateCell = document.createElement("td");
+                const dateCell = document.createElement("td");
                 dateCell.className = 'table-cell'
                 video.games.forEach(game => {
-                    let dateDiv = document.createElement("div")
+                    const dateDiv = document.createElement("div")
                     if (game.date) {
                         dateDiv.textContent = game.date
                     }
@@ -1037,7 +1051,7 @@ function drawTable() {
             }
 
             if (showResult) {
-                let resultCell = document.createElement("td");
+                const resultCell = document.createElement("td");
                 if (video.games && video.games[0] && video.games[0].result) {
                     resultCell.textContent = video.games[0].result
                 }
