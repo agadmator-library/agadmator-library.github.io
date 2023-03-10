@@ -490,9 +490,9 @@ fetch(`generated/${references.openingsSlim}`)
                 limit: 15,
                 source: function (query, syncResults) {
                     const normalizedQuery = normalizeText(query)
-                    syncResults(openings.map(opening => opening.name)
+                    const suggestions = openings.map(opening => opening.name)
                         .filter(name => normalizeText(name).includes(normalizedQuery))
-                    )
+                    syncResults(_.intersection(suggestions))
                 }
             })
             .bind('typeahead:select', function (ev, suggestion) {
