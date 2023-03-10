@@ -540,6 +540,10 @@ function clearFilters() {
     jQ.movesCountToInput.val('')
     jQ.yearFromInput.val('')
     jQ.yearToInput.val('')
+
+    sortBy = 'published'
+    sortDirection = 'desc'
+
     applyFilters(true)
 }
 
