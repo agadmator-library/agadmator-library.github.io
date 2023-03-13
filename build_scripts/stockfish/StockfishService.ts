@@ -1,4 +1,5 @@
-import INIT_ENGINE from './stockfish.js'
+// @ts-ignore
+import INIT_ENGINE from 'stockfish'
 import path from 'path';
 import {fileURLToPath} from 'url';
 import {database, NAMESPACE_STOCKFISH_EVAL} from "../db.js";
@@ -20,7 +21,7 @@ class Engine {
         const __filename = fileURLToPath(import.meta.url);
         const __dirname = path.dirname(__filename);
 
-        const wasmPath = path.join(__dirname, "stockfish.wasm");
+        const wasmPath = path.join(__dirname, "../../node_modules/stockfish/src", "stockfish.wasm");
 
         if (typeof INIT_ENGINE === "function") {
             const Stockfish = INIT_ENGINE()
@@ -213,4 +214,4 @@ class StockfishService {
 export const stockfishService = new StockfishService()
 
 
-
+await stockfishService.evaluate(database.getAllIds(), true)
