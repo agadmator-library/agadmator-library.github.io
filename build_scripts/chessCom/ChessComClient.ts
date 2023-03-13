@@ -1,6 +1,7 @@
 import * as cheerio from "cheerio";
 import {RateLimiter} from "../util/RateLimiter.js";
 import {BaseGame, Result} from "../BaseGame.js"
+import fetch from "node-fetch"
 
 class ChessComClient {
     private rateLimiter: RateLimiter = new RateLimiter(15_000)
