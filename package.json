@@ -5,7 +5,7 @@
   "main": "build_scripts/loadNewMovies.ts",
   "type": "module",
   "scripts": {
-    "loadNewVideos": "node build_scripts/nodeActions/loadNewVideos.js",
+    "loadNewVideos": "node --experimental-wasm-threads --experimental-wasm-simd build_scripts/nodeActions/loadNewVideos.js",
     "refreshVideo": "ts-node-esm build_scripts/nodeActions/refreshVideo.ts",
     "loadMissingData": "ts-node-esm build_scripts/nodeActions/loadMissingData.ts",
     "retryDataRetrieval": "ts-node-esm build_scripts/nodeActions/retryDataRetrieval.ts",

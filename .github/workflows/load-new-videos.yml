@@ -21,7 +21,7 @@ jobs:
           cache: 'npm'
           cache-dependency-path: package-lock.json
       - run: npm ci
-      - run: npx tsc
+      - run: tsc --build
       - run: npm run loadNewVideos
       - run: git config user.name github-actions
       - run: git config user.email github-actions@github.com
