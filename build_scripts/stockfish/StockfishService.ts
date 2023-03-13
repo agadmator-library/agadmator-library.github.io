@@ -212,6 +212,3 @@ class StockfishService {
 }
 
 export const stockfishService = new StockfishService()
-
-
-await stockfishService.evaluate(database.getAllIds(), true)
