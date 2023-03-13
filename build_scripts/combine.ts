@@ -7,13 +7,14 @@ import {
     NAMESPACE_CHESS365,
     NAMESPACE_CHESS_COM,
     NAMESPACE_CHESSTEMPO_COM,
-    NAMESPACE_LICHESS_MASTERS,
+    NAMESPACE_LICHESS_MASTERS, NAMESPACE_STOCKFISH_EVAL,
     NAMESPACE_VIDEO_CONTENT_DETAILS,
     NAMESPACE_VIDEO_SNIPPET
 } from './db.js'
 import {pgnRead} from 'kokopu'
 import {parse} from 'tinyduration'
 import objectHash from 'object-hash'
+import {EvaluationResult} from "./stockfish/StockfishService";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -93,13 +94,32 @@ function getResult(id: string) {
         if (game.pgn.endsWith("1/2-1/2")) {
             return 0
         }
-        if (/^.*\d+\.\s[QNRB]?\d?x?[a-h]\d[#+]$/.test(game.pgn)) {
+        if (/^.*\d+\.\s[QNRB]?\d?x?[a-h]\d#$/.test(game.pgn)) {
             return 1
         }
-        if (/^.*\d+\.\s.{2,5}\s[QNRB]?\d?x?[a-h]\d[#+]$/.test(game.pgn)) {
+        if (/^.*\d+\.\s.{2,5}\s[QNRB]?\d?x?[a-h]\d#$/.test(game.pgn)) {
             return -1
         }
     }
+
+    const evaluations = database.read(NAMESPACE_STOCKFISH_EVAL, id)
+    if (evaluations && evaluations[0]) {
+        const evaluation = <EvaluationResult>evaluations[0]
+        const perspective = game.fen?.includes(" w ") ? 1 : -1
+
+        if (evaluation.mate !== null && evaluation.mate >= 0) {
+            return perspective
+        } else if (evaluation.mate != null) {
+            return 0 - perspective
+        } else if (evaluation.cp !== null && evaluation.cp >= 100) {
+            return perspective
+        } else if (evaluation.cp !== null && evaluation.cp <= -100) {
+            return 0 - perspective
+        } else if (evaluation.cp !== null && evaluation.cp in [-10, 10]) {
+            return 0
+        }
+    }
+
     return null
 }
 
