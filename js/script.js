@@ -2,11 +2,11 @@ class Game {
     pgn = undefined
     b4Played = undefined
 
-    constructor(white, black, result, year, date) {
+    constructor(white, black, result, date) {
         this.white = white
         this.black = black
         this.result = result
-        this.year = year
+        this.year = date ? date.substring(0, 4) : null
         this.date = date
     }
 
@@ -311,7 +311,7 @@ fetch(`generated/${references.db}`)
 
         const toTyped = res.videos.map(dbVideo => {
             let games = dbVideo.g
-                ? dbVideo.g.map(g => new Game(res.players[g.w], res.players[g.b], decodeResult(g.r), g.y, g.d))
+                ? dbVideo.g.map(g => new Game(res.players[g.w], res.players[g.b], decodeResult(g.r), g.d))
                 : []
             return new Video(dbVideo.id, new Date(dbVideo.d * 1000), dbVideo.t, games)
         })

@@ -123,39 +123,6 @@ function getResult(id: string) {
     return null
 }
 
-function getYear(id: string): number | null | undefined {
-    const games = database.readDescriptionGames(id)
-    const game = games && games[0] ? games[0] : null
-    if (!game || !game.playerWhite) {
-        return null
-    }
-
-    const chessComEntry = database.read(NAMESPACE_CHESS_COM, id)
-    if (chessComEntry?.year && chessComEntry.year !== "0") {
-        return parseInt(chessComEntry.year)
-    }
-
-    const chesstempoEntry = database.read(NAMESPACE_CHESSTEMPO_COM, id)
-    if (chesstempoEntry && chesstempoEntry.date) {
-        return parseInt(chesstempoEntry.date.substring(0, 4))
-    }
-
-    const chess365Entry = database.read(NAMESPACE_CHESS365, id)
-    if (chess365Entry?.year) {
-        return chess365Entry?.year
-    }
-
-    const lichessMastersEntry = database.read(NAMESPACE_LICHESS_MASTERS, id)
-    if (lichessMastersEntry?.year) {
-        return lichessMastersEntry.year
-    }
-
-    if (game.date) {
-        return parseInt(game.date.substring(0, 4))
-    }
-    return undefined
-}
-
 function getDate(id: string): string | null | undefined {
     const games = database.readDescriptionGames(id)
     const game = games && games[0] ? games[0] : null
@@ -251,10 +218,9 @@ export function combine() {
                     }
 
                     const result = idx === 0 ? getResult(id) : null
-                    const year = idx === 0 ? getYear(id) : null
                     const date = idx === 0 ? getDate(id) : null
 
-                    return removeNulls({w: wId, b: bId, r: result, y: year, d: date})
+                    return removeNulls({w: wId, b: bId, r: result, d: date})
                 })
         }))
     })
