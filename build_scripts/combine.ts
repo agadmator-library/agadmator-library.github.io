@@ -15,6 +15,7 @@ import {pgnRead} from 'kokopu'
 import {parse} from 'tinyduration'
 import objectHash from 'object-hash'
 import {EvaluationResult} from "./stockfish/StockfishService";
+import {fenShortener} from "./util/FenShortener.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -236,16 +237,20 @@ export function combine() {
                 .game(0)
                 .mainVariation()
                 .nodes()
-                .slice(2, 14)
+                .slice(2, 16)
                 .forEach(node => {
                     const fen = node.position().fen().replaceAll(/ - \d+ \d+/g, "")
-                    if (!positions[fen]) {
-                        positions[fen] = []
+                    const shortFen = fenShortener.shrink(fen)
+                    if (!positions[shortFen]) {
+                        positions[shortFen] = videoArrayId
+                    } else if (Array.isArray(positions[shortFen])) {
+                        positions[shortFen].push(videoArrayId)
+                    } else {
+                        positions[shortFen] = [positions[shortFen]]
+                        positions[shortFen].push(videoArrayId)
                     }
-                    positions[fen].push(videoArrayId)
                 })
         })
-
     })
 
 

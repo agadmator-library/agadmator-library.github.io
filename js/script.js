@@ -242,6 +242,34 @@ function onSortClick(field) {
     applyFilters(true)
 }
 
+// copied from FenShortener
+function shrink(fen) {
+    return fen
+        .replaceAll(/[^/]+\d\//g, match => match.substring(0, match.length - 2) + "/")
+        .replaceAll(/\/(8\/)+/g, match => match.replaceAll("8", ""))
+        .replaceAll("8/", "_")
+        .replaceAll("/8", "`")
+        .replaceAll(/p{4,}|P{3,}/g, match => match[0] + "*" + match.length)
+        .replaceAll(" w ", " ")
+        .replaceAll(" - - ", "^")
+        .replaceAll("0 1", "a")
+        .replaceAll(/\/{4,}/g, match => "/*" + match.length)
+        .replaceAll("ppp", "c")
+        .replaceAll("pp", "d")
+        .replaceAll("PPP", "e")
+        .replaceAll("PP", "f")
+        .replaceAll("rnbqkbnr", "g")
+        .replaceAll("RNBQKBNR", "h")
+        .replaceAll("r1bqkbnr", "i")
+        .replaceAll("RNBQKB1R", "j")
+        .replaceAll(" b KQkq", "l")
+        .replaceAll("KQkq", "m")
+        .replaceAll("r1bqkb1r", "o")
+        .replaceAll("R1BQKB1R", "s")
+        .replaceAll("rnbqk2r", "t")
+        .replaceAll("RNBQK2Rl", "u");
+}
+
 document.getElementById('publishedColHeader').addEventListener('click', () => onSortClick('published'))
 document.getElementById('titleColHeader').addEventListener('click', () => onSortClick('title'))
 document.getElementById('whiteColHeader').addEventListener('click', () => onSortClick('w'))
@@ -628,8 +656,15 @@ function applyFilters(shouldPushHistory) {
                 return true
             }
 
+            const checkTransposition = () => {
+                let shortFen = shrink(game.fen().replaceAll(/ - \d+ \d+/g, ""));
+                let positionEntry = positions[shortFen];
+                let isArray = Array.isArray(positionEntry);
+                return positionEntry && (isArray && positionEntry.includes(video.positionIndex) || !isArray && positionEntry === video.positionIndex)
+            }
+
             return _.some(video.games, game => game.pgn && game.pgn.indexOf(filters.pgnFilter) === 0)
-                || includeTranspositions && positions && positions[game.fen().replaceAll(/ - \d+ \d+/g, "")] && positions[game.fen().replaceAll(/ - \d+ \d+/g, "")].includes(video.positionIndex)
+                || includeTranspositions && positions && checkTransposition()
         })
         .filter(video => !filters.title || video.title.toLowerCase().includes(filters.title.toLowerCase()))
         .filter(video => {
