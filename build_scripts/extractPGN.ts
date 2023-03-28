@@ -4,6 +4,7 @@ import {extractPlayersFromDescription} from "./players/playersExtractor.js";
 import getPlayersForId from "./players/playersOverrides.js";
 import {database, NAMESPACE_VIDEO_SNIPPET} from "./db.js";
 import {pgnOverrides} from "./pgnOverrides.js";
+import {dateOverrides} from "./dateOverrides.js";
 import _ from "lodash"
 
 export type DescriptionGame = {
@@ -41,6 +42,10 @@ function translateMonth(month: string) {
     return _.padStart(`${months.get(month)}`, 2, '0')
 }
 function extractDateFromDescription(id: string, linesAbove: string): string | undefined {
+    if (dateOverrides[id]) {
+        return dateOverrides[id]
+    }
+
     linesAbove = linesAbove.split('\n')
         .filter(line => !line.match(/game\s+of\s+the\s+day/))
         .join('\n')
