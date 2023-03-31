@@ -160,6 +160,13 @@ function testBlack(filter, video) {
     })
 }
 
+function addOpeningFilter(openingName) {
+    if (!filters.opening.includes(openingName)) {
+        filters.opening.push(openingName)
+        applyFilters()
+    }
+}
+
 jQ.titleInput.bind('input', _ => {
     filters.title = jQ.titleInput.val()
     applyFilters(true)
@@ -245,7 +252,6 @@ jQ.movesCountFromInput.change(() => applyFilters(false))
 jQ.movesCountToInput.change(() => applyFilters(false))
 jQ.yearFromInput.change(() => applyFilters(false))
 jQ.yearToInput.change(() => applyFilters(false))
-
 function onSortClick(field) {
     if (sortBy === field) {
         sortDirection = sortDirection === "asc" ? "desc" : "asc"
@@ -538,7 +544,7 @@ fetch(`generated/${references.openingsSlim}`)
                 }
             })
             .bind('typeahead:select', function (ev, suggestion) {
-                filters.opening.push(suggestion)
+                addOpeningFilter(suggestion)
 
                 applyFilters(true)
                 jQ.openingInput.typeahead('val', '')
@@ -627,7 +633,7 @@ function pushHistory() {
 
 function applyFilters(shouldPushHistory) {
     if (shouldPushHistory) {
-        pushHistory();
+        pushHistory()
     }
 
     const pgnPrefixes = openings
@@ -1120,16 +1126,18 @@ function drawTable() {
             if (showOpenings) {
                 const openingsCell = document.createElement("td")
                 video.games.forEach(game => {
-                    const gameDiv = document.createElement("pre")
                     if (game.pgn) {
-                        let openingNames = openings.filter(opening => game.pgn.startsWith(opening.moves))
-                            .sort((a,b) => b.moves.split(" ").length - a.moves.split(" ").length)
+                        _.uniq(openings.filter(opening => game.pgn.startsWith(opening.moves))
+                            .sort((a, b) => b.moves.split(" ").length - a.moves.split(" ").length)
                             .map(opening => opening.name)
-                            .join("\n");
-
-                        gameDiv.textContent = openingNames
+                        ).forEach(name => {
+                            const openingDiv = document.createElement("div")
+                            openingDiv.className = 'opening-name'
+                            openingDiv.textContent = name
+                            openingDiv.addEventListener('click', () => addOpeningFilter(name))
+                            openingsCell.appendChild(openingDiv)
+                        })
                     }
-                    openingsCell.appendChild(gameDiv)
                 })
                 tableRow.appendChild(openingsCell)
             }
