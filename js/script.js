@@ -51,6 +51,7 @@ let sortDirection = "desc"
 let showResult = false
 let showYear = true
 let showDate = false
+let showOpenings = false
 
 let jQ = {
     playerNamesFilterForm: $("#playerNamesFilterForm"),
@@ -81,7 +82,9 @@ let jQ = {
     yearToInput: $('#yearToInput'),
     exactDatesButton: $('#exactDatesButton'),
     yearColHeader: $('#yearColHeader'),
-    dateColHeader: $('#dateColHeader')
+    dateColHeader: $('#dateColHeader'),
+    openingsColButton: $('#openingsColButton'),
+    openingsColHeader: $('#openingsColHeader')
 }
 
 jQ.playerNamesFilterForm.on('submit', function (event) {
@@ -122,6 +125,17 @@ jQ.exactDatesButton.on('click', () => {
     }
     drawTable()
     jQ.exactDatesButton.text(showYear ? "Show exact dates" : "Show year only")
+})
+
+jQ.openingsColButton.on('click', () => {
+    showOpenings = !showOpenings
+    if (showOpenings) {
+        jQ.openingsColHeader.removeClass("d-none")
+    } else {
+        jQ.openingsColHeader.addClass("d-none")
+    }
+    drawTable()
+    jQ.openingsColButton.text(showOpenings ? "Hide openings" : "Show openings")
 })
 
 function testWhite(filter, video) {
@@ -1043,9 +1057,9 @@ function drawTable() {
             titleCell.appendChild(titleHref)
             tableRow.appendChild(titleCell)
 
-            const whitePlayerCell = document.createElement("td");
+            const whitePlayerCell = document.createElement("td")
             video.games.forEach(game => {
-                const nameCell = document.createElement("div");
+                const nameCell = document.createElement("div")
                 if (game.white) {
                     nameCell.textContent = _.truncate(game.white, {
                         'length': 40,
@@ -1056,9 +1070,9 @@ function drawTable() {
             })
             tableRow.appendChild(whitePlayerCell)
 
-            const blackPlayerCell = document.createElement("td");
+            const blackPlayerCell = document.createElement("td")
             video.games.forEach(game => {
-                const nameCell = document.createElement("div");
+                const nameCell = document.createElement("div")
                 if (game.white) {
                     nameCell.textContent = _.truncate(game.black, {
                         'length': 40,
@@ -1070,7 +1084,7 @@ function drawTable() {
             tableRow.appendChild(blackPlayerCell)
 
             if (showYear) {
-                const yearCell = document.createElement("td");
+                const yearCell = document.createElement("td")
                 yearCell.className = 'table-cell'
                 video.games.forEach(game => {
                     const yearDiv = document.createElement("div")
@@ -1083,7 +1097,7 @@ function drawTable() {
             }
 
             if (showDate) {
-                const dateCell = document.createElement("td");
+                const dateCell = document.createElement("td")
                 dateCell.className = 'table-cell'
                 video.games.forEach(game => {
                     const dateDiv = document.createElement("div")
@@ -1096,12 +1110,30 @@ function drawTable() {
             }
 
             if (showResult) {
-                const resultCell = document.createElement("td");
+                const resultCell = document.createElement("td")
                 if (video.games && video.games[0] && video.games[0].result) {
                     resultCell.textContent = video.games[0].result
                 }
                 tableRow.appendChild(resultCell)
             }
+
+            if (showOpenings) {
+                const openingsCell = document.createElement("td")
+                video.games.forEach(game => {
+                    const gameDiv = document.createElement("pre")
+                    if (game.pgn) {
+                        let openingNames = openings.filter(opening => game.pgn.startsWith(opening.moves))
+                            .sort((a,b) => b.moves.split(" ").length - a.moves.split(" ").length)
+                            .map(opening => opening.name)
+                            .join("\n");
+
+                        gameDiv.textContent = openingNames
+                    }
+                    openingsCell.appendChild(gameDiv)
+                })
+                tableRow.appendChild(openingsCell)
+            }
+
             return tableRow
         });
 
