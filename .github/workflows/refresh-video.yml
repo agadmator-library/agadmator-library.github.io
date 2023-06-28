@@ -21,6 +21,7 @@ jobs:
           cache: 'npm'
           cache-dependency-path: package-lock.json
       - run: npm ci
+      - run: tsc --build
       - run: npm run refreshVideo
         env:
           VIDEO_ID: ${{ inputs.videoId }}
