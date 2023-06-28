@@ -26,10 +26,30 @@ async function refreshVideo() {
     }
 
     extractPgnForId(videoId)
-    await chessComService.loadInfoForId(videoId, true)
-    await chesstempoService.loadInfoForId(videoId, true)
-    await chess365Service.loadInfoForId(videoId, true)
-    await lichessMastersService.loadInfoForId(videoId, true)
+    try {
+        await chessComService.loadInfoForId(videoId, true)
+    } catch (e) {
+        console.error(`Error loading chess.com info: ${e}`)
+    }
+
+    try {
+        await chesstempoService.loadInfoForId(videoId, true)
+    } catch (e) {
+        console.error(`Error loading chesstempo.com info: ${e}`)
+    }
+
+    try {
+        await chess365Service.loadInfoForId(videoId, true)
+    } catch (e) {
+        console.error(`Error loading 365chess.com info: ${e}`)
+    }
+
+    try {
+        await lichessMastersService.loadInfoForId(id)
+    } catch (e) {
+        await lichessMastersService.loadInfoForId(videoId, true)
+    }
+    
     await stockfishService.evaluate([videoId], true)
 
     combine()
