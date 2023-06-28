@@ -45,9 +45,9 @@ async function refreshVideo() {
     }
 
     try {
-        await lichessMastersService.loadInfoForId(id)
+        await lichessMastersService.loadInfoForId(videoId)
     } catch (e) {
-        await lichessMastersService.loadInfoForId(videoId, true)
+        console.error(`Error loading lichess masters info: ${e}`)
     }
     
     await stockfishService.evaluate([videoId], true)
