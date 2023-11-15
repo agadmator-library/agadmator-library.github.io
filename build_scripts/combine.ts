@@ -7,13 +7,13 @@ import {
     NAMESPACE_CHESS365,
     NAMESPACE_CHESS_COM,
     NAMESPACE_CHESSTEMPO_COM,
-    NAMESPACE_LICHESS_MASTERS, NAMESPACE_STOCKFISH_EVAL,
+    NAMESPACE_LICHESS_MASTERS,
+    NAMESPACE_STOCKFISH_EVAL,
     NAMESPACE_VIDEO_CONTENT_DETAILS,
     NAMESPACE_VIDEO_SNIPPET
 } from './db.js'
 import {pgnRead} from 'kokopu'
 import {parse} from 'tinyduration'
-import objectHash from 'object-hash'
 import {EvaluationResult} from "./stockfish/StockfishService";
 import {fenShortener} from "./util/FenShortener.js";
 
@@ -222,7 +222,8 @@ export function combine() {
                     const date = idx === 0 ? getDate(id) : null
 
                     return removeNulls({w: wId, b: bId, r: result, d: date})
-                })
+                }),
+            l: videoLength[videoSnippet.videoId]
         }))
     })
 
@@ -270,35 +271,13 @@ export function combine() {
             fs.unlinkSync(`${resultDir}/${name}`)
         }
     })
-    fs.readdirSync(resultDir + "/js").forEach(name => {
-        if (name.endsWith(".js")) {
-            fs.unlinkSync(`${resultDir}/js/${name}`)
 
-        }
-    })
-
-    let dbFileName = `db-${objectHash(db)}.json`;
+    let dbFileName = `db.json`;
     writeResultFile(dbFileName, db)
-    let pgnsFileName = `pgns-${objectHash(pgnsInVideo)}.json`;
+    let pgnsFileName = `pgns.json`;
     writeResultFile(pgnsFileName, pgnsInVideo)
-    let videoLengthFileName = `videoLength-${objectHash(videoLength)}.json`;
-    writeResultFile(videoLengthFileName, videoLength)
-    let positionsFileName = `positions-${objectHash(positions)}.json`;
+    let positionsFileName = `positions.json`;
     writeResultFile(positionsFileName, positions)
-    let openingsSlimFileName = `openings-slim-${objectHash(openings)}.json`;
+    let openingsSlimFileName = `openings-slim.json`;
     writeResultFile(openingsSlimFileName, openings)
-
-    const references = {
-        db: dbFileName,
-        pgns: pgnsFileName,
-        videoLength: videoLengthFileName,
-        positions: positionsFileName,
-        openingsSlim: openingsSlimFileName
-    }
-
-    fs.writeFileSync(`${resultDir}/js/references-${objectHash(references)}.js`, `var references=${JSON.stringify(references, null, 2)}`)
-
-    let indexContent = fs.readFileSync(`${resultDir}/../index.html`, {encoding: 'utf8'});
-    indexContent = indexContent.replaceAll(/src="generated\/js\/references-[a-z0-9]+.js"/g, `src=\"generated/js/references-${objectHash(references)}.js\"`)
-    fs.writeFileSync(`${resultDir}/../index.html`, indexContent)
 }
