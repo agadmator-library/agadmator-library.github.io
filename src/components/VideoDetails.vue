@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import {onMounted, ref} from "vue";
 import {Video} from "@/model/Video";
+import { parse } from 'tinyduration'
+import humanizeDuration from "humanize-duration"
 
 const props = defineProps({
   video: Video
@@ -21,6 +23,14 @@ function getThumbnailUrl(videoDetails: any): string {
     return videoDetails.videoSnippet.thumbnail.high.url
   }
   return videoDetails.videoSnippet.thumbnail.medium.url
+}
+
+function formatDuration(videoDetails: any): string {
+  if (!videoDetails.videoContentDetails.duration) {
+    return ""
+  }
+  const duration = parse(videoDetails.videoContentDetails.duration)
+  return humanizeDuration((duration.seconds || 0) * 1000 + (duration.minutes || 0) * 60 * 1000 + (duration.hours|| 0) * 60 * 60 * 1000)
 }
 
 </script>
@@ -55,8 +65,8 @@ function getThumbnailUrl(videoDetails: any): string {
                   <td>{{ videoDetails.videoSnippet.title }}</td>
                 </tr>
                 <tr>
-                  <th>Length</th>
-                  <td>{{ videoDetails.videoContentDetails.duration }}</td>
+                  <th>Duration</th>
+                  <td>{{ formatDuration(videoDetails) }}</td>
                 </tr>
                 <tr>
                   <th>Number of games</th>
