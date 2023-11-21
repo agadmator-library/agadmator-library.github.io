@@ -132,41 +132,53 @@ function getOpeningsForGame(video: Video, game: Game): string[] {
       </Column>
       <Column header="White" v-if="whiteVisible">
         <template #body="slotProps">
-           <span v-for="game in slotProps.data.games" style="display: block"
-                 :class="{ 'fw-bold': resultVisible && game.result === GameResult.WHITE_WON}">
+          <template v-for="(game, idx) in slotProps.data.games">
+            <hr v-if="idx > 0"/>
+            <span style="display: block" :class="{ 'fw-bold': resultVisible && game.result === GameResult.WHITE_WON}">
             {{ game.white }}
           </span>
+          </template>
         </template>
       </Column>
       <Column header="Black" v-if="blackVisible">
         <template #body="slotProps">
-           <span v-for="game in slotProps.data.games" style="display: block"
-                 :class="{ 'fw-bold': resultVisible && game.result === GameResult.BLACK_WON}">
+          <template v-for="(game, idx) in slotProps.data.games">
+            <hr v-if="idx > 0"/>
+            <span style="display: block"
+                  :class="{ 'fw-bold': resultVisible && game.result === GameResult.BLACK_WON}">
             {{ game.black }}
           </span>
+          </template>
         </template>
       </Column>
       <Column header="Games dates" v-if="gamesDatesVisible">
         <template #body="slotProps">
-           <span v-for="game in slotProps.data.games" style="display: block">
-            {{ game.date }}
-          </span>
+          <template v-for="(game, idx) in slotProps.data.games">
+            <hr v-if="idx > 0"/>
+            <span style="display: block">{{ game.date }}</span>
+          </template>
         </template>
       </Column>
       <Column header="Result" v-if="resultVisible">
         <template #body="slotProps">
-          <span v-for="game in slotProps.data.games" style="display: block">
+          <template v-for="(game, idx) in slotProps.data.games">
+            <hr v-if="idx > 0"/>
+            <span style="display: block">
             {{ formatResult(game.result) }}
           </span>
+          </template>
         </template>
       </Column>
       <Column header="Openings" v-if="openingsVisible">
         <template #body="slotProps">
-          <span v-for="game in slotProps.data.games" style="display: block">
+          <template v-for="(game, idx) in slotProps.data.games">
+            <hr v-if="idx > 0"/>
+            <span style="display: block">
             <span v-for="opening in getOpeningsForGame(slotProps.data, game)" style="display: block">
               {{ opening }}
             </span>
           </span>
+          </template>
         </template>
       </Column>
       <template #expansion="slotProps">
@@ -181,6 +193,7 @@ function getOpeningsForGame(video: Video, game: Game): string[] {
 :deep(.p-datatable .p-datatable-tbody > :nth-child(odd of tr:not(.p-datatable-row-expansion))) {
   background: rgba(0, 0, 0, 0.05);
 }
+
 :deep(.p-datatable .p-datatable-tbody > :nth-child(odd of tr:not(.p-datatable-row-expansion)) + .p-datatable-row-expansion) {
   background: rgba(0, 0, 0, 0.05);
 }

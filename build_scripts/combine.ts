@@ -26,7 +26,10 @@ function writeResultFile(fileName: string, object: any) {
     fs.writeFileSync(`${resultDir}/${fileName}`, JSON.stringify(object))
 }
 
-function getResult(id: string) {
+function getResult(id: string, idx: number) {
+    if (idx !== 0) {
+        return null
+    }
     function translateChessComOrChess365Result(text: string | undefined | null) {
         switch (text) {
             case "1-0":
@@ -124,9 +127,9 @@ function getResult(id: string) {
     return null
 }
 
-function getDate(id: string): string | null | undefined {
+function getDate(id: string, idx: number): string | null | undefined {
     const games = database.readDescriptionGames(id)
-    const game = games && games[0] ? games[0] : null
+    const game = games && games[idx] ? games[idx] : null
     if (!game || !game.playerWhite) {
         return null
     }
@@ -218,8 +221,8 @@ export function combine() {
                         allPgns.push(game.pgn)
                     }
 
-                    const result = idx === 0 ? getResult(id) : null
-                    const date = idx === 0 ? getDate(id) : null
+                    const result = getResult(id, idx)
+                    const date = getDate(id, idx)
 
                     return removeNulls({w: wId, b: bId, r: result, d: date})
                 }),
