@@ -17,6 +17,10 @@ function onClearFiltersClicked() {
   emits('removeFilter', new RemoveVideoFilterEvent(() => true))
 }
 
+function isLarge() {
+  return window.innerWidth > 1000
+}
+
 </script>
 
 <template>
@@ -31,7 +35,7 @@ function onClearFiltersClicked() {
       </button>
     </div>
 
-    <div class="card-body collapse show" id="filtersContainerBody">
+    <div class="card-body collapse" :class="[isLarge() ? 'show' : '']" id="filtersContainerBody">
       <div id="filtersContainer">
         <template v-for="filter in filters">
           <span class="badge text-bg-secondary m-1" @click="onBadgeClicked(filter)">{{ filter.name() }}</span>

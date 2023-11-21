@@ -51,6 +51,10 @@ function onRemoveFilter(event: RemoveVideoFilterEvent) {
   emits('filtersModified', new FiltersModifiedEvent(filters.value))
 }
 
+function isLarge() {
+  return window.innerWidth > 1000
+}
+
 </script>
 
 <template>
@@ -63,7 +67,7 @@ function onRemoveFilter(event: RemoveVideoFilterEvent) {
       </button>
     </div>
 
-    <div class="card-body collapse show" id="filtersCard">
+    <div class="card-body collapse" :class="[isLarge() ? 'show' : '']" id="filtersCard">
       <div class="card">
         <div class="card-header" data-bs-toggle="collapse"
              href="#playerFiltersCard" aria-expanded="false" aria-controls="playerFiltersCard">
