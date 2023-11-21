@@ -1,7 +1,6 @@
 import {chessComService} from "../chessCom/ChessComService.js";
 import {chesstempoService} from "../chesstempo/ChesstempoService.js";
 import {extractPgnForId} from "../extractPGN.js";
-import {combine} from "../combine.js";
 import {database, NAMESPACE_VIDEO_SNIPPET} from "../db.js";
 import {chess365Service} from "../chess365/Chess365Service.js";
 import {lichessMastersService} from "../lichessMasters/LichessMastersService.js";
@@ -51,8 +50,6 @@ async function refreshVideo() {
     }
     
     await stockfishService.evaluate([videoId], true)
-
-    combine()
 }
 
 await refreshVideo();

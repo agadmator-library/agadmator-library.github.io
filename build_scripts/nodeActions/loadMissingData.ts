@@ -6,7 +6,6 @@ import {
     NAMESPACE_LICHESS_MASTERS
 } from "../db.js";
 import {chessComService} from "../chessCom/ChessComService.js";
-import {combine} from "../combine.js";
 import {chesstempoService} from "../chesstempo/ChesstempoService.js";
 import {chess365Service} from "../chess365/Chess365Service.js";
 import {lichessMastersService} from "../lichessMasters/LichessMastersService.js";
@@ -84,5 +83,3 @@ async function loadMissingLichessMastersInfo() {
 }
 
 await Promise.all([loadMissingChessComInfo(), loadMissingChesstempoInfo(), loadMissingChess365Info(), loadMissingLichessMastersInfo()])
-
-combine()

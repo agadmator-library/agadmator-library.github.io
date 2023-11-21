@@ -1,4 +1,3 @@
-import {combine} from "../combine.js";
 import {database} from "../db.js";
 
 let videoId: string | null | undefined = process.env.VIDEO_ID
@@ -13,5 +12,3 @@ if (!videoId) {
 }
 
 database.delete(videoId)
-
-combine()

@@ -7,7 +7,6 @@ import {
     NAMESPACE_VIDEO_SNIPPET
 } from "../db.js";
 import {chessComService} from "../chessCom/ChessComService.js";
-import {combine} from "../combine.js";
 import _ from "lodash";
 import {chesstempoService} from "../chesstempo/ChesstempoService.js";
 import {chess365Service} from "../chess365/Chess365Service.js";
@@ -95,5 +94,3 @@ async function retryLichessMasters() {
 }
 
 await Promise.all([retryChessCom(), retryChesstempoCom(), retryChess365Com()])
-
-combine()

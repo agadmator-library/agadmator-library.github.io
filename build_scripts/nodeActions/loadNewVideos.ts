@@ -3,7 +3,6 @@ import {chessComService} from "../chessCom/ChessComService.js";
 import {chesstempoService} from "../chesstempo/ChesstempoService.js";
 import {chess365Service} from "../chess365/Chess365Service.js";
 import {extractPgnForId} from "../extractPGN.js";
-import {combine} from "../combine.js";
 import {lichessMastersService} from "../lichessMasters/LichessMastersService.js";
 import {stockfishService} from "../stockfish/StockfishService.js";
 
@@ -43,8 +42,6 @@ async function loadNewVideos() {
     }
 
     await stockfishService.evaluate(newIds)
-
-    combine()
 }
 
 await loadNewVideos();
