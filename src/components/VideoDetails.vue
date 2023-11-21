@@ -16,6 +16,13 @@ onMounted(() => {
       .then(responseJson => videoDetails.value = responseJson)
 })
 
+function getThumbnailUrl(videoDetails: any): string {
+  if (window.innerWidth > 1000) {
+    return videoDetails.videoSnippet.thumbnail.high.url
+  }
+  return videoDetails.videoSnippet.thumbnail.medium.url
+}
+
 </script>
 
 <template>
@@ -58,7 +65,7 @@ onMounted(() => {
               </table>
             </div>
             <div class="col">
-              <img :src="videoDetails.videoSnippet.thumbnail.standard.url">
+              <img :src="getThumbnailUrl(videoDetails)">
             </div>
           </div>
         </template>

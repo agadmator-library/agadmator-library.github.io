@@ -18,11 +18,11 @@ defineProps({
 })
 const expandedRows = ref([]);
 
-const publishedVisible = ref(true)
+const publishedVisible = ref(window.innerWidth > 1000)
 const titleVisible = ref(true)
 const whiteVisible = ref(true)
 const blackVisible = ref(true)
-const gamesDatesVisible = ref(true)
+const gamesDatesVisible = ref(window.innerWidth > 1000)
 const resultVisible = ref(false)
 const openingsVisible = ref(false)
 
