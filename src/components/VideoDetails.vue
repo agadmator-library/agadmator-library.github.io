@@ -19,7 +19,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="p-3">
+  <div class="ps-3 pe-3">
     <ul class="nav nav-tabs" :id="`tab-${videoId}`" role="tablist">
       <li class="nav-item" role="presentation">
         <button class="nav-link active" :id="`basic-${videoId}`" data-bs-toggle="tab"
