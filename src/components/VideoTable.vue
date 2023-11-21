@@ -198,4 +198,17 @@ function getOpeningsForGame(video: Video, game: Game): string[] {
   background: rgba(0, 0, 0, 0.05);
 }
 
+:deep(.p-datatable .p-datatable-tbody > tr > td) {
+  padding: 0.3rem 0.3rem;
+}
+
+:deep(.p-datatable .p-datatable-thead > tr > th) {
+  padding: 0.5rem 0.5rem;
+  background:rgba(0, 0, 0, 0.25);
+}
+
+:deep(.p-datatable .p-datatable-header) {
+  padding: 0.5rem 0.5rem;
+}
+
 </style>
