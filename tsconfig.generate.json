@@ -1,0 +1,22 @@
+{
+  "include": [
+    "build_scripts/**/*"
+  ],
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": [
+      "ES2021",
+      "dom"
+    ],
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "allowJs": true,
+    "sourceMap": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "skipLibCheck": true
+  }
+}
