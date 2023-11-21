@@ -11,10 +11,12 @@ import {useOpeningsStore} from "@/stores/openingsStore";
 import {usePgnsStore} from "@/stores/pgnsStore";
 import {Opening} from "@/model/Opening";
 import _ from "lodash";
+import VideoDetails from "@/components/VideoDetails.vue";
 
 defineProps({
   videos: Array<Video>
 })
+const expandedRows = ref([]);
 
 const publishedVisible = ref(true)
 const titleVisible = ref(true)
@@ -68,7 +70,8 @@ function getOpeningsForGame(video: Video, game: Game): string[] {
 
 <template>
   <div class="row mt-2">
-    <DataTable :value="videos" stripedRows paginator :rows="20" :rowsPerPageOptions="[20, 50, 100]"
+    <DataTable :value="videos" v-model:expandedRows="expandedRows" paginator :rows="20"
+               :rowsPerPageOptions="[20, 50, 100]"
                sortField="date" :sortOrder="-1" tableStyle="min-width: 50rem">
       <template #header>
         <div class="row">
@@ -114,6 +117,7 @@ function getOpeningsForGame(video: Video, game: Game): string[] {
           </div>
         </div>
       </template>
+      <Column expander style="width: 1rem"/>
       <Column field="date" sortable header="Published" v-if="publishedVisible">
         <template #body="slotProps">
           <PrettyDate :date=slotProps.data.date></PrettyDate>
@@ -165,11 +169,20 @@ function getOpeningsForGame(video: Video, game: Game): string[] {
           </span>
         </template>
       </Column>
+      <template #expansion="slotProps">
+        <VideoDetails :video="slotProps.data"></VideoDetails>
+      </template>
     </DataTable>
   </div>
 
 </template>
 
 <style scoped>
+:deep(.p-datatable .p-datatable-tbody > :nth-child(odd of tr:not(.p-datatable-row-expansion))) {
+  background: rgba(0, 0, 0, 0.05);
+}
+:deep(.p-datatable .p-datatable-tbody > :nth-child(odd of tr:not(.p-datatable-row-expansion)) + .p-datatable-row-expansion) {
+  background: rgba(0, 0, 0, 0.05);
+}
 
 </style>

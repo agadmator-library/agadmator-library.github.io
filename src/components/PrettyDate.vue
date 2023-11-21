@@ -3,7 +3,7 @@
 import {prettyDate} from "@/util/time";
 
 defineProps({
-  date: Date,
+  date: Date
 })
 
 </script>
