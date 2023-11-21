@@ -73,7 +73,7 @@ onMounted(() => {
                 <td>{{ game.playerWhite }}</td>
               </tr>
               <tr>
-                <th>White</th>
+                <th>Black</th>
                 <td>{{ game.playerBlack }}</td>
               </tr>
               <tr>
@@ -105,7 +105,7 @@ onMounted(() => {
                 <td>{{videoDetails.chessCom.playerWhite}}</td>
               </tr>
               <tr>
-                <th>White</th>
+                <th>Black</th>
                 <td>{{videoDetails.chessCom.playerBlack}}</td>
               </tr>
               <tr>
@@ -133,7 +133,7 @@ onMounted(() => {
                 <td>{{videoDetails.chesstempoCom.playerWhite}}</td>
               </tr>
               <tr>
-                <th>White</th>
+                <th>Black</th>
                 <td>{{videoDetails.chesstempoCom.playerBlack}}</td>
               </tr>
               <tr>
@@ -173,7 +173,7 @@ onMounted(() => {
                 <td>{{videoDetails.chess365.playerWhite}}</td>
               </tr>
               <tr>
-                <th>White</th>
+                <th>Black</th>
                 <td>{{videoDetails.chess365.playerBlack}}</td>
               </tr>
               <tr>
@@ -205,7 +205,7 @@ onMounted(() => {
                 <td>{{videoDetails.lichessMasters.playerWhite}}</td>
               </tr>
               <tr>
-                <th>White</th>
+                <th>Black</th>
                 <td>{{videoDetails.lichessMasters.playerBlack}}</td>
               </tr>
               <tr>
