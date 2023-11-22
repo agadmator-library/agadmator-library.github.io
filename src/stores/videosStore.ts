@@ -10,7 +10,7 @@ export const useVideosStore = defineStore('videos', {
     }),
     actions: {
         async fetchVideos() {
-            const response = await fetch(`generated/db.json`)
+            const response = await fetch(`generated/${window.__references.db}`)
             const body = await response.json()
 
             function decodeResult(result: number): GameResult | undefined {

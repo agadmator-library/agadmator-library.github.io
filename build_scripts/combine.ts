@@ -16,6 +16,7 @@ import {pgnRead} from 'kokopu'
 import {parse} from 'tinyduration'
 import {EvaluationResult} from "./stockfish/StockfishService";
 import {fenShortener} from "./util/FenShortener.js";
+import objectHash from 'object-hash'
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -275,12 +276,28 @@ export function combine() {
         }
     })
 
-    let dbFileName = `db.json`;
+    let dbFileName = `db-${objectHash(db)}.json`;
     writeResultFile(dbFileName, db)
-    let pgnsFileName = `pgns.json`;
+    let pgnsFileName = `pgns-${objectHash(pgnsInVideo)}.json`;
     writeResultFile(pgnsFileName, pgnsInVideo)
-    let positionsFileName = `positions.json`;
+    let positionsFileName = `positions-${objectHash(positions)}.json`;
     writeResultFile(positionsFileName, positions)
-    let openingsSlimFileName = `openings-slim.json`;
+    let openingsSlimFileName = `openings-slim-${objectHash(openings)}.json`;
     writeResultFile(openingsSlimFileName, openings)
+
+    const references = {
+        db: dbFileName,
+        pgns: pgnsFileName,
+        positions: positionsFileName,
+        openingsSlim: openingsSlimFileName
+    }
+
+    if (!fs.existsSync(`${resultDir}/js`)){
+        fs.mkdirSync(`${resultDir}/js`);
+    }
+    fs.writeFileSync(`${resultDir}/js/references-${objectHash(references)}.js`, `window.__references=${JSON.stringify(references, null, 2)}`)
+
+    let indexContent = fs.readFileSync(`${resultDir}/../index.html`, {encoding: 'utf8'});
+    indexContent = indexContent.replaceAll(/src="generated\/js\/references-[a-z0-9]+.js"/g, `src=\"generated/js/references-${objectHash(references)}.js\"`)
+    fs.writeFileSync(`${resultDir}/../index.html`, indexContent)
 }

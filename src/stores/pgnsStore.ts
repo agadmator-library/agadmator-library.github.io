@@ -19,7 +19,7 @@ export const usePgnsStore = defineStore('pgns', {
                 return
             }
 
-            const response = await fetch(`generated/pgns.json`)
+            const response = await fetch(`generated/${window.__references.pgns}`)
             const responseJson = await response.json()
             _.keys(responseJson).forEach(key => {
                 const rawPgns: Array<String> = responseJson[key] || []

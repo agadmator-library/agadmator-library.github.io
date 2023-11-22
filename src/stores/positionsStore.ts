@@ -97,7 +97,7 @@ export const usePositionsStore = defineStore('positions', {
             if (this.positions.size > 0) {
                 return
             }
-            const response = await fetch(`generated/positions.json`)
+            const response = await fetch(`generated/${window.__references.positions}`)
             const responseJson = await response.json()
             _.keys(responseJson).forEach(position => {
                 let idxList: Array<Nubmer>;
