@@ -4,7 +4,7 @@ import Checkbox from 'primevue/checkbox';
 import Column from 'primevue/column';
 import PrettyDate from "@/components/PrettyDate.vue";
 import {Video} from "@/model/Video";
-import {ref} from "vue";
+import {computed, ref} from "vue";
 import {GameResult} from "@/model/GameResult";
 import {Game} from "@/model/Game";
 import {useOpeningsStore} from "@/stores/openingsStore";
@@ -13,9 +13,31 @@ import {Opening} from "@/model/Opening";
 import _ from "lodash";
 import VideoDetails from "@/components/VideoDetails.vue";
 
-defineProps({
+class VideoRow {
+
+  public readonly publishedAt: Date
+  public readonly title: string
+  public readonly white: string
+  public readonly black: string
+  public readonly firstGameDate: string
+
+  constructor(
+      public readonly video: Video
+  ) {
+    this.publishedAt = video.date
+    this.title = video.title
+    this.white = ((video.games || [])[0] || {}).white
+    this.black = ((video.games || [])[0] || {}).black
+    this.firstGameDate = ((video.games || [])[0] || {}).date
+  }
+
+
+}
+
+const props = defineProps({
   videos: Array<Video>
 })
+const videosRows = computed(() => props.videos.map(v => new VideoRow(v)))
 const expandedRows = ref([]);
 
 const publishedVisible = ref(window.innerWidth > 1000)
@@ -70,13 +92,13 @@ function getOpeningsForGame(video: Video, game: Game): string[] {
 
 <template>
   <div class="row mt-2">
-    <DataTable :value="videos" v-model:expandedRows="expandedRows" paginator :rows="20"
+    <DataTable :value="videosRows" v-model:expandedRows="expandedRows" paginator :rows="20"
                :rowsPerPageOptions="[20, 50, 100]"
-               sortField="date" :sortOrder="-1" tableStyle="min-width: 50rem">
+               sortField="publishedAt" :sortOrder="-1" tableStyle="min-width: 50rem">
       <template #header>
         <div class="row">
           <span>
-          <span style="width:auto">{{ videos.length }} videos found</span>
+          <span style="width:auto">{{ videosRows.length }} videos found</span>
           <span style="float:right" data-bs-toggle="collapse"
                 href="#tableProperties" aria-expanded="false" aria-controls="tableProperties">☰</span>
           </span>
@@ -118,9 +140,9 @@ function getOpeningsForGame(video: Video, game: Game): string[] {
         </div>
       </template>
       <Column expander style="width: 1rem"/>
-      <Column field="date" sortable header="Published" v-if="publishedVisible">
+      <Column field="publishedAt" sortable header="Published" v-if="publishedVisible">
         <template #body="slotProps">
-          <PrettyDate :date=slotProps.data.date></PrettyDate>
+          <PrettyDate :date=slotProps.data.publishedAt></PrettyDate>
         </template>
       </Column>
       <Column field="title" sortable header="Title" v-if="titleVisible">
@@ -130,9 +152,9 @@ function getOpeningsForGame(video: Video, game: Game): string[] {
             {{ formatTitle(slotProps.data.title) }}</a>
         </template>
       </Column>
-      <Column header="White" v-if="whiteVisible">
+      <Column field="white" header="White" sortable v-if="whiteVisible">
         <template #body="slotProps">
-          <template v-for="(game, idx) in slotProps.data.games">
+          <template v-for="(game, idx) in slotProps.data.video.games">
             <hr v-if="idx > 0"/>
             <span style="display: block" :class="{ 'fw-bold': resultVisible && game.result === GameResult.WHITE_WON}">
             {{ game.white }}
@@ -140,9 +162,9 @@ function getOpeningsForGame(video: Video, game: Game): string[] {
           </template>
         </template>
       </Column>
-      <Column header="Black" v-if="blackVisible">
+      <Column field="black" sortable header="Black" v-if="blackVisible">
         <template #body="slotProps">
-          <template v-for="(game, idx) in slotProps.data.games">
+          <template v-for="(game, idx) in slotProps.data.video.games">
             <hr v-if="idx > 0"/>
             <span style="display: block"
                   :class="{ 'fw-bold': resultVisible && game.result === GameResult.BLACK_WON}">
@@ -151,9 +173,9 @@ function getOpeningsForGame(video: Video, game: Game): string[] {
           </template>
         </template>
       </Column>
-      <Column header="Games dates" v-if="gamesDatesVisible">
+      <Column field="firstGameDate" sortable header="Games dates" v-if="gamesDatesVisible">
         <template #body="slotProps">
-          <template v-for="(game, idx) in slotProps.data.games">
+          <template v-for="(game, idx) in slotProps.data.video.games">
             <hr v-if="idx > 0"/>
             <span style="display: block">{{ game.date }}</span>
           </template>
@@ -161,7 +183,7 @@ function getOpeningsForGame(video: Video, game: Game): string[] {
       </Column>
       <Column header="Result" v-if="resultVisible">
         <template #body="slotProps">
-          <template v-for="(game, idx) in slotProps.data.games">
+          <template v-for="(game, idx) in slotProps.data.video.games">
             <hr v-if="idx > 0"/>
             <span style="display: block">
             {{ formatResult(game.result) }}
@@ -171,10 +193,10 @@ function getOpeningsForGame(video: Video, game: Game): string[] {
       </Column>
       <Column header="Openings" v-if="openingsVisible">
         <template #body="slotProps">
-          <template v-for="(game, idx) in slotProps.data.games">
+          <template v-for="(game, idx) in slotProps.data.video.games">
             <hr v-if="idx > 0"/>
             <span style="display: block">
-            <span v-for="opening in getOpeningsForGame(slotProps.data, game)" style="display: block">
+            <span v-for="opening in getOpeningsForGame(slotProps.data.video, game)" style="display: block">
               {{ opening }}
             </span>
           </span>
@@ -182,7 +204,7 @@ function getOpeningsForGame(video: Video, game: Game): string[] {
         </template>
       </Column>
       <template #expansion="slotProps">
-        <VideoDetails :video="slotProps.data"></VideoDetails>
+        <VideoDetails :video="slotProps.data.video"></VideoDetails>
       </template>
     </DataTable>
   </div>
