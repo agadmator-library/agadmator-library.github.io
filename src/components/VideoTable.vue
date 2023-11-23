@@ -147,7 +147,7 @@ function getOpeningsForGame(video: Video, game: Game): string[] {
       </Column>
       <Column field="title" sortable header="Title" v-if="titleVisible">
         <template #body="slotProps">
-          <a :href="`https://www.youtube.com/watch?v=${slotProps.data.id}`" target="_blank" data-toggle="tooltip"
+          <a :href="`https://www.youtube.com/watch?v=${slotProps.data.video.id}`" target="_blank" data-toggle="tooltip"
              data-placement="top" :title="`${slotProps.data.title}`">
             {{ formatTitle(slotProps.data.title) }}</a>
         </template>
