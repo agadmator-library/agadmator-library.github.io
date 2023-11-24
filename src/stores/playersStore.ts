@@ -8,7 +8,6 @@ export const usePlayersStore = defineStore('players', {
     }),
     getters: {
         playersByOccurrences: (state) => {
-            console.log("AAAA")
             let videos = useVideosStore().videos;
             let tmpPlayerNames = {}
             videos.filter(video => video.games.length > 0)

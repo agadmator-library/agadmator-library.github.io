@@ -46,7 +46,7 @@ const whiteVisible = ref(true)
 const blackVisible = ref(true)
 const gamesDatesVisible = ref(window.innerWidth > 1000)
 const resultVisible = ref(false)
-const openingsVisible = ref(false)
+const openingVisible = ref(false)
 
 const pgnsStore = usePgnsStore();
 const openingsStore = useOpeningsStore()
@@ -73,19 +73,10 @@ function formatResult(gameResult: GameResult): string {
   }
 }
 
-function getOpeningsForGame(video: Video, game: Game): string[] {
+function getOpeningForGame(video: Video, game: Game): string {
   const idx = video.games.indexOf(game);
-  const pgns = pgnsStore.getPgnsForVideo(video.id)
-  const pgn = pgns[idx]
-  if (pgn) {
-    return openingsStore
-        .openings
-        .filter((opening: Opening) => pgn.pgn.startsWith(opening.moves))
-        .sort((left: Opening, right: Opening) => right.moves.length - left.moves.length)
-        .map((opening: Opening) => opening.name)
-  } else {
-    return []
-  }
+  return openingsStore.getOpeningsForVideoGame(video.id, idx)
+      .map((opening: Opening) => opening.name)[0] || ""
 }
 
 </script>
@@ -133,8 +124,8 @@ function getOpeningsForGame(video: Video, game: Game): string[] {
               <label for="resultVisible" class="ms-1">Result</label>
             </div>
             <div class="col">
-              <Checkbox v-model="openingsVisible" :binary="true" inputId="openingsVisible"/>
-              <label for="openingsVisible" class="ms-1">Openings</label>
+              <Checkbox v-model="openingVisible" :binary="true" inputId="openingVisible"/>
+              <label for="openingVisible" class="ms-1">Opening</label>
             </div>
           </div>
         </div>
@@ -191,14 +182,12 @@ function getOpeningsForGame(video: Video, game: Game): string[] {
           </template>
         </template>
       </Column>
-      <Column header="Openings" v-if="openingsVisible">
+      <Column header="Opening" v-if="openingVisible">
         <template #body="slotProps">
           <template v-for="(game, idx) in slotProps.data.video.games">
             <hr v-if="idx > 0"/>
             <span style="display: block">
-            <span v-for="opening in getOpeningsForGame(slotProps.data.video, game)" style="display: block">
-              {{ opening }}
-            </span>
+              {{ getOpeningForGame(slotProps.data.video, game) }}
           </span>
           </template>
         </template>
@@ -226,7 +215,7 @@ function getOpeningsForGame(video: Video, game: Game): string[] {
 
 :deep(.p-datatable .p-datatable-thead > tr > th) {
   padding: 0.5rem 0.5rem;
-  background:rgba(0, 0, 0, 0.25);
+  background: rgba(0, 0, 0, 0.25);
 }
 
 :deep(.p-datatable .p-datatable-header) {

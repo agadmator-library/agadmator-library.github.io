@@ -1,14 +1,18 @@
 <script setup lang="ts">
 import {onMounted, ref} from "vue";
 import {Video} from "@/model/Video";
-import { parse } from 'tinyduration'
+import {parse} from 'tinyduration'
 import humanizeDuration from "humanize-duration"
+import {useOpeningsStore} from "@/stores/openingsStore";
+import {Opening} from "@/model/Opening";
 
 const props = defineProps({
   video: Video
 })
 
 const videoId = props.video.id
+
+const openingsStore = useOpeningsStore()
 
 const videoDetails = ref({})
 
@@ -30,7 +34,12 @@ function formatDuration(videoDetails: any): string {
     return ""
   }
   const duration = parse(videoDetails.videoContentDetails.duration)
-  return humanizeDuration((duration.seconds || 0) * 1000 + (duration.minutes || 0) * 60 * 1000 + (duration.hours|| 0) * 60 * 60 * 1000)
+  return humanizeDuration((duration.seconds || 0) * 1000 + (duration.minutes || 0) * 60 * 1000 + (duration.hours || 0) * 60 * 60 * 1000)
+}
+
+function getOpeningsForGame(idx: number): string[] {
+  return openingsStore.getOpeningsForVideoGame(props.video.id, idx)
+      .map((opening: Opening) => opening.name)
 }
 
 </script>
@@ -107,7 +116,15 @@ function formatDuration(videoDetails: any): string {
               </tr>
               <tr>
                 <th>Result</th>
-                <td>{{(video.games[idx] || {}).result || "n/a"}}</td>
+                <td>{{ (video.games[idx] || {}).result || "n/a" }}</td>
+              </tr>
+              <tr>
+                <th>Openings</th>
+                <td>
+                  <span v-for="opening in getOpeningsForGame(idx)" style="display: block; background: inherit;">
+                    {{ opening }}
+                  </span>
+                </td>
               </tr>
             </table>
           </div>
@@ -119,23 +136,23 @@ function formatDuration(videoDetails: any): string {
               </tr>
               <tr>
                 <th>White</th>
-                <td>{{videoDetails.chessCom.playerWhite}}</td>
+                <td>{{ videoDetails.chessCom.playerWhite }}</td>
               </tr>
               <tr>
                 <th>Black</th>
-                <td>{{videoDetails.chessCom.playerBlack}}</td>
+                <td>{{ videoDetails.chessCom.playerBlack }}</td>
               </tr>
               <tr>
                 <th>Result</th>
-                <td>{{videoDetails.chessCom.result}}</td>
+                <td>{{ videoDetails.chessCom.result }}</td>
               </tr>
               <tr>
                 <th>Moves count</th>
-                <td>{{videoDetails.chessCom.movesCount}}</td>
+                <td>{{ videoDetails.chessCom.movesCount }}</td>
               </tr>
               <tr>
                 <th>Year</th>
-                <td>{{videoDetails.chessCom.year}}</td>
+                <td>{{ videoDetails.chessCom.year }}</td>
               </tr>
             </table>
           </div>
@@ -143,39 +160,40 @@ function formatDuration(videoDetails: any): string {
             <table class="table table-bordered">
               <tr>
                 <th>Source</th>
-                <td><a :href="`https://old.chesstempo.com/gamedb/game/${videoDetails.chesstempoCom.id}`" target="_blank" style="background: inherit">chesstempo.com</a></td>
+                <td><a :href="`https://old.chesstempo.com/gamedb/game/${videoDetails.chesstempoCom.id}`" target="_blank"
+                       style="background: inherit">chesstempo.com</a></td>
               </tr>
               <tr>
                 <th>White</th>
-                <td>{{videoDetails.chesstempoCom.playerWhite}}</td>
+                <td>{{ videoDetails.chesstempoCom.playerWhite }}</td>
               </tr>
               <tr>
                 <th>Black</th>
-                <td>{{videoDetails.chesstempoCom.playerBlack}}</td>
+                <td>{{ videoDetails.chesstempoCom.playerBlack }}</td>
               </tr>
               <tr>
                 <th>Result</th>
-                <td>{{videoDetails.chesstempoCom.result}}</td>
+                <td>{{ videoDetails.chesstempoCom.result }}</td>
               </tr>
               <tr>
                 <th>Moves count</th>
-                <td>{{videoDetails.chesstempoCom.movesCount}}</td>
+                <td>{{ videoDetails.chesstempoCom.movesCount }}</td>
               </tr>
               <tr v-if="videoDetails.chesstempoCom.date">
                 <th>Date</th>
-                <td>{{videoDetails.chesstempoCom.date}}</td>
+                <td>{{ videoDetails.chesstempoCom.date }}</td>
               </tr>
               <tr v-if="videoDetails.chesstempoCom.site">
                 <th>Site</th>
-                <td>{{videoDetails.chesstempoCom.site}}</td>
+                <td>{{ videoDetails.chesstempoCom.site }}</td>
               </tr>
               <tr v-if="videoDetails.chesstempoCom.event">
                 <th>Event</th>
-                <td>{{videoDetails.chesstempoCom.event}}</td>
+                <td>{{ videoDetails.chesstempoCom.event }}</td>
               </tr>
               <tr v-if="videoDetails.chesstempoCom.round">
                 <th>Round</th>
-                <td>{{videoDetails.chesstempoCom.round}}</td>
+                <td>{{ videoDetails.chesstempoCom.round }}</td>
               </tr>
             </table>
           </div>
@@ -183,31 +201,32 @@ function formatDuration(videoDetails: any): string {
             <table class="table table-bordered">
               <tr>
                 <th>Source</th>
-                <td><a :href="videoDetails.chess365.href" target="_blank" style="background: inherit">365chess.com</a></td>
+                <td><a :href="videoDetails.chess365.href" target="_blank" style="background: inherit">365chess.com</a>
+                </td>
               </tr>
               <tr>
                 <th>White</th>
-                <td>{{videoDetails.chess365.playerWhite}}</td>
+                <td>{{ videoDetails.chess365.playerWhite }}</td>
               </tr>
               <tr>
                 <th>Black</th>
-                <td>{{videoDetails.chess365.playerBlack}}</td>
+                <td>{{ videoDetails.chess365.playerBlack }}</td>
               </tr>
               <tr>
                 <th>Result</th>
-                <td>{{videoDetails.chess365.result}}</td>
+                <td>{{ videoDetails.chess365.result }}</td>
               </tr>
               <tr>
                 <th>Moves count</th>
-                <td>{{videoDetails.chess365.movesCount}}</td>
+                <td>{{ videoDetails.chess365.movesCount }}</td>
               </tr>
               <tr v-if="videoDetails.chess365.year">
                 <th>Year</th>
-                <td>{{videoDetails.chess365.year}}</td>
+                <td>{{ videoDetails.chess365.year }}</td>
               </tr>
               <tr v-if="videoDetails.chess365.tournament">
                 <th>Tournament</th>
-                <td>{{videoDetails.chess365.tournament}}</td>
+                <td>{{ videoDetails.chess365.tournament }}</td>
               </tr>
             </table>
           </div>
@@ -215,27 +234,28 @@ function formatDuration(videoDetails: any): string {
             <table class="table table-bordered">
               <tr>
                 <th>Source</th>
-                <td><a :href="`https://lichess.org/${videoDetails.lichessMasters.id}`" target="_blank" style="background: inherit">lichess.org</a></td>
+                <td><a :href="`https://lichess.org/${videoDetails.lichessMasters.id}`" target="_blank"
+                       style="background: inherit">lichess.org</a></td>
               </tr>
               <tr>
                 <th>White</th>
-                <td>{{videoDetails.lichessMasters.playerWhite}}</td>
+                <td>{{ videoDetails.lichessMasters.playerWhite }}</td>
               </tr>
               <tr>
                 <th>Black</th>
-                <td>{{videoDetails.lichessMasters.playerBlack}}</td>
+                <td>{{ videoDetails.lichessMasters.playerBlack }}</td>
               </tr>
               <tr>
                 <th>Winner</th>
-                <td>{{videoDetails.lichessMasters.winner}}</td>
+                <td>{{ videoDetails.lichessMasters.winner }}</td>
               </tr>
               <tr v-if="videoDetails.lichessMasters.year">
                 <th>Year</th>
-                <td>{{videoDetails.lichessMasters.year}}</td>
+                <td>{{ videoDetails.lichessMasters.year }}</td>
               </tr>
               <tr v-if="videoDetails.lichessMasters.month">
                 <th>Month</th>
-                <td>{{videoDetails.lichessMasters.month}}</td>
+                <td>{{ videoDetails.lichessMasters.month }}</td>
               </tr>
             </table>
           </div>
