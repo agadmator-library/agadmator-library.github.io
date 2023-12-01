@@ -289,12 +289,10 @@ export function extractPgnForId(id: string) {
     }
 
     let games = extractGames(videoSnippet.description, id);
-    if (games.length > 1) {
+    if (games.length > 0) {
         games = games.filter(game => game.playerWhite)
     }
-    if (games.length > 0) {
-        database.saveDescriptionGames(id, games)
-    }
+    database.saveDescriptionGames(id, games)
 }
 
 export function extractPgnForAll() {
