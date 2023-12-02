@@ -30,7 +30,7 @@ function getThumbnailUrl(videoDetails: any): string {
 }
 
 function getLichessGameEvaluation(videoDetails: any, idx: number): any {
-  return ((videoDetails.lichessGameEval || [])[0] || {})
+  return ((videoDetails.lichessGameEval || [])[idx] || {})
 }
 
 function formatDuration(videoDetails: any): string {
@@ -130,7 +130,7 @@ function getOpeningsForGame(idx: number): string[] {
                   </span>
                 </td>
               </tr>
-              <tr v-if="getLichessGameEvaluation(videoDetails, idx)">
+              <tr v-if="getLichessGameEvaluation(videoDetails, idx).id">
                 <th>Game evaluation</th>
                 <td>
                   <table class="table border mb-0 game-evaluation">
@@ -144,50 +144,53 @@ function getOpeningsForGame(idx: number): string[] {
                     <tbody>
                     <tr>
                       <th>Inaccuarcy</th>
-                      <td>{{getLichessGameEvaluation(videoDetails, idx).players.white.analysis.inaccuracy}}</td>
-                      <td>{{getLichessGameEvaluation(videoDetails, idx).players.black.analysis.inaccuracy}}</td>
+                      <td>{{getLichessGameEvaluation(videoDetails, idx)?.players?.white?.analysis?.inaccuracy}}</td>
+                      <td>{{getLichessGameEvaluation(videoDetails, idx)?.players?.black?.analysis?.inaccuracy}}</td>
                       <td></td>
                     </tr>
                     <tr>
                       <th>Mistake</th>
-                      <td>{{getLichessGameEvaluation(videoDetails, idx).players.white.analysis.mistake}}</td>
-                      <td>{{getLichessGameEvaluation(videoDetails, idx).players.black.analysis.mistake}}</td>
+                      <td>{{getLichessGameEvaluation(videoDetails, idx)?.players?.white?.analysis?.mistake}}</td>
+                      <td>{{getLichessGameEvaluation(videoDetails, idx)?.players?.black?.analysis?.mistake}}</td>
                       <td></td>
                     </tr>
                     <tr>
                       <th>Blunder</th>
-                      <td>{{getLichessGameEvaluation(videoDetails, idx).players.white.analysis.blunder}}</td>
-                      <td>{{getLichessGameEvaluation(videoDetails, idx).players.black.analysis.blunder}}</td>
+                      <td>{{getLichessGameEvaluation(videoDetails, idx)?.players?.white?.analysis?.blunder}}</td>
+                      <td>{{getLichessGameEvaluation(videoDetails, idx)?.players?.black?.analysis?.blunder}}</td>
                       <td></td>
                     </tr>
                     <tr>
                       <th>ACPL</th>
-                      <td>{{getLichessGameEvaluation(videoDetails, idx).players.white.analysis.acpl}}</td>
-                      <td>{{getLichessGameEvaluation(videoDetails, idx).players.black.analysis.acpl}}</td>
+                      <td>{{getLichessGameEvaluation(videoDetails, idx)?.players?.white?.analysis?.acpl}}</td>
+                      <td>{{getLichessGameEvaluation(videoDetails, idx)?.players?.black?.analysis?.acpl}}</td>
                       <td></td>
                     </tr>
                     <tr>
                       <th>Accuracy</th>
-                      <td>{{getLichessGameEvaluation(videoDetails, idx).players.white.analysis.accuracy}}</td>
-                      <td>{{getLichessGameEvaluation(videoDetails, idx).players.black.analysis.accuracy}}</td>
+                      <td>{{getLichessGameEvaluation(videoDetails, idx)?.players?.white?.analysis?.accuracy}}</td>
+                      <td>{{getLichessGameEvaluation(videoDetails, idx)?.players?.black?.analysis?.accuracy}}</td>
                       <td></td>
                     </tr>
                     </tbody>
                   </table>
                 </td>
               </tr>
-              <tr v-if="videoDetails.chessCom && videoDetails.chessCom.href || videoDetails.chesstempoCom && videoDetails.chesstempoCom.id || videoDetails.chess365 && videoDetails.chess365.href || videoDetails.lichessMasters && videoDetails.lichessMasters.id">
+              <tr v-if="idx === 0 && videoDetails.chessCom && videoDetails.chessCom.href || idx === 0 && videoDetails.chesstempoCom && videoDetails.chesstempoCom.id || idx === 0 && videoDetails.chess365 && videoDetails.chess365.href || idx === 0 && videoDetails.lichessMasters && videoDetails.lichessMasters.id || getLichessGameEvaluation(videoDetails, idx).id">
                 <th>External links</th>
                 <td>
-                  <a v-if="videoDetails.chessCom && videoDetails.chessCom.href" :href="videoDetails.chessCom.href"
+                  <a v-if="idx === 0 && videoDetails.chessCom && videoDetails.chessCom.href" :href="videoDetails.chessCom.href"
                      target="_blank" style="background: inherit">chess.com</a>
-                  <a v-if="videoDetails.chesstempoCom && videoDetails.chesstempoCom.id"
+                  <a v-if="idx === 0 && videoDetails.chesstempoCom && videoDetails.chesstempoCom.id"
                      :href="`https://old.chesstempo.com/gamedb/game/${videoDetails.chesstempoCom.id}`" target="_blank"
                      style="background: inherit">chesstempo.com</a>
-                  <a v-if="videoDetails.chess365 && videoDetails.chess365.href" :href="videoDetails.chess365.href"
+                  <a v-if="idx === 0 && videoDetails.chess365 && videoDetails.chess365.href" :href="videoDetails.chess365.href"
                      target="_blank" style="background: inherit">365chess.com</a>
-                  <a v-if="videoDetails.lichessMasters && videoDetails.lichessMasters.id"
+                  <a v-if="idx === 0 && videoDetails.lichessMasters && videoDetails.lichessMasters.id"
                      :href="`https://lichess.org/${videoDetails.lichessMasters.id}`" target="_blank"
+                     style="background: inherit">Lichess Masters</a>
+                  <a v-if="getLichessGameEvaluation(videoDetails, idx).id"
+                     :href="`https://lichess.org/${getLichessGameEvaluation(videoDetails, idx).id}`" target="_blank"
                      style="background: inherit">lichess.org</a>
                 </td>
               </tr>
