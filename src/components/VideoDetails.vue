@@ -29,6 +29,10 @@ function getThumbnailUrl(videoDetails: any): string {
   return videoDetails.videoSnippet.thumbnail.medium.url
 }
 
+function getLichessGameEvaluation(videoDetails: any, idx: number): any {
+  return ((videoDetails.lichessGameEval || [])[0] || {})
+}
+
 function formatDuration(videoDetails: any): string {
   if (!videoDetails.videoContentDetails.duration) {
     return ""
@@ -126,6 +130,52 @@ function getOpeningsForGame(idx: number): string[] {
                   </span>
                 </td>
               </tr>
+              <tr v-if="getLichessGameEvaluation(videoDetails, idx)">
+                <th>Game evaluation</th>
+                <td>
+                  <table class="table border mb-0 game-evaluation">
+                    <thead>
+                    <tr>
+                      <th></th>
+                      <th>White</th>
+                      <th>Black</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                      <th>Inaccuarcy</th>
+                      <td>{{getLichessGameEvaluation(videoDetails, idx).players.white.analysis.inaccuracy}}</td>
+                      <td>{{getLichessGameEvaluation(videoDetails, idx).players.black.analysis.inaccuracy}}</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <th>Mistake</th>
+                      <td>{{getLichessGameEvaluation(videoDetails, idx).players.white.analysis.mistake}}</td>
+                      <td>{{getLichessGameEvaluation(videoDetails, idx).players.black.analysis.mistake}}</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <th>Blunder</th>
+                      <td>{{getLichessGameEvaluation(videoDetails, idx).players.white.analysis.blunder}}</td>
+                      <td>{{getLichessGameEvaluation(videoDetails, idx).players.black.analysis.blunder}}</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <th>ACPL</th>
+                      <td>{{getLichessGameEvaluation(videoDetails, idx).players.white.analysis.acpl}}</td>
+                      <td>{{getLichessGameEvaluation(videoDetails, idx).players.black.analysis.acpl}}</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <th>Accuracy</th>
+                      <td>{{getLichessGameEvaluation(videoDetails, idx).players.white.analysis.accuracy}}</td>
+                      <td>{{getLichessGameEvaluation(videoDetails, idx).players.black.analysis.accuracy}}</td>
+                      <td></td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
               <tr v-if="videoDetails.chessCom && videoDetails.chessCom.href || videoDetails.chesstempoCom && videoDetails.chesstempoCom.id || videoDetails.chess365 && videoDetails.chess365.href || videoDetails.lichessMasters && videoDetails.lichessMasters.id">
                 <th>External links</th>
                 <td>
@@ -151,5 +201,16 @@ function getOpeningsForGame(idx: number): string[] {
 </template>
 
 <style scoped>
-
+table .game-evaluation {
+  background: inherit
+}
+table .game-evaluation th {
+  background: inherit
+}
+table .game-evaluation td {
+  background: inherit
+}
+table .game-evaluation tr {
+  background: inherit
+}
 </style>
