@@ -126,136 +126,20 @@ function getOpeningsForGame(idx: number): string[] {
                   </span>
                 </td>
               </tr>
-            </table>
-          </div>
-          <div class="col" v-if="videoDetails.chessCom && videoDetails.chessCom.href">
-            <table class="table table-bordered">
-              <tr>
-                <th>Source</th>
-                <td><a :href="videoDetails.chessCom.href" target="_blank" style="background: inherit">chess.com</a></td>
-              </tr>
-              <tr>
-                <th>White</th>
-                <td>{{ videoDetails.chessCom.playerWhite }}</td>
-              </tr>
-              <tr>
-                <th>Black</th>
-                <td>{{ videoDetails.chessCom.playerBlack }}</td>
-              </tr>
-              <tr>
-                <th>Result</th>
-                <td>{{ videoDetails.chessCom.result }}</td>
-              </tr>
-              <tr>
-                <th>Moves count</th>
-                <td>{{ videoDetails.chessCom.movesCount }}</td>
-              </tr>
-              <tr>
-                <th>Year</th>
-                <td>{{ videoDetails.chessCom.year }}</td>
-              </tr>
-            </table>
-          </div>
-          <div class="col" v-if="videoDetails.chesstempoCom && videoDetails.chesstempoCom.id">
-            <table class="table table-bordered">
-              <tr>
-                <th>Source</th>
-                <td><a :href="`https://old.chesstempo.com/gamedb/game/${videoDetails.chesstempoCom.id}`" target="_blank"
-                       style="background: inherit">chesstempo.com</a></td>
-              </tr>
-              <tr>
-                <th>White</th>
-                <td>{{ videoDetails.chesstempoCom.playerWhite }}</td>
-              </tr>
-              <tr>
-                <th>Black</th>
-                <td>{{ videoDetails.chesstempoCom.playerBlack }}</td>
-              </tr>
-              <tr>
-                <th>Result</th>
-                <td>{{ videoDetails.chesstempoCom.result }}</td>
-              </tr>
-              <tr>
-                <th>Moves count</th>
-                <td>{{ videoDetails.chesstempoCom.movesCount }}</td>
-              </tr>
-              <tr v-if="videoDetails.chesstempoCom.date">
-                <th>Date</th>
-                <td>{{ videoDetails.chesstempoCom.date }}</td>
-              </tr>
-              <tr v-if="videoDetails.chesstempoCom.site">
-                <th>Site</th>
-                <td>{{ videoDetails.chesstempoCom.site }}</td>
-              </tr>
-              <tr v-if="videoDetails.chesstempoCom.event">
-                <th>Event</th>
-                <td>{{ videoDetails.chesstempoCom.event }}</td>
-              </tr>
-              <tr v-if="videoDetails.chesstempoCom.round">
-                <th>Round</th>
-                <td>{{ videoDetails.chesstempoCom.round }}</td>
-              </tr>
-            </table>
-          </div>
-          <div class="col" v-if="videoDetails.chess365 && videoDetails.chess365.href">
-            <table class="table table-bordered">
-              <tr>
-                <th>Source</th>
-                <td><a :href="videoDetails.chess365.href" target="_blank" style="background: inherit">365chess.com</a>
+              <tr v-if="videoDetails.chessCom && videoDetails.chessCom.href || videoDetails.chesstempoCom && videoDetails.chesstempoCom.id || videoDetails.chess365 && videoDetails.chess365.href || videoDetails.lichessMasters && videoDetails.lichessMasters.id">
+                <th>External links</th>
+                <td>
+                  <a v-if="videoDetails.chessCom && videoDetails.chessCom.href" :href="videoDetails.chessCom.href"
+                     target="_blank" style="background: inherit">chess.com</a>
+                  <a v-if="videoDetails.chesstempoCom && videoDetails.chesstempoCom.id"
+                     :href="`https://old.chesstempo.com/gamedb/game/${videoDetails.chesstempoCom.id}`" target="_blank"
+                     style="background: inherit">chesstempo.com</a>
+                  <a v-if="videoDetails.chess365 && videoDetails.chess365.href" :href="videoDetails.chess365.href"
+                     target="_blank" style="background: inherit">365chess.com</a>
+                  <a v-if="videoDetails.lichessMasters && videoDetails.lichessMasters.id"
+                     :href="`https://lichess.org/${videoDetails.lichessMasters.id}`" target="_blank"
+                     style="background: inherit">lichess.org</a>
                 </td>
-              </tr>
-              <tr>
-                <th>White</th>
-                <td>{{ videoDetails.chess365.playerWhite }}</td>
-              </tr>
-              <tr>
-                <th>Black</th>
-                <td>{{ videoDetails.chess365.playerBlack }}</td>
-              </tr>
-              <tr>
-                <th>Result</th>
-                <td>{{ videoDetails.chess365.result }}</td>
-              </tr>
-              <tr>
-                <th>Moves count</th>
-                <td>{{ videoDetails.chess365.movesCount }}</td>
-              </tr>
-              <tr v-if="videoDetails.chess365.year">
-                <th>Year</th>
-                <td>{{ videoDetails.chess365.year }}</td>
-              </tr>
-              <tr v-if="videoDetails.chess365.tournament">
-                <th>Tournament</th>
-                <td>{{ videoDetails.chess365.tournament }}</td>
-              </tr>
-            </table>
-          </div>
-          <div class="col" v-if="videoDetails.lichessMasters && videoDetails.lichessMasters.id">
-            <table class="table table-bordered">
-              <tr>
-                <th>Source</th>
-                <td><a :href="`https://lichess.org/${videoDetails.lichessMasters.id}`" target="_blank"
-                       style="background: inherit">lichess.org</a></td>
-              </tr>
-              <tr>
-                <th>White</th>
-                <td>{{ videoDetails.lichessMasters.playerWhite }}</td>
-              </tr>
-              <tr>
-                <th>Black</th>
-                <td>{{ videoDetails.lichessMasters.playerBlack }}</td>
-              </tr>
-              <tr>
-                <th>Winner</th>
-                <td>{{ videoDetails.lichessMasters.winner }}</td>
-              </tr>
-              <tr v-if="videoDetails.lichessMasters.year">
-                <th>Year</th>
-                <td>{{ videoDetails.lichessMasters.year }}</td>
-              </tr>
-              <tr v-if="videoDetails.lichessMasters.month">
-                <th>Month</th>
-                <td>{{ videoDetails.lichessMasters.month }}</td>
               </tr>
             </table>
           </div>
