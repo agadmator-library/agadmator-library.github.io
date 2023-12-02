@@ -5,6 +5,7 @@ import {chess365Service} from "../chess365/Chess365Service.js";
 import {extractPgnForId} from "../extractPGN.js";
 import {lichessMastersService} from "../lichessMasters/LichessMastersService.js";
 import {stockfishService} from "../stockfish/StockfishService.js";
+import {lichessService} from "../lichess/LichessService.js";
 
 async function loadNewVideos() {
     const newIds = await loadNewMovies();
@@ -38,6 +39,12 @@ async function loadNewVideos() {
             await lichessMastersService.loadInfoForId(id)
         } catch (e) {
             console.error(`Error loading lichess masters info: ${e}`)
+        }
+
+        try {
+            await lichessService.importGames(id)
+        } catch (e) {
+            console.error(`Error importing lichess game: ${e}`)
         }
     }
 
