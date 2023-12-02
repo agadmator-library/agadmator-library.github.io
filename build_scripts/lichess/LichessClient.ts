@@ -6,7 +6,7 @@ interface ImportGameOutResponse {
 }
 
 class LichessClient {
-    private rateLimiter: RateLimiter = new RateLimiter(1_000)
+    private rateLimiter: RateLimiter = new RateLimiter(5_000)
 
     public async importGame(pgn: string): Promise<ImportGameOutResponse> {
         await this.rateLimiter.assertDelay()

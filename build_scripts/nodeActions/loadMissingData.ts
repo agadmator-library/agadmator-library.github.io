@@ -97,7 +97,7 @@ async function importMissingLichessGamesIds() {
 
     videosWithMissingGamesIds = _.shuffle(videosWithMissingGamesIds)
 
-    for (const id of videosWithMissingGamesIds.slice(0, 100)) {
+    for (const id of videosWithMissingGamesIds.slice(0, 20)) {
         try {
             await lichessService.importGames(id)
         } catch (e) {
