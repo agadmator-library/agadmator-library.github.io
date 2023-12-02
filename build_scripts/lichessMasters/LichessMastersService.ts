@@ -1,8 +1,5 @@
 import {
     database,
-    NAMESPACE_CHESS365,
-    NAMESPACE_CHESS_COM,
-    NAMESPACE_CHESSTEMPO_COM,
     NAMESPACE_LICHESS_MASTERS
 } from "../db.js";
 import _ from "lodash";
@@ -19,7 +16,6 @@ class LichessMastersService {
                 return;
             }
             console.log(`LichessMastersService: ${id} searching for games`)
-
 
             const lichessMastersResponse = await lichessMasterClient.fetchGames(game.fen);
 

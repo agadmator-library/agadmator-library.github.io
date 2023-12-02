@@ -2,13 +2,14 @@ import {
     database,
     NAMESPACE_CHESS365,
     NAMESPACE_CHESS_COM,
-    NAMESPACE_CHESSTEMPO_COM,
+    NAMESPACE_CHESSTEMPO_COM, NAMESPACE_LICHESS_GAME_ID,
     NAMESPACE_LICHESS_MASTERS
 } from "../db.js";
 import {chessComService} from "../chessCom/ChessComService.js";
 import {chesstempoService} from "../chesstempo/ChesstempoService.js";
 import {chess365Service} from "../chess365/Chess365Service.js";
 import {lichessMastersService} from "../lichessMasters/LichessMastersService.js";
+import {lichessService} from "../lichess/LichessService.js";
 
 async function loadMissingChessComInfo() {
     let videosWithMissingInfo = database.getAllIds()
@@ -82,4 +83,32 @@ async function loadMissingLichessMastersInfo() {
     }
 }
 
-await Promise.all([loadMissingChessComInfo(), loadMissingChesstempoInfo(), loadMissingChess365Info(), loadMissingLichessMastersInfo()])
+async function importMissingLichessGamesIds() {
+    let videosWithMissingGamesIds = database.getAllIds()
+        .filter(id => {
+                const games = database.readDescriptionGames(id)
+                if (games.length === 0) {
+                    return false
+                }
+                return !database.read(NAMESPACE_LICHESS_GAME_ID, id)
+            }
+        )
+
+    videosWithMissingGamesIds = _.shuffle(videosWithMissingGamesIds)
+
+    for (const id of videosWithMissingGamesIds.slice(0, 100)) {
+        try {
+            await lichessService.importGames(id)
+        } catch (e) {
+            console.error(`Error importing lichess games for ${id}: ${e}`)
+        }
+    }
+}
+
+await Promise.all([
+    loadMissingChessComInfo(),
+    loadMissingChesstempoInfo(),
+    loadMissingChess365Info(),
+    loadMissingLichessMastersInfo(),
+    importMissingLichessGamesIds()
+])
