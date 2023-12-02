@@ -6,7 +6,7 @@ on:
     - cron: '43 9 * * *'
 
 jobs:
-  refresh-video:
+  retry-data-retrieval:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
