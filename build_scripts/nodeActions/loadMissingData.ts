@@ -2,7 +2,7 @@ import {
     database,
     NAMESPACE_CHESS365,
     NAMESPACE_CHESS_COM,
-    NAMESPACE_CHESSTEMPO_COM, NAMESPACE_LICHESS_GAME_ID,
+    NAMESPACE_CHESSTEMPO_COM, NAMESPACE_LICHESS_GAME_EVAL, NAMESPACE_LICHESS_GAME_ID,
     NAMESPACE_LICHESS_MASTERS
 } from "../db.js";
 import {chessComService} from "../chessCom/ChessComService.js";
@@ -106,10 +106,29 @@ async function importMissingLichessGamesIds() {
     }
 }
 
+async function loadMissingLichessGamesEvals() {
+    let videosWithMissingGamesEvals = database.getAllIds()
+        .filter(id => {
+                return !database.read(NAMESPACE_LICHESS_GAME_EVAL, id) && database.read(NAMESPACE_LICHESS_GAME_ID, id)
+            }
+        )
+
+    videosWithMissingGamesEvals = _.shuffle(videosWithMissingGamesEvals)
+
+    for (const id of videosWithMissingGamesEvals.slice(0, 20)) {
+        try {
+            await lichessService.exportGames(id)
+        } catch (e) {
+            console.error(`Error importing lichess games evaluations for ${id}: ${e}`)
+        }
+    }
+}
+
 await Promise.all([
     loadMissingChessComInfo(),
     loadMissingChesstempoInfo(),
     loadMissingChess365Info(),
     loadMissingLichessMastersInfo(),
-    importMissingLichessGamesIds()
+    importMissingLichessGamesIds(),
+    loadMissingLichessGamesEvals()
 ])

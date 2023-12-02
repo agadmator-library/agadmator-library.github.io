@@ -1,7 +1,7 @@
 import {RateLimiter} from "../util/RateLimiter.js";
 import axios from "axios";
 
-interface ImportGameOutResponse {
+export interface ImportGameOutResponse {
     id: string
 }
 
@@ -25,6 +25,19 @@ class LichessClient {
         return {
             id: response.data.id
         }
+    }
+
+    public async exportGame(gameId: string) {
+        await this.rateLimiter.assertDelay()
+
+        const url = `https://lichess.org/game/export/${gameId}?moves=true&tags=true&evals=true&accuracy=true&opening=true`
+        const config = {
+            headers: {
+                'Accept': 'application/json'
+            }
+        }
+        const response = await axios.get(url, config)
+        return response.data
     }
 }
 

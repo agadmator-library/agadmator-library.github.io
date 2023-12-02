@@ -1,5 +1,5 @@
-import {database, NAMESPACE_LICHESS_GAME_ID} from "../db.js";
-import {lichessClient} from "./LichessClient.js";
+import {database, NAMESPACE_LICHESS_GAME_EVAL, NAMESPACE_LICHESS_GAME_ID} from "../db.js";
+import {ImportGameOutResponse, lichessClient} from "./LichessClient.js";
 
 class LichessService {
     public async importGames(id: string, force: boolean = false) {
@@ -19,6 +19,22 @@ class LichessService {
             }
 
             database.save(NAMESPACE_LICHESS_GAME_ID, id, lichessGamesIds)
+        }
+    }
+
+    public async exportGames(id: string, force: boolean = false) {
+        if (!database.read(NAMESPACE_LICHESS_GAME_EVAL, id) || force) {
+            const gamesIds = database.read(NAMESPACE_LICHESS_GAME_ID, id) as ImportGameOutResponse[]
+            const gamesEvals = []
+            for (let gameId of gamesIds) {
+                if (gameId.id) {
+                    gamesEvals.push(await lichessClient.exportGame(gameId.id))
+                } else {
+                    gamesEvals.push({})
+                }
+            }
+
+            database.save(NAMESPACE_LICHESS_GAME_EVAL, id, gamesEvals)
         }
     }
 }
