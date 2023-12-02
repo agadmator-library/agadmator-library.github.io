@@ -10,6 +10,7 @@ import {chesstempoService} from "../chesstempo/ChesstempoService.js";
 import {chess365Service} from "../chess365/Chess365Service.js";
 import {lichessMastersService} from "../lichessMasters/LichessMastersService.js";
 import {lichessService} from "../lichess/LichessService.js";
+import _ from "lodash";
 
 async function loadMissingChessComInfo() {
     let videosWithMissingInfo = database.getAllIds()

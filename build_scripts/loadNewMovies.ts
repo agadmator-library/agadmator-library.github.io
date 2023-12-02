@@ -1,6 +1,5 @@
 import {google} from "googleapis";
 import {database, NAMESPACE_VIDEO_CONTENT_DETAILS, NAMESPACE_VIDEO_SNIPPET} from "./db.js";
-import _ from "lodash";
 
 async function downloadContentDetails(youtube: any, ids: string[]) {
     const videoData = await youtube.videos.list({
