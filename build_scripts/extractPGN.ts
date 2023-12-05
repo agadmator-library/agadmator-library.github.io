@@ -175,7 +175,7 @@ async function extractGames(description: string, id: string): Promise<Descriptio
             game.date = date
         }
 
-        const lichessGameRegex = /game\s+here!?\s+https?:\/\/lichess\.org\/(?<gameId>[^\s/]+)/mi
+        const lichessGameRegex = /game\s+here!?[\s\n\r]+https?:\/\/lichess\.org\/(?<gameId>[^\s/]{8})/mi
         const lichessGameMatch = description.match(lichessGameRegex);
         if (Object.keys(game).length === 0 && lichessGameMatch && lichessGameMatch.groups) {
             try {
@@ -189,7 +189,7 @@ async function extractGames(description: string, id: string): Promise<Descriptio
                     game.pgn = parsedGame.pgn
                     game.fen = parsedGame.fen
                 } else {
-                    console.error(`Failed to load lichess PGN ${pgn}`)
+                    console.error(`Failed to load lichess PGN ${lichessGameMatch.groups.gameId} ${pgn} `)
                 }
             } catch (e) {
             }
