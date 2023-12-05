@@ -5,6 +5,7 @@ import {parse} from 'tinyduration'
 import humanizeDuration from "humanize-duration"
 import {useOpeningsStore} from "@/stores/openingsStore";
 import {Opening} from "@/model/Opening";
+import GameEvaluationChart from "@/components/GameEvaluationChart.vue";
 
 const props = defineProps({
   video: Video
@@ -174,6 +175,11 @@ function getOpeningsForGame(idx: number): string[] {
                     </tr>
                     </tbody>
                   </table>
+                </td>
+              </tr>
+              <tr v-if="getLichessGameEvaluation(videoDetails, idx).analysis">
+                <td colspan="44">
+                  <GameEvaluationChart :analysis="getLichessGameEvaluation(videoDetails, idx).analysis"/>
                 </td>
               </tr>
               <tr v-if="idx === 0 && videoDetails.chessCom && videoDetails.chessCom.href || idx === 0 && videoDetails.chesstempoCom && videoDetails.chesstempoCom.id || idx === 0 && videoDetails.chess365 && videoDetails.chess365.href || idx === 0 && videoDetails.lichessMasters && videoDetails.lichessMasters.id || getLichessGameEvaluation(videoDetails, idx).id">
