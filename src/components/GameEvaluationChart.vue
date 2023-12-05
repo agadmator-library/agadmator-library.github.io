@@ -2,7 +2,7 @@
 import Chart from 'chart.js/auto'
 import {onMounted, ref} from "vue";
 
-const elementId = (Math.random() + 1).toString(36).substring(10);
+const elementId = (Math.random() + 1).toString(36).substring(5);
 
 interface Eval {
   eval: number
@@ -18,6 +18,9 @@ const evaluationChartData = ref({
 const evaluationChartOptions = ref({});
 
 onMounted(() => {
+  document.getElementById('div' + elementId).width = `${document.getElementById('div' + elementId).parentElement.scrollWidth + "px"}`
+  document.getElementById('div' + elementId).height = `${document.getElementById('div' + elementId).parentElement.scrollWidth / 4 + "px"}`
+
   new Chart(
       document.getElementById(elementId),
       {
@@ -57,12 +60,17 @@ onMounted(() => {
         }
       }
   );
+
+
+
 })
 
 </script>
 
 <template>
-    <canvas :id="elementId" style="width: 100%"></canvas>
+  <div :id="'div' + elementId">
+    <canvas :id="elementId" ></canvas>
+  </div>
 </template>
 
 <style scoped>
