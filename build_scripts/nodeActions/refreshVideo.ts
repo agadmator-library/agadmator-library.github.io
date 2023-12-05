@@ -24,7 +24,7 @@ async function refreshVideo() {
         throw `Video not found: ${videoId}`
     }
 
-    extractPgnForId(videoId)
+    await extractPgnForId(videoId)
     try {
         await chessComService.loadInfoForId(videoId, true)
     } catch (e) {

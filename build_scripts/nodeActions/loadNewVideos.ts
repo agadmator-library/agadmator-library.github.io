@@ -15,7 +15,7 @@ async function loadNewVideos() {
     }
 
     for (const id of newIds) {
-        extractPgnForId(id)
+        await extractPgnForId(id)
 
         try {
             await chessComService.loadInfoForId(id)

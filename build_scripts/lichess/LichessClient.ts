@@ -30,7 +30,7 @@ class LichessClient {
     public async exportGame(gameId: string) {
         await this.rateLimiter.assertDelay()
 
-        const url = `https://lichess.org/game/export/${gameId}?moves=true&tags=true&evals=true&accuracy=true&opening=true`
+        const url = `https://lichess.org/game/export/${gameId}?moves=true&tags=true&evals=true&accuracy=true&opening=true&pgnInJson=true`
         const config = {
             headers: {
                 'Accept': 'application/json'

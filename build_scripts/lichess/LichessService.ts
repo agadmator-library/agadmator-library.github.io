@@ -28,7 +28,7 @@ class LichessService {
             const gamesEvals = []
             for (let gameId of gamesIds) {
                 if (gameId.id) {
-                    let gameEvaluation = await lichessClient.exportGame(gameId.id);
+                    const gameEvaluation = await lichessClient.exportGame(gameId.id);
                     if (!gameEvaluation.analysis) {
                         // missing analysis section in response - abandon and try another time
                         throw "Missing analysis"

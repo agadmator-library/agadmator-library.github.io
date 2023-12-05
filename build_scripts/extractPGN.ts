@@ -6,6 +6,7 @@ import {database, NAMESPACE_VIDEO_SNIPPET} from "./db.js";
 import {pgnOverrides} from "./pgnOverrides.js";
 import {dateOverrides} from "./dateOverrides.js";
 import _ from "lodash"
+import {lichessClient} from "./lichess/LichessClient.js";
 
 export type DescriptionGame = {
     pgn?: string,
@@ -118,7 +119,7 @@ function extractDateFromDescription(id: string, linesAbove: string): string | un
     return date
 }
 
-function extractGames(description: string, id: string): DescriptionGame[] {
+async function extractGames(description: string, id: string): Promise<DescriptionGame[]> {
     description = description.replaceAll("\n. e4 c6 2.", "\n1. e4 c6 2.")
 
     const pgns = getPgns(id, description)
@@ -172,6 +173,26 @@ function extractGames(description: string, id: string): DescriptionGame[] {
         }
         if (date) {
             game.date = date
+        }
+
+        const lichessGameRegex = /game\s+here!?\s+https?:\/\/lichess\.org\/(?<gameId>[^\s/]+)/mi
+        const lichessGameMatch = description.match(lichessGameRegex);
+        if (Object.keys(game).length === 0 && lichessGameMatch && lichessGameMatch.groups) {
+            try {
+                const lichessGame = await lichessClient.exportGame(lichessGameMatch.groups.gameId)
+                game.playerWhite = lichessGame.players?.white?.user?.name
+                game.playerBlack = lichessGame.players?.black?.user?.name
+                game.date = new Date(lichessGame.createdAt).toISOString().substring(0, 10)
+                const pgn = cleanPgn(lichessGame.pgn)
+                const parsedGame = parseUsingKokopu(pgn);
+                if (parsedGame) {
+                    game.pgn = parsedGame.pgn
+                    game.fen = parsedGame.fen
+                } else {
+                    console.error(`Failed to load lichess PGN ${pgn}`)
+                }
+            } catch (e) {
+            }
         }
 
         return [game]
@@ -282,20 +303,20 @@ function parseUsingKokopu(pgn: string): KokopuParseResult | undefined {
     }
 }
 
-export function extractPgnForId(id: string) {
+export async function extractPgnForId(id: string) {
     const videoSnippet = database.read(NAMESPACE_VIDEO_SNIPPET, id)
     if (!videoSnippet) {
         return
     }
 
-    let games = extractGames(videoSnippet.description, id);
+    let games = await extractGames(videoSnippet.description, id);
     if (games.length > 0) {
         games = games.filter(game => game.playerWhite)
     }
     database.saveDescriptionGames(id, games)
 }
 
-export function extractPgnForAll() {
+export async function extractPgnForAll() {
     database.getAllIds().forEach(id => {
         extractPgnForId(id);
     })
