@@ -85,5 +85,241 @@
     {
       "id": "JvXjB1zu"
     }
+  ],
+  "lichessGameEval": [
+    {
+      "id": "JvXjB1zu",
+      "rated": false,
+      "variant": "standard",
+      "speed": "correspondence",
+      "perf": "correspondence",
+      "createdAt": 1633878094958,
+      "lastMoveAt": 1633878094958,
+      "status": "started",
+      "players": {
+        "white": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 0,
+            "mistake": 0,
+            "blunder": 0,
+            "acpl": 8,
+            "accuracy": 98
+          }
+        },
+        "black": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 2,
+            "mistake": 1,
+            "blunder": 1,
+            "acpl": 44,
+            "accuracy": 88
+          }
+        }
+      },
+      "opening": {
+        "eco": "B30",
+        "name": "Sicilian Defense: Nyezhmetdinov-Rossolimo Attack",
+        "ply": 5
+      },
+      "moves": "e4 c5 Nf3 Nc6 Bb5 e5 O-O Bd6 c3 a6 Ba4 b5 Bc2 Nge7 a4 b4 Re1 Ng6 d4 bxc3 dxe5 cxb2 Bxb2 Bxe5 Nxe5 Ngxe5 Bxe5 Nxe5 Qd5 Nc6 Qxc5 Qe7 Qxe7+ Kxe7 Nc3 Nb4 Nd5+ Nxd5 exd5+ Kd8 d6 a5 Bd3 Rb8 Rab1 Rb7 Rec1 Rb4 Rxb4 axb4 a5 Bb7 a6 Ba8 a7",
+      "pgn": "[Event \"Import\"]\n[Site \"https://lichess.org/JvXjB1zu\"]\n[Date \"2021.10.10\"]\n[White \"?\"]\n[Black \"?\"]\n[Result \"*\"]\n[UTCDate \"2021.10.10\"]\n[UTCTime \"15:01:34\"]\n[WhiteElo \"?\"]\n[BlackElo \"?\"]\n[Variant \"Standard\"]\n[TimeControl \"-\"]\n[ECO \"B30\"]\n[Opening \"Sicilian Defense: Nyezhmetdinov-Rossolimo Attack\"]\n[Termination \"Unterminated\"]\n\n1. e4 { [%eval 0.24] } 1... c5 { [%eval 0.32] } 2. Nf3 { [%eval 0.0] } 2... Nc6 { [%eval 0.54] } 3. Bb5 { [%eval 0.0] } 3... e5 { [%eval 0.59] } 4. O-O { [%eval 0.54] } 4... Bd6 { [%eval 0.73] } 5. c3 { [%eval 0.5] } 5... a6 { [%eval 0.61] } 6. Ba4 { [%eval 0.53] } 6... b5 { [%eval 0.63] } 7. Bc2 { [%eval 0.75] } 7... Nge7 { [%eval 0.32] } 8. a4 { [%eval 0.7] } 8... b4 { [%eval 0.45] } 9. Re1 { [%eval 0.68] } 9... Ng6 { [%eval 0.74] } 10. d4 { [%eval 0.47] } 10... bxc3 { [%eval 0.7] } 11. dxe5 { [%eval 0.79] } 11... cxb2 { [%eval 0.64] } 12. Bxb2 { [%eval 0.84] } 12... Bxe5 { [%eval 1.16] } 13. Nxe5 { [%eval 1.12] } 13... Ngxe5 { [%eval 1.1] } 14. Bxe5 { [%eval 0.97] } 14... Nxe5 { [%eval 1.2] } 15. Qd5 { [%eval 0.99] } 15... Nc6 { [%eval 0.91] } 16. Qxc5 { [%eval 0.85] } 16... Qe7 { [%eval 1.03] } 17. Qxe7+ { [%eval 1.22] } 17... Kxe7 { [%eval 1.18] } 18. Nc3 { [%eval 1.2] } 18... Nb4 { [%eval 1.19] } 19. Nd5+ { [%eval 1.29] } 19... Nxd5 { [%eval 1.1] } 20. exd5+ { [%eval 1.16] } 20... Kd8 { [%eval 1.32] } 21. d6 { [%eval 1.42] } 21... a5 { [%eval 1.33] } 22. Bd3 { [%eval 1.41] } 22... Rb8 { [%eval 2.69] } 23. Rab1 { [%eval 2.99] } 23... Rb7 { [%eval 2.58] } 24. Rec1 { [%eval 2.56] } 24... Rb4 { [%eval 6.05] } 25. Rxb4 { [%eval 6.05] } 25... axb4 { [%eval 6.17] } 26. a5 { [%eval 5.76] } 26... Bb7 { [%eval 10.69] } 27. a6 { [%eval 10.77] } 27... Ba8 { [%eval 11.23] } 28. a7 { [%eval 11.23] } *\n\n\n",
+      "analysis": [
+        {
+          "eval": 24
+        },
+        {
+          "eval": 32
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 54,
+          "best": "d7d6",
+          "variation": "d6 c3 Nf6 h3 Nc6 Bd3 e5 O-O Be7 Bc2"
+        },
+        {
+          "eval": 0,
+          "best": "d2d4",
+          "variation": "d4 cxd4 Nxd4 Nf6 Nc3 e5 Ndb5 d6 Bg5 a6"
+        },
+        {
+          "eval": 59,
+          "best": "e7e6",
+          "variation": "e6 Nc3 Nge7 d4 cxd4 Nxd4 a6 Be2 d5 exd5",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. e6 was best."
+          }
+        },
+        {
+          "eval": 54
+        },
+        {
+          "eval": 73
+        },
+        {
+          "eval": 50
+        },
+        {
+          "eval": 61
+        },
+        {
+          "eval": 53
+        },
+        {
+          "eval": 63
+        },
+        {
+          "eval": 75
+        },
+        {
+          "eval": 32
+        },
+        {
+          "eval": 70
+        },
+        {
+          "eval": 45
+        },
+        {
+          "eval": 68
+        },
+        {
+          "eval": 74
+        },
+        {
+          "eval": 47
+        },
+        {
+          "eval": 70
+        },
+        {
+          "eval": 79
+        },
+        {
+          "eval": 64
+        },
+        {
+          "eval": 84
+        },
+        {
+          "eval": 116
+        },
+        {
+          "eval": 112
+        },
+        {
+          "eval": 110
+        },
+        {
+          "eval": 97
+        },
+        {
+          "eval": 120
+        },
+        {
+          "eval": 99
+        },
+        {
+          "eval": 91
+        },
+        {
+          "eval": 85
+        },
+        {
+          "eval": 103
+        },
+        {
+          "eval": 122
+        },
+        {
+          "eval": 118
+        },
+        {
+          "eval": 120
+        },
+        {
+          "eval": 119
+        },
+        {
+          "eval": 129
+        },
+        {
+          "eval": 110
+        },
+        {
+          "eval": 116
+        },
+        {
+          "eval": 132
+        },
+        {
+          "eval": 142
+        },
+        {
+          "eval": 133
+        },
+        {
+          "eval": 141
+        },
+        {
+          "eval": 269,
+          "best": "c8a6",
+          "variation": "Ba6 Bxa6 Rxa6 Rab1 Kc8 Rbd1 Rf8 Re7 Rc6 g3 g6 h4 Rc4 Kg2",
+          "judgment": {
+            "name": "Mistake",
+            "comment": "Mistake. Ba6 was best."
+          }
+        },
+        {
+          "eval": 299
+        },
+        {
+          "eval": 258
+        },
+        {
+          "eval": 256
+        },
+        {
+          "eval": 605,
+          "best": "b7b1",
+          "variation": "Rxb1",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Blunder. Rxb1 was best."
+          }
+        },
+        {
+          "eval": 605
+        },
+        {
+          "eval": 617
+        },
+        {
+          "eval": 576
+        },
+        {
+          "eval": 1069,
+          "best": "h8e8",
+          "variation": "Re8",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. Re8 was best."
+          }
+        },
+        {
+          "eval": 1077
+        },
+        {
+          "eval": 1123
+        },
+        {
+          "eval": 1123
+        }
+      ]
+    }
   ]
 }
