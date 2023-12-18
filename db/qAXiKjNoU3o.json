@@ -88,5 +88,246 @@
     {
       "id": "42TUN2Ho"
     }
+  ],
+  "lichessGameEval": [
+    {
+      "id": "42TUN2Ho",
+      "rated": false,
+      "variant": "standard",
+      "speed": "correspondence",
+      "perf": "correspondence",
+      "createdAt": 1587939121891,
+      "lastMoveAt": 1587939121891,
+      "status": "started",
+      "players": {
+        "white": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 2,
+            "mistake": 1,
+            "blunder": 0,
+            "acpl": 24,
+            "accuracy": 88
+          }
+        },
+        "black": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 5,
+            "mistake": 0,
+            "blunder": 0,
+            "acpl": 21,
+            "accuracy": 90
+          }
+        }
+      },
+      "opening": {
+        "eco": "B95",
+        "name": "Sicilian Defense: Najdorf Variation",
+        "ply": 12
+      },
+      "moves": "e4 c5 Nf3 d6 d4 cxd4 Nxd4 Nf6 Nc3 a6 Bg5 e6 f3 Be7 Qd2 O-O O-O-O b5 a3 Bb7 Kb1 Nbd7 Qe1 Rc8 h4 Qc7 Rh3 Rfe8 h5 Nxe4 Bxe7 Nxc3+ bxc3 Rxe7 Nf5 exf5 Qxe7 Qxc3 Bd3 Nc5 Bxf5 Nb3 Ka2 Nc1+ Kb1 Nb3 Ka2 Nc1+ Kb1 Nb3",
+      "pgn": "[Event \"Import\"]\n[Site \"https://lichess.org/42TUN2Ho\"]\n[Date \"2020.04.26\"]\n[White \"?\"]\n[Black \"?\"]\n[Result \"*\"]\n[UTCDate \"2020.04.26\"]\n[UTCTime \"22:12:01\"]\n[WhiteElo \"?\"]\n[BlackElo \"?\"]\n[Variant \"Standard\"]\n[TimeControl \"-\"]\n[ECO \"B95\"]\n[Opening \"Sicilian Defense: Najdorf Variation\"]\n[Termination \"Unterminated\"]\n\n1. e4 { [%eval 0.24] } 1... c5 { [%eval 0.2] } 2. Nf3 { [%eval 0.21] } 2... d6 { [%eval 0.26] } 3. d4 { [%eval 0.17] } 3... cxd4 { [%eval 0.16] } 4. Nxd4 { [%eval 0.14] } 4... Nf6 { [%eval 0.37] } 5. Nc3 { [%eval 0.25] } 5... a6 { [%eval 0.29] } 6. Bg5 { [%eval 0.0] } 6... e6 { [%eval 0.0] } 7. f3 { [%eval -0.58] } 7... Be7 { [%eval 0.18] } 8. Qd2 { [%eval -0.34] } 8... O-O { [%eval -0.16] } 9. O-O-O { [%eval -0.24] } 9... b5 { [%eval -0.27] } 10. a3 { [%eval -0.26] } 10... Bb7 { [%eval 0.04] } 11. Kb1 { [%eval -0.42] } 11... Nbd7 { [%eval -0.34] } 12. Qe1 { [%eval -0.8] } 12... Rc8 { [%eval 0.0] } 13. h4 { [%eval -0.38] } 13... Qc7 { [%eval 0.4] } 14. Rh3 { [%eval -1.05] } 14... Rfe8 { [%eval -0.83] } 15. h5 { [%eval -1.71] } 15... Nxe4 { [%eval -0.99] } 16. Bxe7 { [%eval -1.37] } 16... Nxc3+ { [%eval -1.19] } 17. bxc3 { [%eval -1.36] } 17... Rxe7 { [%eval -1.37] } 18. Nf5 { [%eval -0.85] } 18... exf5 { [%eval 0.0] } 19. Qxe7 { [%eval 0.0] } 19... Qxc3 { [%eval 0.0] } 20. Bd3 { [%eval 0.0] } 20... Nc5 { [%eval 0.0] } 21. Bxf5 { [%eval 0.0] } 21... Nb3 { [%eval 0.0] } 22. Ka2 { [%eval 0.0] } 22... Nc1+ { [%eval 0.0] } 23. Kb1 { [%eval 0.0] } 23... Nb3 { [%eval 0.0] } 24. Ka2 { [%eval 0.0] } 24... Nc1+ { [%eval 0.0] } 25. Kb1 { [%eval 0.0] } 25... Nb3 { [%eval 0.0] } *\n\n\n",
+      "analysis": [
+        {
+          "eval": 24
+        },
+        {
+          "eval": 20
+        },
+        {
+          "eval": 21
+        },
+        {
+          "eval": 26
+        },
+        {
+          "eval": 17
+        },
+        {
+          "eval": 16
+        },
+        {
+          "eval": 14
+        },
+        {
+          "eval": 37
+        },
+        {
+          "eval": 25
+        },
+        {
+          "eval": 29
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": -58,
+          "best": "f2f4",
+          "variation": "f4 Qb6 Qd2 Qxb2 Rb1 Qa3 f5 Nc6 fxe6 fxe6",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. f4 was best."
+          }
+        },
+        {
+          "eval": 18,
+          "best": "h7h6",
+          "variation": "h6 Bh4 Be7 Qd2 Qc7 Bf2 b5 a3 Bb7 O-O-O",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. h6 was best."
+          }
+        },
+        {
+          "eval": -34
+        },
+        {
+          "eval": -16
+        },
+        {
+          "eval": -24
+        },
+        {
+          "eval": -27
+        },
+        {
+          "eval": -26
+        },
+        {
+          "eval": 4
+        },
+        {
+          "eval": -42
+        },
+        {
+          "eval": -34
+        },
+        {
+          "eval": -80
+        },
+        {
+          "eval": 0,
+          "best": "f6e4",
+          "variation": "Nxe4 Nxe4",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. Nxe4 was best."
+          }
+        },
+        {
+          "eval": -38
+        },
+        {
+          "eval": 40,
+          "best": "h7h5",
+          "variation": "h5 g3",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. h5 was best."
+          }
+        },
+        {
+          "eval": -105,
+          "best": "g2g4",
+          "variation": "g4",
+          "judgment": {
+            "name": "Mistake",
+            "comment": "Mistake. g4 was best."
+          }
+        },
+        {
+          "eval": -83
+        },
+        {
+          "eval": -171,
+          "best": "e1g3",
+          "variation": "Qg3 Kh8",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. Qg3 was best."
+          }
+        },
+        {
+          "eval": -99,
+          "best": "h7h6",
+          "variation": "h6",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. h6 was best."
+          }
+        },
+        {
+          "eval": -137
+        },
+        {
+          "eval": -119
+        },
+        {
+          "eval": -136
+        },
+        {
+          "eval": -137
+        },
+        {
+          "eval": -85
+        },
+        {
+          "eval": 0,
+          "best": "d7b6",
+          "variation": "Nb6 Nxe7+",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. Nb6 was best."
+          }
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        }
+      ]
+    }
   ]
 }
