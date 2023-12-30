@@ -77,5 +77,120 @@
     {
       "id": "w3FTmG42"
     }
+  ],
+  "lichessGameEval": [
+    {
+      "id": "w3FTmG42",
+      "rated": false,
+      "variant": "standard",
+      "speed": "correspondence",
+      "perf": "correspondence",
+      "createdAt": 1615837936196,
+      "lastMoveAt": 1615837936196,
+      "status": "started",
+      "players": {
+        "white": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 0,
+            "mistake": 2,
+            "blunder": 1,
+            "acpl": 93,
+            "accuracy": 60
+          }
+        },
+        "black": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 0,
+            "mistake": 2,
+            "blunder": 1,
+            "acpl": 96,
+            "accuracy": 58
+          }
+        }
+      },
+      "opening": {
+        "eco": "C20",
+        "name": "Bongcloud Attack",
+        "ply": 3
+      },
+      "moves": "e4 e5 Ke2 Ke7 Ke1 Ke8 Ke2 Ke7 Ke1 Ke8 Ke2 Ke7",
+      "pgn": "[Event \"Import\"]\n[Site \"https://lichess.org/w3FTmG42\"]\n[Date \"2021.03.15\"]\n[White \"?\"]\n[Black \"?\"]\n[Result \"*\"]\n[UTCDate \"2021.03.15\"]\n[UTCTime \"19:52:16\"]\n[WhiteElo \"?\"]\n[BlackElo \"?\"]\n[Variant \"Standard\"]\n[TimeControl \"-\"]\n[ECO \"C20\"]\n[Opening \"Bongcloud Attack\"]\n[Termination \"Unterminated\"]\n\n1. e4 { [%eval 0.25] } 1... e5 { [%eval 0.31] } 2. Ke2 { [%eval -2.24] } 2... Ke7 { [%eval 0.43] } 3. Ke1 { [%eval 0.07] } 3... Ke8 { [%eval 0.28] } 4. Ke2 { [%eval -0.86] } 4... Ke7 { [%eval 0.43] } 5. Ke1 { [%eval 0.07] } 5... Ke8 { [%eval 0.28] } 6. Ke2 { [%eval -0.86] } 6... Ke7 { [%eval 0.43] } *\n\n\n",
+      "analysis": [
+        {
+          "eval": 25
+        },
+        {
+          "eval": 31
+        },
+        {
+          "eval": -224,
+          "best": "g1f3",
+          "variation": "Nf3 Nc6 Bb5 Nf6 d3 Bc5 c3 O-O O-O d6",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Blunder. Nf3 was best."
+          }
+        },
+        {
+          "eval": 43,
+          "best": "g8f6",
+          "variation": "Nf6 d3 d5 Nd2 Bc5 Ke1 Ng4 Nh3 O-O c3",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Blunder. Nf6 was best."
+          }
+        },
+        {
+          "eval": 7
+        },
+        {
+          "eval": 28
+        },
+        {
+          "eval": -86,
+          "best": "g1f3",
+          "variation": "Nf3 Nc6 Bb5 a6 Ba4 d6 h3 Be7 c4 Be6",
+          "judgment": {
+            "name": "Mistake",
+            "comment": "Mistake. Nf3 was best."
+          }
+        },
+        {
+          "eval": 43,
+          "best": "g8f6",
+          "variation": "Nf6 Nc3 Bc5 Ke1 Nc6 Be2 d5 exd5 Nxd5 Kf1",
+          "judgment": {
+            "name": "Mistake",
+            "comment": "Mistake. Nf6 was best."
+          }
+        },
+        {
+          "eval": 7
+        },
+        {
+          "eval": 28
+        },
+        {
+          "eval": -86,
+          "best": "g1f3",
+          "variation": "Nf3 Nc6 Bb5 a6 Ba4 d6 h3 Be7 c4 Be6",
+          "judgment": {
+            "name": "Mistake",
+            "comment": "Mistake. Nf3 was best."
+          }
+        },
+        {
+          "eval": 43,
+          "best": "g8f6",
+          "variation": "Nf6 Nc3 Bc5 Ke1 Nc6 Be2 d5 exd5 Nxd5 Kf1",
+          "judgment": {
+            "name": "Mistake",
+            "comment": "Mistake. Nf6 was best."
+          }
+        }
+      ]
+    }
   ]
 }
