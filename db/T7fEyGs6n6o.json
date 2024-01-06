@@ -95,5 +95,147 @@
     {
       "id": "iEIX6lqa"
     }
+  ],
+  "lichessGameEval": [
+    {
+      "id": "iEIX6lqa",
+      "rated": false,
+      "variant": "standard",
+      "speed": "correspondence",
+      "perf": "correspondence",
+      "createdAt": 1660384951541,
+      "lastMoveAt": 1660384951541,
+      "status": "started",
+      "players": {
+        "white": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 2,
+            "mistake": 0,
+            "blunder": 0,
+            "acpl": 21,
+            "accuracy": 87
+          }
+        },
+        "black": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 0,
+            "mistake": 0,
+            "blunder": 1,
+            "acpl": 97,
+            "accuracy": 54
+          }
+        }
+      },
+      "opening": {
+        "eco": "D35",
+        "name": "Queen's Gambit Declined: Exchange Variation, Positional Variation",
+        "ply": 10
+      },
+      "moves": "d4 d5 c4 e6 Nc3 Nf6 cxd5 exd5 Bg5 c6 e3 Qb6 Qc2 Ne4 Nxe4 dxe4 Qxe4+ Be6 Nf3 Qxb2 Rb1 Qc3+ Kd1 Nd7 Bd3 h6 Qxe6+",
+      "pgn": "[Event \"Import\"]\n[Site \"https://lichess.org/iEIX6lqa\"]\n[Date \"2022.08.13\"]\n[White \"?\"]\n[Black \"?\"]\n[Result \"*\"]\n[UTCDate \"2022.08.13\"]\n[UTCTime \"10:02:31\"]\n[WhiteElo \"?\"]\n[BlackElo \"?\"]\n[Variant \"Standard\"]\n[TimeControl \"-\"]\n[ECO \"D35\"]\n[Opening \"Queen's Gambit Declined: Exchange Variation, Positional Variation\"]\n[Termination \"Unterminated\"]\n\n1. d4 { [%eval 0.0] } 1... d5 { [%eval 0.38] } 2. c4 { [%eval 0.27] } 2... e6 { [%eval 0.3] } 3. Nc3 { [%eval 0.39] } 3... Nf6 { [%eval 0.41] } 4. cxd5 { [%eval 0.16] } 4... exd5 { [%eval 0.38] } 5. Bg5 { [%eval 0.35] } 5... c6 { [%eval 0.37] } 6. e3 { [%eval 0.28] } 6... Qb6 { [%eval 0.47] } 7. Qc2 { [%eval 0.63] } 7... Ne4 { [%eval 0.59] } 8. Nxe4 { [%eval 0.59] } 8... dxe4 { [%eval 0.7] } 9. Qxe4+ { [%eval 0.0] } 9... Be6 { [%eval 0.53] } 10. Nf3 { [%eval 0.36] } 10... Qxb2 { [%eval 0.36] } 11. Rb1 { [%eval 0.0] } 11... Qc3+ { [%eval 0.39] } 12. Kd1 { [%eval 0.4] } 12... Nd7 { [%eval 0.98] } 13. Bd3 { [%eval -0.11] } 13... h6 { [%eval #2] } 14. Qxe6+ { [%eval #1] } *\n\n\n",
+      "analysis": [
+        {
+          "eval": 0
+        },
+        {
+          "eval": 38
+        },
+        {
+          "eval": 27
+        },
+        {
+          "eval": 30
+        },
+        {
+          "eval": 39
+        },
+        {
+          "eval": 41
+        },
+        {
+          "eval": 16
+        },
+        {
+          "eval": 38
+        },
+        {
+          "eval": 35
+        },
+        {
+          "eval": 37
+        },
+        {
+          "eval": 28
+        },
+        {
+          "eval": 47
+        },
+        {
+          "eval": 63
+        },
+        {
+          "eval": 59
+        },
+        {
+          "eval": 59
+        },
+        {
+          "eval": 70
+        },
+        {
+          "eval": 0,
+          "best": "e1a1",
+          "variation": "O-O-O Be6",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. O-O-O was best."
+          }
+        },
+        {
+          "eval": 53
+        },
+        {
+          "eval": 36
+        },
+        {
+          "eval": 36
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 39
+        },
+        {
+          "eval": 40
+        },
+        {
+          "eval": 98
+        },
+        {
+          "eval": -11,
+          "best": "b1c1",
+          "variation": "Rc1 Qa5 Bc4 Qf5 Qxf5 Bxf5 e4 Bg6 Nh4 Bh5+ Be2 Bxe2+ Kxe2 g6",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. Rc1 was best."
+          }
+        },
+        {
+          "mate": 2,
+          "best": "d7b6",
+          "variation": "Nb6 Ke2",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Checkmate is now unavoidable. Nb6 was best."
+          }
+        },
+        {
+          "mate": 1
+        }
+      ]
+    }
   ]
 }
