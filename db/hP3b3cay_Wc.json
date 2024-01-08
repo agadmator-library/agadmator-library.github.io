@@ -95,5 +95,173 @@
     {
       "id": "hlKROzTL"
     }
+  ],
+  "lichessGameEval": [
+    {
+      "id": "hlKROzTL",
+      "rated": false,
+      "variant": "standard",
+      "speed": "correspondence",
+      "perf": "correspondence",
+      "createdAt": 1448401936064,
+      "lastMoveAt": 1448401938511,
+      "status": "mate",
+      "players": {
+        "white": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 1,
+            "mistake": 0,
+            "blunder": 0,
+            "acpl": 10,
+            "accuracy": 96
+          }
+        },
+        "black": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 1,
+            "mistake": 0,
+            "blunder": 1,
+            "acpl": 68,
+            "accuracy": 60
+          }
+        }
+      },
+      "winner": "white",
+      "opening": {
+        "eco": "A40",
+        "name": "Horwitz Defense",
+        "ply": 2
+      },
+      "moves": "d4 e6 Nf3 f5 Nc3 Nf6 Bg5 Be7 Bxf6 Bxf6 e4 fxe4 Nxe4 b6 Ne5 O-O Bd3 Bb7 Qh5 Qe7 Qxh7+ Kxh7 Nxf6+ Kh6 Neg4+ Kg5 h4+ Kf4 g3+ Kf3 Be2+ Kg2 Rh2+ Kg1 Kd2#",
+      "pgn": "[Event \"Import\"]\n[Site \"https://lichess.org/hlKROzTL\"]\n[Date \"2015.11.24\"]\n[White \"?\"]\n[Black \"?\"]\n[Result \"1-0\"]\n[UTCDate \"2015.11.24\"]\n[UTCTime \"21:52:16\"]\n[WhiteElo \"?\"]\n[BlackElo \"?\"]\n[Variant \"Standard\"]\n[TimeControl \"-\"]\n[ECO \"A40\"]\n[Opening \"Horwitz Defense\"]\n[Termination \"Normal\"]\n\n1. d4 { [%eval 0.06] } 1... e6 { [%eval 0.12] } 2. Nf3 { [%eval 0.12] } 2... f5 { [%eval 0.46] } 3. Nc3 { [%eval 0.2] } 3... Nf6 { [%eval 0.23] } 4. Bg5 { [%eval 0.15] } 4... Be7 { [%eval 0.27] } 5. Bxf6 { [%eval 0.27] } 5... Bxf6 { [%eval 0.23] } 6. e4 { [%eval 0.32] } 6... fxe4 { [%eval 0.43] } 7. Nxe4 { [%eval 0.44] } 7... b6 { [%eval 0.45] } 8. Ne5 { [%eval -0.16] } 8... O-O { [%eval -0.08] } 9. Bd3 { [%eval -0.58] } 9... Bb7 { [%eval 0.23] } 10. Qh5 { [%eval 0.0] } 10... Qe7 { [%eval #7] } 11. Qxh7+ { [%eval #6] } 11... Kxh7 { [%eval #6] } 12. Nxf6+ { [%eval #5] } 12... Kh6 { [%eval #5] } 13. Neg4+ { [%eval #4] } 13... Kg5 { [%eval #4] } 14. h4+ { [%eval #3] } 14... Kf4 { [%eval #3] } 15. g3+ { [%eval #2] } 15... Kf3 { [%eval #2] } 16. Be2+ { [%eval #2] } 16... Kg2 { [%eval #2] } 17. Rh2+ { [%eval #1] } 17... Kg1 { [%eval #1] } 18. Kd2# 1-0\n\n\n",
+      "analysis": [
+        {
+          "eval": 6
+        },
+        {
+          "eval": 12
+        },
+        {
+          "eval": 12
+        },
+        {
+          "eval": 46
+        },
+        {
+          "eval": 20
+        },
+        {
+          "eval": 23
+        },
+        {
+          "eval": 15
+        },
+        {
+          "eval": 27
+        },
+        {
+          "eval": 27
+        },
+        {
+          "eval": 23
+        },
+        {
+          "eval": 32
+        },
+        {
+          "eval": 43
+        },
+        {
+          "eval": 44
+        },
+        {
+          "eval": 45
+        },
+        {
+          "eval": -16,
+          "best": "c2c3",
+          "variation": "c3 Bb7 Bd3 Nc6 Qc2 g6 h4 Qe7 h5 gxh5 Rxh5 O-O-O Nxf6 Qxf6 Kf1 Ne7 Be4 h6 Re1",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. c3 was best."
+          }
+        },
+        {
+          "eval": -8
+        },
+        {
+          "eval": -58,
+          "best": "d1g4",
+          "variation": "Qg4 Nc6 Nxc6 dxc6 Nxf6+ Qxf6 O-O-O e5 Bc4+ Kh8 Qg3 exd4 Kb1 Qd6 Qxd6 cxd6 f3 c5 Rhe1 Bf5"
+        },
+        {
+          "eval": 23,
+          "best": "f6e5",
+          "variation": "Bxe5 dxe5 Nc6 g3 Nxe5 f4 Nxd3+ Qxd3 Rf5 O-O-O Bb7 Rhe1 Rd5 Qe2 Rxd1+ Rxd1 Qe7 Kb1 Rf8 Nc3",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. Bxe5 was best."
+          }
+        },
+        {
+          "eval": 0
+        },
+        {
+          "mate": 7,
+          "best": "f6e5",
+          "variation": "Bxe5 Nd2 g6 Qxe5 Nc6 Qg3 Nb4 Bxg6 hxg6 Qxg6+ Kh8 Qh6+ Kg8 Qg6+",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Checkmate is now unavoidable. Bxe5 was best."
+          }
+        },
+        {
+          "mate": 6
+        },
+        {
+          "mate": 6
+        },
+        {
+          "mate": 5
+        },
+        {
+          "mate": 5
+        },
+        {
+          "mate": 4
+        },
+        {
+          "mate": 4
+        },
+        {
+          "mate": 3
+        },
+        {
+          "mate": 3
+        },
+        {
+          "mate": 2
+        },
+        {
+          "mate": 2
+        },
+        {
+          "mate": 2,
+          "best": "e1f1",
+          "variation": "Kf1 gxf6 Nh2#"
+        },
+        {
+          "mate": 2
+        },
+        {
+          "mate": 1
+        },
+        {
+          "mate": 1
+        }
+      ]
+    }
   ]
 }
