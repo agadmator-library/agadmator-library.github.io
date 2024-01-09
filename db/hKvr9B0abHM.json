@@ -78,5 +78,213 @@
     {
       "id": "iu8dNeu6"
     }
+  ],
+  "lichessGameEval": [
+    {
+      "id": "iu8dNeu6",
+      "rated": false,
+      "variant": "standard",
+      "speed": "correspondence",
+      "perf": "correspondence",
+      "createdAt": 1459895579022,
+      "lastMoveAt": 1459895579022,
+      "status": "mate",
+      "players": {
+        "white": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 2,
+            "mistake": 0,
+            "blunder": 1,
+            "acpl": 66,
+            "accuracy": 76
+          }
+        },
+        "black": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 1,
+            "mistake": 2,
+            "blunder": 2,
+            "acpl": 116,
+            "accuracy": 63
+          }
+        }
+      },
+      "winner": "white",
+      "opening": {
+        "eco": "C52",
+        "name": "Italian Game: Evans Gambit, Alapin-Steinitz Variation",
+        "ply": 14
+      },
+      "moves": "e4 e5 Nf3 Nc6 Bc4 Bc5 O-O d6 b4 Bxb4 c3 Ba5 d4 Bg4 Qb3 Qd7 Ng5 Nd8 dxe5 dxe5 Ba3 Nh6 f3 Bb6+ Kh1 Bh5 Rd1 Qc8 Rxd8+ Qxd8 Nxf7 Qh4 Qb5+ c6 Qxe5+ Kd7 Qe6+ Kc7 Bd6#",
+      "pgn": "[Event \"Import\"]\n[Site \"https://lichess.org/iu8dNeu6\"]\n[Date \"2016.04.05\"]\n[White \"?\"]\n[Black \"?\"]\n[Result \"1-0\"]\n[UTCDate \"2016.04.05\"]\n[UTCTime \"22:32:59\"]\n[WhiteElo \"?\"]\n[BlackElo \"?\"]\n[Variant \"Standard\"]\n[TimeControl \"-\"]\n[ECO \"C52\"]\n[Opening \"Italian Game: Evans Gambit, Alapin-Steinitz Variation\"]\n[Termination \"Normal\"]\n\n1. e4 { [%eval 0.14] } 1... e5 { [%eval 0.15] } 2. Nf3 { [%eval 0.19] } 2... Nc6 { [%eval 0.18] } 3. Bc4 { [%eval 0.12] } 3... Bc5 { [%eval 0.33] } 4. O-O { [%eval 0.22] } 4... d6 { [%eval 0.53] } 5. b4 { [%eval -0.33] } 5... Bxb4 { [%eval -0.3] } 6. c3 { [%eval -0.24] } 6... Ba5 { [%eval -0.29] } 7. d4 { [%eval -0.27] } 7... Bg4 { [%eval -0.08] } 8. Qb3 { [%eval -0.64] } 8... Qd7 { [%eval 0.79] } 9. Ng5 { [%eval 0.43] } 9... Nd8 { [%eval 1.26] } 10. dxe5 { [%eval 1.26] } 10... dxe5 { [%eval 1.34] } 11. Ba3 { [%eval 0.88] } 11... Nh6 { [%eval 1.11] } 12. f3 { [%eval 1.05] } 12... Bb6+ { [%eval 1.4] } 13. Kh1 { [%eval 1.78] } 13... Bh5 { [%eval 5.97] } 14. Rd1 { [%eval 5.39] } 14... Qc8 { [%eval 13.39] } 15. Rxd8+ { [%eval 0.93] } 15... Qxd8 { [%eval 0.81] } 16. Nxf7 { [%eval 0.45] } 16... Qh4 { [%eval #3] } 17. Qb5+ { [%eval #3] } 17... c6 { [%eval #3] } 18. Qxe5+ { [%eval #2] } 18... Kd7 { [%eval #2] } 19. Qe6+ { [%eval #1] } 19... Kc7 { [%eval #1] } 20. Bd6# 1-0\n\n\n",
+      "analysis": [
+        {
+          "eval": 14
+        },
+        {
+          "eval": 15
+        },
+        {
+          "eval": 19
+        },
+        {
+          "eval": 18
+        },
+        {
+          "eval": 12
+        },
+        {
+          "eval": 33
+        },
+        {
+          "eval": 22
+        },
+        {
+          "eval": 53
+        },
+        {
+          "eval": -33,
+          "best": "c2c3",
+          "variation": "c3 Bb6 b4 Nf6 d3 a5 b5 Ne7 a4 O-O Nbd2 c6 Ba3 Re8",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. c3 was best."
+          }
+        },
+        {
+          "eval": -30
+        },
+        {
+          "eval": -24
+        },
+        {
+          "eval": -29
+        },
+        {
+          "eval": -27
+        },
+        {
+          "eval": -8
+        },
+        {
+          "eval": -64,
+          "best": "c4b5",
+          "variation": "Bb5 exd4 Qa4 Bxf3 gxf3 Bb6 cxd4 Kf8 Bxc6 bxc6 Be3 c5 d5 h5",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. Bb5 was best."
+          }
+        },
+        {
+          "eval": 79,
+          "best": "g4f3",
+          "variation": "Bxf3 gxf3 exd4 Qxb7 Ne5 f4 Rb8 Qa6 Nxc4 Qxc4 Ne7 cxd4 O-O f5",
+          "judgment": {
+            "name": "Mistake",
+            "comment": "Mistake. Bxf3 was best."
+          }
+        },
+        {
+          "eval": 43
+        },
+        {
+          "eval": 126,
+          "best": "g8h6",
+          "variation": "Nh6 d5 Nd8 Na3 c6 Rb1 O-O Be3 Bb6 Bxb6 axb6 f3 Qe7 h4",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. Nh6 was best."
+          }
+        },
+        {
+          "eval": 126
+        },
+        {
+          "eval": 134
+        },
+        {
+          "eval": 88
+        },
+        {
+          "eval": 111
+        },
+        {
+          "eval": 105
+        },
+        {
+          "eval": 140
+        },
+        {
+          "eval": 178
+        },
+        {
+          "eval": 597,
+          "best": "b6e3",
+          "variation": "Be3 Rd1 Bxg5 fxg4 Qxg4 h3 Qh5 Nd2 Ng4 Rf1 Qg6 Nf3 Be7 hxg4",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Blunder. Be3 was best."
+          }
+        },
+        {
+          "eval": 539
+        },
+        {
+          "eval": 1339,
+          "best": "b6e3",
+          "variation": "Be3 Rxd7 Kxd7 Nh3 Kc8 Qc2 f6 Qd3 Bb6 Nd2 Bf7 Bd5 c6 Bc4",
+          "judgment": {
+            "name": "Mistake",
+            "comment": "Mistake. Be3 was best."
+          }
+        },
+        {
+          "eval": 93,
+          "best": "b3b5",
+          "variation": "Qb5+ Nc6",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Blunder. Qb5+ was best."
+          }
+        },
+        {
+          "eval": 81
+        },
+        {
+          "eval": 45
+        },
+        {
+          "mate": 3,
+          "best": "d8f6",
+          "variation": "Qf6 Qa4+ c6 Nd6+ Kd7 Be2 Kc7 Nd2 Bf7 N2c4 Rhd8 Rb1 Rab8 Rd1",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Checkmate is now unavoidable. Qf6 was best."
+          }
+        },
+        {
+          "mate": 3,
+          "best": "c4b5",
+          "variation": "Bb5+ c6 Qe6+ Qe7 Qxe7#"
+        },
+        {
+          "mate": 3
+        },
+        {
+          "mate": 2
+        },
+        {
+          "mate": 2
+        },
+        {
+          "mate": 1
+        },
+        {
+          "mate": 1
+        }
+      ]
+    }
   ]
 }
