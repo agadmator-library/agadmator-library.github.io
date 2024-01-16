@@ -78,5 +78,228 @@
       "cp": 0,
       "mate": null
     }
+  ],
+  "lichessGameEval": [
+    {
+      "id": "ZzzoMzLB",
+      "rated": false,
+      "variant": "standard",
+      "speed": "correspondence",
+      "perf": "correspondence",
+      "createdAt": 1705072949776,
+      "lastMoveAt": 1705072949776,
+      "status": "started",
+      "players": {
+        "white": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 3,
+            "mistake": 0,
+            "blunder": 0,
+            "acpl": 14,
+            "accuracy": 94
+          }
+        },
+        "black": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 1,
+            "mistake": 1,
+            "blunder": 0,
+            "acpl": 12,
+            "accuracy": 94
+          }
+        }
+      },
+      "opening": {
+        "eco": "B90",
+        "name": "Sicilian Defense: Scheveningen Variation, Delayed Keres Attack",
+        "ply": 13
+      },
+      "moves": "e4 c5 Nf3 d6 d4 cxd4 Nxd4 Nf6 Nc3 a6 Be3 e6 g4 h6 f4 e5 Nf5 Nc6 Qf3 g6 O-O-O gxf5 exf5 e4 Nxe4 Nxe4 Qxe4+ Qe7 Qd3 Bg7 Bd2 O-O g5 hxg5 fxg5 Qe5 f6 Bf5 Qg3 Rfc8 Bc3 Nb4 Bxe5 Rxc2+ Kb1 Re2+ Ka1 Nc2+ Kb1 Na3+",
+      "pgn": "[Event \"Import\"]\n[Site \"https://lichess.org/ZzzoMzLB\"]\n[Date \"2024.01.12\"]\n[White \"?\"]\n[Black \"?\"]\n[Result \"*\"]\n[UTCDate \"2024.01.12\"]\n[UTCTime \"15:22:29\"]\n[WhiteElo \"?\"]\n[BlackElo \"?\"]\n[Variant \"Standard\"]\n[TimeControl \"-\"]\n[ECO \"B90\"]\n[Opening \"Sicilian Defense: Scheveningen Variation, Delayed Keres Attack\"]\n[Termination \"Unterminated\"]\n\n1. e4 { [%eval 0.2] } 1... c5 { [%eval 0.33] } 2. Nf3 { [%eval 0.17] } 2... d6 { [%eval 0.0] } 3. d4 { [%eval 0.25] } 3... cxd4 { [%eval 0.13] } 4. Nxd4 { [%eval 0.27] } 4... Nf6 { [%eval 0.3] } 5. Nc3 { [%eval 0.21] } 5... a6 { [%eval 0.39] } 6. Be3 { [%eval 0.12] } 6... e6 { [%eval 0.0] } 7. g4 { [%eval 0.0] } 7... h6 { [%eval 0.94] } 8. f4 { [%eval 0.25] } 8... e5 { [%eval 0.27] } 9. Nf5 { [%eval 0.48] } 9... Nc6 { [%eval 0.51] } 10. Qf3 { [%eval -0.16] } 10... g6 { [%eval 0.02] } 11. O-O-O { [%eval -0.29] } 11... gxf5 { [%eval -0.08] } 12. exf5 { [%eval -0.27] } 12... e4 { [%eval 0.87] } 13. Nxe4 { [%eval 1.03] } 13... Nxe4 { [%eval 1.01] } 14. Qxe4+ { [%eval 0.88] } 14... Qe7 { [%eval 0.95] } 15. Qd3 { [%eval 0.7] } 15... Bg7 { [%eval 0.54] } 16. Bd2 { [%eval 0.64] } 16... O-O { [%eval 0.58] } 17. g5 { [%eval -0.06] } 17... hxg5 { [%eval -0.07] } 18. fxg5 { [%eval -0.03] } 18... Qe5 { [%eval -0.08] } 19. f6 { [%eval -0.06] } 19... Bf5 { [%eval -0.07] } 20. Qg3 { [%eval 0.0] } 20... Rfc8 { [%eval -0.07] } 21. Bc3 { [%eval -0.05] } 21... Nb4 { [%eval 0.0] } 22. Bxe5 { [%eval 0.0] } 22... Rxc2+ { [%eval 0.0] } 23. Kb1 { [%eval 0.0] } 23... Re2+ { [%eval 0.0] } 24. Ka1 { [%eval 0.0] } 24... Nc2+ { [%eval 0.0] } 25. Kb1 { [%eval 0.0] } 25... Na3+ { [%eval 0.0] } *\n\n\n",
+      "analysis": [
+        {
+          "eval": 20
+        },
+        {
+          "eval": 33
+        },
+        {
+          "eval": 17
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 25
+        },
+        {
+          "eval": 13
+        },
+        {
+          "eval": 27
+        },
+        {
+          "eval": 30
+        },
+        {
+          "eval": 21
+        },
+        {
+          "eval": 39
+        },
+        {
+          "eval": 12
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 94,
+          "best": "e6e5",
+          "variation": "e5 Nf5 g6 g5 gxf5 exf5 d5 Qf3 d4 O-O-O",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. e5 was best."
+          }
+        },
+        {
+          "eval": 25,
+          "best": "h2h4",
+          "variation": "h4 e5 Nf5 g6 Nxh6 Bxh6 g5 Ng4 gxh6 Nxe3",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. h4 was best."
+          }
+        },
+        {
+          "eval": 27
+        },
+        {
+          "eval": 48
+        },
+        {
+          "eval": 51
+        },
+        {
+          "eval": -16,
+          "best": "d1e2",
+          "variation": "Qe2 h5",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. Qe2 was best."
+          }
+        },
+        {
+          "eval": 2
+        },
+        {
+          "eval": -29
+        },
+        {
+          "eval": -8
+        },
+        {
+          "eval": -27
+        },
+        {
+          "eval": 87,
+          "best": "c8d7",
+          "variation": "Bd7 Bg2",
+          "judgment": {
+            "name": "Mistake",
+            "comment": "Mistake. Bd7 was best."
+          }
+        },
+        {
+          "eval": 103
+        },
+        {
+          "eval": 101
+        },
+        {
+          "eval": 88
+        },
+        {
+          "eval": 95
+        },
+        {
+          "eval": 70
+        },
+        {
+          "eval": 54
+        },
+        {
+          "eval": 64
+        },
+        {
+          "eval": 58
+        },
+        {
+          "eval": -6,
+          "best": "h1g1",
+          "variation": "Rg1 d5",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. Rg1 was best."
+          }
+        },
+        {
+          "eval": -7
+        },
+        {
+          "eval": -3
+        },
+        {
+          "eval": -8
+        },
+        {
+          "eval": -6
+        },
+        {
+          "eval": -7
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": -7
+        },
+        {
+          "eval": -5
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        }
+      ]
+    }
   ]
 }
