@@ -88,5 +88,147 @@
     {
       "id": "OTrLAvBm"
     }
+  ],
+  "lichessGameEval": [
+    {
+      "id": "OTrLAvBm",
+      "rated": false,
+      "variant": "standard",
+      "speed": "correspondence",
+      "perf": "correspondence",
+      "createdAt": 1636574719587,
+      "lastMoveAt": 1636574719587,
+      "status": "started",
+      "players": {
+        "white": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 1,
+            "mistake": 0,
+            "blunder": 0,
+            "acpl": 15,
+            "accuracy": 93
+          }
+        },
+        "black": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 0,
+            "mistake": 0,
+            "blunder": 0,
+            "acpl": 12,
+            "accuracy": 95
+          }
+        }
+      },
+      "opening": {
+        "eco": "A30",
+        "name": "English Opening: Symmetrical Variation",
+        "ply": 3
+      },
+      "moves": "c4 c5 Nf3 Nf6 g3 b6 Bg2 Bb7 O-O g6 d4 cxd4 Qxd4 Bg7 Nc3 Nc6 Qh4 h6 Nd5 e6 Nxf6+ Qxf6 Qxf6 Bxf6 Rb1 Na5 b3 Be4 Bb2 Bxb2 Rxb2",
+      "pgn": "[Event \"Import\"]\n[Site \"https://lichess.org/OTrLAvBm\"]\n[Date \"2021.11.10\"]\n[White \"?\"]\n[Black \"?\"]\n[Result \"*\"]\n[UTCDate \"2021.11.10\"]\n[UTCTime \"20:05:19\"]\n[WhiteElo \"?\"]\n[BlackElo \"?\"]\n[Variant \"Standard\"]\n[TimeControl \"-\"]\n[ECO \"A30\"]\n[Opening \"English Opening: Symmetrical Variation\"]\n[Termination \"Unterminated\"]\n\n1. c4 { [%eval 0.23] } 1... c5 { [%eval 0.37] } 2. Nf3 { [%eval 0.21] } 2... Nf6 { [%eval 0.32] } 3. g3 { [%eval 0.11] } 3... b6 { [%eval 0.2] } 4. Bg2 { [%eval 0.36] } 4... Bb7 { [%eval 0.79] } 5. O-O { [%eval 0.38] } 5... g6 { [%eval 0.54] } 6. d4 { [%eval 0.36] } 6... cxd4 { [%eval 0.56] } 7. Qxd4 { [%eval 0.44] } 7... Bg7 { [%eval 0.54] } 8. Nc3 { [%eval 0.4] } 8... Nc6 { [%eval 0.53] } 9. Qh4 { [%eval 0.21] } 9... h6 { [%eval 0.41] } 10. Nd5 { [%eval -0.29] } 10... e6 { [%eval -0.17] } 11. Nxf6+ { [%eval 0.0] } 11... Qxf6 { [%eval 0.06] } 12. Qxf6 { [%eval 0.1] } 12... Bxf6 { [%eval 0.07] } 13. Rb1 { [%eval 0.05] } 13... Na5 { [%eval 0.12] } 14. b3 { [%eval 0.01] } 14... Be4 { [%eval -0.04] } 15. Bb2 { [%eval -0.01] } 15... Bxb2 { [%eval 0.04] } 16. Rxb2 { [%eval 0.0] } *\n\n\n",
+      "analysis": [
+        {
+          "eval": 23
+        },
+        {
+          "eval": 37
+        },
+        {
+          "eval": 21
+        },
+        {
+          "eval": 32
+        },
+        {
+          "eval": 11
+        },
+        {
+          "eval": 20
+        },
+        {
+          "eval": 36
+        },
+        {
+          "eval": 79
+        },
+        {
+          "eval": 38
+        },
+        {
+          "eval": 54
+        },
+        {
+          "eval": 36
+        },
+        {
+          "eval": 56
+        },
+        {
+          "eval": 44
+        },
+        {
+          "eval": 54
+        },
+        {
+          "eval": 40
+        },
+        {
+          "eval": 53
+        },
+        {
+          "eval": 21
+        },
+        {
+          "eval": 41
+        },
+        {
+          "eval": -29,
+          "best": "h4f4",
+          "variation": "Qf4 O-O",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. Qf4 was best."
+          }
+        },
+        {
+          "eval": -17
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 6
+        },
+        {
+          "eval": 10
+        },
+        {
+          "eval": 7
+        },
+        {
+          "eval": 5
+        },
+        {
+          "eval": 12
+        },
+        {
+          "eval": 1
+        },
+        {
+          "eval": -4
+        },
+        {
+          "eval": -1
+        },
+        {
+          "eval": 4
+        },
+        {
+          "eval": 0
+        }
+      ]
+    }
   ]
 }
