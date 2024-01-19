@@ -88,5 +88,159 @@
     {
       "id": "CxG4Tbq6"
     }
+  ],
+  "lichessGameEval": [
+    {
+      "id": "CxG4Tbq6",
+      "rated": false,
+      "variant": "standard",
+      "speed": "correspondence",
+      "perf": "correspondence",
+      "createdAt": 1672141370326,
+      "lastMoveAt": 1672141370326,
+      "status": "started",
+      "players": {
+        "white": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 0,
+            "mistake": 0,
+            "blunder": 0,
+            "acpl": 13,
+            "accuracy": 96
+          }
+        },
+        "black": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 0,
+            "mistake": 0,
+            "blunder": 1,
+            "acpl": 70,
+            "accuracy": 66
+          }
+        }
+      },
+      "opening": {
+        "eco": "D28",
+        "name": "Queen's Gambit Accepted: Classical Defense, Alekhine System",
+        "ply": 14
+      },
+      "moves": "d4 d5 c4 dxc4 Nf3 Nf6 e3 e6 Bxc4 c5 O-O a6 Qe2 b5 Bd3 cxd4 a4 bxa4 Rxa4 Be7 Rxd4 Qb6 Nbd2 Nc6 Rh4 Bb7 Nc4 Qc7 Bd2 O-O Bc3 g6 Ng5 Nd5 Qh5",
+      "pgn": "[Event \"Import\"]\n[Site \"https://lichess.org/CxG4Tbq6\"]\n[Date \"2022.12.27\"]\n[White \"?\"]\n[Black \"?\"]\n[Result \"*\"]\n[UTCDate \"2022.12.27\"]\n[UTCTime \"11:42:50\"]\n[WhiteElo \"?\"]\n[BlackElo \"?\"]\n[Variant \"Standard\"]\n[TimeControl \"-\"]\n[ECO \"D28\"]\n[Opening \"Queen's Gambit Accepted: Classical Defense, Alekhine System\"]\n[Termination \"Unterminated\"]\n\n1. d4 { [%eval 0.0] } 1... d5 { [%eval 0.27] } 2. c4 { [%eval 0.29] } 2... dxc4 { [%eval 0.33] } 3. Nf3 { [%eval 0.0] } 3... Nf6 { [%eval 0.32] } 4. e3 { [%eval 0.34] } 4... e6 { [%eval 0.47] } 5. Bxc4 { [%eval 0.25] } 5... c5 { [%eval 0.37] } 6. O-O { [%eval 0.35] } 6... a6 { [%eval 0.42] } 7. Qe2 { [%eval 0.01] } 7... b5 { [%eval 0.0] } 8. Bd3 { [%eval 0.11] } 8... cxd4 { [%eval 0.22] } 9. a4 { [%eval 0.18] } 9... bxa4 { [%eval 0.15] } 10. Rxa4 { [%eval 0.06] } 10... Be7 { [%eval 0.55] } 11. Rxd4 { [%eval 0.61] } 11... Qb6 { [%eval 0.61] } 12. Nbd2 { [%eval 0.41] } 12... Nc6 { [%eval 0.45] } 13. Rh4 { [%eval 0.48] } 13... Bb7 { [%eval 0.84] } 14. Nc4 { [%eval 0.97] } 14... Qc7 { [%eval 0.92] } 15. Bd2 { [%eval 0.65] } 15... O-O { [%eval 1.03] } 16. Bc3 { [%eval 0.5] } 16... g6 { [%eval 0.73] } 17. Ng5 { [%eval 0.7] } 17... Nd5 { [%eval #5] } 18. Qh5 { [%eval #4] } *\n\n\n",
+      "analysis": [
+        {
+          "eval": 0
+        },
+        {
+          "eval": 27
+        },
+        {
+          "eval": 29
+        },
+        {
+          "eval": 33
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 32
+        },
+        {
+          "eval": 34
+        },
+        {
+          "eval": 47
+        },
+        {
+          "eval": 25
+        },
+        {
+          "eval": 37
+        },
+        {
+          "eval": 35
+        },
+        {
+          "eval": 42
+        },
+        {
+          "eval": 1
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 11
+        },
+        {
+          "eval": 22
+        },
+        {
+          "eval": 18
+        },
+        {
+          "eval": 15
+        },
+        {
+          "eval": 6
+        },
+        {
+          "eval": 55
+        },
+        {
+          "eval": 61
+        },
+        {
+          "eval": 61
+        },
+        {
+          "eval": 41
+        },
+        {
+          "eval": 45
+        },
+        {
+          "eval": 48
+        },
+        {
+          "eval": 84
+        },
+        {
+          "eval": 97
+        },
+        {
+          "eval": 92
+        },
+        {
+          "eval": 65
+        },
+        {
+          "eval": 103
+        },
+        {
+          "eval": 50
+        },
+        {
+          "eval": 73
+        },
+        {
+          "eval": 70
+        },
+        {
+          "mate": 5,
+          "best": "e6e5",
+          "variation": "e5 Rh3",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Checkmate is now unavoidable. e5 was best."
+          }
+        },
+        {
+          "mate": 4
+        }
+      ]
+    }
   ]
 }
