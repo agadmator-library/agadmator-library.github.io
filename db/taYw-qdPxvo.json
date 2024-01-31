@@ -95,5 +95,129 @@
     {
       "id": "vMVdTexJ"
     }
+  ],
+  "lichessGameEval": [
+    {
+      "id": "vMVdTexJ",
+      "rated": false,
+      "variant": "standard",
+      "speed": "correspondence",
+      "perf": "correspondence",
+      "createdAt": 1568825258236,
+      "lastMoveAt": 1568825258236,
+      "status": "started",
+      "source": "import",
+      "players": {
+        "white": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 0,
+            "mistake": 0,
+            "blunder": 0,
+            "acpl": 12,
+            "accuracy": 95
+          }
+        },
+        "black": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 0,
+            "mistake": 0,
+            "blunder": 1,
+            "acpl": 84,
+            "accuracy": 62
+          }
+        }
+      },
+      "opening": {
+        "eco": "B40",
+        "name": "Sicilian Defense: Pin Variation, Koch Variation",
+        "ply": 11
+      },
+      "moves": "e4 c5 Nf3 Nf6 Nc3 e6 d4 cxd4 Nxd4 Bb4 e5 Nd5 Bd2 Nxc3 bxc3 Bf8 Bd3 d6 Qe2 Nd7 Nxe6 Qb6 Nc7+",
+      "pgn": "[Event \"Import\"]\n[Site \"https://lichess.org/vMVdTexJ\"]\n[Date \"2019.09.18\"]\n[White \"?\"]\n[Black \"?\"]\n[Result \"*\"]\n[UTCDate \"2019.09.18\"]\n[UTCTime \"16:47:38\"]\n[WhiteElo \"?\"]\n[BlackElo \"?\"]\n[Variant \"Standard\"]\n[TimeControl \"-\"]\n[ECO \"B40\"]\n[Opening \"Sicilian Defense: Pin Variation, Koch Variation\"]\n[Termination \"Unterminated\"]\n\n1. e4 { [%eval 0.24] } 1... c5 { [%eval 0.2] } 2. Nf3 { [%eval 0.21] } 2... Nf6 { [%eval 0.46] } 3. Nc3 { [%eval 0.25] } 3... e6 { [%eval 0.5] } 4. d4 { [%eval 0.33] } 4... cxd4 { [%eval 0.37] } 5. Nxd4 { [%eval 0.22] } 5... Bb4 { [%eval 0.75] } 6. e5 { [%eval 0.31] } 6... Nd5 { [%eval 0.65] } 7. Bd2 { [%eval 0.43] } 7... Nxc3 { [%eval 0.74] } 8. bxc3 { [%eval 0.73] } 8... Bf8 { [%eval 0.75] } 9. Bd3 { [%eval 0.78] } 9... d6 { [%eval 0.66] } 10. Qe2 { [%eval 0.67] } 10... Nd7 { [%eval 6.1] } 11. Nxe6 { [%eval 6.21] } 11... Qb6 { [%eval 8.3] } 12. Nc7+ { [%eval 8.07] } *\n\n\n",
+      "analysis": [
+        {
+          "eval": 24
+        },
+        {
+          "eval": 20
+        },
+        {
+          "eval": 21
+        },
+        {
+          "eval": 46
+        },
+        {
+          "eval": 25
+        },
+        {
+          "eval": 50
+        },
+        {
+          "eval": 33
+        },
+        {
+          "eval": 37
+        },
+        {
+          "eval": 22
+        },
+        {
+          "eval": 75,
+          "best": "b8c6",
+          "variation": "Nc6 Nxc6 bxc6 e5 Nd5 Ne4 Qc7 f4 Qa5+ c3"
+        },
+        {
+          "eval": 31
+        },
+        {
+          "eval": 65
+        },
+        {
+          "eval": 43
+        },
+        {
+          "eval": 74
+        },
+        {
+          "eval": 73
+        },
+        {
+          "eval": 75
+        },
+        {
+          "eval": 78
+        },
+        {
+          "eval": 66
+        },
+        {
+          "eval": 67
+        },
+        {
+          "eval": 610,
+          "best": "b8c6",
+          "variation": "Nc6 Nxc6",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Blunder. Nc6 was best."
+          }
+        },
+        {
+          "eval": 621
+        },
+        {
+          "eval": 830
+        },
+        {
+          "eval": 807
+        }
+      ],
+      "division": {
+        "middle": 19
+      }
+    }
   ]
 }
