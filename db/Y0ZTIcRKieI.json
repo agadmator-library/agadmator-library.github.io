@@ -95,5 +95,175 @@
     {
       "id": "COzo54Tq"
     }
+  ],
+  "lichessGameEval": [
+    {
+      "id": "COzo54Tq",
+      "rated": false,
+      "variant": "standard",
+      "speed": "correspondence",
+      "perf": "correspondence",
+      "createdAt": 1683820789440,
+      "lastMoveAt": 1683820789440,
+      "status": "started",
+      "source": "import",
+      "players": {
+        "white": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 1,
+            "mistake": 0,
+            "blunder": 0,
+            "acpl": 18,
+            "accuracy": 93
+          }
+        },
+        "black": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 2,
+            "mistake": 2,
+            "blunder": 0,
+            "acpl": 41,
+            "accuracy": 80
+          }
+        }
+      },
+      "opening": {
+        "eco": "B22",
+        "name": "Sicilian Defense: Alapin Variation, Barmen Defense",
+        "ply": 6
+      },
+      "moves": "e4 c5 c3 d5 exd5 Qxd5 d4 g6 Nf3 Bg7 Na3 Nh6 dxc5 Qxc5 Be3 Qa5 Nb5 Bd7 Qd5 Nc6 Bxh6 Bxh6 Ne5 O-O Nxd7 Rad8 Rd1 Nb8 b4 Qa6 Nxb8",
+      "pgn": "[Event \"Import\"]\n[Site \"https://lichess.org/COzo54Tq\"]\n[Date \"2023.05.11\"]\n[White \"?\"]\n[Black \"?\"]\n[Result \"*\"]\n[UTCDate \"2023.05.11\"]\n[UTCTime \"15:59:49\"]\n[WhiteElo \"?\"]\n[BlackElo \"?\"]\n[Variant \"Standard\"]\n[TimeControl \"-\"]\n[ECO \"B22\"]\n[Opening \"Sicilian Defense: Alapin Variation, Barmen Defense\"]\n[Termination \"Unterminated\"]\n\n1. e4 { [%eval 0.36] } 1... c5 { [%eval 0.32] } 2. c3 { [%eval 0.0] } 2... d5 { [%eval 0.26] } 3. exd5 { [%eval 0.17] } 3... Qxd5 { [%eval 0.18] } 4. d4 { [%eval 0.11] } 4... g6 { [%eval 0.24] } 5. Nf3 { [%eval 0.31] } 5... Bg7 { [%eval 0.38] } 6. Na3 { [%eval 0.18] } 6... Nh6 { [%eval 0.97] } 7. dxc5 { [%eval 0.49] } 7... Qxc5 { [%eval 0.37] } 8. Be3 { [%eval 0.5] } 8... Qa5 { [%eval 0.66] } 9. Nb5 { [%eval -0.13] } 9... Bd7 { [%eval 1.48] } 10. Qd5 { [%eval 1.18] } 10... Nc6 { [%eval 1.37] } 11. Bxh6 { [%eval 1.19] } 11... Bxh6 { [%eval 1.21] } 12. Ne5 { [%eval 1.31] } 12... O-O { [%eval 2.09] } 13. Nxd7 { [%eval 2.24] } 13... Rad8 { [%eval 2.24] } 14. Rd1 { [%eval 2.26] } 14... Nb8 { [%eval 2.61] } 15. b4 { [%eval 2.23] } 15... Qa6 { [%eval 3.95] } 16. Nxb8 { [%eval 4.06] } *\n\n\n",
+      "analysis": [
+        {
+          "eval": 36
+        },
+        {
+          "eval": 32
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 26
+        },
+        {
+          "eval": 17
+        },
+        {
+          "eval": 18
+        },
+        {
+          "eval": 11
+        },
+        {
+          "eval": 24
+        },
+        {
+          "eval": 31
+        },
+        {
+          "eval": 38
+        },
+        {
+          "eval": 18
+        },
+        {
+          "eval": 97,
+          "best": "c5d4",
+          "variation": "cxd4 Nb5 Na6 Nbxd4 Nf6 Bb5+ Bd7 Qe2 O-O O-O",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. cxd4 was best."
+          }
+        },
+        {
+          "eval": 49
+        },
+        {
+          "eval": 37
+        },
+        {
+          "eval": 50
+        },
+        {
+          "eval": 66
+        },
+        {
+          "eval": -13,
+          "best": "a3c4",
+          "variation": "Nc4 Qc7 Qd2 Nf5 Bf4 Qc6 O-O-O O-O Nce5 Qb6 Nxf7 Be6 N7e5 Bxa2",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. Nc4 was best."
+          }
+        },
+        {
+          "eval": 148,
+          "best": "h6f5",
+          "variation": "Nf5 Bf4",
+          "judgment": {
+            "name": "Mistake",
+            "comment": "Mistake. Nf5 was best."
+          }
+        },
+        {
+          "eval": 118
+        },
+        {
+          "eval": 137
+        },
+        {
+          "eval": 119
+        },
+        {
+          "eval": 121
+        },
+        {
+          "eval": 131
+        },
+        {
+          "eval": 209,
+          "best": "e8a8",
+          "variation": "O-O-O",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. O-O-O was best."
+          }
+        },
+        {
+          "eval": 224
+        },
+        {
+          "eval": 224
+        },
+        {
+          "eval": 226
+        },
+        {
+          "eval": 261
+        },
+        {
+          "eval": 223
+        },
+        {
+          "eval": 395,
+          "best": "a5a4",
+          "variation": "Qa4 Nc5 Qc2 Qxd8 Rxd8 Rxd8+ Kg7 Bc4 b6 O-O Nc6 Bb3 Qe2 Nd4",
+          "judgment": {
+            "name": "Mistake",
+            "comment": "Mistake. Qa4 was best."
+          }
+        },
+        {
+          "eval": 406
+        }
+      ],
+      "division": {
+        "middle": 20
+      }
+    }
   ]
 }
