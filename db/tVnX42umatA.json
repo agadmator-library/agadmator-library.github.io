@@ -72,5 +72,128 @@
     {
       "id": "m2LrSmyB"
     }
+  ],
+  "lichessGameEval": [
+    {
+      "id": "m2LrSmyB",
+      "rated": false,
+      "variant": "standard",
+      "speed": "correspondence",
+      "perf": "correspondence",
+      "createdAt": 1452035360758,
+      "lastMoveAt": 1452035362015,
+      "status": "mate",
+      "source": "import",
+      "players": {
+        "white": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 2,
+            "mistake": 0,
+            "blunder": 1,
+            "acpl": 169,
+            "accuracy": 28
+          }
+        },
+        "black": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 0,
+            "mistake": 0,
+            "blunder": 1,
+            "acpl": 60,
+            "accuracy": 59
+          }
+        }
+      },
+      "winner": "black",
+      "opening": {
+        "eco": "B00",
+        "name": "Nimzowitsch Defense: Declined Variation",
+        "ply": 3
+      },
+      "moves": "e4 Nc6 Nf3 d5 Bd3 Nf6 exd5 Qxd5 Nc3 Qh5 O-O Bg4 h3 e5 hxg4 Nxg4 Nxe5 Qh2#",
+      "pgn": "[Event \"Import\"]\n[Site \"https://lichess.org/m2LrSmyB\"]\n[Date \"2016.01.05\"]\n[White \"?\"]\n[Black \"?\"]\n[Result \"0-1\"]\n[UTCDate \"2016.01.05\"]\n[UTCTime \"23:09:20\"]\n[WhiteElo \"?\"]\n[BlackElo \"?\"]\n[Variant \"Standard\"]\n[TimeControl \"-\"]\n[ECO \"B00\"]\n[Opening \"Nimzowitsch Defense: Declined Variation\"]\n[Termination \"Normal\"]\n\n1. e4 { [%eval 0.27] } 1... Nc6 { [%eval 0.42] } 2. Nf3 { [%eval 0.33] } 2... d5 { [%eval 0.84] } 3. Bd3 { [%eval -0.06] } 3... Nf6 { [%eval 0.2] } 4. exd5 { [%eval 0.23] } 4... Qxd5 { [%eval 0.34] } 5. Nc3 { [%eval 0.22] } 5... Qh5 { [%eval 0.33] } 6. O-O { [%eval 0.0] } 6... Bg4 { [%eval -0.08] } 7. h3 { [%eval -0.68] } 7... e5 { [%eval 2.77] } 8. hxg4 { [%eval 3.01] } 8... Nxg4 { [%eval 3.2] } 9. Nxe5 { [%eval #-1] } 9... Qh2# 0-1\n\n\n",
+      "analysis": [
+        {
+          "eval": 27
+        },
+        {
+          "eval": 42
+        },
+        {
+          "eval": 33
+        },
+        {
+          "eval": 84,
+          "best": "e7e5",
+          "variation": "e5 Bb5 a6 Bxc6 dxc6 O-O Bg4 h3 Bxf3 Qxf3 Nf6 d3 Bc5 Bg5 Qe7 Nd2"
+        },
+        {
+          "eval": -6,
+          "best": "e4d5",
+          "variation": "exd5 Qxd5 Nc3 Qd6 d4 a6 d5 Ne5 Nxe5 Qxe5+ Be2 Bg4 Be3 Bxe2 Qxe2 Nf6",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. exd5 was best."
+          }
+        },
+        {
+          "eval": 20
+        },
+        {
+          "eval": 23
+        },
+        {
+          "eval": 34
+        },
+        {
+          "eval": 22
+        },
+        {
+          "eval": 33
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": -8
+        },
+        {
+          "eval": -68,
+          "best": "d3e2",
+          "variation": "Be2 e6 d4 O-O-O h3 Nxd4 Nxd4 Bxe2 Ncxe2 e5 Be3 Qg6 Qd3 Qxd3 cxd3 exd4",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. Be2 was best."
+          }
+        },
+        {
+          "eval": 277,
+          "best": "g4f3",
+          "variation": "Bxf3 Qxf3 Qxf3 gxf3 O-O-O Be2 g6 d3 Nd4 Bd1 Bg7 Re1 Nf5 Be3 e6 f4",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Blunder. Bxf3 was best."
+          }
+        },
+        {
+          "eval": 301
+        },
+        {
+          "eval": 320
+        },
+        {
+          "mate": -1,
+          "best": "c3e2",
+          "variation": "Ne2 Bc5 Ng3 Nxf2 Rxf2 Qg4 Nh1 O-O-O Qe1 f5 Bb5 Nd4 Nxe5 Nxc2 Nxg4 Nxe1",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Checkmate is now unavoidable. Ne2 was best."
+          }
+        }
+      ],
+      "division": {}
+    }
   ]
 }
