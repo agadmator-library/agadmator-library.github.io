@@ -83,5 +83,181 @@
     {
       "id": "S8OmNVZz"
     }
+  ],
+  "lichessGameEval": [
+    {
+      "id": "S8OmNVZz",
+      "rated": false,
+      "variant": "standard",
+      "speed": "correspondence",
+      "perf": "correspondence",
+      "createdAt": 1632584464929,
+      "lastMoveAt": 1632584464929,
+      "status": "started",
+      "source": "import",
+      "players": {
+        "white": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 1,
+            "mistake": 0,
+            "blunder": 0,
+            "acpl": 14,
+            "accuracy": 95
+          }
+        },
+        "black": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 1,
+            "mistake": 1,
+            "blunder": 1,
+            "acpl": 52,
+            "accuracy": 78
+          }
+        }
+      },
+      "opening": {
+        "eco": "D41",
+        "name": "Queen's Gambit Declined: Semi-Tarrasch Defense, Pillsbury Variation",
+        "ply": 11
+      },
+      "moves": "d4 Nf6 c4 e6 Nc3 d5 cxd5 Nxd5 Nf3 c5 e3 cxd4 exd4 Nxc3 bxc3 Qc7 Rb1 Nd7 Bd3 Qxc3+ Kf1 Be7 h4 O-O Rh3 Nf6 Ne5 Qa5 Rg3 Kh8 Bg5 h6 Bxh6 gxh6 Qf3",
+      "pgn": "[Event \"Import\"]\n[Site \"https://lichess.org/S8OmNVZz\"]\n[Date \"2021.09.25\"]\n[White \"?\"]\n[Black \"?\"]\n[Result \"*\"]\n[UTCDate \"2021.09.25\"]\n[UTCTime \"15:41:04\"]\n[WhiteElo \"?\"]\n[BlackElo \"?\"]\n[Variant \"Standard\"]\n[TimeControl \"-\"]\n[ECO \"D41\"]\n[Opening \"Queen's Gambit Declined: Semi-Tarrasch Defense, Pillsbury Variation\"]\n[Termination \"Unterminated\"]\n\n1. d4 { [%eval 0.0] } 1... Nf6 { [%eval 0.27] } 2. c4 { [%eval 0.11] } 2... e6 { [%eval 0.39] } 3. Nc3 { [%eval 0.0] } 3... d5 { [%eval 0.36] } 4. cxd5 { [%eval 0.16] } 4... Nxd5 { [%eval 0.38] } 5. Nf3 { [%eval 0.28] } 5... c5 { [%eval 0.13] } 6. e3 { [%eval 0.0] } 6... cxd4 { [%eval 0.23] } 7. exd4 { [%eval 0.0] } 7... Nxc3 { [%eval 0.0] } 8. bxc3 { [%eval 0.27] } 8... Qc7 { [%eval 0.19] } 9. Rb1 { [%eval 0.04] } 9... Nd7 { [%eval 0.1] } 10. Bd3 { [%eval -0.51] } 10... Qxc3+ { [%eval -0.34] } 11. Kf1 { [%eval -0.23] } 11... Be7 { [%eval 0.42] } 12. h4 { [%eval 0.3] } 12... O-O { [%eval 0.22] } 13. Rh3 { [%eval 0.32] } 13... Nf6 { [%eval 1.77] } 14. Ne5 { [%eval 1.57] } 14... Qa5 { [%eval 2.0] } 15. Rg3 { [%eval 2.11] } 15... Kh8 { [%eval 5.25] } 16. Bg5 { [%eval 5.41] } 16... h6 { [%eval 7.0] } 17. Bxh6 { [%eval 7.72] } 17... gxh6 { [%eval 7.68] } 18. Qf3 { [%eval 7.87] } *\n\n\n",
+      "analysis": [
+        {
+          "eval": 0
+        },
+        {
+          "eval": 27
+        },
+        {
+          "eval": 11
+        },
+        {
+          "eval": 39
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 36
+        },
+        {
+          "eval": 16
+        },
+        {
+          "eval": 38
+        },
+        {
+          "eval": 28
+        },
+        {
+          "eval": 13
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 23
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 27
+        },
+        {
+          "eval": 19
+        },
+        {
+          "eval": 4
+        },
+        {
+          "eval": 10
+        },
+        {
+          "eval": -51,
+          "best": "c3c4",
+          "variation": "c4",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. c4 was best."
+          }
+        },
+        {
+          "eval": -34
+        },
+        {
+          "eval": -23
+        },
+        {
+          "eval": 42,
+          "best": "f8d6",
+          "variation": "Bd6 h4",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. Bd6 was best."
+          }
+        },
+        {
+          "eval": 30
+        },
+        {
+          "eval": 22
+        },
+        {
+          "eval": 32
+        },
+        {
+          "eval": 177,
+          "best": "c3c7",
+          "variation": "Qc7 Qe2",
+          "judgment": {
+            "name": "Mistake",
+            "comment": "Mistake. Qc7 was best."
+          }
+        },
+        {
+          "eval": 157
+        },
+        {
+          "eval": 200
+        },
+        {
+          "eval": 211
+        },
+        {
+          "eval": 525,
+          "best": "f6e8",
+          "variation": "Ne8 h5 Qc7 Qf3 Bd6 Kg1 f6 Qe4 f5 Qe2 Nf6 Bf4 Qe7 Bg5",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Blunder. Ne8 was best."
+          }
+        },
+        {
+          "eval": 541
+        },
+        {
+          "eval": 700
+        },
+        {
+          "eval": 772
+        },
+        {
+          "eval": 768
+        },
+        {
+          "eval": 787
+        }
+      ],
+      "division": {
+        "middle": 31
+      }
+    }
   ]
 }
