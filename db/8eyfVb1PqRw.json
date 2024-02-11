@@ -83,5 +83,180 @@
     {
       "id": "14ROrD6V"
     }
+  ],
+  "lichessGameEval": [
+    {
+      "id": "14ROrD6V",
+      "rated": false,
+      "variant": "standard",
+      "speed": "correspondence",
+      "perf": "correspondence",
+      "createdAt": 1627924814536,
+      "lastMoveAt": 1627924814536,
+      "status": "started",
+      "source": "import",
+      "players": {
+        "white": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 2,
+            "mistake": 2,
+            "blunder": 0,
+            "acpl": 63,
+            "accuracy": 80
+          }
+        },
+        "black": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 0,
+            "mistake": 0,
+            "blunder": 0,
+            "acpl": 9,
+            "accuracy": 98
+          }
+        }
+      },
+      "opening": {
+        "eco": "A46",
+        "name": "Indian Defense: Knights Variation",
+        "ply": 3
+      },
+      "moves": "d4 Nf6 Nf3 e6 Nbd2 c5 e3 b6 Bd3 Bb7 O-O Be7 c4 O-O b3 d5 Qc2 Nc6 a3 cxd4 cxd5 Qxd5 exd4 Nxd4 Qb1 Rfd8 Ne1 Qh5 Bb2 Bd6 g3 Ng4 h4 Qxh4",
+      "pgn": "[Event \"Import\"]\n[Site \"https://lichess.org/14ROrD6V\"]\n[Date \"2021.08.02\"]\n[White \"?\"]\n[Black \"?\"]\n[Result \"*\"]\n[UTCDate \"2021.08.02\"]\n[UTCTime \"17:20:14\"]\n[WhiteElo \"?\"]\n[BlackElo \"?\"]\n[Variant \"Standard\"]\n[TimeControl \"-\"]\n[ECO \"A46\"]\n[Opening \"Indian Defense: Knights Variation\"]\n[Termination \"Unterminated\"]\n\n1. d4 { [%eval 0.0] } 1... Nf6 { [%eval 0.19] } 2. Nf3 { [%eval 0.12] } 2... e6 { [%eval 0.0] } 3. Nbd2 { [%eval 0.0] } 3... c5 { [%eval 0.19] } 4. e3 { [%eval 0.01] } 4... b6 { [%eval 0.25] } 5. Bd3 { [%eval -0.04] } 5... Bb7 { [%eval 0.0] } 6. O-O { [%eval -0.09] } 6... Be7 { [%eval 0.35] } 7. c4 { [%eval -0.17] } 7... O-O { [%eval 0.0] } 8. b3 { [%eval 0.2] } 8... d5 { [%eval 0.14] } 9. Qc2 { [%eval -0.63] } 9... Nc6 { [%eval -0.71] } 10. a3 { [%eval -2.02] } 10... cxd4 { [%eval -2.21] } 11. cxd5 { [%eval -2.32] } 11... Qxd5 { [%eval -2.56] } 12. exd4 { [%eval -4.38] } 12... Nxd4 { [%eval -4.25] } 13. Qb1 { [%eval -6.64] } 13... Rfd8 { [%eval -6.79] } 14. Ne1 { [%eval -6.61] } 14... Qh5 { [%eval -7.15] } 15. Bb2 { [%eval -7.0] } 15... Bd6 { [%eval -6.92] } 16. g3 { [%eval -17.66] } 16... Ng4 { [%eval -18.76] } 17. h4 { [%eval -28.41] } 17... Qxh4 { [%eval #-5] } *\n\n\n",
+      "analysis": [
+        {
+          "eval": 0
+        },
+        {
+          "eval": 19
+        },
+        {
+          "eval": 12
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 19
+        },
+        {
+          "eval": 1
+        },
+        {
+          "eval": 25
+        },
+        {
+          "eval": -4
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": -9
+        },
+        {
+          "eval": 35
+        },
+        {
+          "eval": -17,
+          "best": "b2b3",
+          "variation": "b3 O-O Bb2 Nc6 a3 d5 Rc1 Bd6 c4 cxd4"
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 20
+        },
+        {
+          "eval": 14
+        },
+        {
+          "eval": -63,
+          "best": "d4c5",
+          "variation": "dxc5 bxc5",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. dxc5 was best."
+          }
+        },
+        {
+          "eval": -71
+        },
+        {
+          "eval": -202,
+          "best": "c2c3",
+          "variation": "Qc3",
+          "judgment": {
+            "name": "Mistake",
+            "comment": "Mistake. Qc3 was best."
+          }
+        },
+        {
+          "eval": -221
+        },
+        {
+          "eval": -232
+        },
+        {
+          "eval": -256
+        },
+        {
+          "eval": -438,
+          "best": "e3e4",
+          "variation": "e4 Qh5",
+          "judgment": {
+            "name": "Mistake",
+            "comment": "Mistake. e4 was best."
+          }
+        },
+        {
+          "eval": -425
+        },
+        {
+          "eval": -664,
+          "best": "c2c4",
+          "variation": "Qc4 Nxf3+",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. Qc4 was best."
+          }
+        },
+        {
+          "eval": -679
+        },
+        {
+          "eval": -661
+        },
+        {
+          "eval": -715
+        },
+        {
+          "eval": -700
+        },
+        {
+          "eval": -692
+        },
+        {
+          "eval": -1766
+        },
+        {
+          "eval": -1876
+        },
+        {
+          "eval": -2841
+        },
+        {
+          "mate": -5
+        }
+      ],
+      "division": {
+        "middle": 22
+      }
+    }
   ]
 }
