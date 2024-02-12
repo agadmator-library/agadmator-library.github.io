@@ -73,5 +73,228 @@
     {
       "id": "dGy5ELNf"
     }
+  ],
+  "lichessGameEval": [
+    {
+      "id": "dGy5ELNf",
+      "rated": false,
+      "variant": "standard",
+      "speed": "correspondence",
+      "perf": "correspondence",
+      "createdAt": 1660406428967,
+      "lastMoveAt": 1660406428967,
+      "status": "mate",
+      "source": "import",
+      "players": {
+        "white": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 0,
+            "mistake": 2,
+            "blunder": 0,
+            "acpl": 21,
+            "accuracy": 91
+          }
+        },
+        "black": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 2,
+            "mistake": 0,
+            "blunder": 2,
+            "acpl": 61,
+            "accuracy": 77
+          }
+        }
+      },
+      "winner": "white",
+      "opening": {
+        "eco": "D38",
+        "name": "Queen's Gambit Declined: Ragozin Defense",
+        "ply": 8
+      },
+      "moves": "d4 Nf6 c4 e6 Nc3 Bb4 Nf3 d5 Bd2 dxc4 e4 O-O e5 Nd5 Bxc4 b6 O-O Nxc3 Qc2 Ne2+ Bxe2 Bxd2 Nxd2 Bb7 Bf3 Bxf3 Nxf3 Nd7 Rac1 Rc8 Rfd1 Qe7 Qa4 c5 d5 exd5 Rxd5 Nb8 Rcd1 Rfd8 Rd6 Nc6 Qxc6 Rxc6 Rxd8+ Qxd8 Rxd8#",
+      "pgn": "[Event \"Import\"]\n[Site \"https://lichess.org/dGy5ELNf\"]\n[Date \"2022.08.13\"]\n[White \"?\"]\n[Black \"?\"]\n[Result \"1-0\"]\n[UTCDate \"2022.08.13\"]\n[UTCTime \"16:00:28\"]\n[WhiteElo \"?\"]\n[BlackElo \"?\"]\n[Variant \"Standard\"]\n[TimeControl \"-\"]\n[ECO \"D38\"]\n[Opening \"Queen's Gambit Declined: Ragozin Defense\"]\n[Termination \"Normal\"]\n\n1. d4 { [%eval 0.0] } 1... Nf6 { [%eval 0.23] } 2. c4 { [%eval 0.34] } 2... e6 { [%eval 0.23] } 3. Nc3 { [%eval 0.05] } 3... Bb4 { [%eval 0.25] } 4. Nf3 { [%eval 0.0] } 4... d5 { [%eval 0.15] } 5. Bd2 { [%eval 0.14] } 5... dxc4 { [%eval 0.47] } 6. e4 { [%eval -0.76] } 6... O-O { [%eval 0.26] } 7. e5 { [%eval 0.2] } 7... Nd5 { [%eval 0.68] } 8. Bxc4 { [%eval 0.51] } 8... b6 { [%eval 1.51] } 9. O-O { [%eval 1.21] } 9... Nxc3 { [%eval 1.25] } 10. Qc2 { [%eval 0.05] } 10... Ne2+ { [%eval 0.2] } 11. Bxe2 { [%eval 0.29] } 11... Bxd2 { [%eval 0.25] } 12. Nxd2 { [%eval 0.08] } 12... Bb7 { [%eval 0.35] } 13. Bf3 { [%eval 0.18] } 13... Bxf3 { [%eval 0.37] } 14. Nxf3 { [%eval 0.63] } 14... Nd7 { [%eval 0.78] } 15. Rac1 { [%eval 0.56] } 15... Rc8 { [%eval 0.68] } 16. Rfd1 { [%eval 0.38] } 16... Qe7 { [%eval 0.71] } 17. Qa4 { [%eval 0.5] } 17... c5 { [%eval 0.46] } 18. d5 { [%eval 0.4] } 18... exd5 { [%eval 0.55] } 19. Rxd5 { [%eval 0.43] } 19... Nb8 { [%eval 0.54] } 20. Rcd1 { [%eval 0.48] } 20... Rfd8 { [%eval 0.41] } 21. Rd6 { [%eval 0.43] } 21... Nc6 { [%eval 5.98] } 22. Qxc6 { [%eval 6.21] } 22... Rxc6 { [%eval 6.16] } 23. Rxd8+ { [%eval 6.36] } 23... Qxd8 { [%eval #1] } 24. Rxd8# 1-0\n\n\n",
+      "analysis": [
+        {
+          "eval": 0
+        },
+        {
+          "eval": 23
+        },
+        {
+          "eval": 34
+        },
+        {
+          "eval": 23
+        },
+        {
+          "eval": 5
+        },
+        {
+          "eval": 25
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 15
+        },
+        {
+          "eval": 14
+        },
+        {
+          "eval": 47
+        },
+        {
+          "eval": -76,
+          "best": "e2e3",
+          "variation": "e3 O-O Bxc4 b6 a3 Bxc3 Bxc3 Bb7 O-O Nbd7",
+          "judgment": {
+            "name": "Mistake",
+            "comment": "Mistake. e3 was best."
+          }
+        },
+        {
+          "eval": 26,
+          "best": "b4c3",
+          "variation": "Bxc3 Bxc3 Nxe4 Bxc4 Nxc3 bxc3 Nd7 O-O O-O Re1",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. Bxc3 was best."
+          }
+        },
+        {
+          "eval": 20
+        },
+        {
+          "eval": 68
+        },
+        {
+          "eval": 51
+        },
+        {
+          "eval": 151,
+          "best": "c7c5",
+          "variation": "c5",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. c5 was best."
+          }
+        },
+        {
+          "eval": 121
+        },
+        {
+          "eval": 125
+        },
+        {
+          "eval": 5,
+          "best": "b2c3",
+          "variation": "bxc3 Be7 Bd3 Ba6 Bxa6 Nxa6 Qe2 Nb8 c4 Qd7 Qe4 Na6 Rad1 c6",
+          "judgment": {
+            "name": "Mistake",
+            "comment": "Mistake. bxc3 was best."
+          }
+        },
+        {
+          "eval": 20
+        },
+        {
+          "eval": 29
+        },
+        {
+          "eval": 25
+        },
+        {
+          "eval": 8
+        },
+        {
+          "eval": 35
+        },
+        {
+          "eval": 18
+        },
+        {
+          "eval": 37
+        },
+        {
+          "eval": 63
+        },
+        {
+          "eval": 78
+        },
+        {
+          "eval": 56
+        },
+        {
+          "eval": 68
+        },
+        {
+          "eval": 38
+        },
+        {
+          "eval": 71
+        },
+        {
+          "eval": 50
+        },
+        {
+          "eval": 46
+        },
+        {
+          "eval": 40
+        },
+        {
+          "eval": 55
+        },
+        {
+          "eval": 43
+        },
+        {
+          "eval": 54
+        },
+        {
+          "eval": 48
+        },
+        {
+          "eval": 41
+        },
+        {
+          "eval": 43
+        },
+        {
+          "eval": 598,
+          "best": "h7h6",
+          "variation": "h6",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Blunder. h6 was best."
+          }
+        },
+        {
+          "eval": 621
+        },
+        {
+          "eval": 616
+        },
+        {
+          "eval": 636
+        },
+        {
+          "mate": 1,
+          "best": "e7f8",
+          "variation": "Qf8 Rxf8+ Kxf8 Rd7 h6 Rxa7 Rc8 Kf1 c4 Ke2 Rc5 e6 fxe6 Nd4",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Checkmate is now unavoidable. Qf8 was best."
+          }
+        }
+      ],
+      "division": {
+        "middle": 19,
+        "end": 44
+      }
+    }
   ]
 }
