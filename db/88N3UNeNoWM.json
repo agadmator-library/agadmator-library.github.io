@@ -73,5 +73,229 @@
     {
       "id": "sytph7o4"
     }
+  ],
+  "lichessGameEval": [
+    {
+      "id": "sytph7o4",
+      "rated": false,
+      "variant": "standard",
+      "speed": "correspondence",
+      "perf": "correspondence",
+      "createdAt": 1589665555457,
+      "lastMoveAt": 1589665555457,
+      "status": "started",
+      "source": "import",
+      "players": {
+        "white": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 2,
+            "mistake": 0,
+            "blunder": 0,
+            "acpl": 30,
+            "accuracy": 91
+          }
+        },
+        "black": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 4,
+            "mistake": 2,
+            "blunder": 1,
+            "acpl": 81,
+            "accuracy": 79
+          }
+        }
+      },
+      "opening": {
+        "eco": "A15",
+        "name": "English Opening: Anglo-Indian Defense, Scandinavian Defense, Exchange Variation",
+        "ply": 6
+      },
+      "moves": "Nf3 d5 c4 Nf6 cxd5 Nxd5 e4 Nb6 d4 e6 Nc3 Bb4 Bd3 O-O O-O Bxc3 bxc3 Nc6 e5 h6 Qe2 Nd5 Bd2 Nce7 c4 Nb6 a4 a5 Rfb1 Nc6 Qe4 g6 Bxh6 Re8 Bg5 Qd7 Qh4 f5 exf6 Qf7 Qh6",
+      "pgn": "[Event \"Import\"]\n[Site \"https://lichess.org/sytph7o4\"]\n[Date \"2020.05.16\"]\n[White \"?\"]\n[Black \"?\"]\n[Result \"*\"]\n[UTCDate \"2020.05.16\"]\n[UTCTime \"21:45:55\"]\n[WhiteElo \"?\"]\n[BlackElo \"?\"]\n[Variant \"Standard\"]\n[TimeControl \"-\"]\n[ECO \"A15\"]\n[Opening \"English Opening: Anglo-Indian Defense, Scandinavian Defense, Exchange Variation\"]\n[Termination \"Unterminated\"]\n\n1. Nf3 { [%eval 0.06] } 1... d5 { [%eval 0.25] } 2. c4 { [%eval -0.08] } 2... Nf6 { [%eval 0.89] } 3. cxd5 { [%eval 0.82] } 3... Nxd5 { [%eval 0.64] } 4. e4 { [%eval 0.72] } 4... Nb6 { [%eval 0.74] } 5. d4 { [%eval 0.57] } 5... e6 { [%eval 0.95] } 6. Nc3 { [%eval 0.97] } 6... Bb4 { [%eval 1.65] } 7. Bd3 { [%eval 1.65] } 7... O-O { [%eval 2.15] } 8. O-O { [%eval 1.71] } 8... Bxc3 { [%eval 2.45] } 9. bxc3 { [%eval 2.36] } 9... Nc6 { [%eval 2.95] } 10. e5 { [%eval 2.75] } 10... h6 { [%eval 2.87] } 11. Qe2 { [%eval 2.74] } 11... Nd5 { [%eval 2.82] } 12. Bd2 { [%eval 2.79] } 12... Nce7 { [%eval 3.72] } 13. c4 { [%eval 3.06] } 13... Nb6 { [%eval 3.76] } 14. a4 { [%eval 2.65] } 14... a5 { [%eval 4.29] } 15. Rfb1 { [%eval 2.69] } 15... Nc6 { [%eval 5.41] } 16. Qe4 { [%eval 4.48] } 16... g6 { [%eval 7.88] } 17. Bxh6 { [%eval 7.52] } 17... Re8 { [%eval 11.2] } 18. Bg5 { [%eval 11.67] } 18... Qd7 { [%eval 15.45] } 19. Qh4 { [%eval 14.77] } 19... f5 { [%eval 13.82] } 20. exf6 { [%eval 11.8] } 20... Qf7 { [%eval 24.13] } 21. Qh6 { [%eval 20.9] } *\n\n\n",
+      "analysis": [
+        {
+          "eval": 6
+        },
+        {
+          "eval": 25
+        },
+        {
+          "eval": -8
+        },
+        {
+          "eval": 89,
+          "best": "d5d4",
+          "variation": "d4 b4 Nf6 g3 c5 Qa4+ Bd7 b5 Qc8 d3",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. d4 was best."
+          }
+        },
+        {
+          "eval": 82
+        },
+        {
+          "eval": 64
+        },
+        {
+          "eval": 72
+        },
+        {
+          "eval": 74
+        },
+        {
+          "eval": 57
+        },
+        {
+          "eval": 95
+        },
+        {
+          "eval": 97
+        },
+        {
+          "eval": 165,
+          "best": "f8e7",
+          "variation": "Be7 Be3 O-O Be2 f5 O-O f4 Bc1 Nc6 a3",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. Be7 was best."
+          }
+        },
+        {
+          "eval": 165
+        },
+        {
+          "eval": 215
+        },
+        {
+          "eval": 171
+        },
+        {
+          "eval": 245,
+          "best": "b4e7",
+          "variation": "Be7 Be3",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. Be7 was best."
+          }
+        },
+        {
+          "eval": 236
+        },
+        {
+          "eval": 295
+        },
+        {
+          "eval": 275
+        },
+        {
+          "eval": 287
+        },
+        {
+          "eval": 274
+        },
+        {
+          "eval": 282
+        },
+        {
+          "eval": 279
+        },
+        {
+          "eval": 372,
+          "best": "f7f5",
+          "variation": "f5 exf6",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. f5 was best."
+          }
+        },
+        {
+          "eval": 306
+        },
+        {
+          "eval": 376
+        },
+        {
+          "eval": 265,
+          "best": "e2e4",
+          "variation": "Qe4 Ng6",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. Qe4 was best."
+          }
+        },
+        {
+          "eval": 429,
+          "best": "b6d7",
+          "variation": "Nd7",
+          "judgment": {
+            "name": "Mistake",
+            "comment": "Mistake. Nd7 was best."
+          }
+        },
+        {
+          "eval": 269,
+          "best": "e2e4",
+          "variation": "Qe4 Ng6",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. Qe4 was best."
+          }
+        },
+        {
+          "eval": 541,
+          "best": "b6d7",
+          "variation": "Nd7 Rb5",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Blunder. Nd7 was best."
+          }
+        },
+        {
+          "eval": 448
+        },
+        {
+          "eval": 788,
+          "best": "f7f5",
+          "variation": "f5",
+          "judgment": {
+            "name": "Mistake",
+            "comment": "Mistake. f5 was best."
+          }
+        },
+        {
+          "eval": 752
+        },
+        {
+          "eval": 1120
+        },
+        {
+          "eval": 1167
+        },
+        {
+          "eval": 1545
+        },
+        {
+          "eval": 1477
+        },
+        {
+          "eval": 1382
+        },
+        {
+          "eval": 1180
+        },
+        {
+          "eval": 2413
+        },
+        {
+          "eval": 2090
+        }
+      ],
+      "division": {
+        "middle": 23
+      }
+    }
   ]
 }
