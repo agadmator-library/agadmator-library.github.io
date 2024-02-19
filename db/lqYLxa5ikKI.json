@@ -85,5 +85,147 @@
     {
       "id": "SQonfzi5"
     }
+  ],
+  "lichessGameEval": [
+    {
+      "id": "SQonfzi5",
+      "rated": false,
+      "variant": "standard",
+      "speed": "correspondence",
+      "perf": "correspondence",
+      "createdAt": 1616014122116,
+      "lastMoveAt": 1616014122116,
+      "status": "mate",
+      "source": "import",
+      "players": {
+        "white": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 2,
+            "mistake": 1,
+            "blunder": 0,
+            "acpl": 42,
+            "accuracy": 77
+          }
+        },
+        "black": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 0,
+            "mistake": 1,
+            "blunder": 2,
+            "acpl": 140,
+            "accuracy": 48
+          }
+        }
+      },
+      "winner": "white",
+      "opening": {
+        "eco": "C15",
+        "name": "French Defense: Winawer Variation",
+        "ply": 6
+      },
+      "moves": "e4 e6 d4 d5 Nc3 Bb4 Bd3 Bxc3+ bxc3 h6 Ba3 Nd7 Qe2 dxe4 Bxe4 Ngf6 Bd3 b6 Qxe6+ fxe6 Bg6#",
+      "pgn": "[Event \"Import\"]\n[Site \"https://lichess.org/SQonfzi5\"]\n[Date \"2021.03.17\"]\n[White \"?\"]\n[Black \"?\"]\n[Result \"1-0\"]\n[UTCDate \"2021.03.17\"]\n[UTCTime \"20:48:42\"]\n[WhiteElo \"?\"]\n[BlackElo \"?\"]\n[Variant \"Standard\"]\n[TimeControl \"-\"]\n[ECO \"C15\"]\n[Opening \"French Defense: Winawer Variation\"]\n[Termination \"Normal\"]\n\n1. e4 { [%eval 0.33] } 1... e6 { [%eval 0.13] } 2. d4 { [%eval 0.24] } 2... d5 { [%eval 0.25] } 3. Nc3 { [%eval 0.0] } 3... Bb4 { [%eval 0.16] } 4. Bd3 { [%eval 0.0] } 4... Bxc3+ { [%eval 0.34] } 5. bxc3 { [%eval 0.27] } 5... h6 { [%eval 1.43] } 6. Ba3 { [%eval 0.4] } 6... Nd7 { [%eval 2.28] } 7. Qe2 { [%eval 0.75] } 7... dxe4 { [%eval 0.94] } 8. Bxe4 { [%eval 0.75] } 8... Ngf6 { [%eval 1.03] } 9. Bd3 { [%eval 0.06] } 9... b6 { [%eval #2] } 10. Qxe6+ { [%eval #1] } 10... fxe6 { [%eval #1] } 11. Bg6# 1-0\n\n\n",
+      "analysis": [
+        {
+          "eval": 33
+        },
+        {
+          "eval": 13
+        },
+        {
+          "eval": 24
+        },
+        {
+          "eval": 25
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 16
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 34
+        },
+        {
+          "eval": 27
+        },
+        {
+          "eval": 143,
+          "best": "d5e4",
+          "variation": "dxe4 Bxe4 Nf6 Bd3 b6 Ba3 Qd5 Nf3 Qa5 Bb2",
+          "judgment": {
+            "name": "Mistake",
+            "comment": "Mistake. dxe4 was best."
+          }
+        },
+        {
+          "eval": 40,
+          "best": "e4d5",
+          "variation": "exd5 exd5 Qf3 Nf6 Ba3 Nc6 Qg3 Rg8 Rb1 Ne4",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. exd5 was best."
+          }
+        },
+        {
+          "eval": 228,
+          "best": "d5e4",
+          "variation": "dxe4 Bxe4 Nf6 Bf3 c5 Bxc5 Na6 Ba3 Qa5 Bb2",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Blunder. dxe4 was best."
+          }
+        },
+        {
+          "eval": 75,
+          "best": "e4d5",
+          "variation": "exd5 exd5 Qg4 Qf6 Qg3 Ne7 Ne2 O-O O-O Nb6",
+          "judgment": {
+            "name": "Mistake",
+            "comment": "Mistake. exd5 was best."
+          }
+        },
+        {
+          "eval": 94
+        },
+        {
+          "eval": 75
+        },
+        {
+          "eval": 103
+        },
+        {
+          "eval": 6,
+          "best": "e4g6",
+          "variation": "Bg6",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. Bg6 was best."
+          }
+        },
+        {
+          "mate": 2,
+          "best": "c7c5",
+          "variation": "c5 dxc5 Qa5 Bb4 Qc7 Qe3 e5 Ne2 O-O f3 Re8 O-O Nd5 Qf2",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Checkmate is now unavoidable. c5 was best."
+          }
+        },
+        {
+          "mate": 1
+        },
+        {
+          "mate": 1
+        }
+      ],
+      "division": {}
+    }
   ]
 }
