@@ -88,5 +88,184 @@
     {
       "id": "G18GK9Ex"
     }
+  ],
+  "lichessGameEval": [
+    {
+      "id": "G18GK9Ex",
+      "rated": false,
+      "variant": "standard",
+      "speed": "correspondence",
+      "perf": "correspondence",
+      "createdAt": 1671286854572,
+      "lastMoveAt": 1671286854572,
+      "status": "started",
+      "source": "import",
+      "players": {
+        "white": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 0,
+            "mistake": 1,
+            "blunder": 2,
+            "acpl": 79,
+            "accuracy": 67
+          }
+        },
+        "black": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 0,
+            "mistake": 0,
+            "blunder": 1,
+            "acpl": 32,
+            "accuracy": 89
+          }
+        }
+      },
+      "opening": {
+        "eco": "C44",
+        "name": "Scotch Game: Scotch Gambit, Advance Variation",
+        "ply": 9
+      },
+      "moves": "e4 e5 d4 exd4 Nf3 Nc6 Bc4 Nf6 e5 d5 exf6 dxc4 O-O gxf6 Bf4 Be6 Re1 Qd7 c3 O-O-O cxd4 Nxd4 Nc3 Rg8 Bg3 h5 Ne4 Be7 Nxd4 Qxd4 Qe2 f5 Nc3 h4 Bxc7 Qg7",
+      "pgn": "[Event \"Import\"]\n[Site \"https://lichess.org/G18GK9Ex\"]\n[Date \"2022.12.17\"]\n[White \"?\"]\n[Black \"?\"]\n[Result \"*\"]\n[UTCDate \"2022.12.17\"]\n[UTCTime \"14:20:54\"]\n[WhiteElo \"?\"]\n[BlackElo \"?\"]\n[Variant \"Standard\"]\n[TimeControl \"-\"]\n[ECO \"C44\"]\n[Opening \"Scotch Game: Scotch Gambit, Advance Variation\"]\n[Termination \"Unterminated\"]\n\n1. e4 { [%eval 0.36] } 1... e5 { [%eval 0.32] } 2. d4 { [%eval -0.17] } 2... exd4 { [%eval 0.0] } 3. Nf3 { [%eval 0.0] } 3... Nc6 { [%eval 0.13] } 4. Bc4 { [%eval 0.0] } 4... Nf6 { [%eval -0.13] } 5. e5 { [%eval -0.13] } 5... d5 { [%eval 0.0] } 6. exf6 { [%eval -3.71] } 6... dxc4 { [%eval -3.92] } 7. O-O { [%eval -4.41] } 7... gxf6 { [%eval -3.93] } 8. Bf4 { [%eval -3.74] } 8... Be6 { [%eval -3.83] } 9. Re1 { [%eval -4.63] } 9... Qd7 { [%eval -4.38] } 10. c3 { [%eval -4.6] } 10... O-O-O { [%eval -4.62] } 11. cxd4 { [%eval -4.55] } 11... Nxd4 { [%eval -4.72] } 12. Nc3 { [%eval -4.72] } 12... Rg8 { [%eval -4.24] } 13. Bg3 { [%eval -4.73] } 13... h5 { [%eval -1.81] } 14. Ne4 { [%eval -4.34] } 14... Be7 { [%eval -4.18] } 15. Nxd4 { [%eval -4.17] } 15... Qxd4 { [%eval -4.04] } 16. Qe2 { [%eval -7.84] } 16... f5 { [%eval -8.07] } 17. Nc3 { [%eval -7.66] } 17... h4 { [%eval -6.7] } 18. Bxc7 { [%eval -8.22] } 18... Qg7 { [%eval -8.28] } *\n\n\n",
+      "analysis": [
+        {
+          "eval": 36
+        },
+        {
+          "eval": 32
+        },
+        {
+          "eval": -17
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 13
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": -13
+        },
+        {
+          "eval": -13
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": -371,
+          "best": "c4b5",
+          "variation": "Bb5 Ne4 Nxd4 Bd7 Bxc6 bxc6 O-O Bc5 f3 Ng5",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Blunder. Bb5 was best."
+          }
+        },
+        {
+          "eval": -392
+        },
+        {
+          "eval": -441
+        },
+        {
+          "eval": -393
+        },
+        {
+          "eval": -374
+        },
+        {
+          "eval": -383
+        },
+        {
+          "eval": -463
+        },
+        {
+          "eval": -438
+        },
+        {
+          "eval": -460
+        },
+        {
+          "eval": -462
+        },
+        {
+          "eval": -455
+        },
+        {
+          "eval": -472
+        },
+        {
+          "eval": -472
+        },
+        {
+          "eval": -424
+        },
+        {
+          "eval": -473
+        },
+        {
+          "eval": -181,
+          "best": "d4f5",
+          "variation": "Nf5 Qc2 Qc6 Rad1 Bc5 Ne4 Nd4 Nxd4 Bxd4 Nc3 f5 Ne2 Bf6 Nf4",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Blunder. Nf5 was best."
+          }
+        },
+        {
+          "eval": -434,
+          "best": "f3d4",
+          "variation": "Nxd4 Qxd4",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Blunder. Nxd4 was best."
+          }
+        },
+        {
+          "eval": -418
+        },
+        {
+          "eval": -417
+        },
+        {
+          "eval": -404
+        },
+        {
+          "eval": -784,
+          "best": "d1h5",
+          "variation": "Qxh5 Qb6 Bf4 Rd3 Rab1 Bb4 Nxf6 Bxe1 Rxe1 Rgd8 Be5 Qc6",
+          "judgment": {
+            "name": "Mistake",
+            "comment": "Mistake. Qxh5 was best."
+          }
+        },
+        {
+          "eval": -807
+        },
+        {
+          "eval": -766
+        },
+        {
+          "eval": -670
+        },
+        {
+          "eval": -822
+        },
+        {
+          "eval": -828
+        }
+      ],
+      "division": {
+        "middle": 28
+      }
+    }
   ]
 }
