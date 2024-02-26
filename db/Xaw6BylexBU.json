@@ -95,5 +95,149 @@
     {
       "id": "SAE7XR4C"
     }
+  ],
+  "lichessGameEval": [
+    {
+      "id": "SAE7XR4C",
+      "rated": false,
+      "variant": "standard",
+      "speed": "correspondence",
+      "perf": "correspondence",
+      "createdAt": 1635781974656,
+      "lastMoveAt": 1635781974656,
+      "status": "started",
+      "source": "import",
+      "players": {
+        "white": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 1,
+            "mistake": 0,
+            "blunder": 0,
+            "acpl": 8,
+            "accuracy": 95
+          }
+        },
+        "black": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 1,
+            "mistake": 0,
+            "blunder": 1,
+            "acpl": 52,
+            "accuracy": 69
+          }
+        }
+      },
+      "opening": {
+        "eco": "C21",
+        "name": "Center Game: Kieseritzky Variation",
+        "ply": 5
+      },
+      "moves": "e4 e5 d4 exd4 Nf3 Bb4+ Nbd2 d5 Nxd4 Ne7 c3 Bc5 N2b3 Bb6 Bg5 O-O exd5 Qxd5 Bxe7 Re8 Ne2 Qh5 Qd2 h6 O-O-O Nc6 Nf4",
+      "pgn": "[Event \"Import\"]\n[Site \"https://lichess.org/SAE7XR4C\"]\n[Date \"2021.11.01\"]\n[White \"?\"]\n[Black \"?\"]\n[Result \"*\"]\n[UTCDate \"2021.11.01\"]\n[UTCTime \"15:52:54\"]\n[WhiteElo \"?\"]\n[BlackElo \"?\"]\n[Variant \"Standard\"]\n[TimeControl \"-\"]\n[ECO \"C21\"]\n[Opening \"Center Game: Kieseritzky Variation\"]\n[Termination \"Unterminated\"]\n\n1. e4 { [%eval 0.24] } 1... e5 { [%eval 0.12] } 2. d4 { [%eval -0.1] } 2... exd4 { [%eval 0.0] } 3. Nf3 { [%eval -0.03] } 3... Bb4+ { [%eval -0.1] } 4. Nbd2 { [%eval -0.08] } 4... d5 { [%eval 0.1] } 5. Nxd4 { [%eval 0.19] } 5... Ne7 { [%eval 0.4] } 6. c3 { [%eval 0.44] } 6... Bc5 { [%eval 0.33] } 7. N2b3 { [%eval 0.33] } 7... Bb6 { [%eval 0.22] } 8. Bg5 { [%eval -0.37] } 8... O-O { [%eval -0.5] } 9. exd5 { [%eval -0.44] } 9... Qxd5 { [%eval -0.07] } 10. Bxe7 { [%eval 0.0] } 10... Re8 { [%eval 0.17] } 11. Ne2 { [%eval 0.0] } 11... Qh5 { [%eval 3.15] } 12. Qd2 { [%eval 3.62] } 12... h6 { [%eval 5.61] } 13. O-O-O { [%eval 5.8] } 13... Nc6 { [%eval 6.45] } 14. Nf4 { [%eval 6.4] } *\n\n\n",
+      "analysis": [
+        {
+          "eval": 24
+        },
+        {
+          "eval": 12
+        },
+        {
+          "eval": -10
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": -3
+        },
+        {
+          "eval": -10
+        },
+        {
+          "eval": -8
+        },
+        {
+          "eval": 10
+        },
+        {
+          "eval": 19
+        },
+        {
+          "eval": 40
+        },
+        {
+          "eval": 44
+        },
+        {
+          "eval": 33
+        },
+        {
+          "eval": 33
+        },
+        {
+          "eval": 22
+        },
+        {
+          "eval": -37,
+          "best": "e4d5",
+          "variation": "exd5 Qxd5 Be3 Nf5 Nxf5 Qxd1+ Rxd1 Bxf5 Nd4 Bd7",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. exd5 was best."
+          }
+        },
+        {
+          "eval": -50
+        },
+        {
+          "eval": -44
+        },
+        {
+          "eval": -7
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 17
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 315,
+          "best": "d5f5",
+          "variation": "Qf5 Bh4 Nc6 Qd2 Qe4 Bg3 Bg4 Qf4 Qg6 Rd1 Ne5 Nbc1 Qc2 Qd2",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Blunder. Qf5 was best."
+          }
+        },
+        {
+          "eval": 362
+        },
+        {
+          "eval": 561,
+          "best": "b8c6",
+          "variation": "Nc6 Qg5",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. Nc6 was best."
+          }
+        },
+        {
+          "eval": 580
+        },
+        {
+          "eval": 645
+        },
+        {
+          "eval": 640
+        }
+      ],
+      "division": {}
+    }
   ]
 }
