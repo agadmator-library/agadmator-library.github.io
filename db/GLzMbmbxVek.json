@@ -73,5 +73,104 @@
     {
       "id": "GGiOKroh"
     }
+  ],
+  "lichessGameEval": [
+    {
+      "id": "GGiOKroh",
+      "rated": false,
+      "variant": "standard",
+      "speed": "correspondence",
+      "perf": "correspondence",
+      "createdAt": 1576113947221,
+      "lastMoveAt": 1576113947221,
+      "status": "started",
+      "source": "import",
+      "players": {
+        "white": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 0,
+            "mistake": 0,
+            "blunder": 1,
+            "acpl": 60,
+            "accuracy": 55
+          }
+        },
+        "black": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 0,
+            "mistake": 0,
+            "blunder": 0,
+            "acpl": 12,
+            "accuracy": 95
+          }
+        }
+      },
+      "opening": {
+        "eco": "D51",
+        "name": "Queen's Gambit Declined: Modern Variation, Knight Defense",
+        "ply": 8
+      },
+      "moves": "d4 d5 c4 e6 Nc3 Nf6 Bg5 Nbd7 cxd5 exd5 Nxd5 Nxd5 Bxd8 Bb4+ Qd2 Kxd8",
+      "pgn": "[Event \"Import\"]\n[Site \"https://lichess.org/GGiOKroh\"]\n[Date \"2019.12.12\"]\n[White \"?\"]\n[Black \"?\"]\n[Result \"*\"]\n[UTCDate \"2019.12.12\"]\n[UTCTime \"01:25:47\"]\n[WhiteElo \"?\"]\n[BlackElo \"?\"]\n[Variant \"Standard\"]\n[TimeControl \"-\"]\n[ECO \"D51\"]\n[Opening \"Queen's Gambit Declined: Modern Variation, Knight Defense\"]\n[Termination \"Unterminated\"]\n\n1. d4 { [%eval 0.25] } 1... d5 { [%eval 0.25] } 2. c4 { [%eval 0.26] } 2... e6 { [%eval 0.21] } 3. Nc3 { [%eval 0.27] } 3... Nf6 { [%eval 0.27] } 4. Bg5 { [%eval 0.09] } 4... Nbd7 { [%eval 0.36] } 5. cxd5 { [%eval 0.37] } 5... exd5 { [%eval 0.44] } 6. Nxd5 { [%eval -3.88] } 6... Nxd5 { [%eval -3.87] } 7. Bxd8 { [%eval -3.55] } 7... Bb4+ { [%eval -3.07] } 8. Qd2 { [%eval -3.4] } 8... Kxd8 { [%eval -3.27] } *\n\n\n",
+      "analysis": [
+        {
+          "eval": 25
+        },
+        {
+          "eval": 25
+        },
+        {
+          "eval": 26
+        },
+        {
+          "eval": 21
+        },
+        {
+          "eval": 27
+        },
+        {
+          "eval": 27
+        },
+        {
+          "eval": 9
+        },
+        {
+          "eval": 36
+        },
+        {
+          "eval": 37
+        },
+        {
+          "eval": 44
+        },
+        {
+          "eval": -388,
+          "best": "e2e3",
+          "variation": "e3 c6 Bd3 Bd6 a3 O-O Qc2 Kh8 Nge2 h6",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Blunder. e3 was best."
+          }
+        },
+        {
+          "eval": -387
+        },
+        {
+          "eval": -355
+        },
+        {
+          "eval": -307
+        },
+        {
+          "eval": -340
+        },
+        {
+          "eval": -327
+        }
+      ],
+      "division": {}
+    }
   ]
 }
