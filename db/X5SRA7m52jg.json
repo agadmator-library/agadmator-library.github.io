@@ -95,5 +95,130 @@
     {
       "id": "SHB6DHBl"
     }
+  ],
+  "lichessGameEval": [
+    {
+      "id": "SHB6DHBl",
+      "rated": false,
+      "variant": "standard",
+      "speed": "correspondence",
+      "perf": "correspondence",
+      "createdAt": 1523919404752,
+      "lastMoveAt": 1523919404752,
+      "status": "started",
+      "source": "import",
+      "players": {
+        "white": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 1,
+            "mistake": 0,
+            "blunder": 1,
+            "acpl": 46,
+            "accuracy": 68
+          }
+        },
+        "black": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 0,
+            "mistake": 0,
+            "blunder": 0,
+            "acpl": 13,
+            "accuracy": 96
+          }
+        }
+      },
+      "opening": {
+        "eco": "D02",
+        "name": "Queen's Pawn Game: Zukertort Variation",
+        "ply": 3
+      },
+      "moves": "Nf3 d5 d4 c6 Bf4 Qb6 b3 Nf6 e3 Nh5 Bg5 h6 Bh4 Nd7 Ne5 Nxe5 Qxh5 Ng4 Bg3 g6 Qh4 Bg7",
+      "pgn": "[Event \"Import\"]\n[Site \"https://lichess.org/SHB6DHBl\"]\n[Date \"2018.04.16\"]\n[White \"?\"]\n[Black \"?\"]\n[Result \"*\"]\n[UTCDate \"2018.04.16\"]\n[UTCTime \"22:56:44\"]\n[WhiteElo \"?\"]\n[BlackElo \"?\"]\n[Variant \"Standard\"]\n[TimeControl \"-\"]\n[ECO \"D02\"]\n[Opening \"Queen's Pawn Game: Zukertort Variation\"]\n[Termination \"Unterminated\"]\n\n1. Nf3 { [%eval 0.05] } 1... d5 { [%eval 0.31] } 2. d4 { [%eval 0.07] } 2... c6 { [%eval 0.28] } 3. Bf4 { [%eval 0.16] } 3... Qb6 { [%eval 0.42] } 4. b3 { [%eval 0.31] } 4... Nf6 { [%eval 0.3] } 5. e3 { [%eval 0.23] } 5... Nh5 { [%eval 0.1] } 6. Bg5 { [%eval 0.0] } 6... h6 { [%eval 0.0] } 7. Bh4 { [%eval 0.0] } 7... Nd7 { [%eval 0.02] } 8. Ne5 { [%eval -0.92] } 8... Nxe5 { [%eval -0.92] } 9. Qxh5 { [%eval -0.96] } 9... Ng4 { [%eval -0.81] } 10. Bg3 { [%eval -4.03] } 10... g6 { [%eval -3.72] } 11. Qh4 { [%eval -3.87] } 11... Bg7 { [%eval -3.7] } *\n\n\n",
+      "analysis": [
+        {
+          "eval": 5
+        },
+        {
+          "eval": 31
+        },
+        {
+          "eval": 7
+        },
+        {
+          "eval": 28
+        },
+        {
+          "eval": 16
+        },
+        {
+          "eval": 42
+        },
+        {
+          "eval": 31
+        },
+        {
+          "eval": 30
+        },
+        {
+          "eval": 23
+        },
+        {
+          "eval": 10
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 2
+        },
+        {
+          "eval": -92,
+          "best": "c2c4",
+          "variation": "c4 g5 Bg3 g4 Nfd2 Nxg3 hxg3 e5 Qxg4 h5",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. c4 was best."
+          }
+        },
+        {
+          "eval": -92
+        },
+        {
+          "eval": -96
+        },
+        {
+          "eval": -81
+        },
+        {
+          "eval": -403,
+          "best": "f1d3",
+          "variation": "Bd3 Rg8 Bf5 g6 Qxg4 Qa5+ c3 Bxf5 Qe2 Bxb1 Rxb1 Qxc3+ Kf1 e6",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Blunder. Bd3 was best."
+          }
+        },
+        {
+          "eval": -372
+        },
+        {
+          "eval": -387
+        },
+        {
+          "eval": -370
+        }
+      ],
+      "division": {
+        "middle": 19
+      }
+    }
   ]
 }
