@@ -73,5 +73,102 @@
     {
       "id": "hNq8RI7r"
     }
+  ],
+  "lichessGameEval": [
+    {
+      "id": "hNq8RI7r",
+      "rated": false,
+      "variant": "standard",
+      "speed": "correspondence",
+      "perf": "correspondence",
+      "createdAt": 1591812495929,
+      "lastMoveAt": 1591812495929,
+      "status": "mate",
+      "source": "import",
+      "players": {
+        "white": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 1,
+            "mistake": 0,
+            "blunder": 1,
+            "acpl": 187,
+            "accuracy": 36
+          }
+        },
+        "black": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 1,
+            "mistake": 0,
+            "blunder": 0,
+            "acpl": 19,
+            "accuracy": 87
+          }
+        }
+      },
+      "winner": "black",
+      "opening": {
+        "eco": "C45",
+        "name": "Scotch Game: Classical Variation",
+        "ply": 8
+      },
+      "moves": "e4 e5 Nf3 Nc6 d4 exd4 Nxd4 Bc5 c3 Qf6 Nxc6 Qxf2#",
+      "pgn": "[Event \"Import\"]\n[Site \"https://lichess.org/hNq8RI7r\"]\n[Date \"2020.06.10\"]\n[White \"?\"]\n[Black \"?\"]\n[Result \"0-1\"]\n[UTCDate \"2020.06.10\"]\n[UTCTime \"18:08:15\"]\n[WhiteElo \"?\"]\n[BlackElo \"?\"]\n[Variant \"Standard\"]\n[TimeControl \"-\"]\n[ECO \"C45\"]\n[Opening \"Scotch Game: Classical Variation\"]\n[Termination \"Normal\"]\n\n1. e4 { [%eval 0.24] } 1... e5 { [%eval 0.37] } 2. Nf3 { [%eval 0.31] } 2... Nc6 { [%eval 0.31] } 3. d4 { [%eval 0.0] } 3... exd4 { [%eval 0.0] } 4. Nxd4 { [%eval 0.0] } 4... Bc5 { [%eval 0.0] } 5. c3 { [%eval -0.58] } 5... Qf6 { [%eval 0.26] } 6. Nxc6 { [%eval #-1] } 6... Qxf2# 0-1\n\n\n",
+      "analysis": [
+        {
+          "eval": 24
+        },
+        {
+          "eval": 37
+        },
+        {
+          "eval": 31
+        },
+        {
+          "eval": 31
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": -58,
+          "best": "d4b3",
+          "variation": "Nb3 Bb6 Qe2 a5 a4 Nf6 Nc3 Nb4 Bg5 O-O",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. Nb3 was best."
+          }
+        },
+        {
+          "eval": 26,
+          "best": "g8f6",
+          "variation": "Nf6 Nxc6 bxc6 Nd2 d5 Nb3 Bd6 exd5 O-O Be2",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. Nf6 was best."
+          }
+        },
+        {
+          "mate": -1,
+          "best": "c1e3",
+          "variation": "Be3 Nge7 Bc4 O-O O-O Bb6 Bb3 Qg6 Re1 d6",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Checkmate is now unavoidable. Be3 was best."
+          }
+        }
+      ],
+      "division": {}
+    }
   ]
 }
