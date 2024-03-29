@@ -78,5 +78,188 @@
       "cp": null,
       "mate": 0
     }
+  ],
+  "lichessGameEval": [
+    {
+      "id": "9I7KTw4C",
+      "rated": false,
+      "variant": "standard",
+      "speed": "correspondence",
+      "perf": "correspondence",
+      "createdAt": 1446348085888,
+      "lastMoveAt": 1446348088687,
+      "status": "mate",
+      "source": "import",
+      "players": {
+        "white": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 1,
+            "mistake": 0,
+            "blunder": 2,
+            "acpl": 32,
+            "accuracy": 85
+          }
+        },
+        "black": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 0,
+            "mistake": 0,
+            "blunder": 0,
+            "acpl": 5,
+            "accuracy": 98
+          }
+        }
+      },
+      "winner": "black",
+      "opening": {
+        "eco": "C54",
+        "name": "Italian Game: Classical Variation, Ghulam-Kassim Variation",
+        "ply": 17
+      },
+      "moves": "e4 e5 Nf3 Nc6 Bc4 Bc5 c3 Nf6 d4 exd4 e5 Ne4 Bd5 Nxf2 Kxf2 dxc3+ Kg3 cxb2 Bxb2 Ne7 Ng5 Nxd5 Nxf7 O-O Nxd8 Bf2+ Kh3 d6+ e6 Nf4+ Kg4 Nxe6 Nxe6 Bxe6+ Kg5 Rf5+ Kg4 h5+ Kh3 Rf3#",
+      "pgn": "[Event \"Import\"]\n[Site \"https://lichess.org/9I7KTw4C\"]\n[Date \"2015.11.01\"]\n[White \"?\"]\n[Black \"?\"]\n[Result \"0-1\"]\n[UTCDate \"2015.11.01\"]\n[UTCTime \"03:21:25\"]\n[WhiteElo \"?\"]\n[BlackElo \"?\"]\n[Variant \"Standard\"]\n[TimeControl \"-\"]\n[ECO \"C54\"]\n[Opening \"Italian Game: Classical Variation, Ghulam-Kassim Variation\"]\n[Termination \"Normal\"]\n\n1. e4 { [%eval 0.2] } 1... e5 { [%eval 0.16] } 2. Nf3 { [%eval 0.17] } 2... Nc6 { [%eval 0.14] } 3. Bc4 { [%eval 0.14] } 3... Bc5 { [%eval 0.34] } 4. c3 { [%eval 0.11] } 4... Nf6 { [%eval 0.13] } 5. d4 { [%eval 0.17] } 5... exd4 { [%eval 0.12] } 6. e5 { [%eval 0.14] } 6... Ne4 { [%eval 0.49] } 7. Bd5 { [%eval 0.32] } 7... Nxf2 { [%eval 0.14] } 8. Kxf2 { [%eval 0.39] } 8... dxc3+ { [%eval 0.4] } 9. Kg3 { [%eval -0.15] } 9... cxb2 { [%eval 0.0] } 10. Bxb2 { [%eval -0.1] } 10... Ne7 { [%eval 0.14] } 11. Ng5 { [%eval -1.78] } 11... Nxd5 { [%eval -1.75] } 12. Nxf7 { [%eval -1.49] } 12... O-O { [%eval -6.48] } 13. Nxd8 { [%eval #-13] } 13... Bf2+ { [%eval #-12] } 14. Kh3 { [%eval #-12] } 14... d6+ { [%eval #-11] } 15. e6 { [%eval #-11] } 15... Nf4+ { [%eval #-10] } 16. Kg4 { [%eval #-10] } 16... Nxe6 { [%eval #-9] } 17. Nxe6 { [%eval #-4] } 17... Bxe6+ { [%eval #-3] } 18. Kg5 { [%eval #-3] } 18... Rf5+ { [%eval #-2] } 19. Kg4 { [%eval #-2] } 19... h5+ { [%eval #-1] } 20. Kh3 { [%eval #-1] } 20... Rf3# 0-1\n\n\n",
+      "analysis": [
+        {
+          "eval": 20
+        },
+        {
+          "eval": 16
+        },
+        {
+          "eval": 17
+        },
+        {
+          "eval": 14
+        },
+        {
+          "eval": 14
+        },
+        {
+          "eval": 34
+        },
+        {
+          "eval": 11
+        },
+        {
+          "eval": 13
+        },
+        {
+          "eval": 17
+        },
+        {
+          "eval": 12
+        },
+        {
+          "eval": 14
+        },
+        {
+          "eval": 49
+        },
+        {
+          "eval": 32
+        },
+        {
+          "eval": 14
+        },
+        {
+          "eval": 39
+        },
+        {
+          "eval": 40
+        },
+        {
+          "eval": -15,
+          "best": "f2f1",
+          "variation": "Kf1 cxb2 Bxb2 O-O Nc3 Nb4 Ne4 Nxd5 Qxd5 Bb6 Qc4 Qe7 h4 Qe6 Rc1 Qf5 Nc5 c6",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. Kf1 was best."
+          }
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": -10
+        },
+        {
+          "eval": 14
+        },
+        {
+          "eval": -178,
+          "best": "h2h3",
+          "variation": "h3 c6 Bb3 O-O Nc3 Nf5+ Kh2 d5 Ne2 Re8 Ned4 Bd7 Rc1 Bb6 Re1 Nh4 Kh1 Nf5 Nxf5",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Blunder. h3 was best."
+          }
+        },
+        {
+          "eval": -175
+        },
+        {
+          "eval": -149
+        },
+        {
+          "eval": -648
+        },
+        {
+          "mate": -13,
+          "best": "h1f1",
+          "variation": "Rf1 Rxf7 Rxf7 Qg5+ Qg4 Qxg4+ Kxg4 Kxf7 Nd2 b6 Kg3 Ba6 Rd1 Bb7 Rc1 Be3 Rf1+ Ke6 Nf3 Ba6",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Checkmate is now unavoidable. Rf1 was best."
+          }
+        },
+        {
+          "mate": -12
+        },
+        {
+          "mate": -12
+        },
+        {
+          "mate": -11
+        },
+        {
+          "mate": -11
+        },
+        {
+          "mate": -10
+        },
+        {
+          "mate": -10
+        },
+        {
+          "mate": -9
+        },
+        {
+          "mate": -4
+        },
+        {
+          "mate": -3
+        },
+        {
+          "mate": -3
+        },
+        {
+          "mate": -2
+        },
+        {
+          "mate": -2
+        },
+        {
+          "mate": -1
+        },
+        {
+          "mate": -1
+        }
+      ],
+      "division": {
+        "middle": 33
+      }
+    }
   ]
 }
