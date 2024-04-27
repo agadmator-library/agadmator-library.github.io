@@ -87,5 +87,161 @@
     {
       "id": "HzulygeN"
     }
+  ],
+  "lichessGameEval": [
+    {
+      "id": "HzulygeN",
+      "rated": false,
+      "variant": "standard",
+      "speed": "correspondence",
+      "perf": "correspondence",
+      "createdAt": 1608491886744,
+      "lastMoveAt": 1608491886744,
+      "status": "started",
+      "source": "import",
+      "players": {
+        "white": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 1,
+            "mistake": 0,
+            "blunder": 0,
+            "acpl": 11,
+            "accuracy": 96
+          }
+        },
+        "black": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 1,
+            "mistake": 0,
+            "blunder": 1,
+            "acpl": 64,
+            "accuracy": 60
+          }
+        }
+      },
+      "opening": {
+        "eco": "C02",
+        "name": "French Defense: Advance Variation, Euwe Variation",
+        "ply": 10
+      },
+      "moves": "e4 e6 d4 d5 e5 c5 c3 Nc6 Nf3 Bd7 Be2 Rc8 O-O a6 Na3 cxd4 cxd4 Nge7 Nc2 Nf5 g4 Nfe7 Ng5 h6 Nh3 h5 gxh5 Nf5 Bg4 Qh4 Bg5",
+      "pgn": "[Event \"Import\"]\n[Site \"https://lichess.org/HzulygeN\"]\n[Date \"2020.12.20\"]\n[White \"?\"]\n[Black \"?\"]\n[Result \"*\"]\n[UTCDate \"2020.12.20\"]\n[UTCTime \"19:18:06\"]\n[WhiteElo \"?\"]\n[BlackElo \"?\"]\n[Variant \"Standard\"]\n[TimeControl \"-\"]\n[ECO \"C02\"]\n[Opening \"French Defense: Advance Variation, Euwe Variation\"]\n[Termination \"Unterminated\"]\n\n1. e4 { [%eval 0.21] } 1... e6 { [%eval 0.13] } 2. d4 { [%eval 0.0] } 2... d5 { [%eval 0.0] } 3. e5 { [%eval 0.0] } 3... c5 { [%eval 0.0] } 4. c3 { [%eval 0.0] } 4... Nc6 { [%eval 0.0] } 5. Nf3 { [%eval 0.0] } 5... Bd7 { [%eval 0.0] } 6. Be2 { [%eval 0.0] } 6... Rc8 { [%eval 0.29] } 7. O-O { [%eval 0.28] } 7... a6 { [%eval 0.23] } 8. Na3 { [%eval 0.33] } 8... cxd4 { [%eval 0.48] } 9. cxd4 { [%eval 0.41] } 9... Nge7 { [%eval 0.3] } 10. Nc2 { [%eval 0.34] } 10... Nf5 { [%eval 0.48] } 11. g4 { [%eval 0.2] } 11... Nfe7 { [%eval 0.28] } 12. Ng5 { [%eval -0.4] } 12... h6 { [%eval 0.2] } 13. Nh3 { [%eval 0.0] } 13... h5 { [%eval 0.0] } 14. gxh5 { [%eval 0.0] } 14... Nf5 { [%eval 0.3] } 15. Bg4 { [%eval 0.1] } 15... Qh4 { [%eval 8.1] } 16. Bg5 { [%eval 7.96] } *\n\n\n",
+      "analysis": [
+        {
+          "eval": 21
+        },
+        {
+          "eval": 13
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 29
+        },
+        {
+          "eval": 28
+        },
+        {
+          "eval": 23
+        },
+        {
+          "eval": 33
+        },
+        {
+          "eval": 48
+        },
+        {
+          "eval": 41
+        },
+        {
+          "eval": 30
+        },
+        {
+          "eval": 34
+        },
+        {
+          "eval": 48
+        },
+        {
+          "eval": 20
+        },
+        {
+          "eval": 28
+        },
+        {
+          "eval": -40,
+          "best": "f3e1",
+          "variation": "Nfe1 Qb6 Be3 h5 gxh5 Nf5 Nd3 Nce7 Rc1 Nxe3 fxe3 Nf5 Rf2 Bb5",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. Nfe1 was best."
+          }
+        },
+        {
+          "eval": 20,
+          "best": "d8c7",
+          "variation": "Qc7 Bd3",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. Qc7 was best."
+          }
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 30
+        },
+        {
+          "eval": 10
+        },
+        {
+          "eval": 810,
+          "best": "f5h6",
+          "variation": "Nh6 Be2",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Blunder. Nh6 was best."
+          }
+        },
+        {
+          "eval": 796
+        }
+      ],
+      "division": {}
+    }
   ]
 }
