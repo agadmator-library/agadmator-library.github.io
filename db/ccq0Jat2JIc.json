@@ -73,5 +73,151 @@
     {
       "id": "0q5t5k7y"
     }
+  ],
+  "lichessGameEval": [
+    {
+      "id": "0q5t5k7y",
+      "rated": false,
+      "variant": "standard",
+      "speed": "correspondence",
+      "perf": "correspondence",
+      "createdAt": 1446998455778,
+      "lastMoveAt": 1446998457679,
+      "status": "mate",
+      "source": "import",
+      "players": {
+        "white": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 0,
+            "mistake": 0,
+            "blunder": 0,
+            "acpl": 6,
+            "accuracy": 99
+          }
+        },
+        "black": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 1,
+            "mistake": 1,
+            "blunder": 1,
+            "acpl": 81,
+            "accuracy": 62
+          }
+        }
+      },
+      "winner": "white",
+      "opening": {
+        "eco": "B01",
+        "name": "Scandinavian Defense: Main Line",
+        "ply": 6
+      },
+      "moves": "e4 d5 exd5 Qxd5 Nc3 Qa5 d4 c6 Nf3 Bg4 Bf4 e6 h3 Bxf3 Qxf3 Bb4 Be2 Nd7 a3 O-O-O axb4 Qxa1+ Kd2 Qxh1 Qxc6+ bxc6 Ba6#",
+      "pgn": "[Event \"Import\"]\n[Site \"https://lichess.org/0q5t5k7y\"]\n[Date \"2015.11.08\"]\n[White \"?\"]\n[Black \"?\"]\n[Result \"1-0\"]\n[UTCDate \"2015.11.08\"]\n[UTCTime \"16:00:55\"]\n[WhiteElo \"?\"]\n[BlackElo \"?\"]\n[Variant \"Standard\"]\n[TimeControl \"-\"]\n[ECO \"B01\"]\n[Opening \"Scandinavian Defense: Main Line\"]\n[Termination \"Normal\"]\n\n1. e4 { [%eval 0.08] } 1... d5 { [%eval 0.64] } 2. exd5 { [%eval 0.58] } 2... Qxd5 { [%eval 0.49] } 3. Nc3 { [%eval 0.5] } 3... Qa5 { [%eval 0.65] } 4. d4 { [%eval 0.69] } 4... c6 { [%eval 0.67] } 5. Nf3 { [%eval 0.73] } 5... Bg4 { [%eval 0.65] } 6. Bf4 { [%eval 0.51] } 6... e6 { [%eval 0.53] } 7. h3 { [%eval 0.57] } 7... Bxf3 { [%eval 0.53] } 8. Qxf3 { [%eval 0.44] } 8... Bb4 { [%eval 0.68] } 9. Be2 { [%eval 0.58] } 9... Nd7 { [%eval 0.62] } 10. a3 { [%eval 0.66] } 10... O-O-O { [%eval 7.29] } 11. axb4 { [%eval 6.95] } 11... Qxa1+ { [%eval 8.34] } 12. Kd2 { [%eval 8.44] } 12... Qxh1 { [%eval #2] } 13. Qxc6+ { [%eval #1] } 13... bxc6 { [%eval #1] } 14. Ba6# 1-0\n\n\n",
+      "analysis": [
+        {
+          "eval": 8
+        },
+        {
+          "eval": 64,
+          "best": "e7e5",
+          "variation": "e5 Nf3 Nc6 Bb5 Nf6 O-O Nxe4 d4 Be7 Qe2 Nd6 Bxc6 bxc6 Nxe5 O-O Re1 Re8 Nc3 f6 Nd3",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. e5 was best."
+          }
+        },
+        {
+          "eval": 58
+        },
+        {
+          "eval": 49
+        },
+        {
+          "eval": 50
+        },
+        {
+          "eval": 65
+        },
+        {
+          "eval": 69
+        },
+        {
+          "eval": 67
+        },
+        {
+          "eval": 73
+        },
+        {
+          "eval": 65
+        },
+        {
+          "eval": 51
+        },
+        {
+          "eval": 53
+        },
+        {
+          "eval": 57
+        },
+        {
+          "eval": 53
+        },
+        {
+          "eval": 44
+        },
+        {
+          "eval": 68
+        },
+        {
+          "eval": 58
+        },
+        {
+          "eval": 62
+        },
+        {
+          "eval": 66
+        },
+        {
+          "eval": 729,
+          "best": "g8f6",
+          "variation": "Ngf6 O-O Be7 b4 Qd8 b5 O-O bxc6 bxc6 Rab1 Nb6 Be5 Bxa3 Ne4 Nxe4 Qxe4 Nd7 Bd3 g6 Bf4",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Blunder. Ngf6 was best."
+          }
+        },
+        {
+          "eval": 695
+        },
+        {
+          "eval": 834,
+          "best": "a5b6",
+          "variation": "Qb6 b5 Ne7 bxc6 Nxc6 Nb5 e5 dxe5 Nc5 Nd6+ Rxd6 exd6 Qxb2 O-O Nd4 d7+ Nxd7 Qe3 Nxe2+ Qxe2"
+        },
+        {
+          "eval": 844
+        },
+        {
+          "mate": 2,
+          "best": "d7e5",
+          "variation": "Ne5 Bxe5 Qxh1 Qxf7 Rxd4+ Ke3 Ne7 Kxd4 Kd8 Qxe6 Qxg2 Qd6+ Ke8 Qb8+ Kd7 Qxb7+ Kd8 Qb8+ Kd7 Qxa7+",
+          "judgment": {
+            "name": "Mistake",
+            "comment": "Checkmate is now unavoidable. Ne5 was best."
+          }
+        },
+        {
+          "mate": 1
+        },
+        {
+          "mate": 1
+        }
+      ],
+      "division": {
+        "middle": 17
+      }
+    }
   ]
 }
