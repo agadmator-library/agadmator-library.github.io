@@ -72,5 +72,129 @@
     {
       "id": "tB6iOBYY"
     }
+  ],
+  "lichessGameEval": [
+    {
+      "id": "tB6iOBYY",
+      "rated": false,
+      "variant": "standard",
+      "speed": "correspondence",
+      "perf": "correspondence",
+      "createdAt": 1657732358877,
+      "lastMoveAt": 1657732358877,
+      "status": "mate",
+      "source": "import",
+      "players": {
+        "white": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 0,
+            "mistake": 0,
+            "blunder": 1,
+            "acpl": 51,
+            "accuracy": 77
+          }
+        },
+        "black": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 1,
+            "mistake": 0,
+            "blunder": 3,
+            "acpl": 175,
+            "accuracy": 53
+          }
+        }
+      },
+      "winner": "white",
+      "opening": {
+        "eco": "A40",
+        "name": "Englund Gambit Complex: Soller Gambit",
+        "ply": 4
+      },
+      "moves": "d4 e5 dxe5 f6 exf6 Ne7 fxg7 h5 gxh8=N h4 Ng6 Nbc6 Nf4 Ne5 Nh5 Nf7 Nf6#",
+      "pgn": "[Event \"Import\"]\n[Site \"https://lichess.org/tB6iOBYY\"]\n[Date \"2022.07.13\"]\n[White \"?\"]\n[Black \"?\"]\n[Result \"1-0\"]\n[UTCDate \"2022.07.13\"]\n[UTCTime \"17:12:38\"]\n[WhiteElo \"?\"]\n[BlackElo \"?\"]\n[Variant \"Standard\"]\n[TimeControl \"-\"]\n[ECO \"A40\"]\n[Opening \"Englund Gambit Complex: Soller Gambit\"]\n[Termination \"Normal\"]\n\n1. d4 { [%eval 0.0] } 1... e5 { [%eval 1.74] } 2. dxe5 { [%eval 1.44] } 2... f6 { [%eval 1.99] } 3. exf6 { [%eval 1.72] } 3... Ne7 { [%eval 6.52] } 4. fxg7 { [%eval 3.13] } 4... h5 { [%eval 23.21] } 5. gxh8=N { [%eval 12.79] } 5... h4 { [%eval 17.41] } 6. Ng6 { [%eval 10.51] } 6... Nbc6 { [%eval 14.7] } 7. Nf4 { [%eval 13.29] } 7... Ne5 { [%eval 14.21] } 8. Nh5 { [%eval 12.8] } 8... Nf7 { [%eval #1] } 9. Nf6# 1-0\n\n\n",
+      "analysis": [
+        {
+          "eval": 0
+        },
+        {
+          "eval": 174,
+          "best": "g8f6",
+          "variation": "Nf6 c4 e6 Nf3 d5 cxd5 exd5 Bf4 c6 Nc3",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Blunder. Nf6 was best."
+          }
+        },
+        {
+          "eval": 144
+        },
+        {
+          "eval": 199
+        },
+        {
+          "eval": 172
+        },
+        {
+          "eval": 652,
+          "best": "g8f6",
+          "variation": "Nxf6 Bg5 d5 e3 Be7 Nf3 Be6 Nbd2 O-O Bd3",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Blunder. Nxf6 was best."
+          }
+        },
+        {
+          "eval": 313,
+          "best": "f6e7",
+          "variation": "fxe7 Bxe7 e4 O-O Nf3 d6 Be2 Kh8 Nc3 Nd7",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Blunder. fxe7 was best."
+          }
+        },
+        {
+          "eval": 2321,
+          "best": "f8g7",
+          "variation": "Bxg7 e4 d5 Nc3 O-O exd5 Bxc3+ bxc3 Qxd5 Qxd5+",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Blunder. Bxg7 was best."
+          }
+        },
+        {
+          "eval": 1279
+        },
+        {
+          "eval": 1741
+        },
+        {
+          "eval": 1051
+        },
+        {
+          "eval": 1470
+        },
+        {
+          "eval": 1329
+        },
+        {
+          "eval": 1421
+        },
+        {
+          "eval": 1280
+        },
+        {
+          "mate": 1,
+          "best": "d7d5",
+          "variation": "d5 Bg5 Qd6 Nc3 Bh6 Nf6+ Kf7 Nfe4 dxe4 Qxd6 cxd6 Bxh6 Bf5 e3",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Checkmate is now unavoidable. d5 was best."
+          }
+        }
+      ],
+      "division": {}
+    }
   ]
 }
