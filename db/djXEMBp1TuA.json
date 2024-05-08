@@ -87,5 +87,101 @@
     {
       "id": "ByytQDfT"
     }
+  ],
+  "lichessGameEval": [
+    {
+      "id": "ByytQDfT",
+      "rated": false,
+      "variant": "standard",
+      "speed": "correspondence",
+      "perf": "correspondence",
+      "createdAt": 1625931320124,
+      "lastMoveAt": 1625931320124,
+      "status": "started",
+      "source": "import",
+      "players": {
+        "white": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 0,
+            "mistake": 0,
+            "blunder": 0,
+            "acpl": 12,
+            "accuracy": 96
+          }
+        },
+        "black": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 1,
+            "mistake": 0,
+            "blunder": 1,
+            "acpl": 65,
+            "accuracy": 67
+          }
+        }
+      },
+      "opening": {
+        "eco": "D20",
+        "name": "Queen's Gambit Accepted: Old Variation",
+        "ply": 5
+      },
+      "moves": "d4 d5 c4 dxc4 e3 e5 Nf3 exd4 Bxc4 Nf6 Qb3 Qe7 O-O",
+      "pgn": "[Event \"Import\"]\n[Site \"https://lichess.org/ByytQDfT\"]\n[Date \"2021.07.10\"]\n[White \"?\"]\n[Black \"?\"]\n[Result \"*\"]\n[UTCDate \"2021.07.10\"]\n[UTCTime \"15:35:20\"]\n[WhiteElo \"?\"]\n[BlackElo \"?\"]\n[Variant \"Standard\"]\n[TimeControl \"-\"]\n[ECO \"D20\"]\n[Opening \"Queen's Gambit Accepted: Old Variation\"]\n[Termination \"Unterminated\"]\n\n1. d4 { [%eval 0.0] } 1... d5 { [%eval 0.23] } 2. c4 { [%eval 0.0] } 2... dxc4 { [%eval 0.32] } 3. e3 { [%eval 0.23] } 3... e5 { [%eval 0.32] } 4. Nf3 { [%eval 0.08] } 4... exd4 { [%eval 0.09] } 5. Bxc4 { [%eval 0.0] } 5... Nf6 { [%eval 2.29] } 6. Qb3 { [%eval 2.23] } 6... Qe7 { [%eval 3.21] } 7. O-O { [%eval 3.7] } *\n\n\n",
+      "analysis": [
+        {
+          "eval": 0
+        },
+        {
+          "eval": 23
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 32
+        },
+        {
+          "eval": 23
+        },
+        {
+          "eval": 32
+        },
+        {
+          "eval": 8
+        },
+        {
+          "eval": 9
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 229,
+          "best": "f8b4",
+          "variation": "Bb4+ Bd2 Bxd2+ Qxd2 Nc6 O-O Nf6 Bb5 Bd7 Bxc6",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Blunder. Bb4+ was best."
+          }
+        },
+        {
+          "eval": 223
+        },
+        {
+          "eval": 321,
+          "best": "f8c5",
+          "variation": "Bc5 Bxf7+ Kf8 O-O dxe3 Bxe3 Bxe3 fxe3 Qe7 Bc4",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. Bc5 was best."
+          }
+        },
+        {
+          "eval": 370
+        }
+      ],
+      "division": {}
+    }
   ]
 }
