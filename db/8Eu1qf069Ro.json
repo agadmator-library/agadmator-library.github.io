@@ -85,5 +85,137 @@
     {
       "id": "pocrvoMs"
     }
+  ],
+  "lichessGameEval": [
+    {
+      "id": "pocrvoMs",
+      "rated": false,
+      "variant": "standard",
+      "speed": "correspondence",
+      "perf": "correspondence",
+      "createdAt": 1583095160687,
+      "lastMoveAt": 1583095160687,
+      "status": "started",
+      "source": "import",
+      "players": {
+        "white": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 2,
+            "mistake": 1,
+            "blunder": 0,
+            "acpl": 39,
+            "accuracy": 80
+          }
+        },
+        "black": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 1,
+            "mistake": 1,
+            "blunder": 0,
+            "acpl": 41,
+            "accuracy": 79
+          }
+        }
+      },
+      "opening": {
+        "eco": "C77",
+        "name": "Ruy Lopez: Morphy Defense, Mackenzie Variation",
+        "ply": 9
+      },
+      "moves": "e4 e5 Nf3 Nc6 Bb5 a6 Ba4 Nf6 d4 Nxe4 d5 Ne7 Nxe5 b5 Bb3 Bb7 d6 Nxd6 Qxd6",
+      "pgn": "[Event \"Import\"]\n[Site \"https://lichess.org/pocrvoMs\"]\n[Date \"2020.03.01\"]\n[White \"?\"]\n[Black \"?\"]\n[Result \"*\"]\n[UTCDate \"2020.03.01\"]\n[UTCTime \"20:39:20\"]\n[WhiteElo \"?\"]\n[BlackElo \"?\"]\n[Variant \"Standard\"]\n[TimeControl \"-\"]\n[ECO \"C77\"]\n[Opening \"Ruy Lopez: Morphy Defense, Mackenzie Variation\"]\n[Termination \"Unterminated\"]\n\n1. e4 { [%eval 0.24] } 1... e5 { [%eval 0.37] } 2. Nf3 { [%eval 0.26] } 2... Nc6 { [%eval 0.15] } 3. Bb5 { [%eval 0.43] } 3... a6 { [%eval 0.26] } 4. Ba4 { [%eval 0.45] } 4... Nf6 { [%eval 0.34] } 5. d4 { [%eval -0.3] } 5... Nxe4 { [%eval 0.53] } 6. d5 { [%eval -0.38] } 6... Ne7 { [%eval 0.12] } 7. Nxe5 { [%eval -0.07] } 7... b5 { [%eval 1.34] } 8. Bb3 { [%eval 1.02] } 8... Bb7 { [%eval 1.51] } 9. d6 { [%eval 0.04] } 9... Nxd6 { [%eval 0.34] } 10. Qxd6 { [%eval 0.12] } *\n\n\n",
+      "analysis": [
+        {
+          "eval": 24
+        },
+        {
+          "eval": 37
+        },
+        {
+          "eval": 26
+        },
+        {
+          "eval": 15
+        },
+        {
+          "eval": 43
+        },
+        {
+          "eval": 26
+        },
+        {
+          "eval": 45
+        },
+        {
+          "eval": 34
+        },
+        {
+          "eval": -30,
+          "best": "e1g1",
+          "variation": "O-O Be7 Bxc6 dxc6 Re1 Bg4 h3 Bxf3 Qxf3 O-O",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. O-O was best."
+          }
+        },
+        {
+          "eval": 53,
+          "best": "e5d4",
+          "variation": "exd4 O-O Be7 e5 Ne4 Nxd4 O-O Re1 Nxd4 Qxd4",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. exd4 was best."
+          }
+        },
+        {
+          "eval": -38,
+          "best": "e1h1",
+          "variation": "O-O b5 Bb3 d5 dxe5 Be6 Nbd2 Nc5 c3 d4",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. O-O was best."
+          }
+        },
+        {
+          "eval": 12
+        },
+        {
+          "eval": -7
+        },
+        {
+          "eval": 134,
+          "best": "e4c5",
+          "variation": "Nc5 c4 g6 Bc2 Bg7 Nd3 d6 Nxc5 dxc5 O-O",
+          "judgment": {
+            "name": "Mistake",
+            "comment": "Mistake. Nc5 was best."
+          }
+        },
+        {
+          "eval": 102
+        },
+        {
+          "eval": 151
+        },
+        {
+          "eval": 4,
+          "best": "e1g1",
+          "variation": "O-O d6 Nf3 Nc5 Re1 h6 c4 g5 Nc3 Bg7 h4 Qd7 Qe2 g4",
+          "judgment": {
+            "name": "Mistake",
+            "comment": "Mistake. O-O was best."
+          }
+        },
+        {
+          "eval": 34
+        },
+        {
+          "eval": 12
+        }
+      ],
+      "division": {}
+    }
   ]
 }
