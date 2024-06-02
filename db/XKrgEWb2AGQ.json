@@ -72,5 +72,239 @@
     {
       "id": "28tDHPpK"
     }
+  ],
+  "lichessGameEval": [
+    {
+      "id": "28tDHPpK",
+      "rated": false,
+      "variant": "standard",
+      "speed": "correspondence",
+      "perf": "correspondence",
+      "createdAt": 1568051636297,
+      "lastMoveAt": 1568051636297,
+      "status": "mate",
+      "source": "import",
+      "players": {
+        "white": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 2,
+            "mistake": 0,
+            "blunder": 0,
+            "acpl": 26,
+            "accuracy": 93
+          }
+        },
+        "black": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 3,
+            "mistake": 3,
+            "blunder": 1,
+            "acpl": 69,
+            "accuracy": 80
+          }
+        }
+      },
+      "winner": "white",
+      "opening": {
+        "eco": "B10",
+        "name": "Caro-Kann Defense: Breyer Variation",
+        "ply": 3
+      },
+      "moves": "e4 c6 d3 d5 Nf3 Nd7 Nc3 g6 exd5 Bg7 dxc6 bxc6 Be2 Ngf6 Be3 O-O O-O e5 h3 Nh5 d4 e4 Nxe4 f5 Bc4+ Kh8 Neg5 f4 Bd2 Qf6 Bc3 Nb6 d5 Qe7 d6 Qe8 Re1 Qd8 Ne5 Qxg5 Nf7+ Rxf7 Re8+ Rf8 Rxf8#",
+      "pgn": "[Event \"Import\"]\n[Site \"https://lichess.org/28tDHPpK\"]\n[Date \"2019.09.09\"]\n[White \"?\"]\n[Black \"?\"]\n[Result \"1-0\"]\n[UTCDate \"2019.09.09\"]\n[UTCTime \"17:53:56\"]\n[WhiteElo \"?\"]\n[BlackElo \"?\"]\n[Variant \"Standard\"]\n[TimeControl \"-\"]\n[ECO \"B10\"]\n[Opening \"Caro-Kann Defense: Breyer Variation\"]\n[Termination \"Normal\"]\n\n1. e4 { [%eval 0.24] } 1... c6 { [%eval 0.23] } 2. d3 { [%eval 0.0] } 2... d5 { [%eval 0.0] } 3. Nf3 { [%eval 0.08] } 3... Nd7 { [%eval 0.35] } 4. Nc3 { [%eval 0.4] } 4... g6 { [%eval 1.23] } 5. exd5 { [%eval 1.21] } 5... Bg7 { [%eval 1.22] } 6. dxc6 { [%eval 1.36] } 6... bxc6 { [%eval 1.41] } 7. Be2 { [%eval 0.94] } 7... Ngf6 { [%eval 1.01] } 8. Be3 { [%eval 0.97] } 8... O-O { [%eval 0.94] } 9. O-O { [%eval 1.06] } 9... e5 { [%eval 1.18] } 10. h3 { [%eval 0.68] } 10... Nh5 { [%eval 1.98] } 11. d4 { [%eval 1.58] } 11... e4 { [%eval 2.98] } 12. Nxe4 { [%eval 2.77] } 12... f5 { [%eval 5.19] } 13. Bc4+ { [%eval 5.18] } 13... Kh8 { [%eval 5.23] } 14. Neg5 { [%eval 5.02] } 14... f4 { [%eval 5.59] } 15. Bd2 { [%eval 5.47] } 15... Qf6 { [%eval 6.13] } 16. Bc3 { [%eval 4.42] } 16... Nb6 { [%eval 4.3] } 17. d5 { [%eval 3.04] } 17... Qe7 { [%eval 6.97] } 18. d6 { [%eval 6.43] } 18... Qe8 { [%eval 10.36] } 19. Re1 { [%eval 10.42] } 19... Qd8 { [%eval 12.72] } 20. Ne5 { [%eval 11.35] } 20... Qxg5 { [%eval 15.14] } 21. Nf7+ { [%eval 15.05] } 21... Rxf7 { [%eval #2] } 22. Re8+ { [%eval #1] } 22... Rf8 { [%eval #1] } 23. Rxf8# 1-0\n\n\n",
+      "analysis": [
+        {
+          "eval": 24
+        },
+        {
+          "eval": 23
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 8
+        },
+        {
+          "eval": 35
+        },
+        {
+          "eval": 40
+        },
+        {
+          "eval": 123,
+          "best": "g8f6",
+          "variation": "Ngf6 exd5 cxd5 d4 e6 Bd3 a6 O-O Be7 a4",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. Ngf6 was best."
+          }
+        },
+        {
+          "eval": 121
+        },
+        {
+          "eval": 122
+        },
+        {
+          "eval": 136
+        },
+        {
+          "eval": 141
+        },
+        {
+          "eval": 94
+        },
+        {
+          "eval": 101
+        },
+        {
+          "eval": 97
+        },
+        {
+          "eval": 94
+        },
+        {
+          "eval": 106
+        },
+        {
+          "eval": 118
+        },
+        {
+          "eval": 68
+        },
+        {
+          "eval": 198,
+          "best": "f6d5",
+          "variation": "Nd5",
+          "judgment": {
+            "name": "Mistake",
+            "comment": "Mistake. Nd5 was best."
+          }
+        },
+        {
+          "eval": 158
+        },
+        {
+          "eval": 298,
+          "best": "h5f4",
+          "variation": "Nf4 Re1",
+          "judgment": {
+            "name": "Mistake",
+            "comment": "Mistake. Nf4 was best."
+          }
+        },
+        {
+          "eval": 277
+        },
+        {
+          "eval": 519,
+          "best": "f8e8",
+          "variation": "Re8 Bd3 Ndf6 Nxf6+ Nxf6 c3 Bf5 Bxf5 gxf5 Ne5 c5 Re1 Nd5 Qh5",
+          "judgment": {
+            "name": "Mistake",
+            "comment": "Mistake. Re8 was best."
+          }
+        },
+        {
+          "eval": 518
+        },
+        {
+          "eval": 523
+        },
+        {
+          "eval": 502
+        },
+        {
+          "eval": 559
+        },
+        {
+          "eval": 547
+        },
+        {
+          "eval": 613
+        },
+        {
+          "eval": 442,
+          "best": "d2b4",
+          "variation": "Bb4",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. Bb4 was best."
+          }
+        },
+        {
+          "eval": 430
+        },
+        {
+          "eval": 304,
+          "best": "c4d3",
+          "variation": "Bd3 Nd5 Ba5 Bf5 Re1 Bxd3 Qxd3 Qf5 Qd2 Rae8 c4 Ne3 Bb4 Nc2",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. Bd3 was best."
+          }
+        },
+        {
+          "eval": 697,
+          "best": "f6d6",
+          "variation": "Qd6",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Blunder. Qd6 was best."
+          }
+        },
+        {
+          "eval": 643
+        },
+        {
+          "eval": 1036,
+          "best": "e7d8",
+          "variation": "Qd8",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. Qd8 was best."
+          }
+        },
+        {
+          "eval": 1042
+        },
+        {
+          "eval": 1272
+        },
+        {
+          "eval": 1135
+        },
+        {
+          "eval": 1514
+        },
+        {
+          "eval": 1505
+        },
+        {
+          "mate": 2,
+          "best": "h8g8",
+          "variation": "Kg8 Nxg5+",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Checkmate is now unavoidable. Kg8 was best."
+          }
+        },
+        {
+          "mate": 1
+        },
+        {
+          "mate": 1
+        }
+      ],
+      "division": {
+        "middle": 25
+      }
+    }
   ]
 }
