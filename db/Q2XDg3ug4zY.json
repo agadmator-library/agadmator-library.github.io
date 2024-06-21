@@ -73,5 +73,173 @@
     {
       "id": "509vnYzu"
     }
+  ],
+  "lichessGameEval": [
+    {
+      "id": "509vnYzu",
+      "rated": false,
+      "variant": "standard",
+      "speed": "correspondence",
+      "perf": "correspondence",
+      "createdAt": 1657258380493,
+      "lastMoveAt": 1657258380493,
+      "status": "mate",
+      "source": "import",
+      "players": {
+        "white": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 0,
+            "mistake": 0,
+            "blunder": 0,
+            "acpl": 15,
+            "accuracy": 96
+          }
+        },
+        "black": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 1,
+            "mistake": 0,
+            "blunder": 1,
+            "acpl": 70,
+            "accuracy": 64
+          }
+        }
+      },
+      "winner": "white",
+      "opening": {
+        "eco": "C56",
+        "name": "Italian Game: Scotch Gambit, Anderssen Attack",
+        "ply": 15
+      },
+      "moves": "e4 e5 Nf3 Nc6 Bc4 Nf6 d4 exd4 O-O Nxe4 Re1 d5 Bxd5 Qxd5 Nc3 Qa5 Nxe4 Be6 Bd2 Qf5 Bg5 Bb4 Nxd4 Nxd4 Qxd4 Bf8 Rad1 f6 Qd7+ Bxd7 Nd6+ Kd8 Nf7+ Kc8 Re8+ Bxe8 Rd8#",
+      "pgn": "[Event \"Import\"]\n[Site \"https://lichess.org/509vnYzu\"]\n[Date \"2022.07.08\"]\n[White \"?\"]\n[Black \"?\"]\n[Result \"1-0\"]\n[UTCDate \"2022.07.08\"]\n[UTCTime \"05:33:00\"]\n[WhiteElo \"?\"]\n[BlackElo \"?\"]\n[Variant \"Standard\"]\n[TimeControl \"-\"]\n[ECO \"C56\"]\n[Opening \"Italian Game: Scotch Gambit, Anderssen Attack\"]\n[Termination \"Normal\"]\n\n1. e4 { [%eval 0.33] } 1... e5 { [%eval 0.12] } 2. Nf3 { [%eval 0.19] } 2... Nc6 { [%eval 0.32] } 3. Bc4 { [%eval 0.21] } 3... Nf6 { [%eval 0.18] } 4. d4 { [%eval 0.0] } 4... exd4 { [%eval -0.13] } 5. O-O { [%eval 0.0] } 5... Nxe4 { [%eval -0.04] } 6. Re1 { [%eval 0.0] } 6... d5 { [%eval 0.0] } 7. Bxd5 { [%eval -0.13] } 7... Qxd5 { [%eval 0.0] } 8. Nc3 { [%eval -0.03] } 8... Qa5 { [%eval 0.01] } 9. Nxe4 { [%eval 0.02] } 9... Be6 { [%eval 0.19] } 10. Bd2 { [%eval -0.21] } 10... Qf5 { [%eval 0.05] } 11. Bg5 { [%eval -0.18] } 11... Bb4 { [%eval 0.62] } 12. Nxd4 { [%eval 0.9] } 12... Nxd4 { [%eval 0.53] } 13. Qxd4 { [%eval 0.42] } 13... Bf8 { [%eval 10.1] } 14. Rad1 { [%eval 8.5] } 14... f6 { [%eval 11.23] } 15. Qd7+ { [%eval #4] } 15... Bxd7 { [%eval #4] } 16. Nd6+ { [%eval #3] } 16... Kd8 { [%eval #3] } 17. Nf7+ { [%eval #2] } 17... Kc8 { [%eval #2] } 18. Re8+ { [%eval #1] } 18... Bxe8 { [%eval #1] } 19. Rd8# 1-0\n\n\n",
+      "analysis": [
+        {
+          "eval": 33
+        },
+        {
+          "eval": 12
+        },
+        {
+          "eval": 19
+        },
+        {
+          "eval": 32
+        },
+        {
+          "eval": 21
+        },
+        {
+          "eval": 18
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": -13
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": -4
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": -13
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": -3
+        },
+        {
+          "eval": 1
+        },
+        {
+          "eval": 2
+        },
+        {
+          "eval": 19
+        },
+        {
+          "eval": -21
+        },
+        {
+          "eval": 5
+        },
+        {
+          "eval": -18
+        },
+        {
+          "eval": 62,
+          "best": "h7h6",
+          "variation": "h6 Bh4 Bc5 b4 Bxb4 Nxd4 Nxd4 Qxd4 Bxe1 Qxg7 Bxf2+ Nxf2 Qh7 Qd4",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. h6 was best."
+          }
+        },
+        {
+          "eval": 90
+        },
+        {
+          "eval": 53
+        },
+        {
+          "eval": 42
+        },
+        {
+          "eval": 1010,
+          "best": "b4e1",
+          "variation": "Bxe1",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Blunder. Bxe1 was best."
+          }
+        },
+        {
+          "eval": 850
+        },
+        {
+          "eval": 1123
+        },
+        {
+          "mate": 4
+        },
+        {
+          "mate": 4
+        },
+        {
+          "mate": 3
+        },
+        {
+          "mate": 3
+        },
+        {
+          "mate": 2
+        },
+        {
+          "mate": 2
+        },
+        {
+          "mate": 1
+        },
+        {
+          "mate": 1
+        }
+      ],
+      "division": {
+        "middle": 22
+      }
+    }
   ]
 }
