@@ -73,5 +73,172 @@
     {
       "id": "zlSxPtCA"
     }
+  ],
+  "lichessGameEval": [
+    {
+      "id": "zlSxPtCA",
+      "rated": false,
+      "variant": "standard",
+      "speed": "correspondence",
+      "perf": "correspondence",
+      "createdAt": 1569772735146,
+      "lastMoveAt": 1569772735146,
+      "status": "started",
+      "source": "import",
+      "players": {
+        "white": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 1,
+            "mistake": 0,
+            "blunder": 2,
+            "acpl": 76,
+            "accuracy": 62
+          }
+        },
+        "black": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 0,
+            "mistake": 0,
+            "blunder": 0,
+            "acpl": 14,
+            "accuracy": 95
+          }
+        }
+      },
+      "opening": {
+        "eco": "D53",
+        "name": "Queen's Gambit Declined",
+        "ply": 8
+      },
+      "moves": "d4 d5 c4 e6 Nc3 Nf6 Bg5 Be7 cxd5 exd5 e3 O-O Bd3 h6 Bh4 c5 dxc5 Nc6 Nge2 Bg4 Qd2 Ne5 O-O Bxc5 Bxf6 Qxf6 Nxd5 Qh4 Nec3 Nf3+ gxf3 Bxf3 Ne4 Bd6",
+      "pgn": "[Event \"Import\"]\n[Site \"https://lichess.org/zlSxPtCA\"]\n[Date \"2019.09.29\"]\n[White \"?\"]\n[Black \"?\"]\n[Result \"*\"]\n[UTCDate \"2019.09.29\"]\n[UTCTime \"15:58:55\"]\n[WhiteElo \"?\"]\n[BlackElo \"?\"]\n[Variant \"Standard\"]\n[TimeControl \"-\"]\n[ECO \"D53\"]\n[Opening \"Queen's Gambit Declined\"]\n[Termination \"Unterminated\"]\n\n1. d4 { [%eval 0.25] } 1... d5 { [%eval 0.25] } 2. c4 { [%eval 0.26] } 2... e6 { [%eval 0.21] } 3. Nc3 { [%eval 0.27] } 3... Nf6 { [%eval 0.27] } 4. Bg5 { [%eval 0.0] } 4... Be7 { [%eval 0.0] } 5. cxd5 { [%eval 0.0] } 5... exd5 { [%eval 0.43] } 6. e3 { [%eval 0.12] } 6... O-O { [%eval 0.17] } 7. Bd3 { [%eval 0.18] } 7... h6 { [%eval 0.25] } 8. Bh4 { [%eval 0.3] } 8... c5 { [%eval 0.72] } 9. dxc5 { [%eval 0.61] } 9... Nc6 { [%eval 0.74] } 10. Nge2 { [%eval 0.94] } 10... Bg4 { [%eval 1.08] } 11. Qd2 { [%eval 0.37] } 11... Ne5 { [%eval 0.79] } 12. O-O { [%eval 0.72] } 12... Bxc5 { [%eval 0.81] } 13. Bxf6 { [%eval 0.91] } 13... Qxf6 { [%eval 0.6] } 14. Nxd5 { [%eval 0.97] } 14... Qh4 { [%eval 0.9] } 15. Nec3 { [%eval -1.0] } 15... Nf3+ { [%eval -1.11] } 16. gxf3 { [%eval -1.1] } 16... Bxf3 { [%eval -0.51] } 17. Ne4 { [%eval #-5] } 17... Bd6 { [%eval #-4] } *\n\n\n",
+      "analysis": [
+        {
+          "eval": 25
+        },
+        {
+          "eval": 25
+        },
+        {
+          "eval": 26
+        },
+        {
+          "eval": 21
+        },
+        {
+          "eval": 27
+        },
+        {
+          "eval": 27
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 43
+        },
+        {
+          "eval": 12
+        },
+        {
+          "eval": 17
+        },
+        {
+          "eval": 18
+        },
+        {
+          "eval": 25
+        },
+        {
+          "eval": 30
+        },
+        {
+          "eval": 72
+        },
+        {
+          "eval": 61
+        },
+        {
+          "eval": 74
+        },
+        {
+          "eval": 94
+        },
+        {
+          "eval": 108
+        },
+        {
+          "eval": 37,
+          "best": "e1g1",
+          "variation": "O-O",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. O-O was best."
+          }
+        },
+        {
+          "eval": 79
+        },
+        {
+          "eval": 72
+        },
+        {
+          "eval": 81
+        },
+        {
+          "eval": 91
+        },
+        {
+          "eval": 60
+        },
+        {
+          "eval": 97
+        },
+        {
+          "eval": 90
+        },
+        {
+          "eval": -100,
+          "best": "a1c1",
+          "variation": "Rac1 Rac8",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Blunder. Rac1 was best."
+          }
+        },
+        {
+          "eval": -111
+        },
+        {
+          "eval": -110
+        },
+        {
+          "eval": -51
+        },
+        {
+          "mate": -5,
+          "best": "f1d1",
+          "variation": "Rfd1 Bd6 Kf1 Qxh2 Ke1 Rfe8 Qc2 Qg1+ Bf1 Rad8 Qf5 Bg4 Qc2 h5",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Checkmate is now unavoidable. Rfd1 was best."
+          }
+        },
+        {
+          "mate": -4
+        }
+      ],
+      "division": {
+        "middle": 20
+      }
+    }
   ]
 }
