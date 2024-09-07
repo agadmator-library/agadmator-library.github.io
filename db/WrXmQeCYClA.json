@@ -88,5 +88,178 @@
     {
       "id": "o9b0lXAv"
     }
+  ],
+  "lichessGameEval": [
+    {
+      "id": "o9b0lXAv",
+      "rated": false,
+      "variant": "standard",
+      "speed": "correspondence",
+      "perf": "correspondence",
+      "createdAt": 1668706572522,
+      "lastMoveAt": 1668706572522,
+      "status": "started",
+      "source": "import",
+      "players": {
+        "white": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 0,
+            "mistake": 0,
+            "blunder": 0,
+            "acpl": 27,
+            "accuracy": 92
+          }
+        },
+        "black": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 1,
+            "mistake": 1,
+            "blunder": 1,
+            "acpl": 49,
+            "accuracy": 78
+          }
+        }
+      },
+      "opening": {
+        "eco": "B40",
+        "name": "Sicilian Defense: Kramnik Variation",
+        "ply": 5
+      },
+      "moves": "e4 c5 Nf3 e6 c4 g5 h3 Bg7 d4 cxd4 Nxd4 a6 Nc3 h6 Be3 Ne7 h4 gxh4 Rxh4 d6 Qd2 Ng6 Rh5 Nd7 Be2 Nf6 Rh3 Qa5 O-O-O Bd7 Nb3 Qe5 f4 Nxe4 fxe5 Nxd2",
+      "pgn": "[Event \"Import\"]\n[Site \"https://lichess.org/o9b0lXAv\"]\n[Date \"2022.11.17\"]\n[White \"?\"]\n[Black \"?\"]\n[Result \"*\"]\n[UTCDate \"2022.11.17\"]\n[UTCTime \"17:36:12\"]\n[WhiteElo \"?\"]\n[BlackElo \"?\"]\n[Variant \"Standard\"]\n[TimeControl \"-\"]\n[ECO \"B40\"]\n[Opening \"Sicilian Defense: Kramnik Variation\"]\n[Termination \"Unterminated\"]\n\n1. e4 { [%eval 0.36] } 1... c5 { [%eval 0.32] } 2. Nf3 { [%eval 0.0] } 2... e6 { [%eval 0.13] } 3. c4 { [%eval 0.0] } 3... g5 { [%eval 1.43] } 4. h3 { [%eval 1.21] } 4... Bg7 { [%eval 1.71] } 5. d4 { [%eval 1.63] } 5... cxd4 { [%eval 1.65] } 6. Nxd4 { [%eval 1.8] } 6... a6 { [%eval 1.9] } 7. Nc3 { [%eval 2.1] } 7... h6 { [%eval 2.61] } 8. Be3 { [%eval 2.19] } 8... Ne7 { [%eval 2.49] } 9. h4 { [%eval 2.36] } 9... gxh4 { [%eval 2.34] } 10. Rxh4 { [%eval 2.16] } 10... d6 { [%eval 2.38] } 11. Qd2 { [%eval 2.09] } 11... Ng6 { [%eval 2.29] } 12. Rh5 { [%eval 1.77] } 12... Nd7 { [%eval 1.91] } 13. Be2 { [%eval 1.36] } 13... Nf6 { [%eval 1.45] } 14. Rh3 { [%eval 1.31] } 14... Qa5 { [%eval 2.49] } 15. O-O-O { [%eval 2.53] } 15... Bd7 { [%eval 2.4] } 16. Nb3 { [%eval 1.99] } 16... Qe5 { [%eval 5.13] } 17. f4 { [%eval 4.37] } 17... Nxe4 { [%eval 4.82] } 18. fxe5 { [%eval 4.18] } 18... Nxd2 { [%eval 4.54] } *\n\n\n",
+      "analysis": [
+        {
+          "eval": 36
+        },
+        {
+          "eval": 32
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 13
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 143,
+          "best": "b8c6",
+          "variation": "Nc6 Be2 Nf6 Nc3 Qb6 Rb1 d6 O-O Be7 a3",
+          "judgment": {
+            "name": "Mistake",
+            "comment": "Mistake. Nc6 was best."
+          }
+        },
+        {
+          "eval": 121
+        },
+        {
+          "eval": 171
+        },
+        {
+          "eval": 163
+        },
+        {
+          "eval": 165
+        },
+        {
+          "eval": 180
+        },
+        {
+          "eval": 190
+        },
+        {
+          "eval": 210
+        },
+        {
+          "eval": 261
+        },
+        {
+          "eval": 219
+        },
+        {
+          "eval": 249
+        },
+        {
+          "eval": 236
+        },
+        {
+          "eval": 234
+        },
+        {
+          "eval": 216
+        },
+        {
+          "eval": 238
+        },
+        {
+          "eval": 209
+        },
+        {
+          "eval": 229
+        },
+        {
+          "eval": 177
+        },
+        {
+          "eval": 191
+        },
+        {
+          "eval": 136
+        },
+        {
+          "eval": 145
+        },
+        {
+          "eval": 131
+        },
+        {
+          "eval": 249,
+          "best": "h6h5",
+          "variation": "h5 Bg5",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. h5 was best."
+          }
+        },
+        {
+          "eval": 253
+        },
+        {
+          "eval": 240
+        },
+        {
+          "eval": 199
+        },
+        {
+          "eval": 513,
+          "best": "a5c7",
+          "variation": "Qc7 Qxd6 Qxd6 Rxd6 Bc6 Bf3 Nd7 Na5 Be5 Rd1 Rc8 Kc2 Bf4 Bxf4",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Blunder. Qc7 was best."
+          }
+        },
+        {
+          "eval": 437
+        },
+        {
+          "eval": 482
+        },
+        {
+          "eval": 418
+        },
+        {
+          "eval": 454
+        }
+      ],
+      "division": {
+        "middle": 7
+      }
+    }
   ]
 }
