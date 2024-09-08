@@ -72,5 +72,112 @@
     {
       "id": "vhac1mP6"
     }
+  ],
+  "lichessGameEval": [
+    {
+      "id": "vhac1mP6",
+      "rated": false,
+      "variant": "standard",
+      "speed": "correspondence",
+      "perf": "correspondence",
+      "createdAt": 1614201025765,
+      "lastMoveAt": 1614201025765,
+      "status": "started",
+      "source": "import",
+      "players": {
+        "white": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 1,
+            "mistake": 1,
+            "blunder": 1,
+            "acpl": 121,
+            "accuracy": 52
+          }
+        },
+        "black": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 0,
+            "mistake": 0,
+            "blunder": 0,
+            "acpl": 18,
+            "accuracy": 91
+          }
+        }
+      },
+      "opening": {
+        "eco": "C31",
+        "name": "King's Gambit Declined: Falkbeer Countergambit, Nimzowitsch-Marshall Countergambit",
+        "ply": 6
+      },
+      "moves": "e4 e5 f4 d5 exd5 c6 Qe2 cxd5 Qxe5+ Be7 Qxg7 Bf6 Qg3 Bh4",
+      "pgn": "[Event \"Import\"]\n[Site \"https://lichess.org/vhac1mP6\"]\n[Date \"2021.02.24\"]\n[White \"?\"]\n[Black \"?\"]\n[Result \"*\"]\n[UTCDate \"2021.02.24\"]\n[UTCTime \"21:10:25\"]\n[WhiteElo \"?\"]\n[BlackElo \"?\"]\n[Variant \"Standard\"]\n[TimeControl \"-\"]\n[ECO \"C31\"]\n[Opening \"King's Gambit Declined: Falkbeer Countergambit, Nimzowitsch-Marshall Countergambit\"]\n[Termination \"Unterminated\"]\n\n1. e4 { [%eval 0.25] } 1... e5 { [%eval 0.31] } 2. f4 { [%eval -0.52] } 2... d5 { [%eval -0.28] } 3. exd5 { [%eval -0.2] } 3... c6 { [%eval 0.32] } 4. Qe2 { [%eval 0.13] } 4... cxd5 { [%eval 0.48] } 5. Qxe5+ { [%eval -0.66] } 5... Be7 { [%eval -0.56] } 6. Qxg7 { [%eval -6.31] } 6... Bf6 { [%eval -6.34] } 7. Qg3 { [%eval -6.89] } 7... Bh4 { [%eval -7.04] } *\n\n\n",
+      "analysis": [
+        {
+          "eval": 25
+        },
+        {
+          "eval": 31
+        },
+        {
+          "eval": -52,
+          "best": "g1f3",
+          "variation": "Nf3 Nc6 Bb5 Nf6 d3 Bc5 c3 O-O O-O d6",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. Nf3 was best."
+          }
+        },
+        {
+          "eval": -28
+        },
+        {
+          "eval": -20
+        },
+        {
+          "eval": 32,
+          "best": "e5f4",
+          "variation": "exf4 Nf3 Nf6 Bb5+ c6 dxc6 Nxc6 Nc3 Bb4 Qe2+"
+        },
+        {
+          "eval": 13
+        },
+        {
+          "eval": 48
+        },
+        {
+          "eval": -66,
+          "best": "f4e5",
+          "variation": "fxe5 Nc6 Nf3 Bg4 Nc3 Nge7 Qf2 Bxf3 gxf3 Nf5",
+          "judgment": {
+            "name": "Mistake",
+            "comment": "Mistake. fxe5 was best."
+          }
+        },
+        {
+          "eval": -56
+        },
+        {
+          "eval": -631,
+          "best": "f1b5",
+          "variation": "Bb5+ Nc6 Nf3 Nf6 Qe2 O-O O-O Bc5+ Kh1 Re8",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Blunder. Bb5+ was best."
+          }
+        },
+        {
+          "eval": -634
+        },
+        {
+          "eval": -689
+        },
+        {
+          "eval": -704
+        }
+      ],
+      "division": {}
+    }
   ]
 }
