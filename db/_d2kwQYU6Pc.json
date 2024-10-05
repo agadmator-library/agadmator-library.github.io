@@ -72,5 +72,78 @@
     {
       "id": "vtjHjGaa"
     }
+  ],
+  "lichessGameEval": [
+    {
+      "id": "vtjHjGaa",
+      "rated": false,
+      "variant": "standard",
+      "speed": "correspondence",
+      "perf": "correspondence",
+      "createdAt": 1523211567296,
+      "lastMoveAt": 1523211567296,
+      "status": "started",
+      "source": "import",
+      "players": {
+        "white": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 0,
+            "mistake": 0,
+            "blunder": 1,
+            "acpl": 208,
+            "accuracy": 26
+          }
+        },
+        "black": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 0,
+            "mistake": 0,
+            "blunder": 0,
+            "acpl": 23,
+            "accuracy": 90
+          }
+        }
+      },
+      "opening": {
+        "eco": "A45",
+        "name": "Indian Defense: Lazard Gambit",
+        "ply": 4
+      },
+      "moves": "d4 Nf6 Nd2 e5 dxe5 Ng4 h3",
+      "pgn": "[Event \"Import\"]\n[Site \"https://lichess.org/vtjHjGaa\"]\n[Date \"2018.04.08\"]\n[White \"?\"]\n[Black \"?\"]\n[Result \"*\"]\n[UTCDate \"2018.04.08\"]\n[UTCTime \"18:19:27\"]\n[WhiteElo \"?\"]\n[BlackElo \"?\"]\n[Variant \"Standard\"]\n[TimeControl \"-\"]\n[ECO \"A45\"]\n[Opening \"Indian Defense: Lazard Gambit\"]\n[Termination \"Unterminated\"]\n\n1. d4 { [%eval 0.08] } 1... Nf6 { [%eval 0.13] } 2. Nd2 { [%eval -0.1] } 2... e5 { [%eval 0.37] } 3. dxe5 { [%eval 0.47] } 3... Ng4 { [%eval 0.65] } 4. h3 { [%eval -7.38] } *\n\n\n",
+      "analysis": [
+        {
+          "eval": 8
+        },
+        {
+          "eval": 13
+        },
+        {
+          "eval": -10
+        },
+        {
+          "eval": 37
+        },
+        {
+          "eval": 47
+        },
+        {
+          "eval": 65
+        },
+        {
+          "eval": -738,
+          "best": "e2e4",
+          "variation": "e4 d6 Nb3 Nc6 Be2 Ngxe5 f4 Nd7 Nf3 g6",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Blunder. e4 was best."
+          }
+        }
+      ],
+      "division": {},
+      "import": {}
+    }
   ]
 }
