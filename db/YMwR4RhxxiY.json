@@ -83,5 +83,456 @@
     {
       "id": "C0vepuqN"
     }
+  ],
+  "lichessGameEval": [
+    {
+      "id": "C0vepuqN",
+      "rated": false,
+      "variant": "standard",
+      "speed": "correspondence",
+      "perf": "correspondence",
+      "createdAt": 1587839977968,
+      "lastMoveAt": 1587839977968,
+      "status": "started",
+      "source": "import",
+      "players": {
+        "white": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 9,
+            "mistake": 2,
+            "blunder": 0,
+            "acpl": 45,
+            "accuracy": 88
+          }
+        },
+        "black": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 5,
+            "mistake": 1,
+            "blunder": 0,
+            "acpl": 33,
+            "accuracy": 92
+          }
+        }
+      },
+      "opening": {
+        "eco": "E60",
+        "name": "King's Indian Defense: Normal Variation, King's Knight Variation",
+        "ply": 5
+      },
+      "moves": "d4 Nf6 c4 g6 Nf3 Bg7 e3 O-O Be2 c5 d5 d6 Nc3 e6 Nd2 Na6 O-O Re8 e4 b6 dxe6 Bxe6 Nb3 Qe7 Bf4 Rad8 Qd2 Nb4 Rad1 Qb7 f3 Qa6 a3 Nc6 Nb5 Qa4 Qc2 Na5 N3d4 Qxc2 Nxc2 Bxc4 Bxc4 Nxc4 b3 a6 bxc4 axb5 cxb5 d5 Ne3 dxe4 Bc7 Rd3 Rfe1 Rxa3 Nc4 Rb3 Nd6 Ra8 Bxb6 Nd7 Bc7 Bd4+ Kh1 e3 Nc4 Ra4 Nd6 Ra2 Nc4 Rc2 Rc1 Rxc1 Rxc1 Rxb5 Bf4 e2 g4 Nb6 Nd2 Rb2 Re1 Nd5 Bh6 Nc3 Kg2 f5 Nc4 Rb4 Nd6 fxg4 fxg4 Be5 Bd2 Bxd6 Bxc3 Rxg4+ Kf3 Rh4",
+      "pgn": "[Event \"Import\"]\n[Site \"https://lichess.org/C0vepuqN\"]\n[Date \"2020.04.25\"]\n[White \"?\"]\n[Black \"?\"]\n[Result \"*\"]\n[UTCDate \"2020.04.25\"]\n[UTCTime \"18:39:37\"]\n[WhiteElo \"?\"]\n[BlackElo \"?\"]\n[Variant \"Standard\"]\n[TimeControl \"-\"]\n[ECO \"E60\"]\n[Opening \"King's Indian Defense: Normal Variation, King's Knight Variation\"]\n[Termination \"Unterminated\"]\n\n1. d4 { [%eval 0.25] } 1... Nf6 { [%eval 0.22] } 2. c4 { [%eval 0.18] } 2... g6 { [%eval 0.24] } 3. Nf3 { [%eval 0.23] } 3... Bg7 { [%eval 0.31] } 4. e3 { [%eval 0.24] } 4... O-O { [%eval 0.36] } 5. Be2 { [%eval 0.23] } 5... c5 { [%eval 0.27] } 6. d5 { [%eval 0.39] } 6... d6 { [%eval 0.48] } 7. Nc3 { [%eval 0.0] } 7... e6 { [%eval 0.53] } 8. Nd2 { [%eval -0.19] } 8... Na6 { [%eval -0.1] } 9. O-O { [%eval -0.23] } 9... Re8 { [%eval -0.18] } 10. e4 { [%eval -0.28] } 10... b6 { [%eval -0.15] } 11. dxe6 { [%eval 0.0] } 11... Bxe6 { [%eval -0.33] } 12. Nb3 { [%eval -0.17] } 12... Qe7 { [%eval 0.5] } 13. Bf4 { [%eval 0.42] } 13... Rad8 { [%eval 0.57] } 14. Qd2 { [%eval 0.45] } 14... Nb4 { [%eval 0.74] } 15. Rad1 { [%eval 0.0] } 15... Qb7 { [%eval 0.66] } 16. f3 { [%eval 0.09] } 16... Qa6 { [%eval 0.0] } 17. a3 { [%eval 0.0] } 17... Nc6 { [%eval 0.0] } 18. Nb5 { [%eval -0.97] } 18... Qa4 { [%eval -0.74] } 19. Qc2 { [%eval -1.34] } 19... Na5 { [%eval -1.16] } 20. N3d4 { [%eval -1.13] } 20... Qxc2 { [%eval -0.97] } 21. Nxc2 { [%eval -1.26] } 21... Bxc4 { [%eval -0.23] } 22. Bxc4 { [%eval -0.33] } 22... Nxc4 { [%eval -0.23] } 23. b3 { [%eval -0.31] } 23... a6 { [%eval -0.38] } 24. bxc4 { [%eval -1.3] } 24... axb5 { [%eval -1.37] } 25. cxb5 { [%eval -1.21] } 25... d5 { [%eval -0.98] } 26. Ne3 { [%eval -1.63] } 26... dxe4 { [%eval -1.21] } 27. Bc7 { [%eval -1.69] } 27... Rd3 { [%eval -1.24] } 28. Rfe1 { [%eval -1.46] } 28... Rxa3 { [%eval -1.5] } 29. Nc4 { [%eval -2.46] } 29... Rb3 { [%eval -2.53] } 30. Nd6 { [%eval -2.75] } 30... Ra8 { [%eval -2.49] } 31. Bxb6 { [%eval -2.93] } 31... Nd7 { [%eval -2.79] } 32. Bc7 { [%eval -3.11] } 32... Bd4+ { [%eval -3.05] } 33. Kh1 { [%eval -2.8] } 33... e3 { [%eval -2.89] } 34. Nc4 { [%eval -4.85] } 34... Ra4 { [%eval -5.06] } 35. Nd6 { [%eval -5.35] } 35... Ra2 { [%eval -5.0] } 36. Nc4 { [%eval -6.31] } 36... Rc2 { [%eval -5.64] } 37. Rc1 { [%eval -8.53] } 37... Rxc1 { [%eval -8.38] } 38. Rxc1 { [%eval -7.22] } 38... Rxb5 { [%eval -3.92] } 39. Bf4 { [%eval -6.81] } 39... e2 { [%eval -6.42] } 40. g4 { [%eval -7.18] } 40... Nb6 { [%eval -7.02] } 41. Nd2 { [%eval -7.94] } 41... Rb2 { [%eval -7.94] } 42. Re1 { [%eval -7.92] } 42... Nd5 { [%eval -7.79] } 43. Bh6 { [%eval -7.65] } 43... Nc3 { [%eval -7.4] } 44. Kg2 { [%eval -7.17] } 44... f5 { [%eval -5.38] } 45. Nc4 { [%eval -6.19] } 45... Rb4 { [%eval -6.11] } 46. Nd6 { [%eval -6.89] } 46... fxg4 { [%eval -4.55] } 47. fxg4 { [%eval -4.59] } 47... Be5 { [%eval -4.34] } 48. Bd2 { [%eval -4.7] } 48... Bxd6 { [%eval -4.5] } 49. Bxc3 { [%eval -4.48] } 49... Rxg4+ { [%eval -4.38] } 50. Kf3 { [%eval -4.13] } 50... Rh4 { [%eval -4.34] } *\n\n\n",
+      "analysis": [
+        {
+          "eval": 25
+        },
+        {
+          "eval": 22
+        },
+        {
+          "eval": 18
+        },
+        {
+          "eval": 24
+        },
+        {
+          "eval": 23
+        },
+        {
+          "eval": 31
+        },
+        {
+          "eval": 24
+        },
+        {
+          "eval": 36
+        },
+        {
+          "eval": 23
+        },
+        {
+          "eval": 27
+        },
+        {
+          "eval": 39
+        },
+        {
+          "eval": 48
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 53
+        },
+        {
+          "eval": -19,
+          "best": "e1g1",
+          "variation": "O-O exd5 cxd5 Re8 Nd2 Nbd7 e4 Ne5 a4 Bd7",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. O-O was best."
+          }
+        },
+        {
+          "eval": -10
+        },
+        {
+          "eval": -23
+        },
+        {
+          "eval": -18
+        },
+        {
+          "eval": -28
+        },
+        {
+          "eval": -15
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": -33
+        },
+        {
+          "eval": -17
+        },
+        {
+          "eval": 50,
+          "best": "a6b4",
+          "variation": "Nb4",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. Nb4 was best."
+          }
+        },
+        {
+          "eval": 42
+        },
+        {
+          "eval": 57
+        },
+        {
+          "eval": 45
+        },
+        {
+          "eval": 74
+        },
+        {
+          "eval": 0,
+          "best": "f4g5",
+          "variation": "Bg5 Qf8",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. Bg5 was best."
+          }
+        },
+        {
+          "eval": 66,
+          "best": "f6e4",
+          "variation": "Nxe4 Nxe4 d5 Nd6 Rxd6 Bxd6 Qxd6 cxd5 Qxd5 Nc1 Qxd2 Rxd2 Bh6 Bb5",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. Nxe4 was best."
+          }
+        },
+        {
+          "eval": 9,
+          "best": "a2a3",
+          "variation": "a3 Nc6 Qc2 Qe7 Rfe1 Ne5 Bxe5 dxe5 Nd2 Bc8 Nf3 Rxd1 Rxd1 Bb7",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. a3 was best."
+          }
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": -97,
+          "best": "c3d5",
+          "variation": "Nd5 Qa4",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. Nd5 was best."
+          }
+        },
+        {
+          "eval": -74
+        },
+        {
+          "eval": -134,
+          "best": "d2e3",
+          "variation": "Qe3",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. Qe3 was best."
+          }
+        },
+        {
+          "eval": -116
+        },
+        {
+          "eval": -113
+        },
+        {
+          "eval": -97
+        },
+        {
+          "eval": -126
+        },
+        {
+          "eval": -23,
+          "best": "a5c4",
+          "variation": "Nxc4",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. Nxc4 was best."
+          }
+        },
+        {
+          "eval": -33
+        },
+        {
+          "eval": -23
+        },
+        {
+          "eval": -31
+        },
+        {
+          "eval": -38
+        },
+        {
+          "eval": -130,
+          "best": "b5d6",
+          "variation": "Nxd6 Nxd6 Bxd6 Rd7 Bf4 Red8 Ne3 b5 Rxd7 Rxd7 Rd1 Rxd1+ Nxd1 Nd7",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. Nxd6 was best."
+          }
+        },
+        {
+          "eval": -137
+        },
+        {
+          "eval": -121
+        },
+        {
+          "eval": -98
+        },
+        {
+          "eval": -163,
+          "best": "e4d5",
+          "variation": "exd5",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. exd5 was best."
+          }
+        },
+        {
+          "eval": -121
+        },
+        {
+          "eval": -169
+        },
+        {
+          "eval": -124
+        },
+        {
+          "eval": -146
+        },
+        {
+          "eval": -150
+        },
+        {
+          "eval": -246,
+          "best": "c7b6",
+          "variation": "Bxb6 exf3",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. Bxb6 was best."
+          }
+        },
+        {
+          "eval": -253
+        },
+        {
+          "eval": -275
+        },
+        {
+          "eval": -249
+        },
+        {
+          "eval": -293
+        },
+        {
+          "eval": -279
+        },
+        {
+          "eval": -311
+        },
+        {
+          "eval": -305
+        },
+        {
+          "eval": -280
+        },
+        {
+          "eval": -289
+        },
+        {
+          "eval": -485,
+          "best": "g2g4",
+          "variation": "g4 Ra4 Re2 Nf6 Ne4 Nxe4 fxe4 Rab4 Bf4 f6 Rde1 Bc3 Rc1 Bd2",
+          "judgment": {
+            "name": "Mistake",
+            "comment": "Mistake. g4 was best."
+          }
+        },
+        {
+          "eval": -506
+        },
+        {
+          "eval": -535
+        },
+        {
+          "eval": -500
+        },
+        {
+          "eval": -631
+        },
+        {
+          "eval": -564
+        },
+        {
+          "eval": -853,
+          "best": "c4e3",
+          "variation": "Nxe3 Rxe3",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. Nxe3 was best."
+          }
+        },
+        {
+          "eval": -838
+        },
+        {
+          "eval": -722
+        },
+        {
+          "eval": -392,
+          "best": "e3e2",
+          "variation": "e2",
+          "judgment": {
+            "name": "Mistake",
+            "comment": "Mistake. e2 was best."
+          }
+        },
+        {
+          "eval": -681,
+          "best": "g2g3",
+          "variation": "g3 Rb4 Bf4 e2 Bd2 Ra4 Kg2 Nf6 f4 Nd5 Nd6 Ra2 Be1 f5",
+          "judgment": {
+            "name": "Mistake",
+            "comment": "Mistake. g3 was best."
+          }
+        },
+        {
+          "eval": -642
+        },
+        {
+          "eval": -718
+        },
+        {
+          "eval": -702
+        },
+        {
+          "eval": -794
+        },
+        {
+          "eval": -794
+        },
+        {
+          "eval": -792
+        },
+        {
+          "eval": -779
+        },
+        {
+          "eval": -765
+        },
+        {
+          "eval": -740
+        },
+        {
+          "eval": -717
+        },
+        {
+          "eval": -538,
+          "best": "f7f6",
+          "variation": "f6 Nc4 Rc2 Bd2 Nd5 Rxe2 Rxc4 f4 Kf7 Kf3 Ra4 Bc1 Ra1 Bd2",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. f6 was best."
+          }
+        },
+        {
+          "eval": -619
+        },
+        {
+          "eval": -611
+        },
+        {
+          "eval": -689
+        },
+        {
+          "eval": -455,
+          "best": "b4b1",
+          "variation": "Rb1 Bd2 Rxe1 Bxe1 Nd5 gxf5 Nf4+ Kh1 Nd3 Bd2 Be3 Bc3 Bf4 Nc4",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. Rb1 was best."
+          }
+        },
+        {
+          "eval": -459
+        },
+        {
+          "eval": -434
+        },
+        {
+          "eval": -470
+        },
+        {
+          "eval": -450
+        },
+        {
+          "eval": -448
+        },
+        {
+          "eval": -438
+        },
+        {
+          "eval": -413
+        },
+        {
+          "eval": -434
+        }
+      ],
+      "division": {
+        "middle": 24,
+        "end": 75
+      },
+      "import": {}
+    }
   ]
 }
