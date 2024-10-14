@@ -1,12 +1,12 @@
 import { VideoFilter } from "@/model/VideoFilter";
 import { Video } from "@/model/Video";
 import { Pgn } from "@/model/Pgn";
-import { usePgnsStore } from "@/store/pgnStore"; // Assuming you're using a store for PGNs
+import { usePgnsStore } from "@/stores/pgnsStore";
 
 function isSacrifice(pgn: string, pieceType: "Q" | "R" | "N" | "B"): boolean {
   const moves = pgn
     .replace(/\d+\.\s+/g, "") // Remove move numbers
-    .trim() // Trim whitespace
+    .trim()
     .split(/\s+/); // Split by spaces
 
   const captureRegex = /([QRNB])?([a-h])?x([a-h][1-8])(=[QRNB])?/;
