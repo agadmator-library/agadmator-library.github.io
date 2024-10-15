@@ -3,52 +3,89 @@ import { Video } from "@/model/Video";
 import { Pgn } from "@/model/Pgn";
 import { usePgnsStore } from "@/stores/pgnsStore";
 
+// NOTE:
+// There are some outlying cases where the queen sacrifice is not detected.
+// - A queen exchange happens but not on subsequent moves will be considered a queen sacrifice.
+// - A queen exchange that happens after a non-subsequent queen exchange interpreted as a queen sacrifice.
+
+// TODO - we need to check whole game for queen exchange
+// TODO - ensure it isn't last move of game
+
 function isQueenSacrifice(pgn: string): boolean {
   const moves = pgn
     .replace(/\d+\.\s+/g, "") // Remove move numbers
     .trim()
     .split(/\s+/); // Split by spaces
 
+  // Regular expression to match captures (e.g., dxe5, Qxe2)
   const captureRegex = /([QRNB])?([a-h])?x([a-h][1-8])(=[QRNB])?/;
 
-  // Track whether the queen has been captured
-  let queenPosition: string | null = "d1"; // Start with default queen position
+  // Track the initial positions of the queens
+  let whiteQueenPosition = "d1"; // White Queen starts at d1
+  let blackQueenPosition = "d8"; // Black Queen starts at d8
+
+  // let hasQueenExchangeOccurred = false;
 
   for (let i = 0; i < moves.length; i++) {
+    // if (hasQueenExchangeOccurred) {
+    //   return false;
+    // }
+
     const move = moves[i];
 
+    // Match the move against the capture regex
     const captureMatch = move.match(captureRegex);
+
+    // If it's a capture
     if (captureMatch) {
-      const capturingPiece = captureMatch[1] || "P"; // Default to pawn if no piece letter is present
-      const targetSquare = captureMatch[3]; // The square where the piece is captured
+      const targetSquare = captureMatch[3]; // The square where the capture happens
 
-      // If a queen is on the target square, it has been captured
-      if (queenPosition && queenPosition === targetSquare) {
-        // console.log("Queen captured on", targetSquare);
+      const isWhiteQueenCapture = targetSquare === whiteQueenPosition;
+      const isBlackQueenCapture = targetSquare === blackQueenPosition;
 
-        // Check the next move for a queen recapture (exchange)
+      if (isWhiteQueenCapture) {
         const nextMove = moves[i + 1];
         const nextCaptureMatch = nextMove?.match(captureRegex);
+        const nextTargetSquare = nextCaptureMatch?.[3];
+        const nextMoveIsQueenCapture = nextTargetSquare === blackQueenPosition;
 
-        // If the next move is a queen capture, it's an exchange
-        if (nextCaptureMatch && nextCaptureMatch[1] === "Q") {
-          console.log("Queen exchange, not a sacrifice.");
-          return false; // Queen exchange, not a sacrifice
+        if (!nextMoveIsQueenCapture) {
+          return true;
+        } else {
+          return false;
         }
-
-        // If no immediate queen recapture, it's a sacrifice
-        console.log("> it's a queen sacrifice!");
-        return true;
       }
 
-      // Update queen position if the queen moves (non-capture)
-      if (capturingPiece === "Q") {
-        queenPosition = targetSquare;
+      if (isBlackQueenCapture) {
+        const nextMove = moves[i + 1];
+        const nextCaptureMatch = nextMove?.match(captureRegex);
+        const nextTargetSquare = nextCaptureMatch?.[3];
+        const nextMoveIsQueenCapture = nextTargetSquare === whiteQueenPosition;
+
+        if (!nextMoveIsQueenCapture) {
+          return true;
+        } else {
+          return false;
+        }
+      }
+    } else {
+      // Handle non-capture moves (including queen moves)
+      // If the move is made by the White Queen
+      if (move.startsWith("Q")) {
+        if (i % 2 === 0) {
+          // White's turn (even index)
+          const newSquare = move.slice(1); // Extract the square from the move (e.g., Qd2 -> d2)
+          whiteQueenPosition = newSquare;
+        } else {
+          // Black's turn (odd index)
+          const newSquare = move.slice(1); // Extract the square from the move (e.g., Qd2 -> d2)
+          blackQueenPosition = newSquare;
+        }
       }
     }
   }
 
-  // If no queen sacrifice was found
+  // No queen sacrifice detected
   return false;
 }
 
