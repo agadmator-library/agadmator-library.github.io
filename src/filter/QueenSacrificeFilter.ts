@@ -3,14 +3,14 @@ import { Video } from "@/model/Video";
 import { Pgn } from "@/model/Pgn";
 import { usePgnsStore } from "@/stores/pgnsStore";
 
-// NOTE:
-// There are some outlying cases where the queen sacrifice is not detected.
-// - A queen exchange happens but not on subsequent moves will be considered a queen sacrifice.
-// - A queen exchange that happens after a non-subsequent queen exchange interpreted as a queen sacrifice.
+/* 
+  There are some outlying cases where the queen sacrifice may be wrongly detected:
+  - A blunder where the queen is captured without any compensation. However, it is unlikely that such games would be analyzed in the first place.
+  - A queen exchange combination lasting more than 2 moves happens, such as if there is a check played as an in-between move to a queen exchange.
 
-// TODO - we need to check whole game for queen exchange
-// TODO - ensure it isn't last move of game
-
+  There are also some cases where the queen sacrifice may not be detected:
+  - This function does not currently the scenario in which a queen exchange takes place and, later, a pawn is promoted to a queen, and then sacrified.
+*/
 function isQueenSacrifice(pgn: string): boolean {
   const moves = pgn
     .replace(/\d+\.\s+/g, "") // Remove move numbers
@@ -20,23 +20,17 @@ function isQueenSacrifice(pgn: string): boolean {
   // Regular expression to match captures (e.g., dxe5, Qxe2)
   const captureRegex = /([QRNB])?([a-h])?x([a-h][1-8])(=[QRNB])?/;
 
-  // Track the initial positions of the queens
   let whiteQueenPosition = "d1"; // White Queen starts at d1
   let blackQueenPosition = "d8"; // Black Queen starts at d8
 
-  // let hasQueenExchangeOccurred = false;
+  const lastMoveIndex = moves.length - 1;
 
   for (let i = 0; i < moves.length; i++) {
-    // if (hasQueenExchangeOccurred) {
-    //   return false;
-    // }
-
     const move = moves[i];
 
-    // Match the move against the capture regex
     const captureMatch = move.match(captureRegex);
 
-    // If it's a capture
+    // If it's a capture move
     if (captureMatch) {
       const targetSquare = captureMatch[3]; // The square where the capture happens
 
@@ -44,29 +38,43 @@ function isQueenSacrifice(pgn: string): boolean {
       const isBlackQueenCapture = targetSquare === blackQueenPosition;
 
       if (isWhiteQueenCapture) {
+        // The PGN does give us the capturing piece notation. If it's a queen capturing
+        // a queen, that is an exchange, and ends calculation if total queen count is 2.
+        if (captureMatch[1] === "Q") {
+          return false;
+        }
+
+        // Otherwise, we need to check the next move to see if it's a queen recapture,
+        // which would also represent an exchange.
         const nextMove = moves[i + 1];
         const nextCaptureMatch = nextMove?.match(captureRegex);
         const nextTargetSquare = nextCaptureMatch?.[3];
         const nextMoveIsQueenCapture = nextTargetSquare === blackQueenPosition;
 
-        if (!nextMoveIsQueenCapture) {
+        // If the next move is not a queen recapture, and if it's not the last move,
+        // i.e. a checkmate or resignation, then it's a queen sacrifice.
+        if (!nextMoveIsQueenCapture && i !== lastMoveIndex) {
           return true;
         } else {
           return false;
         }
-      }
+      } else if (isBlackQueenCapture) {
+        if (captureMatch[1] === "Q") {
+          return false;
+        }
 
-      if (isBlackQueenCapture) {
         const nextMove = moves[i + 1];
         const nextCaptureMatch = nextMove?.match(captureRegex);
         const nextTargetSquare = nextCaptureMatch?.[3];
         const nextMoveIsQueenCapture = nextTargetSquare === whiteQueenPosition;
 
-        if (!nextMoveIsQueenCapture) {
+        if (!nextMoveIsQueenCapture && i !== lastMoveIndex) {
           return true;
         } else {
           return false;
         }
+      } else {
+        continue;
       }
     } else {
       // Handle non-capture moves (including queen moves)
