@@ -4,12 +4,12 @@ import { Pgn } from "@/model/Pgn";
 import { usePgnsStore } from "@/stores/pgnsStore";
 
 /* 
-  There are some outlying cases where the queen sacrifice may be wrongly detected:
-  - A blunder where the queen is captured without any compensation. However, it is unlikely that such games would be analyzed in the first place.
-  - A queen exchange combination lasting more than 2 moves happens, such as if there is a check played as an in-between move to a queen exchange.
+  There are some cases where a queen sacrifice may be wrongly detected:
+  - A blunder where the queen is captured without any compensation. However, it is unlikely that such games would be analyzed on the channel.
+  - A queen exchange combination, such as a check in-between move before recapturing the other queen.
 
   There are also some cases where the queen sacrifice may not be detected:
-  - This function does not currently the scenario in which a queen exchange takes place and, later, a pawn is promoted to a queen, and then sacrified.
+  - This function does not currently handle the scenario in which a queen exchange takes place and, later, a pawn is promoted to a queen, and then sacrificed.
 */
 function isQueenSacrifice(pgn: string): boolean {
   const moves = pgn
@@ -17,8 +17,7 @@ function isQueenSacrifice(pgn: string): boolean {
     .trim()
     .split(/\s+/); // Split by spaces
 
-  // Regular expression to match captures (e.g., dxe5, Qxe2)
-  const captureRegex = /([QRNB])?([a-h])?x([a-h][1-8])(=[QRNB])?/;
+  const captureRegex = /([QRNB])?([a-h])?x([a-h][1-8])?/;
 
   let whiteQueenPosition = "d1"; // White Queen starts at d1
   let blackQueenPosition = "d8"; // Black Queen starts at d8
@@ -38,57 +37,46 @@ function isQueenSacrifice(pgn: string): boolean {
       const isBlackQueenCapture = targetSquare === blackQueenPosition;
 
       if (isWhiteQueenCapture) {
-        // The PGN does give us the capturing piece notation. If it's a queen capturing
-        // a queen, that is an exchange, and ends calculation if total queen count is 2.
         if (captureMatch[1] === "Q") {
+          // If it's a queen capturing a queen, it's an exchange, not a sacrifice
           return false;
         }
 
-        // Otherwise, we need to check the next move to see if it's a queen recapture,
-        // which would also represent an exchange.
+        // Otherwise, check if the next move is a queen recapture (indicating an exchange)
         const nextMove = moves[i + 1];
         const nextCaptureMatch = nextMove?.match(captureRegex);
         const nextTargetSquare = nextCaptureMatch?.[3];
         const nextMoveIsQueenCapture = nextTargetSquare === blackQueenPosition;
 
-        // If the next move is not a queen recapture, and if it's not the last move,
-        // i.e. a checkmate or resignation, then it's a queen sacrifice.
-        if (!nextMoveIsQueenCapture && i !== lastMoveIndex) {
-          return true;
-        } else {
-          return false;
-        }
+        // If the next move is not a queen recapture, and it’s not an exchange, return true
+        return !nextMoveIsQueenCapture && i !== lastMoveIndex;
       } else if (isBlackQueenCapture) {
+        // If it's a queen capturing a queen, it's an exchange, not a sacrifice
         if (captureMatch[1] === "Q") {
           return false;
         }
 
+        // Otherwise, check if the next move is a queen recapture (indicating an exchange)
         const nextMove = moves[i + 1];
         const nextCaptureMatch = nextMove?.match(captureRegex);
         const nextTargetSquare = nextCaptureMatch?.[3];
         const nextMoveIsQueenCapture = nextTargetSquare === whiteQueenPosition;
 
-        if (!nextMoveIsQueenCapture && i !== lastMoveIndex) {
-          return true;
-        } else {
-          return false;
-        }
-      } else {
-        continue;
+        // If the next move is not a queen recapture, and it’s not an exchange, return true
+        return !nextMoveIsQueenCapture && i !== lastMoveIndex;
       }
-    } else {
-      // Handle non-capture moves (including queen moves)
-      // If the move is made by the White Queen
-      if (move.startsWith("Q")) {
-        if (i % 2 === 0) {
-          // White's turn (even index)
-          const newSquare = move.slice(1); // Extract the square from the move (e.g., Qd2 -> d2)
-          whiteQueenPosition = newSquare;
-        } else {
-          // Black's turn (odd index)
-          const newSquare = move.slice(1); // Extract the square from the move (e.g., Qd2 -> d2)
-          blackQueenPosition = newSquare;
-        }
+    }
+
+    // Update queen positions if the queens move
+    if (move.startsWith("Q")) {
+      if (i % 2 === 0) {
+        // White's turn (even index)
+        const newSquare = move.slice(1); // Extract the square from the move (e.g., Qd2 -> d2)
+        whiteQueenPosition = newSquare;
+      } else {
+        // Black's turn (odd index)
+        const newSquare = move.slice(1); // Extract the square from the move (e.g., Qd2 -> d2)
+        blackQueenPosition = newSquare;
       }
     }
   }
