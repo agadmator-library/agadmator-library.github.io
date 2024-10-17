@@ -93,7 +93,6 @@ export class QueenSacrificeFilter implements VideoFilter {
   }
 
   test(video: Video): boolean {
-    // Get the PGNs for the given video using the PGN store
     const pgns = usePgnsStore().pgns.get(video.id) || [];
 
     return pgns.some((pgn: Pgn) => {
