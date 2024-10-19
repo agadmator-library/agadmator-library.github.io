@@ -17,7 +17,7 @@ function isQueenSacrifice(pgn: string): boolean {
     .trim()
     .split(/\s+/); // Split by spaces
 
-  const captureRegex = /([QRNB])?([a-h])?x([a-h][1-8])?/;
+  const captureRegex = /([QRNB])?([a-h1-8])x([a-h][1-8])/;
 
   let whiteQueenPosition = "d1"; // White Queen starts at d1
   let blackQueenPosition = "d8"; // Black Queen starts at d8
