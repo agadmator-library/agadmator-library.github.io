@@ -17,7 +17,7 @@ function isQueenSacrifice(pgn: string): boolean {
     .trim()
     .split(/\s+/); // Split by spaces
 
-  const captureRegex = /([QRNB])?([a-h1-8])x([a-h][1-8])/;
+  const captureRegex = /([QRNB])?([a-h1-8])?x([a-h][1-8])/;
 
   let whiteQueenPosition = "d1"; // White Queen starts at d1
   let blackQueenPosition = "d8"; // Black Queen starts at d8
@@ -36,25 +36,39 @@ function isQueenSacrifice(pgn: string): boolean {
       const isWhiteQueenCapture = targetSquare === whiteQueenPosition;
       const isBlackQueenCapture = targetSquare === blackQueenPosition;
 
+      // Check if the queen was captured
       if (isWhiteQueenCapture || isBlackQueenCapture) {
-        let otherQueenPosition = isWhiteQueenCapture
+        // if capture was by a queen, update that queen's position to target square
+        if (captureMatch[1] === "Q") {
+          if (isWhiteQueenCapture) {
+            blackQueenPosition = targetSquare;
+          } else {
+            whiteQueenPosition = targetSquare;
+          }
+        }
+
+        const otherQueenPosition = isWhiteQueenCapture
           ? blackQueenPosition
           : whiteQueenPosition;
-        if (captureMatch[i] === "Q") {
-          otherQueenPosition = targetSquare;
-        }
+
+        // If the queen was captured, check if the next move is a queen recapture
         const nextMove = moves[i + 1];
         const nextCaptureMatch = nextMove?.match(captureRegex);
         const nextTargetSquare = nextCaptureMatch?.[3];
         const nextMoveIsQueenCapture = nextTargetSquare === otherQueenPosition;
+
         return !nextMoveIsQueenCapture && i !== lastMoveIndex;
       }
     }
 
     // Update queen positions if the queens move
     if (move.startsWith("Q")) {
+      // Remove check or checkmate symbols
+      const cleanMove = move.replace(/[+#]/g, "");
       // Extract the last two chars (the board position) if it's a capture, or from index 1 if not
-      const newSquare = move.includes("x") ? move.slice(-2) : move.slice(1);
+      const newSquare = cleanMove.includes("x")
+        ? cleanMove.slice(cleanMove.indexOf("x") + 1)
+        : cleanMove.slice(1);
 
       if (i % 2 === 0) {
         // White's turn (even index)
