@@ -36,33 +36,17 @@ function isQueenSacrifice(pgn: string): boolean {
       const isWhiteQueenCapture = targetSquare === whiteQueenPosition;
       const isBlackQueenCapture = targetSquare === blackQueenPosition;
 
-      if (isWhiteQueenCapture) {
-        if (captureMatch[1] === "Q") {
-          // If it's a queen capturing a queen, it's an exchange, not a sacrifice
-          return false;
+      if (isWhiteQueenCapture || isBlackQueenCapture) {
+        let otherQueenPosition = isWhiteQueenCapture
+          ? blackQueenPosition
+          : whiteQueenPosition;
+        if (captureMatch[i] === "Q") {
+          otherQueenPosition = targetSquare;
         }
-
-        // Otherwise, check if the next move is a queen recapture (indicating an exchange)
         const nextMove = moves[i + 1];
         const nextCaptureMatch = nextMove?.match(captureRegex);
         const nextTargetSquare = nextCaptureMatch?.[3];
-        const nextMoveIsQueenCapture = nextTargetSquare === blackQueenPosition;
-
-        // If the next move is not a queen recapture, and it’s not an exchange, return true
-        return !nextMoveIsQueenCapture && i !== lastMoveIndex;
-      } else if (isBlackQueenCapture) {
-        // If it's a queen capturing a queen, it's an exchange, not a sacrifice
-        if (captureMatch[1] === "Q") {
-          return false;
-        }
-
-        // Otherwise, check if the next move is a queen recapture (indicating an exchange)
-        const nextMove = moves[i + 1];
-        const nextCaptureMatch = nextMove?.match(captureRegex);
-        const nextTargetSquare = nextCaptureMatch?.[3];
-        const nextMoveIsQueenCapture = nextTargetSquare === whiteQueenPosition;
-
-        // If the next move is not a queen recapture, and it’s not an exchange, return true
+        const nextMoveIsQueenCapture = nextTargetSquare === otherQueenPosition;
         return !nextMoveIsQueenCapture && i !== lastMoveIndex;
       }
     }
