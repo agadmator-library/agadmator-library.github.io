@@ -69,13 +69,14 @@ function isQueenSacrifice(pgn: string): boolean {
 
     // Update queen positions if the queens move
     if (move.startsWith("Q")) {
+      // Extract the last two chars (the board position) if it's a capture, or from index 1 if not
+      const newSquare = move.includes("x") ? move.slice(-2) : move.slice(1);
+
       if (i % 2 === 0) {
         // White's turn (even index)
-        const newSquare = move.slice(1); // Extract the square from the move (e.g., Qd2 -> d2)
         whiteQueenPosition = newSquare;
       } else {
         // Black's turn (odd index)
-        const newSquare = move.slice(1); // Extract the square from the move (e.g., Qd2 -> d2)
         blackQueenPosition = newSquare;
       }
     }
