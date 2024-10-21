@@ -15,6 +15,7 @@ import LengthToFilterSelector from "@/components/filters/LengthToFilterSelector.
 import AtLeastOneGameFilterSelector from "@/components/filters/AtLeastOneGameFilterSelector.vue";
 import MultipleGamesFilterSelector from "@/components/filters/MultipleGamesFilterSelector.vue";
 import GameResultFilterSelector from "@/components/filters/GameResultFilterSelector.vue";
+import QueenSacrificeFilterSelector from "@/components/filters/QueenSacrificeFilterSelector.vue";
 import GameYearFromFilterSelector from "@/components/filters/GameYearFromFilterSelector.vue";
 import GameYearToFilterSelector from "@/components/filters/GameYearToFilterSelector.vue";
 import GameOpeningFilterSelector from "@/components/filters/GameOpeningFilterSelector.vue";
@@ -187,6 +188,10 @@ function isLarge() {
                   <UnderpromotionFilterSelector @replaceFilter="onReplaceFilter"
                                                 @removeFilter="onRemoveFilter"></UnderpromotionFilterSelector>
                 </div>
+              </div>
+              <div class="col">
+                <QueenSacrificeFilterSelector @replaceFilter="onReplaceFilter"
+                                        @removeFilter="onRemoveFilter"></QueenSacrificeFilterSelector>
               </div>
             </div>
             <div class="row mt-2">
