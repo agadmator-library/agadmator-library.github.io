@@ -79,4 +79,5 @@ export default function cleanPgn(pgn: string) : string {
         .replaceAll("This tempting but unsound move led to all his subsequent troubles. 15", "")
         .replaceAll(" In chess language this is a clean mate and is considered one of  most beautiful ever produced in actual play.", "")
         .replaceAll("44", "4")
+        .replaceAll(/\d+\.\.\. /g, "")
 }
