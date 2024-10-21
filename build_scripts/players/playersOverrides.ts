@@ -304,6 +304,10 @@ const playersOverrides = new Map<string, PlayersOverride>(
             white: "Aron Nimzowitsch",
             black: "Hans Duhm"
         }],
+        ["RN732DEw4Gs", {
+            white: "Alexander Grischuk",
+            black: "Magnus Carlsen"
+        }],
         ["", {
             white: "",
             black: ""
