@@ -45,15 +45,15 @@
   ],
   "chessCom": {
     "reason": "NOT_FOUND",
-    "retrievedAt": "2024-04-04T09:46:43.760Z"
+    "retrievedAt": "2024-07-20T09:45:42.548Z"
   },
   "chesstempoCom": {
     "reason": "NOT_FOUND",
-    "retrievedAt": "2024-06-29T09:45:55.278Z"
+    "retrievedAt": "2024-10-02T09:45:02.447Z"
   },
   "chess365": {
     "reason": "NOT_FOUND",
-    "retrievedAt": "2024-06-12T09:44:43.785Z"
+    "retrievedAt": "2024-09-11T09:44:45.520Z"
   },
   "lichessMasters": {
     "reason": "NOT_FOUND",
@@ -71,6 +71,260 @@
   "lichessGameId": [
     {
       "id": "vutzC88y"
+    }
+  ],
+  "lichessGameEval": [
+    {
+      "id": "vutzC88y",
+      "rated": false,
+      "variant": "standard",
+      "speed": "correspondence",
+      "perf": "correspondence",
+      "createdAt": 1608822299815,
+      "lastMoveAt": 1608822299815,
+      "status": "started",
+      "source": "import",
+      "players": {
+        "white": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 0,
+            "mistake": 0,
+            "blunder": 2,
+            "acpl": 59,
+            "accuracy": 90
+          }
+        },
+        "black": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 1,
+            "mistake": 1,
+            "blunder": 2,
+            "acpl": 95,
+            "accuracy": 78
+          }
+        }
+      },
+      "opening": {
+        "eco": "B10",
+        "name": "Caro-Kann Defense: Two Knights Attack",
+        "ply": 5
+      },
+      "moves": "e4 c6 Nc3 d5 Nf3 dxe4 Nxe4 Nf6 Qe2 Nxe4 Qxe4 Nd7 Bc4 Nf6 Ne5 e6 Qe2 b5 Bb3 Bb7 Nxf7 Kxf7 Qxe6+ Kg6 Qf7+ Kf5 g4+ Kxg4 Rg1+ Kh3 Rg3+ Kxh2 Be6 Qd6 Kf1 Qxg3 fxg3 Re8 Qxb7 Rxe6 Qxa7 Ne4 Qg1+ Kh3 Qh1+ Kxg3 d3 Rf6+ Ke2 Nf2 Qg1+ Kh3 Be3 Bb4 Qxg7 Rhf8 Rg1",
+      "pgn": "[Event \"Import\"]\n[Site \"https://lichess.org/vutzC88y\"]\n[Date \"2020.12.24\"]\n[White \"?\"]\n[Black \"?\"]\n[Result \"*\"]\n[UTCDate \"2020.12.24\"]\n[UTCTime \"15:04:59\"]\n[WhiteElo \"?\"]\n[BlackElo \"?\"]\n[Variant \"Standard\"]\n[TimeControl \"-\"]\n[ECO \"B10\"]\n[Opening \"Caro-Kann Defense: Two Knights Attack\"]\n[Termination \"Unterminated\"]\n\n1. e4 { [%eval 0.21] } 1... c6 { [%eval 0.13] } 2. Nc3 { [%eval 0.28] } 2... d5 { [%eval 0.33] } 3. Nf3 { [%eval 0.0] } 3... dxe4 { [%eval 0.2] } 4. Nxe4 { [%eval 0.25] } 4... Nf6 { [%eval 0.4] } 5. Qe2 { [%eval 0.13] } 5... Nxe4 { [%eval 0.53] } 6. Qxe4 { [%eval 0.37] } 6... Nd7 { [%eval 0.4] } 7. Bc4 { [%eval 0.48] } 7... Nf6 { [%eval 0.53] } 8. Ne5 { [%eval 0.32] } 8... e6 { [%eval 0.48] } 9. Qe2 { [%eval 0.33] } 9... b5 { [%eval 0.33] } 10. Bb3 { [%eval 0.2] } 10... Bb7 { [%eval 5.73] } 11. Nxf7 { [%eval 5.4] } 11... Kxf7 { [%eval 5.82] } 12. Qxe6+ { [%eval 5.11] } 12... Kg6 { [%eval 5.64] } 13. Qf7+ { [%eval 5.52] } 13... Kf5 { [%eval 7.25] } 14. g4+ { [%eval 5.93] } 14... Kxg4 { [%eval 5.01] } 15. Rg1+ { [%eval 4.94] } 15... Kh3 { [%eval #10] } 16. Rg3+ { [%eval 5.92] } 16... Kxh2 { [%eval 10.41] } 17. Be6 { [%eval 4.15] } 17... Qd6 { [%eval 4.01] } 18. Kf1 { [%eval 3.79] } 18... Qxg3 { [%eval 4.22] } 19. fxg3 { [%eval 4.21] } 19... Re8 { [%eval 4.76] } 20. Qxb7 { [%eval 2.43] } 20... Rxe6 { [%eval 4.62] } 21. Qxa7 { [%eval 4.41] } 21... Ne4 { [%eval 4.78] } 22. Qg1+ { [%eval 4.85] } 22... Kh3 { [%eval 4.3] } 23. Qh1+ { [%eval 4.99] } 23... Kxg3 { [%eval 4.94] } 24. d3 { [%eval 5.53] } 24... Rf6+ { [%eval 5.15] } 25. Ke2 { [%eval 4.72] } 25... Nf2 { [%eval 8.79] } 26. Qg1+ { [%eval 8.67] } 26... Kh3 { [%eval 8.58] } 27. Be3 { [%eval 9.36] } 27... Bb4 { [%eval 12.85] } 28. Qxg7 { [%eval 14.25] } 28... Rhf8 { [%eval #3] } 29. Rg1 { [%eval #2] } *\n\n\n",
+      "analysis": [
+        {
+          "eval": 21
+        },
+        {
+          "eval": 13
+        },
+        {
+          "eval": 28
+        },
+        {
+          "eval": 33
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 20
+        },
+        {
+          "eval": 25
+        },
+        {
+          "eval": 40
+        },
+        {
+          "eval": 13
+        },
+        {
+          "eval": 53
+        },
+        {
+          "eval": 37
+        },
+        {
+          "eval": 40
+        },
+        {
+          "eval": 48
+        },
+        {
+          "eval": 53
+        },
+        {
+          "eval": 32
+        },
+        {
+          "eval": 48
+        },
+        {
+          "eval": 33
+        },
+        {
+          "eval": 33
+        },
+        {
+          "eval": 20
+        },
+        {
+          "eval": 573,
+          "best": "d8c7",
+          "variation": "Qc7",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Blunder. Qc7 was best."
+          }
+        },
+        {
+          "eval": 540
+        },
+        {
+          "eval": 582
+        },
+        {
+          "eval": 511
+        },
+        {
+          "eval": 564
+        },
+        {
+          "eval": 552
+        },
+        {
+          "eval": 725
+        },
+        {
+          "eval": 593
+        },
+        {
+          "eval": 501
+        },
+        {
+          "eval": 494
+        },
+        {
+          "mate": 10,
+          "best": "g4h4",
+          "variation": "Kh4 d4 Qe8+ Kf1 h6 Qxb7 g5 Qc7 Ne4 f3 Bd6 Rg4+ Kh3 Qg7",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Checkmate is now unavoidable. Kh4 was best."
+          }
+        },
+        {
+          "eval": 592,
+          "best": "b3e6",
+          "variation": "Be6+ Kxh2 Kf1 Qd4 Qc7+ Bd6 Rg2+ Kh1 Qxg7 Ng4 Rg1+ Kh2 Qxd4 Rhf8",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Lost forced checkmate sequence. Be6+ was best."
+          }
+        },
+        {
+          "eval": 1041
+        },
+        {
+          "eval": 415,
+          "best": "e1f1",
+          "variation": "Kf1",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Blunder. Kf1 was best."
+          }
+        },
+        {
+          "eval": 401
+        },
+        {
+          "eval": 379
+        },
+        {
+          "eval": 422
+        },
+        {
+          "eval": 421
+        },
+        {
+          "eval": 476
+        },
+        {
+          "eval": 243
+        },
+        {
+          "eval": 462
+        },
+        {
+          "eval": 441
+        },
+        {
+          "eval": 478
+        },
+        {
+          "eval": 485
+        },
+        {
+          "eval": 430
+        },
+        {
+          "eval": 499
+        },
+        {
+          "eval": 494
+        },
+        {
+          "eval": 553
+        },
+        {
+          "eval": 515
+        },
+        {
+          "eval": 472
+        },
+        {
+          "eval": 879,
+          "best": "f6f2",
+          "variation": "Rf2+",
+          "judgment": {
+            "name": "Mistake",
+            "comment": "Mistake. Rf2+ was best."
+          }
+        },
+        {
+          "eval": 867
+        },
+        {
+          "eval": 858
+        },
+        {
+          "eval": 936
+        },
+        {
+          "eval": 1285
+        },
+        {
+          "eval": 1425
+        },
+        {
+          "mate": 3,
+          "best": "f6e6",
+          "variation": "Re6 Qxh8",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Checkmate is now unavoidable. Re6 was best."
+          }
+        },
+        {
+          "mate": 2
+        }
+      ],
+      "division": {
+        "middle": 27
+      }
     }
   ]
 }

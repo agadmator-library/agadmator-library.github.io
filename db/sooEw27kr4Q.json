@@ -45,11 +45,11 @@
   ],
   "chessCom": {
     "reason": "NOT_FOUND",
-    "retrievedAt": "2024-06-25T09:46:42.551Z"
+    "retrievedAt": "2024-09-18T09:45:58.756Z"
   },
   "chesstempoCom": {
     "reason": "NOT_FOUND",
-    "retrievedAt": "2024-06-26T09:45:55.459Z"
+    "retrievedAt": "2024-10-07T09:45:56.386Z"
   },
   "chess365": {
     "reason": "NOT_FOUND",
@@ -71,6 +71,132 @@
   "lichessGameId": [
     {
       "id": "lhrN7R47"
+    }
+  ],
+  "lichessGameEval": [
+    {
+      "id": "lhrN7R47",
+      "rated": false,
+      "variant": "standard",
+      "speed": "correspondence",
+      "perf": "correspondence",
+      "createdAt": 1478198257323,
+      "lastMoveAt": 1478198257324,
+      "status": "mate",
+      "source": "import",
+      "players": {
+        "white": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 0,
+            "mistake": 0,
+            "blunder": 0,
+            "acpl": 3,
+            "accuracy": 99
+          }
+        },
+        "black": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 0,
+            "mistake": 2,
+            "blunder": 1,
+            "acpl": 98,
+            "accuracy": 71
+          }
+        }
+      },
+      "winner": "white",
+      "opening": {
+        "eco": "C40",
+        "name": "King's Pawn Game: Damiano Defense",
+        "ply": 4
+      },
+      "moves": "e4 e5 Nf3 f6 Nxe5 fxe5 Qh5+ Ke7 Qxe5+ Kf7 Bc4+ Kg6 Qf5+ Kh6 d4+ g5 h4 Be7 hxg5+ Kg7 Qf7#",
+      "pgn": "[Event \"Import\"]\n[Site \"https://lichess.org/lhrN7R47\"]\n[Date \"2016.11.03\"]\n[White \"?\"]\n[Black \"?\"]\n[Result \"1-0\"]\n[UTCDate \"2016.11.03\"]\n[UTCTime \"18:37:37\"]\n[WhiteElo \"?\"]\n[BlackElo \"?\"]\n[Variant \"Standard\"]\n[TimeControl \"-\"]\n[ECO \"C40\"]\n[Opening \"King's Pawn Game: Damiano Defense\"]\n[Termination \"Normal\"]\n\n1. e4 { [%eval 0.19] } 1... e5 { [%eval 0.32] } 2. Nf3 { [%eval 0.37] } 2... f6 { [%eval 1.5] } 3. Nxe5 { [%eval 1.39] } 3... fxe5 { [%eval 3.33] } 4. Qh5+ { [%eval 3.12] } 4... Ke7 { [%eval 3.8] } 5. Qxe5+ { [%eval 4.03] } 5... Kf7 { [%eval 4.18] } 6. Bc4+ { [%eval 4.21] } 6... Kg6 { [%eval #11] } 7. Qf5+ { [%eval #10] } 7... Kh6 { [%eval #10] } 8. d4+ { [%eval #10] } 8... g5 { [%eval #10] } 9. h4 { [%eval #9] } 9... Be7 { [%eval #2] } 10. hxg5+ { [%eval #1] } 10... Kg7 { [%eval #1] } 11. Qf7# 1-0\n\n\n",
+      "analysis": [
+        {
+          "eval": 19
+        },
+        {
+          "eval": 32
+        },
+        {
+          "eval": 37
+        },
+        {
+          "eval": 150,
+          "best": "b8c6",
+          "variation": "Nc6 Bb5 a6 Bxc6 dxc6 O-O Bd6 d4 exd4 Qxd4 f6 Nc3 Ne7 e5",
+          "judgment": {
+            "name": "Mistake",
+            "comment": "Mistake. Nc6 was best."
+          }
+        },
+        {
+          "eval": 139
+        },
+        {
+          "eval": 333,
+          "best": "d8e7",
+          "variation": "Qe7 Nf3 d5 d3 Nc6 Nc3 Be6 Be2 d4 Nd5 Qd7 c4 O-O-O Bd2",
+          "judgment": {
+            "name": "Mistake",
+            "comment": "Mistake. Qe7 was best."
+          }
+        },
+        {
+          "eval": 312
+        },
+        {
+          "eval": 380,
+          "best": "g7g6",
+          "variation": "g6 Qxe5+ Qe7 Qxh8 Qxe4+ Kd1 Ne7 Nc3 Qf5 f3 d5 Nb5 Kd7 Qxh7"
+        },
+        {
+          "eval": 403
+        },
+        {
+          "eval": 418
+        },
+        {
+          "eval": 421
+        },
+        {
+          "mate": 11,
+          "best": "d7d5",
+          "variation": "d5 Bxd5+ Kg6 h4 h6 Bxb7 Bd6 Qa5 Ne7 Bxa8 Nbc6 Bxc6 Nxc6 Qb5",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Checkmate is now unavoidable. d5 was best."
+          }
+        },
+        {
+          "mate": 10
+        },
+        {
+          "mate": 10
+        },
+        {
+          "mate": 10
+        },
+        {
+          "mate": 10
+        },
+        {
+          "mate": 9
+        },
+        {
+          "mate": 2
+        },
+        {
+          "mate": 1
+        },
+        {
+          "mate": 1
+        }
+      ],
+      "division": {}
     }
   ]
 }

@@ -49,7 +49,7 @@
   ],
   "chessCom": {
     "reason": "NOT_FOUND",
-    "retrievedAt": "2024-05-14T09:45:46.104Z"
+    "retrievedAt": "2024-07-20T09:45:57.502Z"
   },
   "chess365": {
     "retrievedAt": "2023-05-20T09:44:35.497Z",
@@ -89,6 +89,146 @@
   "lichessGameId": [
     {
       "id": "SvnQcFmY"
+    }
+  ],
+  "lichessGameEval": [
+    {
+      "id": "SvnQcFmY",
+      "rated": false,
+      "variant": "standard",
+      "speed": "correspondence",
+      "perf": "correspondence",
+      "createdAt": 1681245585201,
+      "lastMoveAt": 1681245585201,
+      "status": "started",
+      "source": "import",
+      "players": {
+        "white": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 0,
+            "mistake": 0,
+            "blunder": 0,
+            "acpl": 8,
+            "accuracy": 97
+          }
+        },
+        "black": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 0,
+            "mistake": 0,
+            "blunder": 1,
+            "acpl": 46,
+            "accuracy": 68
+          }
+        }
+      },
+      "opening": {
+        "eco": "D02",
+        "name": "Queen's Pawn Game: London System",
+        "ply": 5
+      },
+      "moves": "d4 Nf6 Nf3 d5 Bf4 c5 e3 e6 c3 Nbd7 Nbd2 Be7 Ne5 Nxe5 Bxe5 Bd7 a4 Bc6 Bd3 Bd6 f4 O-O O-O Qe7 Rf3 g6 Rh3 Nd7 Qh5",
+      "pgn": "[Event \"Import\"]\n[Site \"https://lichess.org/SvnQcFmY\"]\n[Date \"2023.04.11\"]\n[White \"?\"]\n[Black \"?\"]\n[Result \"*\"]\n[UTCDate \"2023.04.11\"]\n[UTCTime \"20:39:45\"]\n[WhiteElo \"?\"]\n[BlackElo \"?\"]\n[Variant \"Standard\"]\n[TimeControl \"-\"]\n[ECO \"D02\"]\n[Opening \"Queen's Pawn Game: London System\"]\n[Termination \"Unterminated\"]\n\n1. d4 { [%eval 0.0] } 1... Nf6 { [%eval 0.28] } 2. Nf3 { [%eval 0.12] } 2... d5 { [%eval 0.25] } 3. Bf4 { [%eval 0.0] } 3... c5 { [%eval 0.0] } 4. e3 { [%eval 0.0] } 4... e6 { [%eval 0.2] } 5. c3 { [%eval 0.0] } 5... Nbd7 { [%eval 0.29] } 6. Nbd2 { [%eval 0.24] } 6... Be7 { [%eval 0.43] } 7. Ne5 { [%eval 0.46] } 7... Nxe5 { [%eval 0.16] } 8. Bxe5 { [%eval 0.21] } 8... Bd7 { [%eval 0.2] } 9. a4 { [%eval 0.12] } 9... Bc6 { [%eval 0.19] } 10. Bd3 { [%eval 0.22] } 10... Bd6 { [%eval 0.4] } 11. f4 { [%eval 0.48] } 11... O-O { [%eval 0.43] } 12. O-O { [%eval 0.38] } 12... Qe7 { [%eval 0.6] } 13. Rf3 { [%eval 0.43] } 13... g6 { [%eval 0.68] } 14. Rh3 { [%eval 0.63] } 14... Nd7 { [%eval 5.22] } 15. Qh5 { [%eval 5.25] } *\n\n\n",
+      "analysis": [
+        {
+          "eval": 0
+        },
+        {
+          "eval": 28
+        },
+        {
+          "eval": 12
+        },
+        {
+          "eval": 25
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 20
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 29
+        },
+        {
+          "eval": 24
+        },
+        {
+          "eval": 43
+        },
+        {
+          "eval": 46
+        },
+        {
+          "eval": 16
+        },
+        {
+          "eval": 21
+        },
+        {
+          "eval": 20
+        },
+        {
+          "eval": 12
+        },
+        {
+          "eval": 19
+        },
+        {
+          "eval": 22
+        },
+        {
+          "eval": 40
+        },
+        {
+          "eval": 48
+        },
+        {
+          "eval": 43
+        },
+        {
+          "eval": 38
+        },
+        {
+          "eval": 60
+        },
+        {
+          "eval": 43
+        },
+        {
+          "eval": 68
+        },
+        {
+          "eval": 63
+        },
+        {
+          "eval": 522,
+          "best": "a8d8",
+          "variation": "Rad8",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Blunder. Rad8 was best."
+          }
+        },
+        {
+          "eval": 525
+        }
+      ],
+      "division": {
+        "middle": 21
+      }
     }
   ]
 }

@@ -45,7 +45,7 @@
   ],
   "chessCom": {
     "reason": "NOT_FOUND",
-    "retrievedAt": "2024-06-16T09:45:36.779Z"
+    "retrievedAt": "2024-09-19T09:44:41.996Z"
   },
   "chesstempoCom": {
     "retrievedAt": "2023-02-12T17:33:17.897Z",
@@ -84,5 +84,338 @@
   "lichessMasters": {
     "reason": "NOT_FOUND",
     "retrievedAt": "2023-09-25T09:23:30.053Z"
-  }
+  },
+  "lichessGameId": [
+    {
+      "id": "WCE2RLr6"
+    }
+  ],
+  "lichessGameEval": [
+    {
+      "id": "WCE2RLr6",
+      "rated": false,
+      "variant": "standard",
+      "speed": "correspondence",
+      "perf": "correspondence",
+      "createdAt": 1606674066334,
+      "lastMoveAt": 1606674066334,
+      "status": "started",
+      "source": "import",
+      "players": {
+        "white": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 0,
+            "mistake": 0,
+            "blunder": 0,
+            "acpl": 12,
+            "accuracy": 97
+          }
+        },
+        "black": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 2,
+            "mistake": 1,
+            "blunder": 1,
+            "acpl": 37,
+            "accuracy": 84
+          }
+        }
+      },
+      "opening": {
+        "eco": "D41",
+        "name": "Queen's Gambit Declined: Semi-Tarrasch Defense",
+        "ply": 9
+      },
+      "moves": "d4 Nf6 c4 e6 Nf3 d5 Nc3 c5 cxd5 cxd4 Qxd4 exd5 e4 dxe4 Qxd8+ Kxd8 Ng5 Be6 Nxe6+ fxe6 Bc4 Ke7 O-O Nbd7 Be3 Rc8 Bb3 Nc5 Bxc5+ Rxc5 Rfe1 g6 Nxe4 Nxe4 Rxe4 e5 f4 Bg7 Rae1 Rf8 fxe5 Rf5 e6 Bxb2 Rd1 Rc7 g4 Rf8 Kg2 b5 Re2 Bc3 Re3 Bb4 Red3 a5 Rd7+ Rxd7 Rxd7+ Kf6 Rb7 a4 g5+ Kxg5 Rxb5+ Rf5 Rxb4 axb3 e7 bxa2 e8=Q a1=Q Qe7+ Kh6 Rh4+ Rh5 Qf8+ Qg7 Qf4+ g5 Qd6+ Qg6 Qf8+ Qg7 Rxh5+",
+      "pgn": "[Event \"Import\"]\n[Site \"https://lichess.org/WCE2RLr6\"]\n[Date \"2020.11.29\"]\n[White \"?\"]\n[Black \"?\"]\n[Result \"*\"]\n[UTCDate \"2020.11.29\"]\n[UTCTime \"18:21:06\"]\n[WhiteElo \"?\"]\n[BlackElo \"?\"]\n[Variant \"Standard\"]\n[TimeControl \"-\"]\n[ECO \"D41\"]\n[Opening \"Queen's Gambit Declined: Semi-Tarrasch Defense\"]\n[Termination \"Unterminated\"]\n\n1. d4 { [%eval 0.0] } 1... Nf6 { [%eval 0.13] } 2. c4 { [%eval 0.13] } 2... e6 { [%eval 0.39] } 3. Nf3 { [%eval 0.0] } 3... d5 { [%eval 0.31] } 4. Nc3 { [%eval 0.0] } 4... c5 { [%eval 0.21] } 5. cxd5 { [%eval 0.13] } 5... cxd4 { [%eval 0.4] } 6. Qxd4 { [%eval 0.28] } 6... exd5 { [%eval 0.44] } 7. e4 { [%eval 0.33] } 7... dxe4 { [%eval 0.29] } 8. Qxd8+ { [%eval 0.37] } 8... Kxd8 { [%eval 0.33] } 9. Ng5 { [%eval 0.23] } 9... Be6 { [%eval 0.42] } 10. Nxe6+ { [%eval 0.28] } 10... fxe6 { [%eval 0.33] } 11. Bc4 { [%eval -0.11] } 11... Ke7 { [%eval 0.0] } 12. O-O { [%eval 0.0] } 12... Nbd7 { [%eval 0.14] } 13. Be3 { [%eval 0.09] } 13... Rc8 { [%eval 0.2] } 14. Bb3 { [%eval -0.1] } 14... Nc5 { [%eval 0.47] } 15. Bxc5+ { [%eval 0.54] } 15... Rxc5 { [%eval 0.5] } 16. Rfe1 { [%eval 0.23] } 16... g6 { [%eval 0.34] } 17. Nxe4 { [%eval 0.31] } 17... Nxe4 { [%eval 0.24] } 18. Rxe4 { [%eval 0.16] } 18... e5 { [%eval 0.25] } 19. f4 { [%eval 0.23] } 19... Bg7 { [%eval 0.13] } 20. Rae1 { [%eval 0.04] } 20... Rf8 { [%eval 0.16] } 21. fxe5 { [%eval 0.02] } 21... Rf5 { [%eval 0.16] } 22. e6 { [%eval 0.0] } 22... Bxb2 { [%eval 0.0] } 23. Rd1 { [%eval 0.0] } 23... Rc7 { [%eval 0.44] } 24. g4 { [%eval 0.52] } 24... Rf8 { [%eval 0.48] } 25. Kg2 { [%eval 0.34] } 25... b5 { [%eval 0.32] } 26. Re2 { [%eval 0.22] } 26... Bc3 { [%eval 0.44] } 27. Re3 { [%eval 0.51] } 27... Bb4 { [%eval 0.66] } 28. Red3 { [%eval 0.45] } 28... a5 { [%eval 0.4] } 29. Rd7+ { [%eval 0.34] } 29... Rxd7 { [%eval 0.47] } 30. Rxd7+ { [%eval 0.46] } 30... Kf6 { [%eval 0.45] } 31. Rb7 { [%eval 0.55] } 31... a4 { [%eval 0.42] } 32. g5+ { [%eval 0.33] } 32... Kxg5 { [%eval 0.32] } 33. Rxb5+ { [%eval 0.24] } 33... Rf5 { [%eval 9.62] } 34. Rxb4 { [%eval 8.39] } 34... axb3 { [%eval 8.11] } 35. e7 { [%eval 7.64] } 35... bxa2 { [%eval #19] } 36. e8=Q { [%eval #18] } 36... a1=Q { [%eval #18] } 37. Qe7+ { [%eval 72.53] } 37... Kh6 { [%eval #17] } 38. Rh4+ { [%eval #16] } 38... Rh5 { [%eval #16] } 39. Qf8+ { [%eval #15] } 39... Qg7 { [%eval #15] } 40. Qf4+ { [%eval #14] } 40... g5 { [%eval #14] } 41. Qd6+ { [%eval #13] } 41... Qg6 { [%eval #13] } 42. Qf8+ { [%eval #12] } 42... Qg7 { [%eval #12] } 43. Rxh5+ { [%eval #11] } *\n\n\n",
+      "analysis": [
+        {
+          "eval": 0
+        },
+        {
+          "eval": 13
+        },
+        {
+          "eval": 13
+        },
+        {
+          "eval": 39
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 31
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 21
+        },
+        {
+          "eval": 13
+        },
+        {
+          "eval": 40
+        },
+        {
+          "eval": 28
+        },
+        {
+          "eval": 44
+        },
+        {
+          "eval": 33
+        },
+        {
+          "eval": 29
+        },
+        {
+          "eval": 37
+        },
+        {
+          "eval": 33
+        },
+        {
+          "eval": 23
+        },
+        {
+          "eval": 42
+        },
+        {
+          "eval": 28
+        },
+        {
+          "eval": 33
+        },
+        {
+          "eval": -11
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 14
+        },
+        {
+          "eval": 9
+        },
+        {
+          "eval": 20
+        },
+        {
+          "eval": -10
+        },
+        {
+          "eval": 47,
+          "best": "e7f7",
+          "variation": "Kf7",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. Kf7 was best."
+          }
+        },
+        {
+          "eval": 54
+        },
+        {
+          "eval": 50
+        },
+        {
+          "eval": 23
+        },
+        {
+          "eval": 34
+        },
+        {
+          "eval": 31
+        },
+        {
+          "eval": 24
+        },
+        {
+          "eval": 16
+        },
+        {
+          "eval": 25
+        },
+        {
+          "eval": 23
+        },
+        {
+          "eval": 13
+        },
+        {
+          "eval": 4
+        },
+        {
+          "eval": 16
+        },
+        {
+          "eval": 2
+        },
+        {
+          "eval": 16
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 44
+        },
+        {
+          "eval": 52
+        },
+        {
+          "eval": 48
+        },
+        {
+          "eval": 34
+        },
+        {
+          "eval": 32
+        },
+        {
+          "eval": 22
+        },
+        {
+          "eval": 44
+        },
+        {
+          "eval": 51
+        },
+        {
+          "eval": 66
+        },
+        {
+          "eval": 45
+        },
+        {
+          "eval": 40
+        },
+        {
+          "eval": 34
+        },
+        {
+          "eval": 47
+        },
+        {
+          "eval": 46
+        },
+        {
+          "eval": 45
+        },
+        {
+          "eval": 55
+        },
+        {
+          "eval": 42
+        },
+        {
+          "eval": 33
+        },
+        {
+          "eval": 32
+        },
+        {
+          "eval": 24
+        },
+        {
+          "eval": 962,
+          "best": "g5f6",
+          "variation": "Kf6 Bxa4 Bd6 Bb3 Rb8 a4 Rxb5 axb5 Bc7 Bc4 Ke7 h4 Bd8 Kh3",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Blunder. Kf6 was best."
+          }
+        },
+        {
+          "eval": 839
+        },
+        {
+          "eval": 811
+        },
+        {
+          "eval": 764
+        },
+        {
+          "mate": 19,
+          "best": "f5e5",
+          "variation": "Re5 Rb5 Rxb5 e8=Q Rd5 Qe4 Rf5 axb3 Kf6 Qh4+ g5 Qh6+ Ke5 Qxh7",
+          "judgment": {
+            "name": "Mistake",
+            "comment": "Checkmate is now unavoidable. Re5 was best."
+          }
+        },
+        {
+          "mate": 18
+        },
+        {
+          "mate": 18
+        },
+        {
+          "eval": 7253
+        },
+        {
+          "mate": 17,
+          "best": "a1f6",
+          "variation": "Qf6 Qe3+",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Checkmate is now unavoidable. Qf6 was best."
+          }
+        },
+        {
+          "mate": 16
+        },
+        {
+          "mate": 16
+        },
+        {
+          "mate": 15
+        },
+        {
+          "mate": 15
+        },
+        {
+          "mate": 14
+        },
+        {
+          "mate": 14
+        },
+        {
+          "mate": 13
+        },
+        {
+          "mate": 13
+        },
+        {
+          "mate": 12
+        },
+        {
+          "mate": 12
+        },
+        {
+          "mate": 11
+        }
+      ],
+      "division": {
+        "middle": 20,
+        "end": 35
+      },
+      "import": {}
+    }
+  ]
 }

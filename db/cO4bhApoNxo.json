@@ -46,15 +46,15 @@
   ],
   "chessCom": {
     "reason": "NOT_FOUND",
-    "retrievedAt": "2024-06-27T09:46:10.330Z"
+    "retrievedAt": "2024-09-02T09:45:14.807Z"
   },
   "chesstempoCom": {
     "reason": "NOT_FOUND",
-    "retrievedAt": "2024-05-03T09:46:06.638Z"
+    "retrievedAt": "2024-09-18T09:45:39.353Z"
   },
   "chess365": {
     "reason": "NOT_FOUND",
-    "retrievedAt": "2024-04-29T09:44:58.281Z"
+    "retrievedAt": "2024-09-01T09:44:46.509Z"
   },
   "lichessMasters": {
     "reason": "NOT_FOUND",
@@ -67,6 +67,307 @@
     {
       "cp": null,
       "mate": 0
+    }
+  ],
+  "lichessGameId": [
+    {
+      "id": "77I7hIJg"
+    }
+  ],
+  "lichessGameEval": [
+    {
+      "id": "77I7hIJg",
+      "rated": false,
+      "variant": "standard",
+      "speed": "correspondence",
+      "perf": "correspondence",
+      "createdAt": 1541022077546,
+      "lastMoveAt": 1541022077546,
+      "status": "mate",
+      "source": "import",
+      "players": {
+        "white": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 3,
+            "mistake": 1,
+            "blunder": 1,
+            "acpl": 40,
+            "accuracy": 85
+          }
+        },
+        "black": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 2,
+            "mistake": 1,
+            "blunder": 3,
+            "acpl": 72,
+            "accuracy": 77
+          }
+        }
+      },
+      "winner": "white",
+      "opening": {
+        "eco": "C47",
+        "name": "Four Knights Game: Halloween Gambit",
+        "ply": 7
+      },
+      "moves": "e4 e5 Nf3 Nf6 Nc3 Nc6 Nxe5 Nxe5 d4 Nc6 d5 Ne5 f4 Ng6 e5 Ng8 d6 cxd6 exd6 Qa5 h4 Qb4 Qe2+ Kd8 f5 Nxh4 a3 Nxg2+ Qxg2 Qxd6 Bd2 Qe5+ Be2 Qxf5 O-O-O Qg6 Qxg6 fxg6 Nb5 Nf6 Bf4 Ne8 Be3 a6 Bb6+ Ke7 Rhe1 axb5 Bc4+ Kf6 Bd8+ Kf5 Rd5+ Kf4 Rd4+ Kg3 Bh4+ Kh2 Bd5 Bc5 Rh1#",
+      "pgn": "[Event \"Import\"]\n[Site \"https://lichess.org/77I7hIJg\"]\n[Date \"2018.10.31\"]\n[White \"?\"]\n[Black \"?\"]\n[Result \"1-0\"]\n[UTCDate \"2018.10.31\"]\n[UTCTime \"21:41:17\"]\n[WhiteElo \"?\"]\n[BlackElo \"?\"]\n[Variant \"Standard\"]\n[TimeControl \"-\"]\n[ECO \"C47\"]\n[Opening \"Four Knights Game: Halloween Gambit\"]\n[Termination \"Normal\"]\n\n1. e4 { [%eval 0.12] } 1... e5 { [%eval 0.37] } 2. Nf3 { [%eval 0.31] } 2... Nf6 { [%eval 0.55] } 3. Nc3 { [%eval -0.06] } 3... Nc6 { [%eval 0.11] } 4. Nxe5 { [%eval -1.23] } 4... Nxe5 { [%eval -1.19] } 5. d4 { [%eval -1.08] } 5... Nc6 { [%eval -0.96] } 6. d5 { [%eval -0.8] } 6... Ne5 { [%eval -0.77] } 7. f4 { [%eval -1.09] } 7... Ng6 { [%eval -0.78] } 8. e5 { [%eval -1.23] } 8... Ng8 { [%eval -0.75] } 9. d6 { [%eval -0.98] } 9... cxd6 { [%eval -0.8] } 10. exd6 { [%eval -1.29] } 10... Qa5 { [%eval 0.1] } 11. h4 { [%eval -0.68] } 11... Qb4 { [%eval -0.52] } 12. Qe2+ { [%eval -0.61] } 12... Kd8 { [%eval -0.3] } 13. f5 { [%eval -0.65] } 13... Nxh4 { [%eval 0.11] } 14. a3 { [%eval 0.13] } 14... Nxg2+ { [%eval 3.8] } 15. Qxg2 { [%eval 2.58] } 15... Qxd6 { [%eval 2.23] } 16. Bd2 { [%eval 2.67] } 16... Qe5+ { [%eval 3.25] } 17. Be2 { [%eval 2.47] } 17... Qxf5 { [%eval 3.81] } 18. O-O-O { [%eval 3.72] } 18... Qg6 { [%eval 4.07] } 19. Qxg6 { [%eval 0.24] } 19... fxg6 { [%eval 0.17] } 20. Nb5 { [%eval 0.0] } 20... Nf6 { [%eval 0.0] } 21. Bf4 { [%eval 0.0] } 21... Ne8 { [%eval 0.32] } 22. Be3 { [%eval 0.17] } 22... a6 { [%eval 4.69] } 23. Bb6+ { [%eval 4.52] } 23... Ke7 { [%eval 4.39] } 24. Rhe1 { [%eval 3.7] } 24... axb5 { [%eval #8] } 25. Bc4+ { [%eval #7] } 25... Kf6 { [%eval #7] } 26. Bd8+ { [%eval #6] } 26... Kf5 { [%eval #5] } 27. Rd5+ { [%eval #4] } 27... Kf4 { [%eval #4] } 28. Rd4+ { [%eval #3] } 28... Kg3 { [%eval #3] } 29. Bh4+ { [%eval #2] } 29... Kh2 { [%eval #2] } 30. Bd5 { [%eval #1] } 30... Bc5 { [%eval #1] } 31. Rh1# 1-0\n\n\n",
+      "analysis": [
+        {
+          "eval": 12
+        },
+        {
+          "eval": 37
+        },
+        {
+          "eval": 31
+        },
+        {
+          "eval": 55
+        },
+        {
+          "eval": -6,
+          "best": "f3e5",
+          "variation": "Nxe5 d6 Nf3 Nxe4 d4 d5 Bd3 Bd6 O-O O-O",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. Nxe5 was best."
+          }
+        },
+        {
+          "eval": 11
+        },
+        {
+          "eval": -123,
+          "best": "f1b5",
+          "variation": "Bb5 Bc5 Bxc6 dxc6 h3 O-O d3 Re8 a4 h6",
+          "judgment": {
+            "name": "Mistake",
+            "comment": "Mistake. Bb5 was best."
+          }
+        },
+        {
+          "eval": -119
+        },
+        {
+          "eval": -108
+        },
+        {
+          "eval": -96
+        },
+        {
+          "eval": -80
+        },
+        {
+          "eval": -77
+        },
+        {
+          "eval": -109
+        },
+        {
+          "eval": -78
+        },
+        {
+          "eval": -123
+        },
+        {
+          "eval": -75
+        },
+        {
+          "eval": -98
+        },
+        {
+          "eval": -80
+        },
+        {
+          "eval": -129
+        },
+        {
+          "eval": 10,
+          "best": "d8f6",
+          "variation": "Qf6",
+          "judgment": {
+            "name": "Mistake",
+            "comment": "Mistake. Qf6 was best."
+          }
+        },
+        {
+          "eval": -68,
+          "best": "c1e3",
+          "variation": "Be3",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. Be3 was best."
+          }
+        },
+        {
+          "eval": -52
+        },
+        {
+          "eval": -61
+        },
+        {
+          "eval": -30
+        },
+        {
+          "eval": -65
+        },
+        {
+          "eval": 11,
+          "best": "f8d6",
+          "variation": "Bxd6",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. Bxd6 was best."
+          }
+        },
+        {
+          "eval": 13
+        },
+        {
+          "eval": 380,
+          "best": "b4d6",
+          "variation": "Qxd6 Bg5+ Be7 Bxh4 Bxh4+ Rxh4 Nf6 Qf2 Re8+ Be2 Qb6 Qxb6+ axb6 O-O-O",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Blunder. Qxd6 was best."
+          }
+        },
+        {
+          "eval": 258,
+          "best": "f1g2",
+          "variation": "Bxg2",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. Bxg2 was best."
+          }
+        },
+        {
+          "eval": 223
+        },
+        {
+          "eval": 267
+        },
+        {
+          "eval": 325,
+          "best": "d6c6",
+          "variation": "Qc6 Qh3 d6 O-O-O Qc5 Bg5+ f6 Rd5 Qc7 Bf4 Bd7 Qg3 Bc6 Bxd6"
+        },
+        {
+          "eval": 247
+        },
+        {
+          "eval": 381,
+          "best": "g8f6",
+          "variation": "Nf6 O-O-O d6 Rh4 Bxf5 Qxb7 Rc8 Ba6 Qa5 Qxa7 Qc5 Qxf7 Qc7 Qa2",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. Nf6 was best."
+          }
+        },
+        {
+          "eval": 372
+        },
+        {
+          "eval": 407
+        },
+        {
+          "eval": 24,
+          "best": "g2f2",
+          "variation": "Qf2 Nf6 Rhg1 Ne4 Qf4 Nxc3 Bxc3 Bd6 Qxd6 Qxd6 Rxd6 Re8 Bc4 Kc7",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Blunder. Qf2 was best."
+          }
+        },
+        {
+          "eval": 17
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 32
+        },
+        {
+          "eval": 17
+        },
+        {
+          "eval": 469,
+          "best": "e8f6",
+          "variation": "Nf6 Bxa7 Rxa7 Nxa7 Bc5 Nxc8 Kxc8 Rd3 Re8 Bf3 Re5 Bg2 g5 Kd2",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Blunder. Nf6 was best."
+          }
+        },
+        {
+          "eval": 452
+        },
+        {
+          "eval": 439
+        },
+        {
+          "eval": 370
+        },
+        {
+          "mate": 8,
+          "best": "d7d6",
+          "variation": "d6 Nd4",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Checkmate is now unavoidable. d6 was best."
+          }
+        },
+        {
+          "mate": 7
+        },
+        {
+          "mate": 7
+        },
+        {
+          "mate": 6
+        },
+        {
+          "mate": 5
+        },
+        {
+          "mate": 4
+        },
+        {
+          "mate": 4
+        },
+        {
+          "mate": 3
+        },
+        {
+          "mate": 3
+        },
+        {
+          "mate": 2
+        },
+        {
+          "mate": 2
+        },
+        {
+          "mate": 1
+        },
+        {
+          "mate": 1
+        }
+      ],
+      "division": {
+        "middle": 33
+      }
     }
   ]
 }

@@ -45,15 +45,15 @@
   ],
   "chessCom": {
     "reason": "NOT_FOUND",
-    "retrievedAt": "2024-05-21T09:45:10.688Z"
+    "retrievedAt": "2024-10-05T09:44:41.875Z"
   },
   "chesstempoCom": {
     "reason": "NOT_FOUND",
-    "retrievedAt": "2024-05-14T09:46:01.797Z"
+    "retrievedAt": "2024-10-09T09:45:48.760Z"
   },
   "chess365": {
     "reason": "NOT_FOUND",
-    "retrievedAt": "2024-06-27T09:44:38.213Z"
+    "retrievedAt": "2024-10-11T09:44:50.187Z"
   },
   "lichessMasters": {
     "reason": "NOT_FOUND",
@@ -71,6 +71,242 @@
   "lichessGameId": [
     {
       "id": "0Qp6mUQV"
+    }
+  ],
+  "lichessGameEval": [
+    {
+      "id": "0Qp6mUQV",
+      "rated": false,
+      "variant": "standard",
+      "speed": "correspondence",
+      "perf": "correspondence",
+      "createdAt": 1553173877364,
+      "lastMoveAt": 1553173877364,
+      "status": "started",
+      "source": "import",
+      "players": {
+        "white": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 2,
+            "mistake": 1,
+            "blunder": 0,
+            "acpl": 41,
+            "accuracy": 86
+          }
+        },
+        "black": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 2,
+            "mistake": 0,
+            "blunder": 0,
+            "acpl": 20,
+            "accuracy": 94
+          }
+        }
+      },
+      "opening": {
+        "eco": "B06",
+        "name": "Modern Defense: Norwegian Defense",
+        "ply": 4
+      },
+      "moves": "e4 g6 d4 Nf6 Nc3 d5 exd5 Nxd5 Bc4 Nb6 Bb3 Bg7 Nge2 Nc6 Be3 Na5 O-O O-O d5 Nbc4 Bc1 e6 Qd3 exd5 Qxd5 Be6 Qxd8 Raxd8 Rb1 Nxb3 axb3 Nd2 Bxd2 Rxd2 Rfd1 Rxc2 Nd4 Bxd4 Rxd4 c5 Ra4 a6 Ra5 Rc8 Ra3 Rd8 h3 Rdd2 Ne4 Re2",
+      "pgn": "[Event \"Import\"]\n[Site \"https://lichess.org/0Qp6mUQV\"]\n[Date \"2019.03.21\"]\n[White \"?\"]\n[Black \"?\"]\n[Result \"*\"]\n[UTCDate \"2019.03.21\"]\n[UTCTime \"13:11:17\"]\n[WhiteElo \"?\"]\n[BlackElo \"?\"]\n[Variant \"Standard\"]\n[TimeControl \"-\"]\n[ECO \"B06\"]\n[Opening \"Modern Defense: Norwegian Defense\"]\n[Termination \"Unterminated\"]\n\n1. e4 { [%eval 0.12] } 1... g6 { [%eval 0.46] } 2. d4 { [%eval 0.28] } 2... Nf6 { [%eval 0.58] } 3. Nc3 { [%eval 0.69] } 3... d5 { [%eval 0.76] } 4. exd5 { [%eval 0.25] } 4... Nxd5 { [%eval 0.28] } 5. Bc4 { [%eval 0.04] } 5... Nb6 { [%eval 0.59] } 6. Bb3 { [%eval 0.26] } 6... Bg7 { [%eval 0.53] } 7. Nge2 { [%eval 0.27] } 7... Nc6 { [%eval 0.61] } 8. Be3 { [%eval 0.4] } 8... Na5 { [%eval 0.5] } 9. O-O { [%eval 0.18] } 9... O-O { [%eval 0.53] } 10. d5 { [%eval -0.16] } 10... Nbc4 { [%eval -0.16] } 11. Bc1 { [%eval -0.7] } 11... e6 { [%eval -0.52] } 12. Qd3 { [%eval -0.94] } 12... exd5 { [%eval -0.74] } 13. Qxd5 { [%eval -1.05] } 13... Be6 { [%eval -0.46] } 14. Qxd8 { [%eval -0.57] } 14... Raxd8 { [%eval -0.44] } 15. Rb1 { [%eval -0.91] } 15... Nxb3 { [%eval -0.68] } 16. axb3 { [%eval -2.22] } 16... Nd2 { [%eval -2.07] } 17. Bxd2 { [%eval -2.13] } 17... Rxd2 { [%eval -2.07] } 18. Rfd1 { [%eval -2.21] } 18... Rxc2 { [%eval -2.02] } 19. Nd4 { [%eval -2.58] } 19... Bxd4 { [%eval -2.5] } 20. Rxd4 { [%eval -2.49] } 20... c5 { [%eval -2.47] } 21. Ra4 { [%eval -2.83] } 21... a6 { [%eval -2.6] } 22. Ra5 { [%eval -3.06] } 22... Rc8 { [%eval -2.97] } 23. Ra3 { [%eval -3.45] } 23... Rd8 { [%eval -3.22] } 24. h3 { [%eval -3.84] } 24... Rdd2 { [%eval -3.74] } 25. Ne4 { [%eval -5.05] } 25... Re2 { [%eval -4.93] } *\n\n\n",
+      "analysis": [
+        {
+          "eval": 12
+        },
+        {
+          "eval": 46
+        },
+        {
+          "eval": 28
+        },
+        {
+          "eval": 58
+        },
+        {
+          "eval": 69
+        },
+        {
+          "eval": 76
+        },
+        {
+          "eval": 25,
+          "best": "e4e5",
+          "variation": "e5 Ne4 Nxe4 dxe4 c3 Bg7 f3 Bf5 Be3 O-O"
+        },
+        {
+          "eval": 28
+        },
+        {
+          "eval": 4
+        },
+        {
+          "eval": 59,
+          "best": "d5c3",
+          "variation": "Nxc3 Qf3 e6 bxc3 Bg7 h4 c5 Bg5 Qa5 Ne2",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. Nxc3 was best."
+          }
+        },
+        {
+          "eval": 26
+        },
+        {
+          "eval": 53
+        },
+        {
+          "eval": 27
+        },
+        {
+          "eval": 61
+        },
+        {
+          "eval": 40
+        },
+        {
+          "eval": 50
+        },
+        {
+          "eval": 18
+        },
+        {
+          "eval": 53
+        },
+        {
+          "eval": -16,
+          "best": "d1c1",
+          "variation": "Qc1 Bf5 Ng3 Nbc4 Bh6 e6 d5 Qh4 Bxg7 Kxg7 Re1 Rae8 Ba4 c6",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. Qc1 was best."
+          }
+        },
+        {
+          "eval": -16
+        },
+        {
+          "eval": -70,
+          "best": "e3d4",
+          "variation": "Bd4 Nxb2 Qc1 Nbc4 Bxg7 Kxg7 Qf4 Qd6 Qd4+ Qf6 Bxc4 Qxd4 Nxd4 Nxc4"
+        },
+        {
+          "eval": -52
+        },
+        {
+          "eval": -94
+        },
+        {
+          "eval": -74
+        },
+        {
+          "eval": -105
+        },
+        {
+          "eval": -46,
+          "best": "c7c6",
+          "variation": "c6 Qxd8 Rxd8 Ne4 Bxb2 Bxb2 Nxb2 N2g3 Nbc4 Rae1 Be6 f4 Nxb3 axb3",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. c6 was best."
+          }
+        },
+        {
+          "eval": -57
+        },
+        {
+          "eval": -44
+        },
+        {
+          "eval": -91
+        },
+        {
+          "eval": -68
+        },
+        {
+          "eval": -222,
+          "best": "c2b3",
+          "variation": "cxb3",
+          "judgment": {
+            "name": "Mistake",
+            "comment": "Mistake. cxb3 was best."
+          }
+        },
+        {
+          "eval": -207
+        },
+        {
+          "eval": -213
+        },
+        {
+          "eval": -207
+        },
+        {
+          "eval": -221
+        },
+        {
+          "eval": -202
+        },
+        {
+          "eval": -258,
+          "best": "b3b4",
+          "variation": "b4 Bg4 f3 Bf5 g4 Rxe2 gxf5 Rc2 Rdc1 Rxc1+ Rxc1 Rd8 Re1 gxf5"
+        },
+        {
+          "eval": -250
+        },
+        {
+          "eval": -249
+        },
+        {
+          "eval": -247
+        },
+        {
+          "eval": -283
+        },
+        {
+          "eval": -260
+        },
+        {
+          "eval": -306
+        },
+        {
+          "eval": -297
+        },
+        {
+          "eval": -345
+        },
+        {
+          "eval": -322
+        },
+        {
+          "eval": -384,
+          "best": "a3a5",
+          "variation": "Ra5 Rdd2 Rf1 Rxb2 Rxc5 Bxb3 Ne4 Rdc2 g4 Kg7 Rxc2 Rxc2 Rb1 Bd5"
+        },
+        {
+          "eval": -374
+        },
+        {
+          "eval": -505,
+          "best": "c3d1",
+          "variation": "Nd1 Re2 Ne3 Rcd2 Rf1 Rxb2 Nc4 Bxc4 bxc4 Rec2 g3 Kg7 Kg2 Rxc4",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. Nd1 was best."
+          }
+        },
+        {
+          "eval": -493
+        }
+      ],
+      "division": {
+        "middle": 27,
+        "end": 39
+      }
     }
   ]
 }

@@ -58,7 +58,7 @@
   },
   "chesstempoCom": {
     "reason": "NOT_FOUND",
-    "retrievedAt": "2024-05-15T09:44:34.659Z"
+    "retrievedAt": "2024-07-28T09:45:33.413Z"
   },
   "chess365": {
     "reason": "NOT_FOUND",
@@ -72,6 +72,210 @@
     {
       "cp": null,
       "mate": 0
+    }
+  ],
+  "lichessGameId": [
+    {
+      "id": "RlCGpPhJ"
+    }
+  ],
+  "lichessGameEval": [
+    {
+      "id": "RlCGpPhJ",
+      "rated": false,
+      "variant": "standard",
+      "speed": "correspondence",
+      "perf": "correspondence",
+      "createdAt": 1666076224134,
+      "lastMoveAt": 1666076224134,
+      "status": "mate",
+      "source": "import",
+      "players": {
+        "white": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 2,
+            "mistake": 0,
+            "blunder": 1,
+            "acpl": 50,
+            "accuracy": 78
+          }
+        },
+        "black": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 4,
+            "mistake": 0,
+            "blunder": 2,
+            "acpl": 109,
+            "accuracy": 60
+          }
+        }
+      },
+      "winner": "white",
+      "opening": {
+        "eco": "C33",
+        "name": "King's Gambit Accepted: Bishop's Gambit, Bogoljubow Defense",
+        "ply": 8
+      },
+      "moves": "e4 e5 f4 exf4 Bc4 Nf6 Nc3 c6 d4 Bb4 e5 Ne4 Qh5 O-O Ne2 d5 Bb3 g6 Qh6 Bg4 Bd2 Nxd2 Kxd2 g5 h4 gxh4 Rxh4 Bf5 Rah1 Be7 Rg4+ Bg6 Qxh7#",
+      "pgn": "[Event \"Import\"]\n[Site \"https://lichess.org/RlCGpPhJ\"]\n[Date \"2022.10.18\"]\n[White \"?\"]\n[Black \"?\"]\n[Result \"1-0\"]\n[UTCDate \"2022.10.18\"]\n[UTCTime \"06:57:04\"]\n[WhiteElo \"?\"]\n[BlackElo \"?\"]\n[Variant \"Standard\"]\n[TimeControl \"-\"]\n[ECO \"C33\"]\n[Opening \"King's Gambit Accepted: Bishop's Gambit, Bogoljubow Defense\"]\n[Termination \"Normal\"]\n\n1. e4 { [%eval 0.0] } 1... e5 { [%eval 0.12] } 2. f4 { [%eval -0.65] } 2... exf4 { [%eval -0.43] } 3. Bc4 { [%eval -0.91] } 3... Nf6 { [%eval -0.56] } 4. Nc3 { [%eval -0.09] } 4... c6 { [%eval -0.27] } 5. d4 { [%eval -0.36] } 5... Bb4 { [%eval -0.36] } 6. e5 { [%eval -0.8] } 6... Ne4 { [%eval -0.7] } 7. Qh5 { [%eval -0.83] } 7... O-O { [%eval 0.0] } 8. Ne2 { [%eval -0.03] } 8... d5 { [%eval 0.17] } 9. Bb3 { [%eval -0.52] } 9... g6 { [%eval 0.0] } 10. Qh6 { [%eval 0.17] } 10... Bg4 { [%eval 0.81] } 11. Bd2 { [%eval -3.09] } 11... Nxd2 { [%eval -3.21] } 12. Kxd2 { [%eval -3.06] } 12... g5 { [%eval 2.78] } 13. h4 { [%eval 2.53] } 13... gxh4 { [%eval 8.35] } 14. Rxh4 { [%eval 8.29] } 14... Bf5 { [%eval 8.56] } 15. Rah1 { [%eval 7.53] } 15... Be7 { [%eval 25.94] } 16. Rg4+ { [%eval 20.82] } 16... Bg6 { [%eval #1] } 17. Qxh7# 1-0\n\n\n",
+      "analysis": [
+        {
+          "eval": 0
+        },
+        {
+          "eval": 12
+        },
+        {
+          "eval": -65,
+          "best": "g1f3",
+          "variation": "Nf3 Nc6 Bb5 Nf6 O-O Nxe4 Re1 Nd6 Nxe5 Be7",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. Nf3 was best."
+          }
+        },
+        {
+          "eval": -43
+        },
+        {
+          "eval": -91
+        },
+        {
+          "eval": -56
+        },
+        {
+          "eval": -9
+        },
+        {
+          "eval": -27
+        },
+        {
+          "eval": -36
+        },
+        {
+          "eval": -36
+        },
+        {
+          "eval": -80
+        },
+        {
+          "eval": -70
+        },
+        {
+          "eval": -83
+        },
+        {
+          "eval": 0,
+          "best": "g7g6",
+          "variation": "g6 Qf3 Qh4+ Kf1 d5 exd6 Nxc3 bxc3 Bxd6 Qe4+",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. g6 was best."
+          }
+        },
+        {
+          "eval": -3
+        },
+        {
+          "eval": 17
+        },
+        {
+          "eval": -52,
+          "best": "c4d3",
+          "variation": "Bd3",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. Bd3 was best."
+          }
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 17
+        },
+        {
+          "eval": 81,
+          "best": "d8g5",
+          "variation": "Qg5 Qxg5 Nxg5 Bxf4 Be7 h4 Ne6 Bh6 Re8 h5 Ng7 Ng3 a5 O-O-O",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. Qg5 was best."
+          }
+        },
+        {
+          "eval": -309,
+          "best": "e1h1",
+          "variation": "O-O Be7 Qxf4 Bxe2 Nxe2 Bg5 Qg4 Qd7 Qf3 Bxc1 Rfxc1 a5 a4 Na6",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Blunder. O-O was best."
+          }
+        },
+        {
+          "eval": -321
+        },
+        {
+          "eval": -306
+        },
+        {
+          "eval": 278,
+          "best": "g4e2",
+          "variation": "Bxe2 Kxe2 f6 e6 Na6 Rae1 Re8 Kd1 Nc7 e7 Rxe7 h4 Bxc3 bxc3",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Blunder. Bxe2 was best."
+          }
+        },
+        {
+          "eval": 253
+        },
+        {
+          "eval": 835,
+          "best": "g4f5",
+          "variation": "Bf5 hxg5 Bg6 Nxf4 Be7 Nh3 a5 Raf1 Nd7 a4 b5 Rf6 Bxf6 gxf6",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Blunder. Bf5 was best."
+          }
+        },
+        {
+          "eval": 829
+        },
+        {
+          "eval": 856
+        },
+        {
+          "eval": 753
+        },
+        {
+          "eval": 2594,
+          "best": "f7f6",
+          "variation": "f6 Rg4+ Kf7 Nxf4 Bxg4 Qxh7+ Ke8 Qg6+ Kd7 Qxg4+ f5 Rh7+ Kc8 Qg7",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. f6 was best."
+          }
+        },
+        {
+          "eval": 2082
+        },
+        {
+          "mate": 1,
+          "best": "e7g5",
+          "variation": "Bg5 Rxg5+",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Checkmate is now unavoidable. Bg5 was best."
+          }
+        }
+      ],
+      "division": {
+        "middle": 16
+      },
+      "import": {}
     }
   ]
 }

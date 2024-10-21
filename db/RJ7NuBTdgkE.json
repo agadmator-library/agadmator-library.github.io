@@ -46,7 +46,7 @@
   ],
   "chessCom": {
     "reason": "NOT_FOUND",
-    "retrievedAt": "2024-05-01T09:46:10.564Z"
+    "retrievedAt": "2024-09-26T09:46:05.347Z"
   },
   "chesstempoCom": {
     "retrievedAt": "2023-02-12T15:17:57.700Z",
@@ -73,10 +73,285 @@
   ],
   "chess365": {
     "reason": "NOT_FOUND",
-    "retrievedAt": "2024-05-02T09:44:34.439Z"
+    "retrievedAt": "2024-08-01T09:44:52.606Z"
   },
   "lichessMasters": {
     "reason": "NOT_FOUND",
     "retrievedAt": "2023-06-14T09:22:49.626Z"
-  }
+  },
+  "lichessGameId": [
+    {
+      "id": "ayOP08yt"
+    }
+  ],
+  "lichessGameEval": [
+    {
+      "id": "ayOP08yt",
+      "rated": false,
+      "variant": "standard",
+      "speed": "correspondence",
+      "perf": "correspondence",
+      "createdAt": 1588967901853,
+      "lastMoveAt": 1588967901853,
+      "status": "started",
+      "source": "import",
+      "players": {
+        "white": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 1,
+            "mistake": 0,
+            "blunder": 0,
+            "acpl": 15,
+            "accuracy": 95
+          }
+        },
+        "black": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 1,
+            "mistake": 3,
+            "blunder": 1,
+            "acpl": 44,
+            "accuracy": 85
+          }
+        }
+      },
+      "opening": {
+        "eco": "B33",
+        "name": "Sicilian Defense: Lasker-Pelikan Variation, Sveshnikov Variation, Chelyabinsk Variation",
+        "ply": 17
+      },
+      "moves": "e4 c5 Nf3 Nc6 d4 cxd4 Nxd4 e5 Nb5 d6 N1c3 a6 Na3 b5 Nd5 Nf6 Bg5 Be7 Bxf6 Bxf6 c4 b4 Nc2 Rb8 b3 a5 g3 O-O Bg2 g6 Nxf6+ Qxf6 O-O Qe7 Qe2 Be6 Rad1 f6 Rd3 Nd8 Rfd1 Nb7 h4 Rfd8 Qd2 Kg7 Ne3 Rd7 f4 Rbd8 f5 Bg8 fxg6 hxg6 Ng4 Bh7 Rf3 Rf8 Qh6+ Kh8 Nxe5",
+      "pgn": "[Event \"Import\"]\n[Site \"https://lichess.org/ayOP08yt\"]\n[Date \"2020.05.08\"]\n[White \"?\"]\n[Black \"?\"]\n[Result \"*\"]\n[UTCDate \"2020.05.08\"]\n[UTCTime \"19:58:21\"]\n[WhiteElo \"?\"]\n[BlackElo \"?\"]\n[Variant \"Standard\"]\n[TimeControl \"-\"]\n[ECO \"B33\"]\n[Opening \"Sicilian Defense: Lasker-Pelikan Variation, Sveshnikov Variation, Chelyabinsk Variation\"]\n[Termination \"Unterminated\"]\n\n1. e4 { [%eval 0.24] } 1... c5 { [%eval 0.2] } 2. Nf3 { [%eval 0.21] } 2... Nc6 { [%eval 0.0] } 3. d4 { [%eval 0.15] } 3... cxd4 { [%eval 0.0] } 4. Nxd4 { [%eval 0.08] } 4... e5 { [%eval 0.37] } 5. Nb5 { [%eval 0.42] } 5... d6 { [%eval 0.24] } 6. N1c3 { [%eval 0.31] } 6... a6 { [%eval 0.3] } 7. Na3 { [%eval 0.22] } 7... b5 { [%eval 0.49] } 8. Nd5 { [%eval 0.42] } 8... Nf6 { [%eval 0.44] } 9. Bg5 { [%eval 0.44] } 9... Be7 { [%eval 0.4] } 10. Bxf6 { [%eval 0.21] } 10... Bxf6 { [%eval 0.14] } 11. c4 { [%eval 0.03] } 11... b4 { [%eval 0.03] } 12. Nc2 { [%eval -0.2] } 12... Rb8 { [%eval 0.27] } 13. b3 { [%eval 0.27] } 13... a5 { [%eval 0.43] } 14. g3 { [%eval 0.29] } 14... O-O { [%eval 0.29] } 15. Bg2 { [%eval 0.23] } 15... g6 { [%eval 0.76] } 16. Nxf6+ { [%eval 0.68] } 16... Qxf6 { [%eval 0.86] } 17. O-O { [%eval 0.76] } 17... Qe7 { [%eval 0.89] } 18. Qe2 { [%eval 0.69] } 18... Be6 { [%eval 0.8] } 19. Rad1 { [%eval 0.72] } 19... f6 { [%eval 0.85] } 20. Rd3 { [%eval 0.62] } 20... Nd8 { [%eval 0.5] } 21. Rfd1 { [%eval 0.43] } 21... Nb7 { [%eval 0.94] } 22. h4 { [%eval 0.04] } 22... Rfd8 { [%eval 0.29] } 23. Qd2 { [%eval 0.03] } 23... Kg7 { [%eval 1.27] } 24. Ne3 { [%eval 1.17] } 24... Rd7 { [%eval 0.92] } 25. f4 { [%eval 0.81] } 25... Rbd8 { [%eval 2.63] } 26. f5 { [%eval 2.42] } 26... Bg8 { [%eval 2.49] } 27. fxg6 { [%eval 2.25] } 27... hxg6 { [%eval 3.3] } 28. Ng4 { [%eval 3.13] } 28... Bh7 { [%eval 5.75] } 29. Rf3 { [%eval 5.96] } 29... Rf8 { [%eval 5.29] } 30. Qh6+ { [%eval 4.58] } 30... Kh8 { [%eval 7.88] } 31. Nxe5 { [%eval 7.68] } *\n\n\n",
+      "analysis": [
+        {
+          "eval": 24
+        },
+        {
+          "eval": 20
+        },
+        {
+          "eval": 21
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 15
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 8
+        },
+        {
+          "eval": 37
+        },
+        {
+          "eval": 42
+        },
+        {
+          "eval": 24
+        },
+        {
+          "eval": 31
+        },
+        {
+          "eval": 30
+        },
+        {
+          "eval": 22
+        },
+        {
+          "eval": 49
+        },
+        {
+          "eval": 42
+        },
+        {
+          "eval": 44
+        },
+        {
+          "eval": 44
+        },
+        {
+          "eval": 40
+        },
+        {
+          "eval": 21
+        },
+        {
+          "eval": 14
+        },
+        {
+          "eval": 3
+        },
+        {
+          "eval": 3
+        },
+        {
+          "eval": -20
+        },
+        {
+          "eval": 27
+        },
+        {
+          "eval": 27
+        },
+        {
+          "eval": 43
+        },
+        {
+          "eval": 29
+        },
+        {
+          "eval": 29
+        },
+        {
+          "eval": 23
+        },
+        {
+          "eval": 76,
+          "best": "f6g5",
+          "variation": "Bg5"
+        },
+        {
+          "eval": 68
+        },
+        {
+          "eval": 86
+        },
+        {
+          "eval": 76
+        },
+        {
+          "eval": 89
+        },
+        {
+          "eval": 69
+        },
+        {
+          "eval": 80
+        },
+        {
+          "eval": 72
+        },
+        {
+          "eval": 85
+        },
+        {
+          "eval": 62
+        },
+        {
+          "eval": 50
+        },
+        {
+          "eval": 43
+        },
+        {
+          "eval": 94,
+          "best": "b8b6",
+          "variation": "Rb6"
+        },
+        {
+          "eval": 4,
+          "best": "c2e3",
+          "variation": "Ne3 Rbd8",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. Ne3 was best."
+          }
+        },
+        {
+          "eval": 29
+        },
+        {
+          "eval": 3
+        },
+        {
+          "eval": 127,
+          "best": "b8a8",
+          "variation": "Ra8 Ne3 Ra6 Nd5 Qg7 f4 Nc5 f5 Bf7 fxg6 hxg6 Rf1 Bxd5 Rxd5",
+          "judgment": {
+            "name": "Mistake",
+            "comment": "Mistake. Ra8 was best."
+          }
+        },
+        {
+          "eval": 117
+        },
+        {
+          "eval": 92
+        },
+        {
+          "eval": 81
+        },
+        {
+          "eval": 263,
+          "best": "e5f4",
+          "variation": "exf4 gxf4",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Blunder. exf4 was best."
+          }
+        },
+        {
+          "eval": 242
+        },
+        {
+          "eval": 249
+        },
+        {
+          "eval": 225
+        },
+        {
+          "eval": 330,
+          "best": "g8e6",
+          "variation": "Be6 Nf5+",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. Be6 was best."
+          }
+        },
+        {
+          "eval": 313
+        },
+        {
+          "eval": 575,
+          "best": "g7h8",
+          "variation": "Kh8 Rf3 Qg7 Rxf6 Rf7 Rxf7 Bxf7 Qg5 Be6 Nxe5 Qxe5 Qh6+ Kg8 Qxg6+",
+          "judgment": {
+            "name": "Mistake",
+            "comment": "Mistake. Kh8 was best."
+          }
+        },
+        {
+          "eval": 596
+        },
+        {
+          "eval": 529
+        },
+        {
+          "eval": 458
+        },
+        {
+          "eval": 788,
+          "best": "g7g8",
+          "variation": "Kg8 Rdf1",
+          "judgment": {
+            "name": "Mistake",
+            "comment": "Mistake. Kg8 was best."
+          }
+        },
+        {
+          "eval": 768
+        }
+      ],
+      "division": {
+        "middle": 21
+      }
+    }
+  ]
 }

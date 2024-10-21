@@ -95,5 +95,160 @@
     {
       "id": "awsO9Pw5"
     }
+  ],
+  "lichessGameEval": [
+    {
+      "id": "awsO9Pw5",
+      "rated": false,
+      "variant": "standard",
+      "speed": "correspondence",
+      "perf": "correspondence",
+      "createdAt": 1538399164702,
+      "lastMoveAt": 1538399164702,
+      "status": "started",
+      "source": "import",
+      "players": {
+        "white": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 1,
+            "mistake": 0,
+            "blunder": 0,
+            "acpl": 14,
+            "accuracy": 96
+          }
+        },
+        "black": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 0,
+            "mistake": 0,
+            "blunder": 1,
+            "acpl": 55,
+            "accuracy": 69
+          }
+        }
+      },
+      "opening": {
+        "eco": "B01",
+        "name": "Scandinavian Defense: Main Line",
+        "ply": 6
+      },
+      "moves": "e4 d5 exd5 Qxd5 Nc3 Qa5 Bc4 Nf6 d3 c6 Qe2 Bf5 Bd2 Nbd7 Nb5 Qxd2+ Qxd2 cxb5 Bxb5 a6 Bxd7+ Bxd7 Nf3 Bc6 Qf4 O-O-O Ne5 Bxg2 Rg1 Bd5",
+      "pgn": "[Event \"Import\"]\n[Site \"https://lichess.org/awsO9Pw5\"]\n[Date \"2018.10.01\"]\n[White \"?\"]\n[Black \"?\"]\n[Result \"*\"]\n[UTCDate \"2018.10.01\"]\n[UTCTime \"13:06:04\"]\n[WhiteElo \"?\"]\n[BlackElo \"?\"]\n[Variant \"Standard\"]\n[TimeControl \"-\"]\n[ECO \"B01\"]\n[Opening \"Scandinavian Defense: Main Line\"]\n[Termination \"Unterminated\"]\n\n1. e4 { [%eval 0.0] } 1... d5 { [%eval 0.31] } 2. exd5 { [%eval 0.37] } 2... Qxd5 { [%eval 0.35] } 3. Nc3 { [%eval 0.27] } 3... Qa5 { [%eval 0.33] } 4. Bc4 { [%eval 0.3] } 4... Nf6 { [%eval 0.73] } 5. d3 { [%eval 0.08] } 5... c6 { [%eval 0.32] } 6. Qe2 { [%eval 0.33] } 6... Bf5 { [%eval 0.76] } 7. Bd2 { [%eval 0.27] } 7... Nbd7 { [%eval 4.5] } 8. Nb5 { [%eval 4.43] } 8... Qxd2+ { [%eval 4.77] } 9. Qxd2 { [%eval 4.77] } 9... cxb5 { [%eval 4.77] } 10. Bxb5 { [%eval 4.8] } 10... a6 { [%eval 4.8] } 11. Bxd7+ { [%eval 4.78] } 11... Bxd7 { [%eval 4.69] } 12. Nf3 { [%eval 4.77] } 12... Bc6 { [%eval 4.94] } 13. Qf4 { [%eval 4.41] } 13... O-O-O { [%eval 5.42] } 14. Ne5 { [%eval 5.29] } 14... Bxg2 { [%eval 6.26] } 15. Rg1 { [%eval 6.25] } 15... Bd5 { [%eval 5.93] } *\n\n\n",
+      "analysis": [
+        {
+          "eval": 0
+        },
+        {
+          "eval": 31
+        },
+        {
+          "eval": 37
+        },
+        {
+          "eval": 35
+        },
+        {
+          "eval": 27
+        },
+        {
+          "eval": 33
+        },
+        {
+          "eval": 30
+        },
+        {
+          "eval": 73
+        },
+        {
+          "eval": 8,
+          "best": "d2d4",
+          "variation": "d4 c5 d5 Ne4 Bd2 Nxd2 Qxd2 g6 Nf3 Bg7",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. d4 was best."
+          }
+        },
+        {
+          "eval": 32
+        },
+        {
+          "eval": 33
+        },
+        {
+          "eval": 76
+        },
+        {
+          "eval": 27
+        },
+        {
+          "eval": 450,
+          "best": "a5c7",
+          "variation": "Qc7 Ne4 e6 Nxf6+ gxf6 h3 Nd7 Nf3 Bg6 a3",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Blunder. Qc7 was best."
+          }
+        },
+        {
+          "eval": 443
+        },
+        {
+          "eval": 477
+        },
+        {
+          "eval": 477
+        },
+        {
+          "eval": 477
+        },
+        {
+          "eval": 480
+        },
+        {
+          "eval": 480
+        },
+        {
+          "eval": 478
+        },
+        {
+          "eval": 469
+        },
+        {
+          "eval": 477
+        },
+        {
+          "eval": 494
+        },
+        {
+          "eval": 441,
+          "best": "f3e5",
+          "variation": "Ne5 Rc8"
+        },
+        {
+          "eval": 542,
+          "best": "a8d8",
+          "variation": "Rd8"
+        },
+        {
+          "eval": 529
+        },
+        {
+          "eval": 626,
+          "best": "c6e8",
+          "variation": "Be8 Qf3 e6 O-O Be7 d4 Nd5 Rad1 f6 Nd3 Nc7 Qe3 Bf7 Rfe1"
+        },
+        {
+          "eval": 625
+        },
+        {
+          "eval": 593
+        }
+      ],
+      "division": {
+        "middle": 21
+      }
+    }
   ]
 }

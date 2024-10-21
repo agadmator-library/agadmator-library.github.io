@@ -55,7 +55,7 @@
   },
   "chesstempoCom": {
     "reason": "NOT_FOUND",
-    "retrievedAt": "2024-06-15T09:45:01.372Z"
+    "retrievedAt": "2024-08-31T09:45:26.327Z"
   },
   "videoContentDetails": {
     "duration": "PT7M6S"
@@ -80,5 +80,200 @@
   "lichessMasters": {
     "reason": "NOT_FOUND",
     "retrievedAt": "2023-04-03T09:24:10.504Z"
-  }
+  },
+  "lichessGameId": [
+    {
+      "id": "hF2eJU9c"
+    }
+  ],
+  "lichessGameEval": [
+    {
+      "id": "hF2eJU9c",
+      "rated": false,
+      "variant": "standard",
+      "speed": "correspondence",
+      "perf": "correspondence",
+      "createdAt": 1628978959897,
+      "lastMoveAt": 1628978959897,
+      "status": "mate",
+      "source": "import",
+      "players": {
+        "white": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 1,
+            "mistake": 0,
+            "blunder": 0,
+            "acpl": 24,
+            "accuracy": 93
+          }
+        },
+        "black": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 2,
+            "mistake": 2,
+            "blunder": 1,
+            "acpl": 80,
+            "accuracy": 76
+          }
+        }
+      },
+      "winner": "white",
+      "opening": {
+        "eco": "C57",
+        "name": "Italian Game: Two Knights Defense, Fried Liver Attack",
+        "ply": 11
+      },
+      "moves": "e4 e5 Nf3 Nc6 Bc4 Nf6 Ng5 d5 exd5 Nxd5 Nxf7 Kxf7 Qf3+ Ke6 Nc3 Ne7 O-O c6 d4 exd4 Re1+ Kd7 Nxd5 Nxd5 Bxd5 cxd5 Qxd5+ Kc7 Bf4+ Bd6 Qc5+ Kb8 Qxd6+ Qxd6 Bxd6#",
+      "pgn": "[Event \"Import\"]\n[Site \"https://lichess.org/hF2eJU9c\"]\n[Date \"2021.08.14\"]\n[White \"?\"]\n[Black \"?\"]\n[Result \"1-0\"]\n[UTCDate \"2021.08.14\"]\n[UTCTime \"22:09:19\"]\n[WhiteElo \"?\"]\n[BlackElo \"?\"]\n[Variant \"Standard\"]\n[TimeControl \"-\"]\n[ECO \"C57\"]\n[Opening \"Italian Game: Two Knights Defense, Fried Liver Attack\"]\n[Termination \"Normal\"]\n\n1. e4 { [%eval 0.24] } 1... e5 { [%eval 0.12] } 2. Nf3 { [%eval 0.17] } 2... Nc6 { [%eval 0.12] } 3. Bc4 { [%eval 0.13] } 3... Nf6 { [%eval 0.48] } 4. Ng5 { [%eval 0.13] } 4... d5 { [%eval 0.12] } 5. exd5 { [%eval 0.13] } 5... Nxd5 { [%eval 0.79] } 6. Nxf7 { [%eval 0.79] } 6... Kxf7 { [%eval 0.88] } 7. Qf3+ { [%eval 0.4] } 7... Ke6 { [%eval 0.78] } 8. Nc3 { [%eval 0.95] } 8... Ne7 { [%eval 1.51] } 9. O-O { [%eval 1.19] } 9... c6 { [%eval 0.8] } 10. d4 { [%eval 1.42] } 10... exd4 { [%eval 4.51] } 11. Re1+ { [%eval 3.92] } 11... Kd7 { [%eval 5.27] } 12. Nxd5 { [%eval 3.85] } 12... Nxd5 { [%eval 4.6] } 13. Bxd5 { [%eval 4.2] } 13... cxd5 { [%eval 6.92] } 14. Qxd5+ { [%eval 6.76] } 14... Kc7 { [%eval 9.76] } 15. Bf4+ { [%eval 9.42] } 15... Bd6 { [%eval #3] } 16. Qc5+ { [%eval #2] } 16... Kb8 { [%eval #2] } 17. Qxd6+ { [%eval #1] } 17... Qxd6 { [%eval #1] } 18. Bxd6# 1-0\n\n\n",
+      "analysis": [
+        {
+          "eval": 24
+        },
+        {
+          "eval": 12
+        },
+        {
+          "eval": 17
+        },
+        {
+          "eval": 12
+        },
+        {
+          "eval": 13
+        },
+        {
+          "eval": 48
+        },
+        {
+          "eval": 13
+        },
+        {
+          "eval": 12
+        },
+        {
+          "eval": 13
+        },
+        {
+          "eval": 79,
+          "best": "c6a5",
+          "variation": "Na5 Bb5+ c6 dxc6 bxc6 Bd3 Nd5 Nf3 Bd6 O-O",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. Na5 was best."
+          }
+        },
+        {
+          "eval": 79
+        },
+        {
+          "eval": 88
+        },
+        {
+          "eval": 40
+        },
+        {
+          "eval": 78
+        },
+        {
+          "eval": 95
+        },
+        {
+          "eval": 151,
+          "best": "c6b4",
+          "variation": "Nb4 Bb3 c6 a3 Na6 Nxd5 cxd5 d4 Be7 O-O Rf8 Qh5 Rf5 Qxh7"
+        },
+        {
+          "eval": 119
+        },
+        {
+          "eval": 80
+        },
+        {
+          "eval": 142
+        },
+        {
+          "eval": 451,
+          "best": "e6d7",
+          "variation": "Kd7 Bg5",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Blunder. Kd7 was best."
+          }
+        },
+        {
+          "eval": 392
+        },
+        {
+          "eval": 527,
+          "best": "e6d6",
+          "variation": "Kd6",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. Kd6 was best."
+          }
+        },
+        {
+          "eval": 385,
+          "best": "c4d5",
+          "variation": "Bxd5 cxd5",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. Bxd5 was best."
+          }
+        },
+        {
+          "eval": 460
+        },
+        {
+          "eval": 420
+        },
+        {
+          "eval": 692,
+          "best": "d7c7",
+          "variation": "Kc7 Qg3+",
+          "judgment": {
+            "name": "Mistake",
+            "comment": "Mistake. Kc7 was best."
+          }
+        },
+        {
+          "eval": 676
+        },
+        {
+          "eval": 976
+        },
+        {
+          "eval": 942
+        },
+        {
+          "mate": 3,
+          "best": "d8d6",
+          "variation": "Qd6 Qc5+ Kd7 Bxd6 Bxd6 Qc4 Kd8 Rad1 a5 Qxd4 Ra6 Qxg7 Re8 Qg5+",
+          "judgment": {
+            "name": "Mistake",
+            "comment": "Checkmate is now unavoidable. Qd6 was best."
+          }
+        },
+        {
+          "mate": 2
+        },
+        {
+          "mate": 2
+        },
+        {
+          "mate": 1
+        },
+        {
+          "mate": 1
+        }
+      ],
+      "division": {
+        "middle": 25,
+        "end": 35
+      },
+      "import": {}
+    }
+  ]
 }
