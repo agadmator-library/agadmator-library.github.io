@@ -95,5 +95,161 @@
     {
       "id": "oN5Jx8A0"
     }
+  ],
+  "lichessGameEval": [
+    {
+      "id": "oN5Jx8A0",
+      "rated": false,
+      "variant": "standard",
+      "speed": "correspondence",
+      "perf": "correspondence",
+      "createdAt": 1684515773614,
+      "lastMoveAt": 1684515773614,
+      "status": "started",
+      "source": "import",
+      "players": {
+        "white": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 1,
+            "mistake": 0,
+            "blunder": 1,
+            "acpl": 37,
+            "accuracy": 74
+          }
+        },
+        "black": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 0,
+            "mistake": 0,
+            "blunder": 0,
+            "acpl": 8,
+            "accuracy": 98
+          }
+        }
+      },
+      "opening": {
+        "eco": "B22",
+        "name": "Sicilian Defense: Alapin Variation, Smith-Morra Declined",
+        "ply": 8
+      },
+      "moves": "e4 c5 c3 Nf6 e5 Nd5 d4 cxd4 cxd4 d6 Nf3 e6 Bc4 Be7 O-O O-O Qe2 dxe5 dxe5 Bd7 Rd1 Bc6 Nd4 Bc5 Nxc6 Nxc6 Bd2 Bd4 Bc3 Bxc3 Bxd5 Nd4",
+      "pgn": "[Event \"Import\"]\n[Site \"https://lichess.org/oN5Jx8A0\"]\n[Date \"2023.05.19\"]\n[White \"?\"]\n[Black \"?\"]\n[Result \"*\"]\n[UTCDate \"2023.05.19\"]\n[UTCTime \"17:02:53\"]\n[WhiteElo \"?\"]\n[BlackElo \"?\"]\n[Variant \"Standard\"]\n[TimeControl \"-\"]\n[ECO \"B22\"]\n[Opening \"Sicilian Defense: Alapin Variation, Smith-Morra Declined\"]\n[Termination \"Unterminated\"]\n\n1. e4 { [%eval 0.36] } 1... c5 { [%eval 0.32] } 2. c3 { [%eval 0.0] } 2... Nf6 { [%eval 0.15] } 3. e5 { [%eval 0.0] } 3... Nd5 { [%eval 0.11] } 4. d4 { [%eval 0.0] } 4... cxd4 { [%eval 0.0] } 5. cxd4 { [%eval 0.0] } 5... d6 { [%eval 0.22] } 6. Nf3 { [%eval 0.08] } 6... e6 { [%eval 0.14] } 7. Bc4 { [%eval 0.0] } 7... Be7 { [%eval 0.29] } 8. O-O { [%eval 0.21] } 8... O-O { [%eval 0.42] } 9. Qe2 { [%eval 0.32] } 9... dxe5 { [%eval 0.36] } 10. dxe5 { [%eval 0.42] } 10... Bd7 { [%eval 0.2] } 11. Rd1 { [%eval 0.41] } 11... Bc6 { [%eval 0.31] } 12. Nd4 { [%eval 0.38] } 12... Bc5 { [%eval 0.39] } 13. Nxc6 { [%eval -0.43] } 13... Nxc6 { [%eval -0.52] } 14. Bd2 { [%eval -0.88] } 14... Bd4 { [%eval -0.72] } 15. Bc3 { [%eval -0.86] } 15... Bxc3 { [%eval -0.88] } 16. Bxd5 { [%eval -4.44] } 16... Nd4 { [%eval -4.38] } *\n\n\n",
+      "analysis": [
+        {
+          "eval": 36
+        },
+        {
+          "eval": 32
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 15
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 11
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 22
+        },
+        {
+          "eval": 8
+        },
+        {
+          "eval": 14
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 29
+        },
+        {
+          "eval": 21
+        },
+        {
+          "eval": 42
+        },
+        {
+          "eval": 32
+        },
+        {
+          "eval": 36
+        },
+        {
+          "eval": 42
+        },
+        {
+          "eval": 20
+        },
+        {
+          "eval": 41
+        },
+        {
+          "eval": 31
+        },
+        {
+          "eval": 38
+        },
+        {
+          "eval": 39
+        },
+        {
+          "eval": -43,
+          "best": "b1c3",
+          "variation": "Nc3",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. Nc3 was best."
+          }
+        },
+        {
+          "eval": -52
+        },
+        {
+          "eval": -88
+        },
+        {
+          "eval": -72
+        },
+        {
+          "eval": -86
+        },
+        {
+          "eval": -88
+        },
+        {
+          "eval": -444,
+          "best": "b1c3",
+          "variation": "Nxc3",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Blunder. Nxc3 was best."
+          }
+        },
+        {
+          "eval": -438
+        }
+      ],
+      "division": {
+        "middle": 31
+      },
+      "import": {}
+    }
   ]
 }
