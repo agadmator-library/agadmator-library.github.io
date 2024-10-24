@@ -83,5 +83,178 @@
     {
       "id": "8929oohG"
     }
+  ],
+  "lichessGameEval": [
+    {
+      "id": "8929oohG",
+      "rated": false,
+      "variant": "standard",
+      "speed": "correspondence",
+      "perf": "correspondence",
+      "createdAt": 1596984281286,
+      "lastMoveAt": 1596984281286,
+      "status": "started",
+      "source": "import",
+      "players": {
+        "white": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 0,
+            "mistake": 0,
+            "blunder": 0,
+            "acpl": 15,
+            "accuracy": 95
+          }
+        },
+        "black": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 1,
+            "mistake": 2,
+            "blunder": 1,
+            "acpl": 72,
+            "accuracy": 77
+          }
+        }
+      },
+      "opening": {
+        "eco": "E21",
+        "name": "Nimzo-Indian Defense: Three Knights Variation",
+        "ply": 7
+      },
+      "moves": "d4 Nf6 c4 e6 Nc3 Bb4 Nf3 O-O Bg5 c5 Rc1 h6 Bh4 cxd4 Nxd4 d5 cxd5 g5 Bg3 Nxd5 e3 Qa5 Bd3 Rd8 O-O Nxc3 Qh5 Bf8 Rxc3 e5 Bc4 Qc7 Bxe5",
+      "pgn": "[Event \"Import\"]\n[Site \"https://lichess.org/8929oohG\"]\n[Date \"2020.08.09\"]\n[White \"?\"]\n[Black \"?\"]\n[Result \"*\"]\n[UTCDate \"2020.08.09\"]\n[UTCTime \"14:44:41\"]\n[WhiteElo \"?\"]\n[BlackElo \"?\"]\n[Variant \"Standard\"]\n[TimeControl \"-\"]\n[ECO \"E21\"]\n[Opening \"Nimzo-Indian Defense: Three Knights Variation\"]\n[Termination \"Unterminated\"]\n\n1. d4 { [%eval 0.2] } 1... Nf6 { [%eval 0.27] } 2. c4 { [%eval 0.0] } 2... e6 { [%eval 0.23] } 3. Nc3 { [%eval 0.13] } 3... Bb4 { [%eval 0.11] } 4. Nf3 { [%eval 0.0] } 4... O-O { [%eval 0.09] } 5. Bg5 { [%eval 0.1] } 5... c5 { [%eval 0.14] } 6. Rc1 { [%eval 0.0] } 6... h6 { [%eval 0.51] } 7. Bh4 { [%eval 0.21] } 7... cxd4 { [%eval 0.49] } 8. Nxd4 { [%eval 0.0] } 8... d5 { [%eval 0.32] } 9. cxd5 { [%eval 0.4] } 9... g5 { [%eval 0.41] } 10. Bg3 { [%eval 0.23] } 10... Nxd5 { [%eval 1.22] } 11. e3 { [%eval 1.49] } 11... Qa5 { [%eval 1.34] } 12. Bd3 { [%eval 1.53] } 12... Rd8 { [%eval 3.69] } 13. O-O { [%eval 3.32] } 13... Nxc3 { [%eval 5.99] } 14. Qh5 { [%eval 5.39] } 14... Bf8 { [%eval 5.02] } 15. Rxc3 { [%eval 5.79] } 15... e5 { [%eval 14.04] } 16. Bc4 { [%eval 12.84] } 16... Qc7 { [%eval 14.43] } 17. Bxe5 { [%eval 13.69] } *\n\n\n",
+      "analysis": [
+        {
+          "eval": 20
+        },
+        {
+          "eval": 27
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 23
+        },
+        {
+          "eval": 13
+        },
+        {
+          "eval": 11
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 9
+        },
+        {
+          "eval": 10
+        },
+        {
+          "eval": 14
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 51,
+          "best": "c5d4",
+          "variation": "cxd4 Nxd4 h6 Bxf6 Qxf6 e3 Nc6 Be2 Nxd4 exd4"
+        },
+        {
+          "eval": 21
+        },
+        {
+          "eval": 49
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 32
+        },
+        {
+          "eval": 40
+        },
+        {
+          "eval": 41
+        },
+        {
+          "eval": 23
+        },
+        {
+          "eval": 122,
+          "best": "d8d5",
+          "variation": "Qxd5 e3",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. Qxd5 was best."
+          }
+        },
+        {
+          "eval": 149
+        },
+        {
+          "eval": 134
+        },
+        {
+          "eval": 153
+        },
+        {
+          "eval": 369,
+          "best": "e6e5",
+          "variation": "e5",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Blunder. e5 was best."
+          }
+        },
+        {
+          "eval": 332
+        },
+        {
+          "eval": 599,
+          "best": "b4c3",
+          "variation": "Bxc3 bxc3",
+          "judgment": {
+            "name": "Mistake",
+            "comment": "Mistake. Bxc3 was best."
+          }
+        },
+        {
+          "eval": 539
+        },
+        {
+          "eval": 502
+        },
+        {
+          "eval": 579
+        },
+        {
+          "eval": 1404,
+          "best": "a5d5",
+          "variation": "Qd5 f4 gxf4 Qg4+ Qg5 Rxf4 Nc6 Nxc6 bxc6 Qf3 e5 Rxf7 Bg4 Bh7+",
+          "judgment": {
+            "name": "Mistake",
+            "comment": "Mistake. Qd5 was best."
+          }
+        },
+        {
+          "eval": 1284
+        },
+        {
+          "eval": 1443
+        },
+        {
+          "eval": 1369
+        }
+      ],
+      "division": {
+        "middle": 10
+      },
+      "import": {}
+    }
   ]
 }
