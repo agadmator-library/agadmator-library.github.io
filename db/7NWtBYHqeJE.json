@@ -83,5 +83,84 @@
     {
       "id": "pXY97RRL"
     }
+  ],
+  "lichessGameEval": [
+    {
+      "id": "pXY97RRL",
+      "rated": false,
+      "variant": "standard",
+      "speed": "correspondence",
+      "perf": "correspondence",
+      "createdAt": 1593532070909,
+      "lastMoveAt": 1593532070909,
+      "status": "started",
+      "source": "import",
+      "players": {
+        "white": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 0,
+            "mistake": 0,
+            "blunder": 0,
+            "acpl": 3,
+            "accuracy": 99
+          }
+        },
+        "black": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 1,
+            "mistake": 0,
+            "blunder": 1,
+            "acpl": 333,
+            "accuracy": 34
+          }
+        }
+      },
+      "opening": {
+        "eco": "A13",
+        "name": "English Opening: Agincourt Defense",
+        "ply": 2
+      },
+      "moves": "c4 e6 g3 Qg5 Bg2 Qxd2+ Qxd2",
+      "pgn": "[Event \"Import\"]\n[Site \"https://lichess.org/pXY97RRL\"]\n[Date \"2020.06.30\"]\n[White \"?\"]\n[Black \"?\"]\n[Result \"*\"]\n[UTCDate \"2020.06.30\"]\n[UTCTime \"15:47:50\"]\n[WhiteElo \"?\"]\n[BlackElo \"?\"]\n[Variant \"Standard\"]\n[TimeControl \"-\"]\n[ECO \"A13\"]\n[Opening \"English Opening: Agincourt Defense\"]\n[Termination \"Unterminated\"]\n\n1. c4 { [%eval 0.13] } 1... e6 { [%eval 0.11] } 2. g3 { [%eval 0.13] } 2... Qg5 { [%eval 1.06] } 3. Bg2 { [%eval 0.95] } 3... Qxd2+ { [%eval 12.34] } 4. Qxd2 { [%eval 12.25] } *\n\n\n",
+      "analysis": [
+        {
+          "eval": 13
+        },
+        {
+          "eval": 11
+        },
+        {
+          "eval": 13
+        },
+        {
+          "eval": 106,
+          "best": "d7d5",
+          "variation": "d5 Bg2 Nf6 Nf3 Be7 b3 d4 e3 c5 Ne5",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. d5 was best."
+          }
+        },
+        {
+          "eval": 95
+        },
+        {
+          "eval": 1234,
+          "best": "d7d5",
+          "variation": "d5 b3 Qd8 e3 Nf6 Nf3 Be7 O-O O-O Nc3",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Blunder. d5 was best."
+          }
+        },
+        {
+          "eval": 1225
+        }
+      ],
+      "division": {},
+      "import": {}
+    }
   ]
 }

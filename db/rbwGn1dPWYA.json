@@ -85,5 +85,106 @@
     {
       "id": "fweOB5MD"
     }
+  ],
+  "lichessGameEval": [
+    {
+      "id": "fweOB5MD",
+      "rated": false,
+      "variant": "standard",
+      "speed": "correspondence",
+      "perf": "correspondence",
+      "createdAt": 1511442925717,
+      "lastMoveAt": 1511442925717,
+      "status": "mate",
+      "source": "import",
+      "players": {
+        "white": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 0,
+            "mistake": 0,
+            "blunder": 0,
+            "acpl": 5,
+            "accuracy": 99
+          }
+        },
+        "black": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 0,
+            "mistake": 1,
+            "blunder": 1,
+            "acpl": 144,
+            "accuracy": 57
+          }
+        }
+      },
+      "winner": "white",
+      "opening": {
+        "eco": "B00",
+        "name": "Owen Defense: Matovinsky Gambit",
+        "ply": 10
+      },
+      "moves": "e4 b6 d4 Bb7 Bd3 f5 exf5 Bxg2 Qh5+ g6 fxg6 Nf6 gxh7+ Nxh5 Bg6#",
+      "pgn": "[Event \"Import\"]\n[Site \"https://lichess.org/fweOB5MD\"]\n[Date \"2017.11.23\"]\n[White \"?\"]\n[Black \"?\"]\n[Result \"1-0\"]\n[UTCDate \"2017.11.23\"]\n[UTCTime \"13:15:25\"]\n[WhiteElo \"?\"]\n[BlackElo \"?\"]\n[Variant \"Standard\"]\n[TimeControl \"-\"]\n[ECO \"B00\"]\n[Opening \"Owen Defense: Matovinsky Gambit\"]\n[Termination \"Normal\"]\n\n1. e4 { [%eval 0.03] } 1... b6 { [%eval 0.38] } 2. d4 { [%eval 0.32] } 2... Bb7 { [%eval 0.4] } 3. Bd3 { [%eval 0.42] } 3... f5 { [%eval 1.88] } 4. exf5 { [%eval 2.29] } 4... Bxg2 { [%eval 1.96] } 5. Qh5+ { [%eval 1.82] } 5... g6 { [%eval 2.1] } 6. fxg6 { [%eval 2.11] } 6... Nf6 { [%eval #2] } 7. gxh7+ { [%eval #1] } 7... Nxh5 { [%eval #1] } 8. Bg6# 1-0\n\n\n",
+      "analysis": [
+        {
+          "eval": 3
+        },
+        {
+          "eval": 38
+        },
+        {
+          "eval": 32
+        },
+        {
+          "eval": 40
+        },
+        {
+          "eval": 42
+        },
+        {
+          "eval": 188,
+          "best": "e7e6",
+          "variation": "e6 Nf3 c5 O-O cxd4 Nxd4 Nc6 c3 Nf6 Qe2",
+          "judgment": {
+            "name": "Mistake",
+            "comment": "Mistake. e6 was best."
+          }
+        },
+        {
+          "eval": 229
+        },
+        {
+          "eval": 196
+        },
+        {
+          "eval": 182
+        },
+        {
+          "eval": 210
+        },
+        {
+          "eval": 211
+        },
+        {
+          "mate": 2,
+          "best": "f8g7",
+          "variation": "Bg7 gxh7+ Kf8 Nf3 Nf6 Qg6 Bxf3 Rg1 Rxh7 Be3",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Checkmate is now unavoidable. Bg7 was best."
+          }
+        },
+        {
+          "mate": 1
+        },
+        {
+          "mate": 1
+        }
+      ],
+      "division": {},
+      "import": {}
+    }
   ]
 }
