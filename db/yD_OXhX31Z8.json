@@ -85,5 +85,231 @@
     {
       "id": "I2Isgs2P"
     }
+  ],
+  "lichessGameEval": [
+    {
+      "id": "I2Isgs2P",
+      "rated": false,
+      "variant": "standard",
+      "speed": "correspondence",
+      "perf": "correspondence",
+      "createdAt": 1626174284212,
+      "lastMoveAt": 1626174284212,
+      "status": "mate",
+      "source": "import",
+      "players": {
+        "white": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 1,
+            "mistake": 1,
+            "blunder": 2,
+            "acpl": 86,
+            "accuracy": 69
+          }
+        },
+        "black": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 2,
+            "mistake": 1,
+            "blunder": 1,
+            "acpl": 41,
+            "accuracy": 83
+          }
+        }
+      },
+      "winner": "black",
+      "opening": {
+        "eco": "C54",
+        "name": "Italian Game: Classical Variation, Greco Gambit, Traditional Line",
+        "ply": 11
+      },
+      "moves": "e4 e5 Nf3 Nc6 Bc4 Bc5 c3 Nf6 d4 exd4 cxd4 Bb4+ Bd2 Bxd2+ Nfxd2 Nxd4 O-O d6 Nb3 Nxb3 Qxb3 O-O Re1 Nh5 e5 Qg5 exd6 Nf4 Bxf7+ Kh8 g3 cxd6 Nc3 Nh3+ Kg2 Qf6 Bd5 Qxf2+ Kh1 Qg1+ Rxg1 Nf2+ Kg2 Bh3#",
+      "pgn": "[Event \"Import\"]\n[Site \"https://lichess.org/I2Isgs2P\"]\n[Date \"2021.07.13\"]\n[White \"?\"]\n[Black \"?\"]\n[Result \"0-1\"]\n[UTCDate \"2021.07.13\"]\n[UTCTime \"11:04:44\"]\n[WhiteElo \"?\"]\n[BlackElo \"?\"]\n[Variant \"Standard\"]\n[TimeControl \"-\"]\n[ECO \"C54\"]\n[Opening \"Italian Game: Classical Variation, Greco Gambit, Traditional Line\"]\n[Termination \"Normal\"]\n\n1. e4 { [%eval 0.24] } 1... e5 { [%eval 0.12] } 2. Nf3 { [%eval 0.18] } 2... Nc6 { [%eval 0.18] } 3. Bc4 { [%eval 0.13] } 3... Bc5 { [%eval 0.2] } 4. c3 { [%eval 0.03] } 4... Nf6 { [%eval 0.13] } 5. d4 { [%eval 0.0] } 5... exd4 { [%eval 0.17] } 6. cxd4 { [%eval 0.0] } 6... Bb4+ { [%eval 0.0] } 7. Bd2 { [%eval -0.17] } 7... Bxd2+ { [%eval 0.0] } 8. Nfxd2 { [%eval -1.64] } 8... Nxd4 { [%eval -1.5] } 9. O-O { [%eval -1.36] } 9... d6 { [%eval -1.23] } 10. Nb3 { [%eval -1.32] } 10... Nxb3 { [%eval -1.3] } 11. Qxb3 { [%eval -1.44] } 11... O-O { [%eval -1.51] } 12. Re1 { [%eval -1.67] } 12... Nh5 { [%eval -0.79] } 13. e5 { [%eval -0.85] } 13... Qg5 { [%eval 0.53] } 14. exd6 { [%eval 0.46] } 14... Nf4 { [%eval 0.75] } 15. Bxf7+ { [%eval -4.37] } 15... Kh8 { [%eval -4.35] } 16. g3 { [%eval -4.38] } 16... cxd6 { [%eval -3.44] } 17. Nc3 { [%eval -5.1] } 17... Nh3+ { [%eval -4.85] } 18. Kg2 { [%eval -5.53] } 18... Qf6 { [%eval -1.53] } 19. Bd5 { [%eval #-4] } 19... Qxf2+ { [%eval #-3] } 20. Kh1 { [%eval #-3] } 20... Qg1+ { [%eval #-2] } 21. Rxg1 { [%eval #-2] } 21... Nf2+ { [%eval #-1] } 22. Kg2 { [%eval #-1] } 22... Bh3# 0-1\n\n\n",
+      "analysis": [
+        {
+          "eval": 24
+        },
+        {
+          "eval": 12
+        },
+        {
+          "eval": 18
+        },
+        {
+          "eval": 18
+        },
+        {
+          "eval": 13
+        },
+        {
+          "eval": 20
+        },
+        {
+          "eval": 3
+        },
+        {
+          "eval": 13
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 17
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": -17
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": -164,
+          "best": "b1d2",
+          "variation": "Nbxd2 d5 exd5 Nxd5 Qb3 Na5 Qa4+ Nc6",
+          "judgment": {
+            "name": "Mistake",
+            "comment": "Mistake. Nbxd2 was best."
+          }
+        },
+        {
+          "eval": -150
+        },
+        {
+          "eval": -136
+        },
+        {
+          "eval": -123
+        },
+        {
+          "eval": -132
+        },
+        {
+          "eval": -130
+        },
+        {
+          "eval": -144
+        },
+        {
+          "eval": -151
+        },
+        {
+          "eval": -167
+        },
+        {
+          "eval": -79,
+          "best": "a7a5",
+          "variation": "a5",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. a5 was best."
+          }
+        },
+        {
+          "eval": -85
+        },
+        {
+          "eval": 53,
+          "best": "h5f4",
+          "variation": "Nf4 Qe3 dxe5 Qxe5 Ng6 Qc3 Bd7 Nd2 Bc6 Bf1 Re8 Nb3 Rxe1 Rxe1",
+          "judgment": {
+            "name": "Mistake",
+            "comment": "Mistake. Nf4 was best."
+          }
+        },
+        {
+          "eval": 46
+        },
+        {
+          "eval": 75
+        },
+        {
+          "eval": -437,
+          "best": "b3g3",
+          "variation": "Qg3 Qxg3 fxg3 Ne6 dxc7 Nxc7 Re7 b5 Bb3 Ne6 Nc3 Nd4 Bd5 Rb8",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Blunder. Qg3 was best."
+          }
+        },
+        {
+          "eval": -435
+        },
+        {
+          "eval": -438
+        },
+        {
+          "eval": -344,
+          "best": "f4h3",
+          "variation": "Nh3+ Kg2 Qf5 f4 Rxf7 Re8+ Rf8 Rxf8+ Qxf8 Nc3 Nxf4+ gxf4 Qxf4 dxc7",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. Nh3+ was best."
+          }
+        },
+        {
+          "eval": -510,
+          "best": "h2h4",
+          "variation": "h4 Nh3+",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. h4 was best."
+          }
+        },
+        {
+          "eval": -485
+        },
+        {
+          "eval": -553
+        },
+        {
+          "eval": -153,
+          "best": "g5f5",
+          "variation": "Qf5",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Blunder. Qf5 was best."
+          }
+        },
+        {
+          "mate": -4,
+          "best": "f2f3",
+          "variation": "f3 Ng5",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Checkmate is now unavoidable. f3 was best."
+          }
+        },
+        {
+          "mate": -3
+        },
+        {
+          "mate": -3
+        },
+        {
+          "mate": -2
+        },
+        {
+          "mate": -2
+        },
+        {
+          "mate": -1
+        },
+        {
+          "mate": -1
+        }
+      ],
+      "division": {
+        "middle": 21
+      },
+      "import": {}
+    }
   ]
 }
