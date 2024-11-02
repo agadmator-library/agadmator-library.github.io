@@ -85,5 +85,143 @@
     {
       "id": "FcOM9KXk"
     }
+  ],
+  "lichessGameEval": [
+    {
+      "id": "FcOM9KXk",
+      "rated": false,
+      "variant": "standard",
+      "speed": "correspondence",
+      "perf": "correspondence",
+      "createdAt": 1698947019351,
+      "lastMoveAt": 1698947019351,
+      "status": "started",
+      "source": "import",
+      "players": {
+        "white": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 0,
+            "mistake": 0,
+            "blunder": 1,
+            "acpl": 35,
+            "accuracy": 72
+          }
+        },
+        "black": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 0,
+            "mistake": 0,
+            "blunder": 0,
+            "acpl": 9,
+            "accuracy": 96
+          }
+        }
+      },
+      "opening": {
+        "eco": "D27",
+        "name": "Queen's Gambit Accepted: Classical Defense, Main Line",
+        "ply": 12
+      },
+      "moves": "d4 d5 c4 dxc4 Nf3 a6 e3 Nf6 Bxc4 e6 O-O c5 b3 Nbd7 Bb2 Be7 Be2 O-O Nbd2 b6 Ne5 Bb7 Bf3 Qc7 Rc1 Nxe5 Bxb7 Neg4",
+      "pgn": "[Event \"Import\"]\n[Site \"https://lichess.org/FcOM9KXk\"]\n[Date \"2023.11.02\"]\n[White \"?\"]\n[Black \"?\"]\n[Result \"*\"]\n[UTCDate \"2023.11.02\"]\n[UTCTime \"17:43:39\"]\n[WhiteElo \"?\"]\n[BlackElo \"?\"]\n[Variant \"Standard\"]\n[TimeControl \"-\"]\n[ECO \"D27\"]\n[Opening \"Queen's Gambit Accepted: Classical Defense, Main Line\"]\n[Termination \"Unterminated\"]\n\n1. d4 { [%eval 0.0] } 1... d5 { [%eval 0.27] } 2. c4 { [%eval 0.29] } 2... dxc4 { [%eval 0.33] } 3. Nf3 { [%eval 0.0] } 3... a6 { [%eval 0.38] } 4. e3 { [%eval 0.21] } 4... Nf6 { [%eval 0.34] } 5. Bxc4 { [%eval 0.34] } 5... e6 { [%eval 0.45] } 6. O-O { [%eval 0.17] } 6... c5 { [%eval 0.4] } 7. b3 { [%eval 0.19] } 7... Nbd7 { [%eval 0.27] } 8. Bb2 { [%eval 0.31] } 8... Be7 { [%eval 0.15] } 9. Be2 { [%eval 0.2] } 9... O-O { [%eval 0.28] } 10. Nbd2 { [%eval 0.19] } 10... b6 { [%eval 0.19] } 11. Ne5 { [%eval 0.32] } 11... Bb7 { [%eval 0.24] } 12. Bf3 { [%eval 0.34] } 12... Qc7 { [%eval 0.28] } 13. Rc1 { [%eval -0.15] } 13... Nxe5 { [%eval -0.21] } 14. Bxb7 { [%eval -3.44] } 14... Neg4 { [%eval -3.49] } *\n\n\n",
+      "analysis": [
+        {
+          "eval": 0
+        },
+        {
+          "eval": 27
+        },
+        {
+          "eval": 29
+        },
+        {
+          "eval": 33
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 38
+        },
+        {
+          "eval": 21
+        },
+        {
+          "eval": 34
+        },
+        {
+          "eval": 34
+        },
+        {
+          "eval": 45
+        },
+        {
+          "eval": 17
+        },
+        {
+          "eval": 40
+        },
+        {
+          "eval": 19
+        },
+        {
+          "eval": 27
+        },
+        {
+          "eval": 31
+        },
+        {
+          "eval": 15
+        },
+        {
+          "eval": 20
+        },
+        {
+          "eval": 28
+        },
+        {
+          "eval": 19
+        },
+        {
+          "eval": 19
+        },
+        {
+          "eval": 32
+        },
+        {
+          "eval": 24
+        },
+        {
+          "eval": 34
+        },
+        {
+          "eval": 28
+        },
+        {
+          "eval": -15
+        },
+        {
+          "eval": -21
+        },
+        {
+          "eval": -344,
+          "best": "d4e5",
+          "variation": "dxe5 Nd5 Qe2 Rfd8 Nc4 b5 Nd6 Bxd6 exd6 Qxd6 Rfd1 Qe7 a4 e5",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Blunder. dxe5 was best."
+          }
+        },
+        {
+          "eval": -349
+        }
+      ],
+      "division": {
+        "middle": 24
+      },
+      "import": {}
+    }
   ]
 }
