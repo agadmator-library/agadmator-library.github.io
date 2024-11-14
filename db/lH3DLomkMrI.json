@@ -95,5 +95,134 @@
     {
       "id": "sy2frqyj"
     }
+  ],
+  "lichessGameEval": [
+    {
+      "id": "sy2frqyj",
+      "rated": false,
+      "variant": "standard",
+      "speed": "correspondence",
+      "perf": "correspondence",
+      "createdAt": 1521734385207,
+      "lastMoveAt": 1521734385207,
+      "status": "started",
+      "source": "import",
+      "players": {
+        "white": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 1,
+            "mistake": 0,
+            "blunder": 0,
+            "acpl": 29,
+            "accuracy": 87
+          }
+        },
+        "black": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 0,
+            "mistake": 0,
+            "blunder": 3,
+            "acpl": 142,
+            "accuracy": 55
+          }
+        }
+      },
+      "opening": {
+        "eco": "A27",
+        "name": "English Opening: King's English Variation, Three Knights System",
+        "ply": 5
+      },
+      "moves": "c4 e5 Nc3 Nc6 Nf3 g6 d4 exd4 Nd5 Bg7 Bg5 Nge7 Nxd4 Bxd4 Qxd4 O-O Nf6+ Kh8 Ng4+",
+      "pgn": "[Event \"Import\"]\n[Site \"https://lichess.org/sy2frqyj\"]\n[Date \"2018.03.22\"]\n[White \"?\"]\n[Black \"?\"]\n[Result \"*\"]\n[UTCDate \"2018.03.22\"]\n[UTCTime \"15:59:45\"]\n[WhiteElo \"?\"]\n[BlackElo \"?\"]\n[Variant \"Standard\"]\n[TimeControl \"-\"]\n[ECO \"A27\"]\n[Opening \"English Opening: King's English Variation, Three Knights System\"]\n[Termination \"Unterminated\"]\n\n1. c4 { [%eval 0.19] } 1... e5 { [%eval 0.33] } 2. Nc3 { [%eval 0.44] } 2... Nc6 { [%eval 0.63] } 3. Nf3 { [%eval 0.13] } 3... g6 { [%eval 0.6] } 4. d4 { [%eval 0.4] } 4... exd4 { [%eval 0.21] } 5. Nd5 { [%eval -0.48] } 5... Bg7 { [%eval -0.24] } 6. Bg5 { [%eval -0.52] } 6... Nge7 { [%eval 2.93] } 7. Nxd4 { [%eval 2.08] } 7... Bxd4 { [%eval 6.19] } 8. Qxd4 { [%eval 5.81] } 8... O-O { [%eval #5] } 9. Nf6+ { [%eval #4] } 9... Kh8 { [%eval #4] } 10. Ng4+ { [%eval #3] } *\n\n\n",
+      "analysis": [
+        {
+          "eval": 19
+        },
+        {
+          "eval": 33
+        },
+        {
+          "eval": 44
+        },
+        {
+          "eval": 63
+        },
+        {
+          "eval": 13
+        },
+        {
+          "eval": 60
+        },
+        {
+          "eval": 40
+        },
+        {
+          "eval": 21
+        },
+        {
+          "eval": -48,
+          "best": "f3d4",
+          "variation": "Nxd4 Bg7 Nxc6 bxc6 g3 Nf6 Bg2 O-O Qa4 d6",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. Nxd4 was best."
+          }
+        },
+        {
+          "eval": -24
+        },
+        {
+          "eval": -52
+        },
+        {
+          "eval": 293,
+          "best": "c6e7",
+          "variation": "Nce7 Nxd4 c6 Nc3 h6 Bf4 d5 e3 Nf6 Be5",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Blunder. Nce7 was best."
+          }
+        },
+        {
+          "eval": 208
+        },
+        {
+          "eval": 619,
+          "best": "f7f6",
+          "variation": "f6 Bxf6 Bxf6 Nxf6+ Kf7 Ne4 Re8 e3 d5 Nc3",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Blunder. f6 was best."
+          }
+        },
+        {
+          "eval": 581
+        },
+        {
+          "mate": 5,
+          "best": "f7f6",
+          "variation": "f6 Nxf6+",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Checkmate is now unavoidable. f6 was best."
+          }
+        },
+        {
+          "mate": 4
+        },
+        {
+          "mate": 4
+        },
+        {
+          "mate": 3
+        }
+      ],
+      "division": {
+        "middle": 11
+      },
+      "import": {}
+    }
   ]
 }
