@@ -78,5 +78,141 @@
     {
       "id": "P26hy0Rk"
     }
+  ],
+  "lichessGameEval": [
+    {
+      "id": "P26hy0Rk",
+      "rated": false,
+      "variant": "standard",
+      "speed": "correspondence",
+      "perf": "correspondence",
+      "createdAt": 1602225803920,
+      "lastMoveAt": 1602225803920,
+      "status": "started",
+      "source": "import",
+      "players": {
+        "white": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 1,
+            "mistake": 2,
+            "blunder": 1,
+            "acpl": 90,
+            "accuracy": 62
+          }
+        },
+        "black": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 1,
+            "mistake": 0,
+            "blunder": 0,
+            "acpl": 25,
+            "accuracy": 89
+          }
+        }
+      },
+      "opening": {
+        "eco": "E10",
+        "name": "Indian Defense: Anti-Nimzo-Indian",
+        "ply": 5
+      },
+      "moves": "d4 Nf6 c4 e6 Nf3 d5 g3 dxc4 Nbd2 c5 dxc5 Bxc5 Bg2 Bxf2+ Kxf2 Ng4+ Ke1 Ne3 Qa4+ Bd7",
+      "pgn": "[Event \"Import\"]\n[Site \"https://lichess.org/P26hy0Rk\"]\n[Date \"2020.10.09\"]\n[White \"?\"]\n[Black \"?\"]\n[Result \"*\"]\n[UTCDate \"2020.10.09\"]\n[UTCTime \"06:43:23\"]\n[WhiteElo \"?\"]\n[BlackElo \"?\"]\n[Variant \"Standard\"]\n[TimeControl \"-\"]\n[ECO \"E10\"]\n[Opening \"Indian Defense: Anti-Nimzo-Indian\"]\n[Termination \"Unterminated\"]\n\n1. d4 { [%eval 0.0] } 1... Nf6 { [%eval 0.19] } 2. c4 { [%eval 0.11] } 2... e6 { [%eval 0.39] } 3. Nf3 { [%eval 0.0] } 3... d5 { [%eval 0.2] } 4. g3 { [%eval 0.17] } 4... dxc4 { [%eval 0.4] } 5. Nbd2 { [%eval -0.82] } 5... c5 { [%eval 0.0] } 6. dxc5 { [%eval -0.7] } 6... Bxc5 { [%eval -0.4] } 7. Bg2 { [%eval -4.05] } 7... Bxf2+ { [%eval -3.58] } 8. Kxf2 { [%eval -6.32] } 8... Ng4+ { [%eval -6.44] } 9. Ke1 { [%eval -6.36] } 9... Ne3 { [%eval -6.41] } 10. Qa4+ { [%eval -6.16] } 10... Bd7 { [%eval -6.39] } *\n\n\n",
+      "analysis": [
+        {
+          "eval": 0
+        },
+        {
+          "eval": 19
+        },
+        {
+          "eval": 11
+        },
+        {
+          "eval": 39
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 20
+        },
+        {
+          "eval": 17
+        },
+        {
+          "eval": 40
+        },
+        {
+          "eval": -82,
+          "best": "f1g2",
+          "variation": "Bg2 Nc6 Qa4 Bb4+ Bd2 Nd5 Bxb4 Nxb4 O-O Rb8",
+          "judgment": {
+            "name": "Mistake",
+            "comment": "Mistake. Bg2 was best."
+          }
+        },
+        {
+          "eval": 0,
+          "best": "b7b5",
+          "variation": "b5 a4 c6 Bg2 Be7 O-O O-O Qc2 Nd5 e4",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. b5 was best."
+          }
+        },
+        {
+          "eval": -70,
+          "best": "d2c4",
+          "variation": "Nxc4 Nc6 Bg2 cxd4 O-O Bc5 a3 a5 e3 O-O",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. Nxc4 was best."
+          }
+        },
+        {
+          "eval": -40
+        },
+        {
+          "eval": -405,
+          "best": "d1a4",
+          "variation": "Qa4+ Nc6 Bg2 O-O Qxc4 Qe7 O-O e5 Nb3 Bb4",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Blunder. Qa4+ was best."
+          }
+        },
+        {
+          "eval": -358
+        },
+        {
+          "eval": -632,
+          "best": "e1f1",
+          "variation": "Kf1 O-O Qc2 Bc5 Nxc4 Nc6 Be3 Qe7 Bxc5 Qxc5",
+          "judgment": {
+            "name": "Mistake",
+            "comment": "Mistake. Kf1 was best."
+          }
+        },
+        {
+          "eval": -644
+        },
+        {
+          "eval": -636
+        },
+        {
+          "eval": -641
+        },
+        {
+          "eval": -616
+        },
+        {
+          "eval": -639
+        }
+      ],
+      "division": {},
+      "import": {}
+    }
   ]
 }

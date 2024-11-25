@@ -88,5 +88,114 @@
       "cp": -820,
       "mate": null
     }
+  ],
+  "lichessGameEval": [
+    {
+      "id": "S3PFkQzt",
+      "rated": false,
+      "variant": "standard",
+      "speed": "correspondence",
+      "perf": "correspondence",
+      "createdAt": 1721408520256,
+      "lastMoveAt": 1721408520256,
+      "status": "started",
+      "source": "import",
+      "players": {
+        "white": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 0,
+            "mistake": 0,
+            "blunder": 0,
+            "acpl": 5,
+            "accuracy": 99
+          }
+        },
+        "black": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 1,
+            "mistake": 0,
+            "blunder": 1,
+            "acpl": 60,
+            "accuracy": 64
+          }
+        }
+      },
+      "opening": {
+        "eco": "A11",
+        "name": "English Opening: Caro-Kann Defensive System",
+        "ply": 2
+      },
+      "moves": "c4 c6 Nf3 d5 g3 Bg4 Ne5 Bf5 Qb3 Qb6 cxd5 Qxb3 axb3 Be4 dxc6 Bxh1 Rxa7",
+      "pgn": "[Event \"Import\"]\n[Site \"https://lichess.org/S3PFkQzt\"]\n[Date \"2024.07.19\"]\n[White \"?\"]\n[Black \"?\"]\n[Result \"*\"]\n[UTCDate \"2024.07.19\"]\n[UTCTime \"17:02:00\"]\n[WhiteElo \"?\"]\n[BlackElo \"?\"]\n[Variant \"Standard\"]\n[TimeControl \"-\"]\n[ECO \"A11\"]\n[Opening \"English Opening: Caro-Kann Defensive System\"]\n[Termination \"Unterminated\"]\n\n1. c4 { [%eval 0.12] } 1... c6 { [%eval 0.27] } 2. Nf3 { [%eval 0.28] } 2... d5 { [%eval 0.22] } 3. g3 { [%eval 0.11] } 3... Bg4 { [%eval 0.24] } 4. Ne5 { [%eval 0.2] } 4... Bf5 { [%eval 0.23] } 5. Qb3 { [%eval 0.17] } 5... Qb6 { [%eval 0.25] } 6. cxd5 { [%eval 0.17] } 6... Qxb3 { [%eval 0.23] } 7. axb3 { [%eval 0.16] } 7... Be4 { [%eval 0.92] } 8. dxc6 { [%eval 1.21] } 8... Bxh1 { [%eval 4.81] } 9. Rxa7 { [%eval 4.72] } *\n\n\n",
+      "analysis": [
+        {
+          "eval": 12
+        },
+        {
+          "eval": 27
+        },
+        {
+          "eval": 28
+        },
+        {
+          "eval": 22
+        },
+        {
+          "eval": 11
+        },
+        {
+          "eval": 24
+        },
+        {
+          "eval": 20
+        },
+        {
+          "eval": 23
+        },
+        {
+          "eval": 17
+        },
+        {
+          "eval": 25
+        },
+        {
+          "eval": 17
+        },
+        {
+          "eval": 23
+        },
+        {
+          "eval": 16
+        },
+        {
+          "eval": 92,
+          "best": "f5b1",
+          "variation": "Bxb1 Rxb1 cxd5 e4 e6 Bb5+ Ke7 exd5 exd5 d4",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. Bxb1 was best."
+          }
+        },
+        {
+          "eval": 121
+        },
+        {
+          "eval": 481,
+          "best": "b8c6",
+          "variation": "Nxc6 f3 Nd4 Kf2 Nxb3 Ra3 Nxc1 fxe4 e6 Ra4 Nb3 e3",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Blunder. Nxc6 was best."
+          }
+        },
+        {
+          "eval": 472
+        }
+      ],
+      "division": {},
+      "import": {}
+    }
   ]
 }
