@@ -94,5 +94,170 @@
     {
       "id": "GbzUy4n1"
     }
+  ],
+  "lichessGameEval": [
+    {
+      "id": "GbzUy4n1",
+      "rated": false,
+      "variant": "standard",
+      "speed": "correspondence",
+      "perf": "correspondence",
+      "createdAt": 1509093000814,
+      "lastMoveAt": 1509093000814,
+      "status": "started",
+      "source": "import",
+      "players": {
+        "white": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 0,
+            "mistake": 0,
+            "blunder": 0,
+            "acpl": 12,
+            "accuracy": 97
+          }
+        },
+        "black": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 1,
+            "mistake": 2,
+            "blunder": 0,
+            "acpl": 31,
+            "accuracy": 81
+          }
+        }
+      },
+      "opening": {
+        "eco": "B18",
+        "name": "Caro-Kann Defense: Classical Variation",
+        "ply": 8
+      },
+      "moves": "e4 c6 d4 d5 Nc3 dxe4 Nxe4 Bf5 Ng3 Bg6 Nf3 Nf6 h4 h6 Bd3 Bxd3 Qxd3 e6 Bd2 Nbd7 O-O-O Qc7 c4 O-O-O Bc3 Qf4+ Kb1 Nc5 Qc2 Nce4 Ne5 Nxf2 Rdf1",
+      "pgn": "[Event \"Import\"]\n[Site \"https://lichess.org/GbzUy4n1\"]\n[Date \"2017.10.27\"]\n[White \"?\"]\n[Black \"?\"]\n[Result \"*\"]\n[UTCDate \"2017.10.27\"]\n[UTCTime \"08:30:00\"]\n[WhiteElo \"?\"]\n[BlackElo \"?\"]\n[Variant \"Standard\"]\n[TimeControl \"-\"]\n[ECO \"B18\"]\n[Opening \"Caro-Kann Defense: Classical Variation\"]\n[Termination \"Unterminated\"]\n\n1. e4 { [%eval 0.11] } 1... c6 { [%eval 0.5] } 2. d4 { [%eval 0.24] } 2... d5 { [%eval 0.36] } 3. Nc3 { [%eval 0.22] } 3... dxe4 { [%eval 0.24] } 4. Nxe4 { [%eval 0.23] } 4... Bf5 { [%eval 0.3] } 5. Ng3 { [%eval 0.25] } 5... Bg6 { [%eval 0.3] } 6. Nf3 { [%eval 0.27] } 6... Nf6 { [%eval 0.42] } 7. h4 { [%eval 0.18] } 7... h6 { [%eval 0.2] } 8. Bd3 { [%eval 0.02] } 8... Bxd3 { [%eval 0.05] } 9. Qxd3 { [%eval 0.03] } 9... e6 { [%eval 0.09] } 10. Bd2 { [%eval 0.02] } 10... Nbd7 { [%eval 0.01] } 11. O-O-O { [%eval -0.12] } 11... Qc7 { [%eval -0.1] } 12. c4 { [%eval -0.45] } 12... O-O-O { [%eval 0.26] } 13. Bc3 { [%eval 0.12] } 13... Qf4+ { [%eval 0.33] } 14. Kb1 { [%eval 0.32] } 14... Nc5 { [%eval 2.0] } 15. Qc2 { [%eval 2.04] } 15... Nce4 { [%eval 1.96] } 16. Ne5 { [%eval 1.75] } 16... Nxf2 { [%eval 3.2] } 17. Rdf1 { [%eval 3.09] } *\n\n\n",
+      "analysis": [
+        {
+          "eval": 11
+        },
+        {
+          "eval": 50
+        },
+        {
+          "eval": 24
+        },
+        {
+          "eval": 36
+        },
+        {
+          "eval": 22
+        },
+        {
+          "eval": 24
+        },
+        {
+          "eval": 23
+        },
+        {
+          "eval": 30
+        },
+        {
+          "eval": 25
+        },
+        {
+          "eval": 30
+        },
+        {
+          "eval": 27
+        },
+        {
+          "eval": 42
+        },
+        {
+          "eval": 18
+        },
+        {
+          "eval": 20
+        },
+        {
+          "eval": 2
+        },
+        {
+          "eval": 5
+        },
+        {
+          "eval": 3
+        },
+        {
+          "eval": 9
+        },
+        {
+          "eval": 2
+        },
+        {
+          "eval": 1
+        },
+        {
+          "eval": -12
+        },
+        {
+          "eval": -10
+        },
+        {
+          "eval": -45
+        },
+        {
+          "eval": 26,
+          "best": "b7b5",
+          "variation": "b5",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. b5 was best."
+          }
+        },
+        {
+          "eval": 12
+        },
+        {
+          "eval": 33
+        },
+        {
+          "eval": 32
+        },
+        {
+          "eval": 200,
+          "best": "f8e7",
+          "variation": "Be7",
+          "judgment": {
+            "name": "Mistake",
+            "comment": "Mistake. Be7 was best."
+          }
+        },
+        {
+          "eval": 204
+        },
+        {
+          "eval": 196
+        },
+        {
+          "eval": 175
+        },
+        {
+          "eval": 320,
+          "best": "e4c3",
+          "variation": "Nxc3+ bxc3",
+          "judgment": {
+            "name": "Mistake",
+            "comment": "Mistake. Nxc3+ was best."
+          }
+        },
+        {
+          "eval": 309
+        }
+      ],
+      "division": {
+        "middle": 19
+      },
+      "import": {}
+    }
   ]
 }
