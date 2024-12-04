@@ -95,5 +95,173 @@
     {
       "id": "NvYo7SOp"
     }
+  ],
+  "lichessGameEval": [
+    {
+      "id": "NvYo7SOp",
+      "rated": false,
+      "variant": "standard",
+      "speed": "correspondence",
+      "perf": "correspondence",
+      "createdAt": 1518960168961,
+      "lastMoveAt": 1518960168961,
+      "status": "started",
+      "source": "import",
+      "players": {
+        "white": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 1,
+            "mistake": 0,
+            "blunder": 1,
+            "acpl": 63,
+            "accuracy": 75
+          }
+        },
+        "black": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 0,
+            "mistake": 0,
+            "blunder": 0,
+            "acpl": 11,
+            "accuracy": 98
+          }
+        }
+      },
+      "opening": {
+        "eco": "C74",
+        "name": "Ruy Lopez: Morphy Defense, Modern Steinitz Defense, Siesta Variation",
+        "ply": 10
+      },
+      "moves": "e4 e5 Nf3 Nc6 Bb5 d6 c3 a6 Ba4 f5 d4 fxe4 Ng5 exd4 Nxe4 Nf6 Bg5 Be7 Qxd4 b5 Nxf6+ gxf6 Qd5 bxa4 Bh6 Qd7 O-O Bb7 Bg7 O-O-O Bxh8 Ne5 Qd1 Bf3 gxf3 Qh3",
+      "pgn": "[Event \"Import\"]\n[Site \"https://lichess.org/NvYo7SOp\"]\n[Date \"2018.02.18\"]\n[White \"?\"]\n[Black \"?\"]\n[Result \"*\"]\n[UTCDate \"2018.02.18\"]\n[UTCTime \"13:22:48\"]\n[WhiteElo \"?\"]\n[BlackElo \"?\"]\n[Variant \"Standard\"]\n[TimeControl \"-\"]\n[ECO \"C74\"]\n[Opening \"Ruy Lopez: Morphy Defense, Modern Steinitz Defense, Siesta Variation\"]\n[Termination \"Unterminated\"]\n\n1. e4 { [%eval 0.18] } 1... e5 { [%eval 0.21] } 2. Nf3 { [%eval 0.21] } 2... Nc6 { [%eval 0.17] } 3. Bb5 { [%eval 0.15] } 3... d6 { [%eval 0.53] } 4. c3 { [%eval 0.38] } 4... a6 { [%eval 0.41] } 5. Ba4 { [%eval 0.34] } 5... f5 { [%eval 0.18] } 6. d4 { [%eval 0.0] } 6... fxe4 { [%eval 0.0] } 7. Ng5 { [%eval -0.53] } 7... exd4 { [%eval -0.57] } 8. Nxe4 { [%eval -0.58] } 8... Nf6 { [%eval -0.08] } 9. Bg5 { [%eval -0.47] } 9... Be7 { [%eval -0.52] } 10. Qxd4 { [%eval -3.76] } 10... b5 { [%eval -3.67] } 11. Nxf6+ { [%eval -3.73] } 11... gxf6 { [%eval -3.56] } 12. Qd5 { [%eval -4.21] } 12... bxa4 { [%eval -4.26] } 13. Bh6 { [%eval -4.25] } 13... Qd7 { [%eval -4.12] } 14. O-O { [%eval -4.99] } 14... Bb7 { [%eval -5.12] } 15. Bg7 { [%eval -6.44] } 15... O-O-O { [%eval -6.49] } 16. Bxh8 { [%eval -7.2] } 16... Ne5 { [%eval -6.97] } 17. Qd1 { [%eval -6.89] } 17... Bf3 { [%eval -6.86] } 18. gxf3 { [%eval -11.32] } 18... Qh3 { [%eval -9.67] } *\n\n\n",
+      "analysis": [
+        {
+          "eval": 18
+        },
+        {
+          "eval": 21
+        },
+        {
+          "eval": 21
+        },
+        {
+          "eval": 17
+        },
+        {
+          "eval": 15
+        },
+        {
+          "eval": 53
+        },
+        {
+          "eval": 38
+        },
+        {
+          "eval": 41
+        },
+        {
+          "eval": 34
+        },
+        {
+          "eval": 18
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": -53
+        },
+        {
+          "eval": -57
+        },
+        {
+          "eval": -58
+        },
+        {
+          "eval": -8
+        },
+        {
+          "eval": -47
+        },
+        {
+          "eval": -52
+        },
+        {
+          "eval": -376,
+          "best": "g5f6",
+          "variation": "Bxf6 Bxf6",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Blunder. Bxf6 was best."
+          }
+        },
+        {
+          "eval": -367
+        },
+        {
+          "eval": -373
+        },
+        {
+          "eval": -356
+        },
+        {
+          "eval": -421
+        },
+        {
+          "eval": -426
+        },
+        {
+          "eval": -425
+        },
+        {
+          "eval": -412
+        },
+        {
+          "eval": -499
+        },
+        {
+          "eval": -512
+        },
+        {
+          "eval": -644
+        },
+        {
+          "eval": -649
+        },
+        {
+          "eval": -720
+        },
+        {
+          "eval": -697
+        },
+        {
+          "eval": -689
+        },
+        {
+          "eval": -686
+        },
+        {
+          "eval": -1132,
+          "best": "b1d2",
+          "variation": "Nd2 Bxd1 Raxd1 Qc6 Bg7 Rg8 Rfe1 Rxg7 Ne4 Rg8 Ng3 Kb7",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. Nd2 was best."
+          }
+        },
+        {
+          "eval": -967
+        }
+      ],
+      "division": {
+        "middle": 28
+      },
+      "import": {}
+    }
   ]
 }
