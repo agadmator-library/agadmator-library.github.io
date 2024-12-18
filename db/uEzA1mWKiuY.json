@@ -88,5 +88,144 @@
       "cp": -855,
       "mate": null
     }
+  ],
+  "lichessGameEval": [
+    {
+      "id": "ta1VMQXw",
+      "rated": false,
+      "variant": "standard",
+      "speed": "correspondence",
+      "perf": "correspondence",
+      "createdAt": 1722698706196,
+      "lastMoveAt": 1722698706196,
+      "status": "started",
+      "source": "import",
+      "players": {
+        "white": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 0,
+            "mistake": 0,
+            "blunder": 0,
+            "acpl": 6,
+            "accuracy": 97
+          }
+        },
+        "black": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 0,
+            "mistake": 1,
+            "blunder": 1,
+            "acpl": 56,
+            "accuracy": 65
+          }
+        }
+      },
+      "opening": {
+        "eco": "A45",
+        "name": "Trompowsky Attack: Classical Defense, Big Center Variation",
+        "ply": 5
+      },
+      "moves": "d4 Nf6 Bg5 e6 e4 h6 Bxf6 Qxf6 Nc3 d6 Qd2 c6 O-O-O e5 Nf3 Nd7 dxe5 dxe5 Nb5 Kd8 Qa5+ b6 Qc3 a6 Nd6 Kc7 Ne8+",
+      "pgn": "[Event \"Import\"]\n[Site \"https://lichess.org/ta1VMQXw\"]\n[Date \"2024.08.03\"]\n[White \"?\"]\n[Black \"?\"]\n[Result \"*\"]\n[UTCDate \"2024.08.03\"]\n[UTCTime \"15:25:06\"]\n[WhiteElo \"?\"]\n[BlackElo \"?\"]\n[Variant \"Standard\"]\n[TimeControl \"-\"]\n[ECO \"A45\"]\n[Opening \"Trompowsky Attack: Classical Defense, Big Center Variation\"]\n[Termination \"Unterminated\"]\n\n1. d4 { [%eval 0.16] } 1... Nf6 { [%eval 0.17] } 2. Bg5 { [%eval 0.0] } 2... e6 { [%eval 0.1] } 3. e4 { [%eval 0.13] } 3... h6 { [%eval 0.09] } 4. Bxf6 { [%eval 0.04] } 4... Qxf6 { [%eval 0.06] } 5. Nc3 { [%eval 0.19] } 5... d6 { [%eval 0.13] } 6. Qd2 { [%eval 0.11] } 6... c6 { [%eval 0.23] } 7. O-O-O { [%eval 0.09] } 7... e5 { [%eval 0.11] } 8. Nf3 { [%eval 0.2] } 8... Nd7 { [%eval 0.31] } 9. dxe5 { [%eval 0.48] } 9... dxe5 { [%eval 2.09] } 10. Nb5 { [%eval 2.0] } 10... Kd8 { [%eval 1.69] } 11. Qa5+ { [%eval 1.26] } 11... b6 { [%eval 1.31] } 12. Qc3 { [%eval 1.42] } 12... a6 { [%eval 1.24] } 13. Nd6 { [%eval 1.28] } 13... Kc7 { [%eval 6.56] } 14. Ne8+ { [%eval 6.66] } *\n\n\n",
+      "analysis": [
+        {
+          "eval": 16
+        },
+        {
+          "eval": 17
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 10
+        },
+        {
+          "eval": 13
+        },
+        {
+          "eval": 9
+        },
+        {
+          "eval": 4
+        },
+        {
+          "eval": 6
+        },
+        {
+          "eval": 19
+        },
+        {
+          "eval": 13
+        },
+        {
+          "eval": 11
+        },
+        {
+          "eval": 23
+        },
+        {
+          "eval": 9
+        },
+        {
+          "eval": 11
+        },
+        {
+          "eval": 20
+        },
+        {
+          "eval": 31
+        },
+        {
+          "eval": 48
+        },
+        {
+          "eval": 209,
+          "best": "d7e5",
+          "variation": "Nxe5 Nxe5",
+          "judgment": {
+            "name": "Mistake",
+            "comment": "Mistake. Nxe5 was best."
+          }
+        },
+        {
+          "eval": 200
+        },
+        {
+          "eval": 169
+        },
+        {
+          "eval": 126
+        },
+        {
+          "eval": 131
+        },
+        {
+          "eval": 142
+        },
+        {
+          "eval": 124
+        },
+        {
+          "eval": 128
+        },
+        {
+          "eval": 656,
+          "best": "f8d6",
+          "variation": "Bxd6",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Blunder. Bxd6 was best."
+          }
+        },
+        {
+          "eval": 666
+        }
+      ],
+      "division": {},
+      "import": {}
+    }
   ]
 }
