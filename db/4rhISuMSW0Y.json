@@ -95,5 +95,259 @@
     {
       "id": "OCatsVhJ"
     }
+  ],
+  "lichessGameEval": [
+    {
+      "id": "OCatsVhJ",
+      "rated": false,
+      "variant": "standard",
+      "speed": "correspondence",
+      "perf": "correspondence",
+      "createdAt": 1562174932447,
+      "lastMoveAt": 1562174932447,
+      "status": "started",
+      "source": "import",
+      "players": {
+        "white": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 0,
+            "mistake": 0,
+            "blunder": 2,
+            "acpl": 39,
+            "accuracy": 82
+          }
+        },
+        "black": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 1,
+            "mistake": 0,
+            "blunder": 0,
+            "acpl": 9,
+            "accuracy": 98
+          }
+        }
+      },
+      "opening": {
+        "eco": "B30",
+        "name": "Sicilian Defense: Old Sicilian",
+        "ply": 4
+      },
+      "moves": "e4 c5 Nf3 Nc6 Nc3 e5 Bc4 g6 d3 h6 h4 d6 h5 g5 Nh2 Bg7 Ng4 Nge7 Ne3 O-O Bd2 Kh8 g4 Rb8 a4 Nd4 Ncd5 Nxd5 Nxd5 Ne6 f3 Nf4 Qb1 Be6 Qa2 Qd7 Rg1 b6 Bc3 Bxd5 Bxd5 a6 Bd2 Qe7 Rf1 b5 axb5 axb5 Kf2 c4 Bxf4 exf4 Rad1 f5 gxf5 g4 d4 Qh4+ Ke2 Qh2+ Rf2 gxf3+",
+      "pgn": "[Event \"Import\"]\n[Site \"https://lichess.org/OCatsVhJ\"]\n[Date \"2019.07.03\"]\n[White \"?\"]\n[Black \"?\"]\n[Result \"*\"]\n[UTCDate \"2019.07.03\"]\n[UTCTime \"17:28:52\"]\n[WhiteElo \"?\"]\n[BlackElo \"?\"]\n[Variant \"Standard\"]\n[TimeControl \"-\"]\n[ECO \"B30\"]\n[Opening \"Sicilian Defense: Old Sicilian\"]\n[Termination \"Unterminated\"]\n\n1. e4 { [%eval 0.24] } 1... c5 { [%eval 0.2] } 2. Nf3 { [%eval 0.21] } 2... Nc6 { [%eval 0.08] } 3. Nc3 { [%eval 0.09] } 3... e5 { [%eval 0.51] } 4. Bc4 { [%eval 0.17] } 4... g6 { [%eval 0.76] } 5. d3 { [%eval 0.68] } 5... h6 { [%eval 0.49] } 6. h4 { [%eval 0.34] } 6... d6 { [%eval 0.46] } 7. h5 { [%eval 0.52] } 7... g5 { [%eval 0.59] } 8. Nh2 { [%eval 0.48] } 8... Bg7 { [%eval 0.56] } 9. Ng4 { [%eval 0.42] } 9... Nge7 { [%eval 0.38] } 10. Ne3 { [%eval 0.62] } 10... O-O { [%eval 0.6] } 11. Bd2 { [%eval 0.62] } 11... Kh8 { [%eval 0.68] } 12. g4 { [%eval 0.62] } 12... Rb8 { [%eval 0.73] } 13. a4 { [%eval 0.73] } 13... Nd4 { [%eval 0.68] } 14. Ncd5 { [%eval 0.68] } 14... Nxd5 { [%eval 0.64] } 15. Nxd5 { [%eval 0.6] } 15... Ne6 { [%eval 0.44] } 16. f3 { [%eval 0.15] } 16... Nf4 { [%eval 0.0] } 17. Qb1 { [%eval 0.15] } 17... Be6 { [%eval 0.15] } 18. Qa2 { [%eval 0.18] } 18... Qd7 { [%eval 0.11] } 19. Rg1 { [%eval 0.09] } 19... b6 { [%eval 0.03] } 20. Bc3 { [%eval 0.09] } 20... Bxd5 { [%eval 0.16] } 21. Bxd5 { [%eval 0.19] } 21... a6 { [%eval 0.06] } 22. Bd2 { [%eval 0.0] } 22... Qe7 { [%eval 0.13] } 23. Rf1 { [%eval 0.06] } 23... b5 { [%eval 0.08] } 24. axb5 { [%eval 0.21] } 24... axb5 { [%eval 0.15] } 25. Kf2 { [%eval 0.21] } 25... c4 { [%eval 0.09] } 26. Bxf4 { [%eval 0.0] } 26... exf4 { [%eval -0.09] } 27. Rad1 { [%eval -0.2] } 27... f5 { [%eval 0.1] } 28. gxf5 { [%eval -3.32] } 28... g4 { [%eval -3.48] } 29. d4 { [%eval -11.96] } 29... Qh4+ { [%eval -11.78] } 30. Ke2 { [%eval -11.15] } 30... Qh2+ { [%eval -9.29] } 31. Rf2 { [%eval -17.13] } 31... gxf3+ { [%eval -15.03] } *\n\n\n",
+      "analysis": [
+        {
+          "eval": 24
+        },
+        {
+          "eval": 20
+        },
+        {
+          "eval": 21
+        },
+        {
+          "eval": 8
+        },
+        {
+          "eval": 9
+        },
+        {
+          "eval": 51
+        },
+        {
+          "eval": 17
+        },
+        {
+          "eval": 76,
+          "best": "f8e7",
+          "variation": "Be7 d3 Nf6 Nd2 d6 Nf1 Bg4 f3 Be6 Ne3",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. Be7 was best."
+          }
+        },
+        {
+          "eval": 68
+        },
+        {
+          "eval": 49
+        },
+        {
+          "eval": 34
+        },
+        {
+          "eval": 46
+        },
+        {
+          "eval": 52
+        },
+        {
+          "eval": 59
+        },
+        {
+          "eval": 48
+        },
+        {
+          "eval": 56
+        },
+        {
+          "eval": 42
+        },
+        {
+          "eval": 38
+        },
+        {
+          "eval": 62
+        },
+        {
+          "eval": 60
+        },
+        {
+          "eval": 62
+        },
+        {
+          "eval": 68
+        },
+        {
+          "eval": 62
+        },
+        {
+          "eval": 73
+        },
+        {
+          "eval": 73
+        },
+        {
+          "eval": 68
+        },
+        {
+          "eval": 68
+        },
+        {
+          "eval": 64
+        },
+        {
+          "eval": 60
+        },
+        {
+          "eval": 44
+        },
+        {
+          "eval": 15
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 15
+        },
+        {
+          "eval": 15
+        },
+        {
+          "eval": 18
+        },
+        {
+          "eval": 11
+        },
+        {
+          "eval": 9
+        },
+        {
+          "eval": 3
+        },
+        {
+          "eval": 9
+        },
+        {
+          "eval": 16
+        },
+        {
+          "eval": 19
+        },
+        {
+          "eval": 6
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 13
+        },
+        {
+          "eval": 6
+        },
+        {
+          "eval": 8
+        },
+        {
+          "eval": 21
+        },
+        {
+          "eval": 15
+        },
+        {
+          "eval": 21
+        },
+        {
+          "eval": 9
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": -9
+        },
+        {
+          "eval": -20
+        },
+        {
+          "eval": 10
+        },
+        {
+          "eval": -332,
+          "best": "e4f5",
+          "variation": "exf5",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Blunder. exf5 was best."
+          }
+        },
+        {
+          "eval": -348
+        },
+        {
+          "eval": -1196,
+          "best": "f2e2",
+          "variation": "Ke2 Rxf5",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Blunder. Ke2 was best."
+          }
+        },
+        {
+          "eval": -1178
+        },
+        {
+          "eval": -1115
+        },
+        {
+          "eval": -929
+        },
+        {
+          "eval": -1713,
+          "best": "e2e1",
+          "variation": "Ke1 g3"
+        },
+        {
+          "eval": -1503
+        }
+      ],
+      "division": {
+        "middle": 26
+      },
+      "import": {}
+    }
   ]
 }
