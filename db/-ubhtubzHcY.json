@@ -78,5 +78,227 @@
       "cp": -348,
       "mate": null
     }
+  ],
+  "lichessGameEval": [
+    {
+      "id": "BFqCc7Lm",
+      "rated": false,
+      "variant": "standard",
+      "speed": "correspondence",
+      "perf": "correspondence",
+      "createdAt": 1735597707210,
+      "lastMoveAt": 1735597707210,
+      "status": "started",
+      "source": "import",
+      "players": {
+        "white": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 2,
+            "mistake": 0,
+            "blunder": 2,
+            "acpl": 41,
+            "accuracy": 75
+          }
+        },
+        "black": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 0,
+            "mistake": 1,
+            "blunder": 1,
+            "acpl": 23,
+            "accuracy": 88
+          }
+        }
+      },
+      "opening": {
+        "eco": "A45",
+        "name": "Trompowsky Attack",
+        "ply": 3
+      },
+      "moves": "d4 Nf6 Bg5 g6 Nd2 Bg7 e3 c5 c3 cxd4 exd4 O-O Ngf3 Nc6 Bd3 h6 Bh4 d6 O-O e5 Re1 exd4 cxd4 Nb4 Bc4 Bf5 Rc1 d5 Qb3 Nc2 Bxf6 dxc4 Qxc2 Qxf6 Qxc4 Rac8 Qb3 b6 h3 Qd6 Rc3 Be6 Qa4 a5 Nc4 Qb4",
+      "pgn": "[Event \"Import\"]\n[Site \"https://lichess.org/BFqCc7Lm\"]\n[Date \"2024.12.30\"]\n[White \"?\"]\n[Black \"?\"]\n[Result \"*\"]\n[UTCDate \"2024.12.30\"]\n[UTCTime \"22:28:27\"]\n[WhiteElo \"?\"]\n[BlackElo \"?\"]\n[Variant \"Standard\"]\n[TimeControl \"-\"]\n[ECO \"A45\"]\n[Opening \"Trompowsky Attack\"]\n[Termination \"Unterminated\"]\n\n1. d4 { [%eval 0.17] } 1... Nf6 { [%eval 0.19] } 2. Bg5 { [%eval 0.0] } 2... g6 { [%eval 0.09] } 3. Nd2 { [%eval 0.14] } 3... Bg7 { [%eval 0.11] } 4. e3 { [%eval 0.07] } 4... c5 { [%eval 0.24] } 5. c3 { [%eval 0.03] } 5... cxd4 { [%eval 0.02] } 6. exd4 { [%eval 0.0] } 6... O-O { [%eval 0.0] } 7. Ngf3 { [%eval 0.0] } 7... Nc6 { [%eval 0.0] } 8. Bd3 { [%eval -0.05] } 8... h6 { [%eval 0.25] } 9. Bh4 { [%eval -0.14] } 9... d6 { [%eval -0.16] } 10. O-O { [%eval -0.13] } 10... e5 { [%eval -0.12] } 11. Re1 { [%eval -0.14] } 11... exd4 { [%eval -0.12] } 12. cxd4 { [%eval -0.13] } 12... Nb4 { [%eval 1.49] } 13. Bc4 { [%eval -0.37] } 13... Bf5 { [%eval -0.34] } 14. Rc1 { [%eval -1.08] } 14... d5 { [%eval -1.12] } 15. Qb3 { [%eval -2.31] } 15... Nc2 { [%eval -2.23] } 16. Bxf6 { [%eval -2.25] } 16... dxc4 { [%eval -0.04] } 17. Qxc2 { [%eval -0.01] } 17... Qxf6 { [%eval 0.06] } 18. Qxc4 { [%eval 0.05] } 18... Rac8 { [%eval 0.1] } 19. Qb3 { [%eval 0.12] } 19... b6 { [%eval 0.21] } 20. h3 { [%eval 0.24] } 20... Qd6 { [%eval 0.23] } 21. Rc3 { [%eval -0.19] } 21... Be6 { [%eval 0.13] } 22. Qa4 { [%eval 0.22] } 22... a5 { [%eval 0.24] } 23. Nc4 { [%eval -4.13] } 23... Qb4 { [%eval -3.96] } *\n\n\n",
+      "analysis": [
+        {
+          "eval": 17
+        },
+        {
+          "eval": 19
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 9
+        },
+        {
+          "eval": 14
+        },
+        {
+          "eval": 11
+        },
+        {
+          "eval": 7
+        },
+        {
+          "eval": 24
+        },
+        {
+          "eval": 3
+        },
+        {
+          "eval": 2
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": -5
+        },
+        {
+          "eval": 25
+        },
+        {
+          "eval": -14
+        },
+        {
+          "eval": -16
+        },
+        {
+          "eval": -13
+        },
+        {
+          "eval": -12
+        },
+        {
+          "eval": -14
+        },
+        {
+          "eval": -12
+        },
+        {
+          "eval": -13
+        },
+        {
+          "eval": 149,
+          "best": "d6d5",
+          "variation": "d5 Bb5",
+          "judgment": {
+            "name": "Mistake",
+            "comment": "Mistake. d5 was best."
+          }
+        },
+        {
+          "eval": -37,
+          "best": "d3g6",
+          "variation": "Bxg6 fxg6 Qb3+ Kh7 Qxb4 a5 Qb3 a4 Qb4 Nd5 Qa3 g5",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Blunder. Bxg6 was best."
+          }
+        },
+        {
+          "eval": -34
+        },
+        {
+          "eval": -108,
+          "best": "c4b3",
+          "variation": "Bb3 g5 Bg3 Rc8 Nc4 Rxc4 Bxc4 Nc2 Re2 Nxa1 Qxa1 Qb6",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. Bb3 was best."
+          }
+        },
+        {
+          "eval": -112
+        },
+        {
+          "eval": -231,
+          "best": "c4f1",
+          "variation": "Bf1 Nxa2 Rc5 b6 Rc6 Nb4 Rc3 Rc8 h3 Re8 g4 Rxe1",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. Bf1 was best."
+          }
+        },
+        {
+          "eval": -223
+        },
+        {
+          "eval": -225
+        },
+        {
+          "eval": -4,
+          "best": "d8f6",
+          "variation": "Qxf6 Bxd5 Nxe1 Rxe1 Qb6 Bxb7 Qxb3 axb3 Rab8 Bc6 Rfd8 d5",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Blunder. Qxf6 was best."
+          }
+        },
+        {
+          "eval": -1
+        },
+        {
+          "eval": 6
+        },
+        {
+          "eval": 5
+        },
+        {
+          "eval": 10
+        },
+        {
+          "eval": 12
+        },
+        {
+          "eval": 21
+        },
+        {
+          "eval": 24
+        },
+        {
+          "eval": 23
+        },
+        {
+          "eval": -19
+        },
+        {
+          "eval": 13
+        },
+        {
+          "eval": 22
+        },
+        {
+          "eval": 24
+        },
+        {
+          "eval": -413,
+          "best": "a2a3",
+          "variation": "a3",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Blunder. a3 was best."
+          }
+        },
+        {
+          "eval": -396
+        }
+      ],
+      "division": {
+        "middle": 25
+      },
+      "import": {}
+    }
   ]
 }
