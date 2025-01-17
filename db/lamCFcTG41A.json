@@ -87,5 +87,140 @@
     {
       "id": "4R9ZFWHa"
     }
+  ],
+  "lichessGameEval": [
+    {
+      "id": "4R9ZFWHa",
+      "rated": false,
+      "variant": "standard",
+      "speed": "correspondence",
+      "perf": "correspondence",
+      "createdAt": 1523846586959,
+      "lastMoveAt": 1523846586959,
+      "status": "started",
+      "source": "import",
+      "players": {
+        "white": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 0,
+            "mistake": 0,
+            "blunder": 0,
+            "acpl": 15,
+            "accuracy": 93
+          }
+        },
+        "black": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 0,
+            "mistake": 0,
+            "blunder": 2,
+            "acpl": 64,
+            "accuracy": 63
+          }
+        }
+      },
+      "opening": {
+        "eco": "A45",
+        "name": "Indian Defense",
+        "ply": 2
+      },
+      "moves": "d4 Nf6 Bf4 d5 e3 e6 Nd2 Be7 c3 c5 Bd3 O-O Ngf3 b6 Ne5 Bb7 Qf3 Nbd7 Rd1 Rc8 Qh3 Re8 Ndf3 g6 Nxf7",
+      "pgn": "[Event \"Import\"]\n[Site \"https://lichess.org/4R9ZFWHa\"]\n[Date \"2018.04.16\"]\n[White \"?\"]\n[Black \"?\"]\n[Result \"*\"]\n[UTCDate \"2018.04.16\"]\n[UTCTime \"02:43:06\"]\n[WhiteElo \"?\"]\n[BlackElo \"?\"]\n[Variant \"Standard\"]\n[TimeControl \"-\"]\n[ECO \"A45\"]\n[Opening \"Indian Defense\"]\n[Termination \"Unterminated\"]\n\n1. d4 { [%eval 0.08] } 1... Nf6 { [%eval 0.13] } 2. Bf4 { [%eval 0.02] } 2... d5 { [%eval 0.0] } 3. e3 { [%eval 0.0] } 3... e6 { [%eval 0.13] } 4. Nd2 { [%eval 0.07] } 4... Be7 { [%eval 0.05] } 5. c3 { [%eval 0.07] } 5... c5 { [%eval 0.0] } 6. Bd3 { [%eval 0.02] } 6... O-O { [%eval 0.11] } 7. Ngf3 { [%eval 0.18] } 7... b6 { [%eval 0.2] } 8. Ne5 { [%eval 0.17] } 8... Bb7 { [%eval 0.34] } 9. Qf3 { [%eval 0.46] } 9... Nbd7 { [%eval 0.58] } 10. Rd1 { [%eval 0.44] } 10... Rc8 { [%eval 0.65] } 11. Qh3 { [%eval 0.42] } 11... Re8 { [%eval 2.4] } 12. Ndf3 { [%eval 1.54] } 12... g6 { [%eval 6.44] } 13. Nxf7 { [%eval 5.95] } *\n\n\n",
+      "analysis": [
+        {
+          "eval": 8
+        },
+        {
+          "eval": 13
+        },
+        {
+          "eval": 2
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 13
+        },
+        {
+          "eval": 7
+        },
+        {
+          "eval": 5
+        },
+        {
+          "eval": 7
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 2
+        },
+        {
+          "eval": 11
+        },
+        {
+          "eval": 18
+        },
+        {
+          "eval": 20
+        },
+        {
+          "eval": 17
+        },
+        {
+          "eval": 34
+        },
+        {
+          "eval": 46
+        },
+        {
+          "eval": 58
+        },
+        {
+          "eval": 44
+        },
+        {
+          "eval": 65
+        },
+        {
+          "eval": 42
+        },
+        {
+          "eval": 240,
+          "best": "h7h6",
+          "variation": "h6 O-O",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Blunder. h6 was best."
+          }
+        },
+        {
+          "eval": 154
+        },
+        {
+          "eval": 644,
+          "best": "f6e4",
+          "variation": "Ne4 dxc5 Nxe5 Bxe5 f5 g4 Bf6 gxf5 Qe7 fxe6 Bxe5 Nxe5 Qxe6 Qxe6+",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Blunder. Ne4 was best."
+          }
+        },
+        {
+          "eval": 595
+        }
+      ],
+      "division": {
+        "middle": 17
+      },
+      "import": {}
+    }
   ]
 }
