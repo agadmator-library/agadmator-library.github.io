@@ -73,5 +73,182 @@
       "cp": -809,
       "mate": null
     }
+  ],
+  "lichessGameEval": [
+    {
+      "id": "zA4rquQ2",
+      "rated": false,
+      "variant": "standard",
+      "speed": "correspondence",
+      "perf": "correspondence",
+      "createdAt": 1738264841241,
+      "lastMoveAt": 1738264841241,
+      "status": "started",
+      "source": "import",
+      "players": {
+        "white": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 0,
+            "mistake": 1,
+            "blunder": 0,
+            "acpl": 17,
+            "accuracy": 94
+          }
+        },
+        "black": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 0,
+            "mistake": 1,
+            "blunder": 2,
+            "acpl": 46,
+            "accuracy": 72
+          }
+        }
+      },
+      "opening": {
+        "eco": "D01",
+        "name": "Rapport-Jobava System",
+        "ply": 5
+      },
+      "moves": "d4 Nf6 Nc3 d5 Bf4 a6 e3 h6 h4 c5 Nf3 Nc6 Ne5 Bd7 g4 cxd4 exd4 e6 Bg2 Qb6 g5 Qxb2 Rh3 hxg5 Rb1 Qa3 Nxd5 Qxh3 Nc7+ Kd8 Nxf7+ Kc8 Bxh3 gxf4 Nxa8",
+      "pgn": "[Event \"Import\"]\n[Site \"https://lichess.org/zA4rquQ2\"]\n[Date \"2025.01.30\"]\n[White \"?\"]\n[Black \"?\"]\n[Result \"*\"]\n[GameId \"zA4rquQ2\"]\n[UTCDate \"2025.01.30\"]\n[UTCTime \"19:20:41\"]\n[WhiteElo \"?\"]\n[BlackElo \"?\"]\n[Variant \"Standard\"]\n[TimeControl \"-\"]\n[ECO \"D01\"]\n[Opening \"Rapport-Jobava System\"]\n[Termination \"Unterminated\"]\n\n1. d4 { [%eval 0.17] } 1... Nf6 { [%eval 0.19] } 2. Nc3 { [%eval -0.02] } 2... d5 { [%eval 0.0] } 3. Bf4 { [%eval -0.11] } 3... a6 { [%eval 0.0] } 4. e3 { [%eval 0.0] } 4... h6 { [%eval 0.03] } 5. h4 { [%eval -0.02] } 5... c5 { [%eval 0.0] } 6. Nf3 { [%eval -0.2] } 6... Nc6 { [%eval 0.11] } 7. Ne5 { [%eval -0.04] } 7... Bd7 { [%eval 0.12] } 8. g4 { [%eval -0.22] } 8... cxd4 { [%eval -0.18] } 9. exd4 { [%eval -0.11] } 9... e6 { [%eval -0.05] } 10. Bg2 { [%eval -0.4] } 10... Qb6 { [%eval -0.31] } 11. g5 { [%eval -1.5] } 11... Qxb2 { [%eval 0.95] } 12. Rh3 { [%eval 1.01] } 12... hxg5 { [%eval 2.59] } 13. Rb1 { [%eval 2.89] } 13... Qa3 { [%eval 2.75] } 14. Nxd5 { [%eval 2.55] } 14... Qxh3 { [%eval 5.21] } 15. Nc7+ { [%eval 5.11] } 15... Kd8 { [%eval 4.94] } 16. Nxf7+ { [%eval 4.82] } 16... Kc8 { [%eval 5.13] } 17. Bxh3 { [%eval 5.08] } 17... gxf4 { [%eval 4.9] } 18. Nxa8 { [%eval 5.2] } *\n\n\n",
+      "analysis": [
+        {
+          "eval": 17
+        },
+        {
+          "eval": 19
+        },
+        {
+          "eval": -2
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": -11
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 3
+        },
+        {
+          "eval": -2
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": -20
+        },
+        {
+          "eval": 11
+        },
+        {
+          "eval": -4
+        },
+        {
+          "eval": 12
+        },
+        {
+          "eval": -22
+        },
+        {
+          "eval": -18
+        },
+        {
+          "eval": -11
+        },
+        {
+          "eval": -5
+        },
+        {
+          "eval": -40
+        },
+        {
+          "eval": -31
+        },
+        {
+          "eval": -150,
+          "best": "e5d7",
+          "variation": "Nxd7 Nxd7",
+          "judgment": {
+            "name": "Mistake",
+            "comment": "Mistake. Nxd7 was best."
+          }
+        },
+        {
+          "eval": 95,
+          "best": "h6g5",
+          "variation": "hxg5 hxg5 Rxh1+ Bxh1 Nxe5 dxe5 Ng4 Qd2 Rc8 Nd1 Qc7 Nc3",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Blunder. hxg5 was best."
+          }
+        },
+        {
+          "eval": 101
+        },
+        {
+          "eval": 259,
+          "best": "f8b4",
+          "variation": "Bb4",
+          "judgment": {
+            "name": "Mistake",
+            "comment": "Mistake. Bb4 was best."
+          }
+        },
+        {
+          "eval": 289
+        },
+        {
+          "eval": 275
+        },
+        {
+          "eval": 255
+        },
+        {
+          "eval": 521,
+          "best": "a3a5",
+          "variation": "Qa5+ Bd2 Qd8 Nb6 Rxh4 Nxa8 Rxh3 Bxh3 Qxa8 Nxd7 Nxd7 Bxg5",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Blunder. Qa5+ was best."
+          }
+        },
+        {
+          "eval": 511
+        },
+        {
+          "eval": 494
+        },
+        {
+          "eval": 482
+        },
+        {
+          "eval": 513
+        },
+        {
+          "eval": 508
+        },
+        {
+          "eval": 490
+        },
+        {
+          "eval": 520
+        }
+      ],
+      "division": {
+        "middle": 22
+      },
+      "import": {}
+    }
   ]
 }
