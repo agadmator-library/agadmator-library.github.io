@@ -85,5 +85,143 @@
       "cp": -547,
       "mate": null
     }
+  ],
+  "lichessGameEval": [
+    {
+      "id": "WWu9Nq7H",
+      "rated": false,
+      "variant": "standard",
+      "speed": "correspondence",
+      "perf": "correspondence",
+      "createdAt": 1521029251250,
+      "lastMoveAt": 1521029251250,
+      "status": "started",
+      "source": "import",
+      "players": {
+        "white": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 1,
+            "mistake": 0,
+            "blunder": 1,
+            "acpl": 73,
+            "accuracy": 51
+          }
+        },
+        "black": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 1,
+            "mistake": 0,
+            "blunder": 0,
+            "acpl": 20,
+            "accuracy": 90
+          }
+        }
+      },
+      "opening": {
+        "eco": "C57",
+        "name": "Italian Game: Two Knights Defense, Fritz Variation",
+        "ply": 10
+      },
+      "moves": "e4 e5 Nf3 Nc6 Bc4 Nf6 Ng5 d5 exd5 Nd4 c3 b5 Bf1 Nxd5 cxd4 Qxg5 Bxb5+ Kd8 Qf3 Bb7 O-O exd4 Qxf7 Nf6",
+      "pgn": "[Event \"Import\"]\n[Site \"https://lichess.org/WWu9Nq7H\"]\n[Date \"2018.03.14\"]\n[White \"?\"]\n[Black \"?\"]\n[Result \"*\"]\n[GameId \"WWu9Nq7H\"]\n[UTCDate \"2018.03.14\"]\n[UTCTime \"12:07:31\"]\n[WhiteElo \"?\"]\n[BlackElo \"?\"]\n[Variant \"Standard\"]\n[TimeControl \"-\"]\n[ECO \"C57\"]\n[Opening \"Italian Game: Two Knights Defense, Fritz Variation\"]\n[Termination \"Unterminated\"]\n\n1. e4 { [%eval 0.03] } 1... e5 { [%eval 0.24] } 2. Nf3 { [%eval 0.25] } 2... Nc6 { [%eval 0.26] } 3. Bc4 { [%eval 0.1] } 3... Nf6 { [%eval 0.12] } 4. Ng5 { [%eval 0.2] } 4... d5 { [%eval 0.32] } 5. exd5 { [%eval 0.31] } 5... Nd4 { [%eval 0.8] } 6. c3 { [%eval 0.78] } 6... b5 { [%eval 0.96] } 7. Bf1 { [%eval 0.8] } 7... Nxd5 { [%eval 0.86] } 8. cxd4 { [%eval 0.74] } 8... Qxg5 { [%eval 0.99] } 9. Bxb5+ { [%eval 0.73] } 9... Kd8 { [%eval 0.93] } 10. Qf3 { [%eval 0.35] } 10... Bb7 { [%eval 1.17] } 11. O-O { [%eval 0.9] } 11... exd4 { [%eval 0.96] } 12. Qxf7 { [%eval -6.07] } 12... Nf6 { [%eval -6.15] } *\n\n\n",
+      "analysis": [
+        {
+          "eval": 3
+        },
+        {
+          "eval": 24
+        },
+        {
+          "eval": 25
+        },
+        {
+          "eval": 26
+        },
+        {
+          "eval": 10
+        },
+        {
+          "eval": 12
+        },
+        {
+          "eval": 20
+        },
+        {
+          "eval": 32
+        },
+        {
+          "eval": 31
+        },
+        {
+          "eval": 80
+        },
+        {
+          "eval": 78
+        },
+        {
+          "eval": 96
+        },
+        {
+          "eval": 80
+        },
+        {
+          "eval": 86
+        },
+        {
+          "eval": 74
+        },
+        {
+          "eval": 99
+        },
+        {
+          "eval": 73
+        },
+        {
+          "eval": 93
+        },
+        {
+          "eval": 35,
+          "best": "e1g1",
+          "variation": "O-O Rb8",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. O-O was best."
+          }
+        },
+        {
+          "eval": 117,
+          "best": "e5d4",
+          "variation": "exd4 Bc6 Nb4 Bxa8 Nc2+ Kd1 Bg4 Kxc2 Qc5+ Kd1 Bxf3+ Bxf3 d3 Nc3",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. exd4 was best."
+          }
+        },
+        {
+          "eval": 90
+        },
+        {
+          "eval": 96
+        },
+        {
+          "eval": -607,
+          "best": "d2d3",
+          "variation": "d3 Qe5 Nd2 Bd6 g3 Qf6 Qxf6+ Nxf6 Nc4 Rb8 Bd2 Bc8 Ba4 Be6",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Blunder. d3 was best."
+          }
+        },
+        {
+          "eval": -615
+        }
+      ],
+      "division": {
+        "middle": 16
+      },
+      "import": {}
+    }
   ]
 }
