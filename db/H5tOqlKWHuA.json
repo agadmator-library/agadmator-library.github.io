@@ -95,5 +95,190 @@
       "cp": -398,
       "mate": null
     }
+  ],
+  "lichessGameEval": [
+    {
+      "id": "9O3vsjbJ",
+      "rated": false,
+      "variant": "standard",
+      "speed": "correspondence",
+      "perf": "correspondence",
+      "createdAt": 1556473071240,
+      "lastMoveAt": 1556473071240,
+      "status": "started",
+      "source": "import",
+      "players": {
+        "white": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 1,
+            "mistake": 0,
+            "blunder": 0,
+            "acpl": 15,
+            "accuracy": 96
+          }
+        },
+        "black": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 1,
+            "mistake": 0,
+            "blunder": 2,
+            "acpl": 41,
+            "accuracy": 77
+          }
+        }
+      },
+      "opening": {
+        "eco": "C07",
+        "name": "French Defense: Tarrasch Variation, Open System, Euwe-Keres Line",
+        "ply": 7
+      },
+      "moves": "e4 e6 d4 d5 Nd2 c5 Ngf3 Nc6 Bb5 dxe4 Nxe4 Bd7 Bg5 Qa5+ Nc3 cxd4 Nxd4 Bb4 O-O Bxc3 bxc3 Qxc3 Nf5 exf5 Re1+ Be6 Qd6 a6 Bd2 Qxc2 Bb4 axb5 Qf8+ Kd7 Red1+ Kc7 Qxa8",
+      "pgn": "[Event \"Import\"]\n[Site \"https://lichess.org/9O3vsjbJ\"]\n[Date \"2019.04.28\"]\n[White \"?\"]\n[Black \"?\"]\n[Result \"*\"]\n[GameId \"9O3vsjbJ\"]\n[UTCDate \"2019.04.28\"]\n[UTCTime \"17:37:51\"]\n[WhiteElo \"?\"]\n[BlackElo \"?\"]\n[Variant \"Standard\"]\n[TimeControl \"-\"]\n[ECO \"C07\"]\n[Opening \"French Defense: Tarrasch Variation, Open System, Euwe-Keres Line\"]\n[Termination \"Unterminated\"]\n\n1. e4 { [%eval 0.12] } 1... e6 { [%eval 0.12] } 2. d4 { [%eval 0.08] } 2... d5 { [%eval 0.2] } 3. Nd2 { [%eval 0.14] } 3... c5 { [%eval 0.17] } 4. Ngf3 { [%eval 0.19] } 4... Nc6 { [%eval 0.33] } 5. Bb5 { [%eval -0.29] } 5... dxe4 { [%eval 0.4] } 6. Nxe4 { [%eval 0.17] } 6... Bd7 { [%eval 0.07] } 7. Bg5 { [%eval -0.17] } 7... Qa5+ { [%eval -0.1] } 8. Nc3 { [%eval -0.09] } 8... cxd4 { [%eval -0.09] } 9. Nxd4 { [%eval -0.11] } 9... Bb4 { [%eval 0.13] } 10. O-O { [%eval 0.08] } 10... Bxc3 { [%eval 0.27] } 11. bxc3 { [%eval 0.16] } 11... Qxc3 { [%eval 1.91] } 12. Nf5 { [%eval 2.12] } 12... exf5 { [%eval 4.91] } 13. Re1+ { [%eval 4.64] } 13... Be6 { [%eval 5.19] } 14. Qd6 { [%eval 4.66] } 14... a6 { [%eval 5.01] } 15. Bd2 { [%eval 5.08] } 15... Qxc2 { [%eval 5.05] } 16. Bb4 { [%eval 4.92] } 16... axb5 { [%eval 5.13] } 17. Qf8+ { [%eval 4.92] } 17... Kd7 { [%eval 5.09] } 18. Red1+ { [%eval 5.02] } 18... Kc7 { [%eval 5.1] } 19. Qxa8 { [%eval 4.9] } *\n\n\n",
+      "analysis": [
+        {
+          "eval": 12
+        },
+        {
+          "eval": 12
+        },
+        {
+          "eval": 8
+        },
+        {
+          "eval": 20
+        },
+        {
+          "eval": 14
+        },
+        {
+          "eval": 17
+        },
+        {
+          "eval": 19
+        },
+        {
+          "eval": 33
+        },
+        {
+          "eval": -29,
+          "best": "e4d5",
+          "variation": "exd5 exd5 Bb5 Qe7+ Be2 Qc7 O-O Nf6 Re1 cxd4",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. exd5 was best."
+          }
+        },
+        {
+          "eval": 40,
+          "best": "a7a6",
+          "variation": "a6 Bxc6+ bxc6 dxc5 Bxc5 c4 Nf6 Qc2 Qb6 O-O",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. a6 was best."
+          }
+        },
+        {
+          "eval": 17
+        },
+        {
+          "eval": 7
+        },
+        {
+          "eval": -17
+        },
+        {
+          "eval": -10
+        },
+        {
+          "eval": -9
+        },
+        {
+          "eval": -9
+        },
+        {
+          "eval": -11
+        },
+        {
+          "eval": 13
+        },
+        {
+          "eval": 8
+        },
+        {
+          "eval": 27
+        },
+        {
+          "eval": 16
+        },
+        {
+          "eval": 191,
+          "best": "h7h6",
+          "variation": "h6 Be3 Nge7 Bd3 O-O Rb1 b6 Bd2 Ne5 Re1 Nxd3 cxd3 Qd5 Qb3",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Blunder. h6 was best."
+          }
+        },
+        {
+          "eval": 212
+        },
+        {
+          "eval": 491,
+          "best": "c3c5",
+          "variation": "Qc5 Nd6+ Kf8 Be3 Qd5 c4 Qxd1 Rfxd1 b6 c5 Nf6 cxb6 axb6 Nc4",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Blunder. Qc5 was best."
+          }
+        },
+        {
+          "eval": 464
+        },
+        {
+          "eval": 519,
+          "best": "g8e7",
+          "variation": "Nge7 Rxe7+"
+        },
+        {
+          "eval": 466
+        },
+        {
+          "eval": 501
+        },
+        {
+          "eval": 508
+        },
+        {
+          "eval": 505
+        },
+        {
+          "eval": 492
+        },
+        {
+          "eval": 513
+        },
+        {
+          "eval": 492
+        },
+        {
+          "eval": 509
+        },
+        {
+          "eval": 502
+        },
+        {
+          "eval": 510
+        },
+        {
+          "eval": 490
+        }
+      ],
+      "division": {
+        "middle": 27
+      },
+      "import": {}
+    }
   ]
 }
