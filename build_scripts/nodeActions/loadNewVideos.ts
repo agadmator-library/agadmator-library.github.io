@@ -4,7 +4,7 @@ import {chesstempoService} from "../chesstempo/ChesstempoService.js";
 import {chess365Service} from "../chess365/Chess365Service.js";
 import {extractPgnForId} from "../extractPGN.js";
 import {lichessMastersService} from "../lichessMasters/LichessMastersService.js";
-import {stockfishService} from "../stockfish/StockfishService.js";
+// import {stockfishService} from "../stockfish/StockfishService.js";
 import {lichessService} from "../lichess/LichessService.js";
 
 async function loadNewVideos() {
@@ -48,7 +48,7 @@ async function loadNewVideos() {
         }
     }
 
-    await stockfishService.evaluate(newIds)
+    // await stockfishService.evaluate(newIds)
 }
 
 await loadNewVideos();
