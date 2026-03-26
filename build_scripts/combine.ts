@@ -14,7 +14,7 @@ import {
 } from './db.js'
 import {pgnRead} from 'kokopu'
 import {parse} from 'tinyduration'
-import {EvaluationResult} from "./stockfish/StockfishService";
+import {EvaluationResult} from "./stockfish/StockfishService.js";
 import {fenShortener} from "./util/FenShortener.js";
 import objectHash from 'object-hash'
 
