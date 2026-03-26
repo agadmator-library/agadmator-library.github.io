@@ -10,7 +10,7 @@
     "preview": "vite preview",
     "build-only": "mkdir -p generated && tsc --project ./tsconfig.generate.json && node build_scripts/nodeActions/generate.js && vite build && cp -r generated dist && cp -r img dist && cp -r js dist && cp -r db dist && cp -r css dist",
     "type-check": "vue-tsc --noEmit -p tsconfig.app.json --composite false",
-    "loadNewVideos": "node --experimental-wasm-threads --experimental-wasm-simd build_scripts/nodeActions/loadNewVideos.js",
+    "loadNewVideos": "node build_scripts/nodeActions/loadNewVideos.js",
     "refreshVideo": "tsc --project ./tsconfig.generate.json && node build_scripts/nodeActions/refreshVideo.js",
     "loadMissingData": "tsc --project ./tsconfig.generate.json && node build_scripts/nodeActions/loadMissingData.js",
     "retryDataRetrieval": "tsc --project ./tsconfig.generate.json && node build_scripts/nodeActions/retryDataRetrieval.js",
