@@ -74,5 +74,400 @@
       "cp": -197,
       "mate": null
     }
+  ],
+  "lichessGameEval": [
+    {
+      "id": "8OsLuB3r",
+      "rated": false,
+      "variant": "standard",
+      "speed": "correspondence",
+      "perf": "correspondence",
+      "createdAt": 1766935856303,
+      "lastMoveAt": 1766935856303,
+      "status": "started",
+      "source": "import",
+      "players": {
+        "white": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 1,
+            "mistake": 2,
+            "blunder": 0,
+            "acpl": 16,
+            "accuracy": 93,
+            "phases": {
+              "opening": 98,
+              "middlegame": 95,
+              "endgame": 87
+            }
+          }
+        },
+        "black": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 1,
+            "mistake": 0,
+            "blunder": 0,
+            "acpl": 9,
+            "accuracy": 98,
+            "phases": {
+              "opening": 98,
+              "middlegame": 98,
+              "endgame": 97
+            }
+          }
+        }
+      },
+      "opening": {
+        "eco": "C95",
+        "name": "Ruy Lopez: Closed, Breyer Defense, Zaitsev Hybrid",
+        "ply": 20
+      },
+      "moves": "e4 e5 Nf3 Nc6 Bb5 a6 Ba4 Nf6 O-O Be7 Re1 b5 Bb3 O-O c3 d6 h3 Nb8 d4 Nbd7 Nbd2 Bb7 Bc2 Re8 Nf1 Bf8 Ng3 a5 Bd3 b4 Bd2 c6 Nf5 bxc3 bxc3 Ba6 Bxa6 Rxa6 Qc2 Qc7 Rab1 Rb6 dxe5 dxe5 c4 Rxb1 Rxb1 Nc5 Ng3 Nfd7 Be3 g6 Nf1 Ne6 N1d2 Bc5 Bxc5 Ndxc5 Nb3 f6 Nxc5 Nxc5 Nd2 a4 Nf1 Rd8 Ne3 Kg7 Qc1 Nxe4 c5 h5 Rb6 Rd4 Ra6 Qb7 Rb6 Qd7 Qb2 Rd2 Qb4 Qd4 Rb7+ Kh6 Qc4 Qxc4 Nxc4 Rxa2 Nd6 Nxd6 cxd6 Rd2 d7 a3 Ra7 h4 Rxa3 Rxd7 Rc3 Rd1+ Kh2 Rd6 Rc4 Kg5",
+      "pgn": "[Event \"Import\"]\n[Site \"https://lichess.org/8OsLuB3r\"]\n[Date \"2025.12.28\"]\n[Round \"-\"]\n[White \"?\"]\n[Black \"?\"]\n[Result \"*\"]\n[GameId \"8OsLuB3r\"]\n[UTCDate \"2025.12.28\"]\n[UTCTime \"15:30:56\"]\n[WhiteElo \"?\"]\n[BlackElo \"?\"]\n[Variant \"Standard\"]\n[TimeControl \"-\"]\n[ECO \"C95\"]\n[Opening \"Ruy Lopez: Closed, Breyer Defense, Zaitsev Hybrid\"]\n[Termination \"Unterminated\"]\n\n1. e4 { [%eval 0.18] } 1... e5 { [%eval 0.22] } 2. Nf3 { [%eval 0.18] } 2... Nc6 { [%eval 0.21] } 3. Bb5 { [%eval 0.15] } 3... a6 { [%eval 0.21] } 4. Ba4 { [%eval 0.11] } 4... Nf6 { [%eval 0.28] } 5. O-O { [%eval 0.16] } 5... Be7 { [%eval 0.24] } 6. Re1 { [%eval 0.19] } 6... b5 { [%eval 0.14] } 7. Bb3 { [%eval 0.18] } 7... O-O { [%eval 0.26] } 8. c3 { [%eval 0.38] } 8... d6 { [%eval 0.36] } 9. h3 { [%eval 0.43] } 9... Nb8 { [%eval 0.42] } 10. d4 { [%eval 0.41] } 10... Nbd7 { [%eval 0.5] } 11. Nbd2 { [%eval 0.41] } 11... Bb7 { [%eval 0.4] } 12. Bc2 { [%eval 0.49] } 12... Re8 { [%eval 0.49] } 13. Nf1 { [%eval 0.39] } 13... Bf8 { [%eval 0.42] } 14. Ng3 { [%eval 0.35] } 14... a5 { [%eval 0.41] } 15. Bd3 { [%eval 0.41] } 15... b4 { [%eval 0.35] } 16. Bd2 { [%eval 0.38] } 16... c6 { [%eval 0.49] } 17. Nf5 { [%eval 0.15] } 17... bxc3 { [%eval 0.31] } 18. bxc3 { [%eval 0.27] } 18... Ba6 { [%eval 0.2] } 19. Bxa6 { [%eval 0.19] } 19... Rxa6 { [%eval 0.23] } 20. Qc2 { [%eval 0.24] } 20... Qc7 { [%eval 0.27] } 21. Rab1 { [%eval 0.12] } 21... Rb6 { [%eval 0.22] } 22. dxe5 { [%eval 0.05] } 22... dxe5 { [%eval 0.11] } 23. c4 { [%eval -0.42] } 23... Rxb1 { [%eval -0.38] } 24. Rxb1 { [%eval -0.41] } 24... Nc5 { [%eval -0.38] } 25. Ng3 { [%eval -0.45] } 25... Nfd7 { [%eval -0.42] } 26. Be3 { [%eval -0.28] } 26... g6 { [%eval -0.13] } 27. Nf1 { [%eval -0.33] } 27... Ne6 { [%eval -0.37] } 28. N1d2 { [%eval -0.36] } 28... Bc5 { [%eval -0.28] } 29. Bxc5 { [%eval -0.3] } 29... Ndxc5 { [%eval -0.32] } 30. Nb3 { [%eval -0.32] } 30... f6 { [%eval -0.17] } 31. Nxc5 { [%eval -0.24] } 31... Nxc5 { [%eval -0.19] } 32. Nd2 { [%eval -0.32] } 32... a4 { [%eval -0.42] } 33. Nf1 { [%eval -0.29] } 33... Rd8 { [%eval -0.34] } 34. Ne3 { [%eval -0.64] } 34... Kg7 { [%eval -0.72] } 35. Qc1 { [%eval -1.04] } 35... Nxe4 { [%eval -1.22] } 36. c5 { [%eval -1.08] } 36... h5 { [%eval -0.48] } 37. Rb6 { [%eval -1.05] } 37... Rd4 { [%eval -1.06] } 38. Ra6 { [%eval -1.51] } 38... Qb7 { [%eval -1.47] } 39. Rb6 { [%eval -1.39] } 39... Qd7 { [%eval -1.18] } 40. Qb2 { [%eval -2.56] } 40... Rd2 { [%eval -2.58] } 41. Qb4 { [%eval -4.22] } 41... Qd4 { [%eval -4.03] } 42. Rb7+ { [%eval -4.56] } 42... Kh6 { [%eval -4.51] } 43. Qc4 { [%eval -4.15] } 43... Qxc4 { [%eval -4.27] } 44. Nxc4 { [%eval -4.26] } 44... Rxa2 { [%eval -3.94] } 45. Nd6 { [%eval -3.99] } 45... Nxd6 { [%eval -4.13] } 46. cxd6 { [%eval -4.08] } 46... Rd2 { [%eval -3.93] } 47. d7 { [%eval -3.97] } 47... a3 { [%eval -3.62] } 48. Ra7 { [%eval -4.01] } 48... h4 { [%eval -3.62] } 49. Rxa3 { [%eval -3.9] } 49... Rxd7 { [%eval -3.62] } 50. Rc3 { [%eval -3.71] } 50... Rd1+ { [%eval -3.91] } 51. Kh2 { [%eval -3.85] } 51... Rd6 { [%eval -3.84] } 52. Rc4 { [%eval -3.46] } 52... Kg5 { [%eval -3.22] } *\n\n\n",
+      "analysis": [
+        {
+          "eval": 18
+        },
+        {
+          "eval": 22
+        },
+        {
+          "eval": 18
+        },
+        {
+          "eval": 21
+        },
+        {
+          "eval": 15
+        },
+        {
+          "eval": 21
+        },
+        {
+          "eval": 11
+        },
+        {
+          "eval": 28
+        },
+        {
+          "eval": 16
+        },
+        {
+          "eval": 24
+        },
+        {
+          "eval": 19
+        },
+        {
+          "eval": 14
+        },
+        {
+          "eval": 18
+        },
+        {
+          "eval": 26
+        },
+        {
+          "eval": 38
+        },
+        {
+          "eval": 36
+        },
+        {
+          "eval": 43
+        },
+        {
+          "eval": 42
+        },
+        {
+          "eval": 41
+        },
+        {
+          "eval": 50
+        },
+        {
+          "eval": 41
+        },
+        {
+          "eval": 40
+        },
+        {
+          "eval": 49
+        },
+        {
+          "eval": 49
+        },
+        {
+          "eval": 39
+        },
+        {
+          "eval": 42
+        },
+        {
+          "eval": 35
+        },
+        {
+          "eval": 41
+        },
+        {
+          "eval": 41
+        },
+        {
+          "eval": 35
+        },
+        {
+          "eval": 38
+        },
+        {
+          "eval": 49
+        },
+        {
+          "eval": 15
+        },
+        {
+          "eval": 31
+        },
+        {
+          "eval": 27
+        },
+        {
+          "eval": 20
+        },
+        {
+          "eval": 19
+        },
+        {
+          "eval": 23
+        },
+        {
+          "eval": 24
+        },
+        {
+          "eval": 27
+        },
+        {
+          "eval": 12
+        },
+        {
+          "eval": 22
+        },
+        {
+          "eval": 5
+        },
+        {
+          "eval": 11
+        },
+        {
+          "eval": -42
+        },
+        {
+          "eval": -38
+        },
+        {
+          "eval": -41
+        },
+        {
+          "eval": -38
+        },
+        {
+          "eval": -45
+        },
+        {
+          "eval": -42
+        },
+        {
+          "eval": -28
+        },
+        {
+          "eval": -13
+        },
+        {
+          "eval": -33
+        },
+        {
+          "eval": -37
+        },
+        {
+          "eval": -36
+        },
+        {
+          "eval": -28
+        },
+        {
+          "eval": -30
+        },
+        {
+          "eval": -32
+        },
+        {
+          "eval": -32
+        },
+        {
+          "eval": -17
+        },
+        {
+          "eval": -24
+        },
+        {
+          "eval": -19
+        },
+        {
+          "eval": -32
+        },
+        {
+          "eval": -42
+        },
+        {
+          "eval": -29
+        },
+        {
+          "eval": -34
+        },
+        {
+          "eval": -64
+        },
+        {
+          "eval": -72
+        },
+        {
+          "eval": -104
+        },
+        {
+          "eval": -122
+        },
+        {
+          "eval": -108
+        },
+        {
+          "eval": -48,
+          "best": "d8d4",
+          "variation": "Rd4 Qc2 h5 Rb6 f5 Ra6 h4 Rxa4 Qb8 Rxd4 exd4 Nf1",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. Rd4 was best."
+          }
+        },
+        {
+          "eval": -105,
+          "best": "b1b4",
+          "variation": "Rb4",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. Rb4 was best."
+          }
+        },
+        {
+          "eval": -106
+        },
+        {
+          "eval": -151
+        },
+        {
+          "eval": -147
+        },
+        {
+          "eval": -139
+        },
+        {
+          "eval": -118
+        },
+        {
+          "eval": -256,
+          "best": "b6b8",
+          "variation": "Rb8 Qc7",
+          "judgment": {
+            "name": "Mistake",
+            "comment": "Mistake. Rb8 was best."
+          }
+        },
+        {
+          "eval": -258
+        },
+        {
+          "eval": -422,
+          "best": "b2b1",
+          "variation": "Qb1 Nc3",
+          "judgment": {
+            "name": "Mistake",
+            "comment": "Mistake. Qb1 was best."
+          }
+        },
+        {
+          "eval": -403
+        },
+        {
+          "eval": -456
+        },
+        {
+          "eval": -451
+        },
+        {
+          "eval": -415
+        },
+        {
+          "eval": -427
+        },
+        {
+          "eval": -426
+        },
+        {
+          "eval": -394
+        },
+        {
+          "eval": -399
+        },
+        {
+          "eval": -413
+        },
+        {
+          "eval": -408
+        },
+        {
+          "eval": -393
+        },
+        {
+          "eval": -397
+        },
+        {
+          "eval": -362
+        },
+        {
+          "eval": -401
+        },
+        {
+          "eval": -362
+        },
+        {
+          "eval": -390
+        },
+        {
+          "eval": -362
+        },
+        {
+          "eval": -371
+        },
+        {
+          "eval": -391
+        },
+        {
+          "eval": -385
+        },
+        {
+          "eval": -384
+        },
+        {
+          "eval": -346
+        },
+        {
+          "eval": -322
+        }
+      ],
+      "division": {
+        "middle": 39,
+        "end": 62
+      },
+      "import": {}
+    }
   ]
 }
