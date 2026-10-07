@@ -72,5 +72,448 @@
       "cp": -725,
       "mate": null
     }
+  ],
+  "lichessGameEval": [
+    {
+      "id": "Rl6pzagw",
+      "rated": false,
+      "variant": "standard",
+      "speed": "correspondence",
+      "perf": "correspondence",
+      "createdAt": 1772760195999,
+      "lastMoveAt": 1772760195999,
+      "status": "started",
+      "source": "import",
+      "players": {
+        "white": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 2,
+            "mistake": 0,
+            "blunder": 1,
+            "acpl": 15,
+            "accuracy": 88,
+            "phases": {
+              "opening": 96,
+              "middlegame": 98,
+              "endgame": 82
+            }
+          }
+        },
+        "black": {
+          "name": "?",
+          "analysis": {
+            "inaccuracy": 0,
+            "mistake": 0,
+            "blunder": 0,
+            "acpl": 5,
+            "accuracy": 98,
+            "phases": {
+              "opening": 96,
+              "middlegame": 98,
+              "endgame": 99
+            }
+          }
+        }
+      },
+      "opening": {
+        "eco": "B30",
+        "name": "Sicilian Defense: Old Sicilian",
+        "ply": 4
+      },
+      "moves": "e4 c5 Nf3 Nc6 Nc3 Nf6 Bb5 Qc7 Bxc6 dxc6 d4 cxd4 Qxd4 Bg4 Qe5 Qd6 Qg3 Bxf3 Qxf3 e5 O-O Be7 Ne2 Qe6 Ng3 g6 Qb3 Qxb3 axb3 Bc5 Bg5 Nd7 Rfd1 f6 Bd2 Ke7 Ne2 Rhd8 Nc1 Bd6 b4 f5 Nb3 Nf6 exf5 gxf5 Na5 Rd7 Nc4 Bc7 Re1 Ke6 Be3 e4 Bb6 Nd5 Bxc7 Rxc7 f3 Nxb4 Re2 b5 Na5 c5 fxe4 f4 Nb3 Rd8 c3 Nd3 Ra6+ Kf7 e5 Re7 e6+ Kf6 Nd2 Kf5 Nf3 Rd5 Rc6 Kf6 g4 fxg3 hxg3 a5 Kg2 a4 Ra6 b4 cxb4 cxb4 Rxa4 Rxe6 Rxe6+ Kxe6 g4 Rd7 b3 Kd5 Ra5+ Ke4 Kg3 Rb7 Rf5 Nc1 Rf4+ Ke3 Nd4 Kd3 Kh4 Rb6 Rf1 Na2 Rf4 Nc3 Nf3 Ke3 Rf5 Rh6+ Kg3 Ne2+",
+      "pgn": "[Event \"Import\"]\n[Site \"https://lichess.org/Rl6pzagw\"]\n[Date \"2026.03.06\"]\n[Round \"-\"]\n[White \"?\"]\n[Black \"?\"]\n[Result \"*\"]\n[GameId \"Rl6pzagw\"]\n[UTCDate \"2026.03.06\"]\n[UTCTime \"01:23:15\"]\n[WhiteElo \"?\"]\n[BlackElo \"?\"]\n[Variant \"Standard\"]\n[TimeControl \"-\"]\n[ECO \"B30\"]\n[Opening \"Sicilian Defense: Old Sicilian\"]\n[Termination \"Unterminated\"]\n\n1. e4 { [%eval 0.18] } 1... c5 { [%eval 0.25] } 2. Nf3 { [%eval 0.2] } 2... Nc6 { [%eval 0.3] } 3. Nc3 { [%eval 0.19] } 3... Nf6 { [%eval 0.34] } 4. Bb5 { [%eval 0.29] } 4... Qc7 { [%eval 0.43] } 5. Bxc6 { [%eval 0.17] } 5... dxc6 { [%eval 0.16] } 6. d4 { [%eval 0.14] } 6... cxd4 { [%eval 0.15] } 7. Qxd4 { [%eval 0.08] } 7... Bg4 { [%eval 0.34] } 8. Qe5 { [%eval 0.18] } 8... Qd6 { [%eval 0.17] } 9. Qg3 { [%eval 0.01] } 9... Bxf3 { [%eval 0.19] } 10. Qxf3 { [%eval 0.25] } 10... e5 { [%eval 0.25] } 11. O-O { [%eval 0.31] } 11... Be7 { [%eval 0.28] } 12. Ne2 { [%eval 0.13] } 12... Qe6 { [%eval 0.13] } 13. Ng3 { [%eval 0.07] } 13... g6 { [%eval 0.1] } 14. Qb3 { [%eval -0.03] } 14... Qxb3 { [%eval -0.04] } 15. axb3 { [%eval 0.0] } 15... Bc5 { [%eval -0.02] } 16. Bg5 { [%eval 0.0] } 16... Nd7 { [%eval -0.03] } 17. Rfd1 { [%eval -0.04] } 17... f6 { [%eval 0.0] } 18. Bd2 { [%eval -0.08] } 18... Ke7 { [%eval -0.05] } 19. Ne2 { [%eval -0.11] } 19... Rhd8 { [%eval -0.03] } 20. Nc1 { [%eval -0.1] } 20... Bd6 { [%eval 0.02] } 21. b4 { [%eval -0.01] } 21... f5 { [%eval 0.17] } 22. Nb3 { [%eval 0.18] } 22... Nf6 { [%eval 0.21] } 23. exf5 { [%eval 0.18] } 23... gxf5 { [%eval 0.14] } 24. Na5 { [%eval 0.0] } 24... Rd7 { [%eval 0.02] } 25. Nc4 { [%eval -0.04] } 25... Bc7 { [%eval -0.04] } 26. Re1 { [%eval -0.36] } 26... Ke6 { [%eval 0.03] } 27. Be3 { [%eval 0.0] } 27... e4 { [%eval 0.0] } 28. Bb6 { [%eval 0.0] } 28... Nd5 { [%eval 0.0] } 29. Bxc7 { [%eval 0.0] } 29... Rxc7 { [%eval 0.03] } 30. f3 { [%eval 0.0] } 30... Nxb4 { [%eval 0.0] } 31. Re2 { [%eval 0.0] } 31... b5 { [%eval 0.0] } 32. Na5 { [%eval 0.0] } 32... c5 { [%eval 0.0] } 33. fxe4 { [%eval 0.0] } 33... f4 { [%eval 0.04] } 34. Nb3 { [%eval -0.01] } 34... Rd8 { [%eval 0.0] } 35. c3 { [%eval -0.03] } 35... Nd3 { [%eval 0.0] } 36. Ra6+ { [%eval -0.25] } 36... Kf7 { [%eval -0.03] } 37. e5 { [%eval 0.0] } 37... Re7 { [%eval 0.0] } 38. e6+ { [%eval 0.0] } 38... Kf6 { [%eval 0.0] } 39. Nd2 { [%eval 0.0] } 39... Kf5 { [%eval 0.1] } 40. Nf3 { [%eval 0.09] } 40... Rd5 { [%eval 0.17] } 41. Rc6 { [%eval 0.0] } 41... Kf6 { [%eval 0.0] } 42. g4 { [%eval 0.0] } 42... fxg3 { [%eval 0.01] } 43. hxg3 { [%eval 0.01] } 43... a5 { [%eval 0.09] } 44. Kg2 { [%eval 0.0] } 44... a4 { [%eval 0.0] } 45. Ra6 { [%eval 0.0] } 45... b4 { [%eval 0.06] } 46. cxb4 { [%eval 0.01] } 46... cxb4 { [%eval 0.05] } 47. Rxa4 { [%eval 0.0] } 47... Rxe6 { [%eval 0.0] } 48. Rxe6+ { [%eval -0.02] } 48... Kxe6 { [%eval -0.04] } 49. g4 { [%eval -0.03] } 49... Rd7 { [%eval 0.0] } 50. b3 { [%eval 0.0] } 50... Kd5 { [%eval 0.0] } 51. Ra5+ { [%eval -0.02] } 51... Ke4 { [%eval -0.03] } 52. Kg3 { [%eval -0.07] } 52... Rb7 { [%eval 0.0] } 53. Rf5 { [%eval -0.12] } 53... Nc1 { [%eval 0.0] } 54. Rf4+ { [%eval 0.0] } 54... Ke3 { [%eval 0.0] } 55. Nd4 { [%eval 0.0] } 55... Kd3 { [%eval 0.0] } 56. Kh4 { [%eval 0.0] } 56... Rb6 { [%eval 0.0] } 57. Rf1 { [%eval 0.0] } 57... Na2 { [%eval 0.0] } 58. Rf4 { [%eval -0.04] } 58... Nc3 { [%eval -0.03] } 59. Nf3 { [%eval -0.62] } 59... Ke3 { [%eval -0.94] } 60. Rf5 { [%eval -4.68] } 60... Rh6+ { [%eval -4.52] } 61. Kg3 { [%eval -6.07] } 61... Ne2+ { [%eval -5.89] } *\n\n\n",
+      "analysis": [
+        {
+          "eval": 18
+        },
+        {
+          "eval": 25
+        },
+        {
+          "eval": 20
+        },
+        {
+          "eval": 30
+        },
+        {
+          "eval": 19
+        },
+        {
+          "eval": 34
+        },
+        {
+          "eval": 29
+        },
+        {
+          "eval": 43
+        },
+        {
+          "eval": 17
+        },
+        {
+          "eval": 16
+        },
+        {
+          "eval": 14
+        },
+        {
+          "eval": 15
+        },
+        {
+          "eval": 8
+        },
+        {
+          "eval": 34
+        },
+        {
+          "eval": 18
+        },
+        {
+          "eval": 17
+        },
+        {
+          "eval": 1
+        },
+        {
+          "eval": 19
+        },
+        {
+          "eval": 25
+        },
+        {
+          "eval": 25
+        },
+        {
+          "eval": 31
+        },
+        {
+          "eval": 28
+        },
+        {
+          "eval": 13
+        },
+        {
+          "eval": 13
+        },
+        {
+          "eval": 7
+        },
+        {
+          "eval": 10
+        },
+        {
+          "eval": -3
+        },
+        {
+          "eval": -4
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": -2
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": -3
+        },
+        {
+          "eval": -4
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": -8
+        },
+        {
+          "eval": -5
+        },
+        {
+          "eval": -11
+        },
+        {
+          "eval": -3
+        },
+        {
+          "eval": -10
+        },
+        {
+          "eval": 2
+        },
+        {
+          "eval": -1
+        },
+        {
+          "eval": 17
+        },
+        {
+          "eval": 18
+        },
+        {
+          "eval": 21
+        },
+        {
+          "eval": 18
+        },
+        {
+          "eval": 14
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 2
+        },
+        {
+          "eval": -4
+        },
+        {
+          "eval": -4
+        },
+        {
+          "eval": -36
+        },
+        {
+          "eval": 3
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 3
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 4
+        },
+        {
+          "eval": -1
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": -3
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": -25
+        },
+        {
+          "eval": -3
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 10
+        },
+        {
+          "eval": 9
+        },
+        {
+          "eval": 17
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 1
+        },
+        {
+          "eval": 1
+        },
+        {
+          "eval": 9
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 6
+        },
+        {
+          "eval": 1
+        },
+        {
+          "eval": 5
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": -2
+        },
+        {
+          "eval": -4
+        },
+        {
+          "eval": -3
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": -2
+        },
+        {
+          "eval": -3
+        },
+        {
+          "eval": -7
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": -12
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": 0
+        },
+        {
+          "eval": -4
+        },
+        {
+          "eval": -3
+        },
+        {
+          "eval": -62,
+          "best": "d4f5",
+          "variation": "Nf5 Ne4 g5 Re6 Rf3+ Kd2 Rf4 Kc3 Rf3+ Kb2 Rf4 Re5",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. Nf5 was best."
+          }
+        },
+        {
+          "eval": -94
+        },
+        {
+          "eval": -468,
+          "best": "f4f8",
+          "variation": "Rf8 Rh6+ Kg5 Rh1 Rf4 Nd5 Rd4 Ne7 Kf6 Ng6 Rxb4 Kxf3",
+          "judgment": {
+            "name": "Blunder",
+            "comment": "Blunder. Rf8 was best."
+          }
+        },
+        {
+          "eval": -452
+        },
+        {
+          "eval": -607,
+          "best": "h4g5",
+          "variation": "Kg5 Rh3 Nd2 Kxd2 Rf4 Nd5 Rc4 Rxb3 Rc5 Rd3 Kh6 b3",
+          "judgment": {
+            "name": "Inaccuracy",
+            "comment": "Inaccuracy. Kg5 was best."
+          }
+        },
+        {
+          "eval": -589
+        }
+      ],
+      "division": {
+        "middle": 19,
+        "end": 58
+      },
+      "import": {}
+    }
   ]
 }
